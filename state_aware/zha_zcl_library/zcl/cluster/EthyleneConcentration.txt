@@ -1,0 +1,4 @@
+class EthyleneConcentration(_ConcentrationMixin, Cluster):
+    cluster_id: Final[t.uint16_t] = 0x040E
+    name: Final = "Ethylene (CH₂) Concentration"
+    ep_attribute: Final = "ethylene_concentration"

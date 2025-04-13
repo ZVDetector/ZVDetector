@@ -1,0 +1,25 @@
+{
+    "correlation1": {
+        "messages": [
+            {
+                "beacon_request": {
+                    "superframe_specification": "uint16",
+                    "gtsfields": "byte[3]",
+                    "pending_address_fields": "byte[]"
+                }
+            },
+            {
+                "coordinator_realignment": {
+                    "panid": "uint16",
+                    "coordinator_short_address": "uint16",
+                    "channel": "uint8",
+                    "device_short_address": "uint16",
+                    "superframe_specification": "uint16"
+                }
+            }
+        ],
+        "fields": [
+            "superframe_specification"
+        ]
+    }
+}

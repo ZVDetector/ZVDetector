@@ -1,0 +1,10 @@
+{
+    "Attributes": [
+        "measured_value",
+        "min_measured_value",
+        "max_measured_value",
+        "tolerance",
+        "cluster_revision",
+        "reporting_status"
+    ]
+}

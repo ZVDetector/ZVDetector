@@ -1,0 +1,4 @@
+class NitrogenDioxideConcentration(_ConcentrationMixin, Cluster):
+    cluster_id: Final[t.uint16_t] = 0x0413
+    name: Final = "Nitrogen Dioxide (NO₂) Concentration"
+    ep_attribute: Final = "nitrogen_dioxide_concentration"

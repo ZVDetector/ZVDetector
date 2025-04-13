@@ -1,0 +1,16 @@
+class ApplianceEventAlerts(Cluster):
+    cluster_id: Final[t.uint16_t] = 0x0B02
+    name: Final = "Appliance Event Alerts"
+    ep_attribute: Final = "appliance_event"
+
+    class AttributeDefs(BaseAttributeDefs):
+        cluster_revision: Final = foundation.ZCL_CLUSTER_REVISION_ATTR
+        reporting_status: Final = foundation.ZCL_REPORTING_STATUS_ATTR
+
+    class ServerCommandDefs(BaseCommandDefs):
+        get_alerts: Final = ZCLCommandDef(id=0x00, schema={}, direction=False)
+
+    class ClientCommandDefs(BaseCommandDefs):
+        get_alerts_response: Final = ZCLCommandDef(id=0x00, schema={}, direction=True)
+        alerts_notification: Final = ZCLCommandDef(id=0x01, schema={}, direction=False)
+        event_notification: Final = ZCLCommandDef(id=0x02, schema={}, direction=False)

@@ -1,0 +1,19 @@
+class LeafWetness(Cluster):
+    cluster_id: Final[t.uint16_t] = 0x0407
+    name: Final = "Leaf Wetness Measurement"
+    ep_attribute: Final = "leaf_wetness"
+
+    class AttributeDefs(BaseAttributeDefs):
+        # Leaf Wetness Measurement Information
+        measured_value: Final = ZCLAttributeDef(
+            id=0x0000, type=t.uint16_t, access="rp", mandatory=True
+        )
+        min_measured_value: Final = ZCLAttributeDef(
+            id=0x0001, type=t.uint16_t, access="r", mandatory=True
+        )
+        max_measured_value: Final = ZCLAttributeDef(
+            id=0x0002, type=t.uint16_t, access="r", mandatory=True
+        )
+        tolerance: Final = ZCLAttributeDef(id=0x0003, types=t.uint16_t, access="r")
+        cluster_revision: Final = foundation.ZCL_CLUSTER_REVISION_ATTR
+        reporting_status: Final = foundation.ZCL_REPORTING_STATUS_ATTR

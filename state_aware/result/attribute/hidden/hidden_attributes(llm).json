@@ -1,0 +1,2275 @@
+{
+    "attr0": {
+        "message": "association_request",
+        "attributes": []
+    },
+    "attr1": {
+        "message": "association_response",
+        "attributes": [
+            "short_address",
+            "association_status"
+        ]
+    },
+    "attr2": {
+        "message": "disassociation_notification",
+        "attributes": []
+    },
+    "attr3": {
+        "message": "data_request",
+        "attributes": []
+    },
+    "attr4": {
+        "message": "panidconflict_notification",
+        "attributes": []
+    },
+    "attr5": {
+        "message": "orphan_notification",
+        "attributes": []
+    },
+    "attr6": {
+        "message": "beacon_request",
+        "attributes": []
+    },
+    "attr7": {
+        "message": "coordinator_realignment",
+        "attributes": []
+    },
+    "attr8": {
+        "message": "gtsrequest",
+        "attributes": []
+    },
+    "attr9": {
+        "message": "route_request",
+        "attributes": []
+    },
+    "attr10": {
+        "message": "route_reply",
+        "attributes": []
+    },
+    "attr11": {
+        "message": "network_status",
+        "attributes": []
+    },
+    "attr12": {
+        "message": "leave",
+        "attributes": []
+    },
+    "attr13": {
+        "message": "route_record",
+        "attributes": [
+            "relay_count",
+            "relay_list"
+        ]
+    },
+    "attr14": {
+        "message": "rejoin_request",
+        "attributes": []
+    },
+    "attr15": {
+        "message": "rejoin_response",
+        "attributes": [
+            "network_address",
+            "rejoin_status"
+        ]
+    },
+    "attr16": {
+        "message": "link_status",
+        "attributes": []
+    },
+    "attr17": {
+        "message": "network_report",
+        "attributes": []
+    },
+    "attr18": {
+        "message": "network_update",
+        "attributes": []
+    },
+    "attr19": {
+        "message": "end_device_timeout_request",
+        "attributes": []
+    },
+    "attr20": {
+        "message": "end_device_timeout_response",
+        "attributes": []
+    },
+    "attr21": {
+        "message": "transport_key",
+        "attributes": []
+    },
+    "attr22": {
+        "message": "update_device",
+        "attributes": [
+            "device_address",
+            "device_short_address",
+            "status"
+        ]
+    },
+    "attr23": {
+        "message": "remove_device",
+        "attributes": []
+    },
+    "attr24": {
+        "message": "request_key",
+        "attributes": []
+    },
+    "attr25": {
+        "message": "switch_key",
+        "attributes": []
+    },
+    "attr26": {
+        "message": "tunnel",
+        "attributes": []
+    },
+    "attr27": {
+        "message": "verify_key",
+        "attributes": []
+    },
+    "attr28": {
+        "message": "confirm_key",
+        "attributes": []
+    },
+    "attr29": {
+        "message": "relay_message_downstream",
+        "attributes": []
+    },
+    "attr30": {
+        "message": "relay_message_upstream",
+        "attributes": []
+    },
+    "attr31": {
+        "message": "nwk_addr_req",
+        "attributes": []
+    },
+    "attr32": {
+        "message": "ieee_addr_req",
+        "attributes": []
+    },
+    "attr33": {
+        "message": "node_desc_req",
+        "attributes": []
+    },
+    "attr34": {
+        "message": "power_desc_req",
+        "attributes": []
+    },
+    "attr35": {
+        "message": "simple_desc_req",
+        "attributes": []
+    },
+    "attr36": {
+        "message": "active_ep_req",
+        "attributes": []
+    },
+    "attr37": {
+        "message": "match_desc_req",
+        "attributes": []
+    },
+    "attr38": {
+        "message": "complex_desc_req",
+        "attributes": []
+    },
+    "attr39": {
+        "message": "user_desc_req",
+        "attributes": []
+    },
+    "attr40": {
+        "message": "discovery_cache_req",
+        "attributes": []
+    },
+    "attr41": {
+        "message": "device_annce",
+        "attributes": [
+            "nwkaddr",
+            "ieeeaddr",
+            "capability"
+        ]
+    },
+    "attr42": {
+        "message": "parent_annce",
+        "attributes": []
+    },
+    "attr43": {
+        "message": "user_desc_set",
+        "attributes": []
+    },
+    "attr44": {
+        "message": "system_server_discovery_req",
+        "attributes": []
+    },
+    "attr45": {
+        "message": "discovery_store_req",
+        "attributes": [
+            "nwkaddr",
+            "ieeeaddr",
+            "node_desc_size",
+            "power_desc_size",
+            "active_epsize",
+            "simple_desc_count",
+            "simple_desc_size_list"
+        ]
+    },
+    "attr46": {
+        "message": "node_desc_store_req",
+        "attributes": []
+    },
+    "attr47": {
+        "message": "power_desc_store_req",
+        "attributes": []
+    },
+    "attr48": {
+        "message": "active_ep_store_req",
+        "attributes": [
+            "active_epcount",
+            "active_eplist"
+        ]
+    },
+    "attr49": {
+        "message": "simple_desc_store_req",
+        "attributes": []
+    },
+    "attr50": {
+        "message": "remove_node_cache_req",
+        "attributes": []
+    },
+    "attr51": {
+        "message": "find_node_cache_req",
+        "attributes": []
+    },
+    "attr52": {
+        "message": "extended_simple_desc_req",
+        "attributes": []
+    },
+    "attr53": {
+        "message": "extended_active_ep_req",
+        "attributes": []
+    },
+    "attr54": {
+        "message": "end_device_bind_req",
+        "attributes": [
+            "binding_target",
+            "src_ieeeaddress",
+            "src_endpoint",
+            "profile_id",
+            "num_in_clusters",
+            "in_cluster_list",
+            "num_out_clusters",
+            "out_cluster_list"
+        ]
+    },
+    "attr55": {
+        "message": "bind_req",
+        "attributes": []
+    },
+    "attr56": {
+        "message": "unbind_req",
+        "attributes": []
+    },
+    "attr57": {
+        "message": "bind_register_req",
+        "attributes": []
+    },
+    "attr58": {
+        "message": "replace_device_req",
+        "attributes": []
+    },
+    "attr59": {
+        "message": "store_bkup_bind_entry_req",
+        "attributes": []
+    },
+    "attr60": {
+        "message": "remove_bkup_bind_entry_req",
+        "attributes": []
+    },
+    "attr61": {
+        "message": "backup_bind_table_req",
+        "attributes": [
+            "binding_table_entries",
+            "start_index",
+            "binding_table_list_count",
+            "binding_table_list"
+        ]
+    },
+    "attr62": {
+        "message": "recover_bind_table_req",
+        "attributes": []
+    },
+    "attr63": {
+        "message": "backup_source_bind_req",
+        "attributes": [
+            "source_table_entries",
+            "start_index",
+            "source_table_list_count",
+            "source_table_list"
+        ]
+    },
+    "attr64": {
+        "message": "recover_source_bind_req",
+        "attributes": []
+    },
+    "attr65": {
+        "message": "mgmt_nwk_disc_req",
+        "attributes": []
+    },
+    "attr66": {
+        "message": "mgmt_lqi_req",
+        "attributes": []
+    },
+    "attr67": {
+        "message": "mgmt_rtg_req",
+        "attributes": []
+    },
+    "attr68": {
+        "message": "mgmt_bind_req",
+        "attributes": []
+    },
+    "attr69": {
+        "message": "mgmt_leave_req",
+        "attributes": []
+    },
+    "attr70": {
+        "message": "mgmt_direct_join_req",
+        "attributes": []
+    },
+    "attr71": {
+        "message": "mgmt_permit_joining_req",
+        "attributes": []
+    },
+    "attr72": {
+        "message": "mgmt_cache_req",
+        "attributes": []
+    },
+    "attr73": {
+        "message": "mgmt_nwk_update_req",
+        "attributes": [
+            "scan_channels",
+            "scan_duration",
+            "scan_count",
+            "nwk_update_id",
+            "nwk_manager_addr"
+        ]
+    },
+    "attr74": {
+        "message": "nwk_addr_rsp",
+        "attributes": [
+            "nwkaddr_remote_dev",
+            "num_assoc_dev",
+            "nwkaddr_assoc_dev_list"
+        ]
+    },
+    "attr75": {
+        "message": "ieee_addr_rsp",
+        "attributes": [
+            "num_assoc_dev",
+            "nwkaddr_assoc_dev_list"
+        ]
+    },
+    "attr76": {
+        "message": "node_desc_rsp",
+        "attributes": []
+    },
+    "attr77": {
+        "message": "power_desc_rsp",
+        "attributes": []
+    },
+    "attr78": {
+        "message": "simple_desc_rsp",
+        "attributes": []
+    },
+    "attr79": {
+        "message": "active_ep_rsp",
+        "attributes": [
+            "active_epcount",
+            "active_eplist"
+        ]
+    },
+    "attr80": {
+        "message": "match_desc_rsp",
+        "attributes": [
+            "status",
+            "nwkaddr_of_interest",
+            "match_length",
+            "match_list"
+        ]
+    },
+    "attr81": {
+        "message": "complex_desc_rsp",
+        "attributes": []
+    },
+    "attr82": {
+        "message": "user_desc_rsp",
+        "attributes": []
+    },
+    "attr83": {
+        "message": "system_server_discovery_rsp",
+        "attributes": []
+    },
+    "attr84": {
+        "message": "user_desc_conf",
+        "attributes": []
+    },
+    "attr85": {
+        "message": "discovery_cache_rsp",
+        "attributes": []
+    },
+    "attr86": {
+        "message": "discovery_store_rsp",
+        "attributes": []
+    },
+    "attr87": {
+        "message": "node_desc_store_rsp",
+        "attributes": []
+    },
+    "attr88": {
+        "message": "power_desc_store_rsp",
+        "attributes": []
+    },
+    "attr89": {
+        "message": "active_ep_store_rsp",
+        "attributes": []
+    },
+    "attr90": {
+        "message": "simple_desc_store_rsp",
+        "attributes": []
+    },
+    "attr91": {
+        "message": "remove_node_cache_rsp",
+        "attributes": []
+    },
+    "attr92": {
+        "message": "find_node_cache_rsp",
+        "attributes": []
+    },
+    "attr93": {
+        "message": "extended_simple_desc_rsp",
+        "attributes": [
+            "app_input_cluster_count",
+            "app_output_cluster_count",
+            "app_cluster_list"
+        ]
+    },
+    "attr94": {
+        "message": "extended_active_ep_rsp",
+        "attributes": [
+            "active_epcount",
+            "active_eplist"
+        ]
+    },
+    "attr95": {
+        "message": "parent_annce_rsp",
+        "attributes": [
+            "number_of_children",
+            "child_info"
+        ]
+    },
+    "attr96": {
+        "message": "end_device_bind_rsp",
+        "attributes": []
+    },
+    "attr97": {
+        "message": "bind_rsp",
+        "attributes": []
+    },
+    "attr98": {
+        "message": "unbind_rsp",
+        "attributes": []
+    },
+    "attr99": {
+        "message": "bind_register_rsp",
+        "attributes": [
+            "binding_table_entries",
+            "binding_table_list_count",
+            "binding_table_list"
+        ]
+    },
+    "attr100": {
+        "message": "replace_device_rsp",
+        "attributes": []
+    },
+    "attr101": {
+        "message": "store_bkup_bind_entry_rsp",
+        "attributes": []
+    },
+    "attr102": {
+        "message": "remove_bkup_bind_entry_rsp",
+        "attributes": []
+    },
+    "attr103": {
+        "message": "backup_bind_table_rsp",
+        "attributes": [
+            "entry_count"
+        ]
+    },
+    "attr104": {
+        "message": "recover_bind_table_rsp",
+        "attributes": [
+            "binding_table_entries",
+            "start_index",
+            "binding_table_list_count",
+            "binding_table_list"
+        ]
+    },
+    "attr105": {
+        "message": "backup_source_bind_rsp",
+        "attributes": []
+    },
+    "attr106": {
+        "message": "recover_source_bind_rsp",
+        "attributes": [
+            "source_table_entries",
+            "start_index",
+            "source_table_list_count",
+            "source_table_list"
+        ]
+    },
+    "attr107": {
+        "message": "mgmt_nwk_disc_rsp",
+        "attributes": [
+            "network_count",
+            "start_index",
+            "network_list_count",
+            "extended_panid",
+            "logical_channel",
+            "stack_profile",
+            "zig_bee_version",
+            "beacon_order",
+            "superframe_order",
+            "permit_joining",
+            "router_capacity",
+            "end_device_capacity",
+            "network_address"
+        ]
+    },
+    "attr108": {
+        "message": "mgmt_lqi_rsp",
+        "attributes": [
+            "neighbor_table_entries",
+            "start_index",
+            "neighbor_table_list_count",
+            "neighbor_table_list"
+        ]
+    },
+    "attr109": {
+        "message": "mgmt_rtg_rsp",
+        "attributes": [
+            "routing_table_entries",
+            "start_index",
+            "routing_table_list_count",
+            "routing_table_list"
+        ]
+    },
+    "attr110": {
+        "message": "mgmt_bind_rsp",
+        "attributes": [
+            "binding_table_entries",
+            "start_index",
+            "binding_table_list_count",
+            "binding_table_list"
+        ]
+    },
+    "attr111": {
+        "message": "mgmt_leave_rsp",
+        "attributes": []
+    },
+    "attr112": {
+        "message": "mgmt_direct_join_rsp",
+        "attributes": []
+    },
+    "attr113": {
+        "message": "mgmt_permit_joining_rsp",
+        "attributes": []
+    },
+    "attr114": {
+        "message": "mgmt_cache_rsp",
+        "attributes": [
+            "discovery_cache_entries",
+            "start_index",
+            "discovery_cache_list_count",
+            "discovery_cache_list"
+        ]
+    },
+    "attr115": {
+        "message": "mgmt_nwk_update_notify",
+        "attributes": [
+            "status",
+            "scanned_channels",
+            "total_transmissions",
+            "transmission_failures",
+            "scanned_channels_list_count",
+            "energy_values"
+        ]
+    },
+    "attr116": {
+        "message": "read_attributes",
+        "attributes": []
+    },
+    "attr117": {
+        "message": "read_attributes_rsp",
+        "attributes": []
+    },
+    "attr118": {
+        "message": "write_attributes",
+        "attributes": []
+    },
+    "attr119": {
+        "message": "write_attributes_undivided",
+        "attributes": []
+    },
+    "attr120": {
+        "message": "write_attributes_rsp",
+        "attributes": []
+    },
+    "attr121": {
+        "message": "write_attributes_no_response",
+        "attributes": []
+    },
+    "attr122": {
+        "message": "configure_reporting",
+        "attributes": []
+    },
+    "attr123": {
+        "message": "configure_reporting_rsp",
+        "attributes": []
+    },
+    "attr124": {
+        "message": "read_reporting_configuration",
+        "attributes": []
+    },
+    "attr125": {
+        "message": "read_reporting_configuration_rsp",
+        "attributes": [
+            "status",
+            "direction",
+            "attrid",
+            "value",
+            "min_interval",
+            "max_interval"
+        ]
+    },
+    "attr126": {
+        "message": "report_attributes",
+        "attributes": []
+    },
+    "attr127": {
+        "message": "default_response",
+        "attributes": []
+    },
+    "attr128": {
+        "message": "discover_attributes",
+        "attributes": []
+    },
+    "attr129": {
+        "message": "discover_attributes_rsp",
+        "attributes": [
+            "discovery_complete",
+            "attribute_info"
+        ]
+    },
+    "attr130": {
+        "message": "discover_commands_received",
+        "attributes": []
+    },
+    "attr131": {
+        "message": "discover_commands_received_rsp",
+        "attributes": [
+            "discovery_complete",
+            "command_ids"
+        ]
+    },
+    "attr132": {
+        "message": "discover_commands_generated",
+        "attributes": []
+    },
+    "attr133": {
+        "message": "discover_commands_generated_rsp",
+        "attributes": [
+            "discovery_complete",
+            "command_ids"
+        ]
+    },
+    "attr134": {
+        "message": "discover_attribute_extended",
+        "attributes": []
+    },
+    "attr135": {
+        "message": "discover_attribute_extended_rsp",
+        "attributes": []
+    },
+    "attr136": {
+        "message": "thermostat_setpoint_raise_lower",
+        "attributes": [
+            "mode",
+            "amount"
+        ]
+    },
+    "attr137": {
+        "message": "thermostat_set_weekly_schedule",
+        "attributes": [
+            "num_transitions_for_sequence",
+            "day_of_week_for_sequence",
+            "mode_for_sequence",
+            "values"
+        ]
+    },
+    "attr138": {
+        "message": "thermostat_get_weekly_schedule",
+        "attributes": [
+            "days_to_return",
+            "mode_to_return"
+        ]
+    },
+    "attr139": {
+        "message": "thermostat_clear_weekly_schedule",
+        "attributes": []
+    },
+    "attr140": {
+        "message": "thermostat_get_relay_status_log",
+        "attributes": []
+    },
+    "attr141": {
+        "message": "thermostat_get_weekly_schedule_response",
+        "attributes": [
+            "num_transitions_for_sequence",
+            "day_of_week_for_sequence",
+            "mode_for_sequence",
+            "values"
+        ]
+    },
+    "attr142": {
+        "message": "thermostat_get_relay_status_log_response",
+        "attributes": [
+            "time_of_day",
+            "relay_status",
+            "local_temperature",
+            "humidity_in_percentage",
+            "set_point",
+            "unread_entries"
+        ]
+    },
+    "attr143": {
+        "message": "smartenergy_metering_get_profile",
+        "attributes": []
+    },
+    "attr144": {
+        "message": "smartenergy_metering_req_mirror",
+        "attributes": []
+    },
+    "attr145": {
+        "message": "smartenergy_metering_mirror_rem",
+        "attributes": []
+    },
+    "attr146": {
+        "message": "smartenergy_metering_req_fast_poll_mode",
+        "attributes": []
+    },
+    "attr147": {
+        "message": "smartenergy_metering_get_snapshot",
+        "attributes": []
+    },
+    "attr148": {
+        "message": "smartenergy_metering_take_snapshot",
+        "attributes": []
+    },
+    "attr149": {
+        "message": "smartenergy_metering_mirror_report_attr_response",
+        "attributes": []
+    },
+    "attr150": {
+        "message": "smartenergy_metering_get_profile_response",
+        "attributes": []
+    },
+    "attr151": {
+        "message": "smartenergy_metering_req_mirror_response",
+        "attributes": []
+    },
+    "attr152": {
+        "message": "smartenergy_metering_mirror_rem_response",
+        "attributes": []
+    },
+    "attr153": {
+        "message": "smartenergy_metering_req_fast_poll_mode_response",
+        "attributes": []
+    },
+    "attr154": {
+        "message": "smartenergy_metering_get_snapshot_response",
+        "attributes": []
+    },
+    "attr155": {
+        "message": "generic_tunnel_match_protocol_addr",
+        "attributes": []
+    },
+    "attr156": {
+        "message": "generic_tunnel_match_protocol_addr_response",
+        "attributes": []
+    },
+    "attr157": {
+        "message": "generic_tunnel_advertise_protocol_address",
+        "attributes": []
+    },
+    "attr158": {
+        "message": "bacnet_tunnel_transfer_npdu",
+        "attributes": []
+    },
+    "attr159": {
+        "message": "bacnet_extended_analog_input_transfer_apdu",
+        "attributes": []
+    },
+    "attr160": {
+        "message": "bacnet_extended_analog_input_connect_req",
+        "attributes": []
+    },
+    "attr161": {
+        "message": "bacnet_extended_analog_input_disconnect_req",
+        "attributes": []
+    },
+    "attr162": {
+        "message": "bacnet_extended_analog_input_connect_status_noti",
+        "attributes": []
+    },
+    "attr163": {
+        "message": "appliance_event_get_alerts",
+        "attributes": []
+    },
+    "attr164": {
+        "message": "appliance_event_get_alerts_response",
+        "attributes": []
+    },
+    "attr165": {
+        "message": "appliance_event_alerts_notification",
+        "attributes": []
+    },
+    "attr166": {
+        "message": "appliance_event_event_notification",
+        "attributes": []
+    },
+    "attr167": {
+        "message": "appliance_stats_log",
+        "attributes": []
+    },
+    "attr168": {
+        "message": "appliance_stats_log_queue",
+        "attributes": []
+    },
+    "attr169": {
+        "message": "appliance_stats_log_notification",
+        "attributes": []
+    },
+    "attr170": {
+        "message": "appliance_stats_log_response",
+        "attributes": []
+    },
+    "attr171": {
+        "message": "appliance_stats_log_queue_response",
+        "attributes": []
+    },
+    "attr172": {
+        "message": "appliance_stats_statistics_available",
+        "attributes": []
+    },
+    "attr173": {
+        "message": "electrical_measurement_get_profile_info",
+        "attributes": []
+    },
+    "attr174": {
+        "message": "electrical_measurement_get_measurement_profile",
+        "attributes": []
+    },
+    "attr175": {
+        "message": "electrical_measurement_get_profile_info_response",
+        "attributes": []
+    },
+    "attr176": {
+        "message": "electrical_measurement_get_measurement_profile_response",
+        "attributes": []
+    },
+    "attr177": {
+        "message": "door_lock_lock_door",
+        "attributes": []
+    },
+    "attr178": {
+        "message": "door_lock_unlock_door",
+        "attributes": []
+    },
+    "attr179": {
+        "message": "door_lock_toggle_door",
+        "attributes": []
+    },
+    "attr180": {
+        "message": "door_lock_unlock_with_timeout",
+        "attributes": []
+    },
+    "attr181": {
+        "message": "door_lock_get_log_record",
+        "attributes": [
+            "log_index"
+        ]
+    },
+    "attr182": {
+        "message": "door_lock_set_pin_code",
+        "attributes": [
+            "user_id",
+            "user_status",
+            "user_type",
+            "pin_code"
+        ]
+    },
+    "attr183": {
+        "message": "door_lock_get_pin_code",
+        "attributes": []
+    },
+    "attr184": {
+        "message": "door_lock_clear_pin_code",
+        "attributes": []
+    },
+    "attr185": {
+        "message": "door_lock_clear_all_pin_codes",
+        "attributes": [
+            "pin_code_table",
+            "pin_code_count"
+        ]
+    },
+    "attr186": {
+        "message": "door_lock_set_user_status",
+        "attributes": [
+            "user_status"
+        ]
+    },
+    "attr187": {
+        "message": "door_lock_get_user_status",
+        "attributes": []
+    },
+    "attr188": {
+        "message": "door_lock_set_week_day_schedule",
+        "attributes": [
+            "schedule_id",
+            "user_id",
+            "days_mask",
+            "start_hour",
+            "start_minute",
+            "end_hour",
+            "end_minute"
+        ]
+    },
+    "attr189": {
+        "message": "door_lock_get_week_day_schedule",
+        "attributes": []
+    },
+    "attr190": {
+        "message": "door_lock_clear_week_day_schedule",
+        "attributes": []
+    },
+    "attr191": {
+        "message": "door_lock_set_year_day_schedule",
+        "attributes": [
+            "schedule_id",
+            "user_id",
+            "local_start_time",
+            "local_end_time"
+        ]
+    },
+    "attr192": {
+        "message": "door_lock_get_year_day_schedule",
+        "attributes": []
+    },
+    "attr193": {
+        "message": "door_lock_clear_year_day_schedule",
+        "attributes": []
+    },
+    "attr194": {
+        "message": "door_lock_set_holiday_schedule",
+        "attributes": [
+            "holiday_schedule_id",
+            "local_start_time",
+            "local_end_time",
+            "operating_mode_during_holiday"
+        ]
+    },
+    "attr195": {
+        "message": "door_lock_get_holiday_schedule",
+        "attributes": []
+    },
+    "attr196": {
+        "message": "door_lock_clear_holiday_schedule",
+        "attributes": [
+            "holiday_schedule_id"
+        ]
+    },
+    "attr197": {
+        "message": "door_lock_set_user_type",
+        "attributes": [
+            "user_type"
+        ]
+    },
+    "attr198": {
+        "message": "door_lock_get_user_type",
+        "attributes": []
+    },
+    "attr199": {
+        "message": "door_lock_set_rfid_code",
+        "attributes": [
+            "user_id",
+            "user_status",
+            "user_type",
+            "rfid_code"
+        ]
+    },
+    "attr200": {
+        "message": "door_lock_get_rfid_code",
+        "attributes": []
+    },
+    "attr201": {
+        "message": "door_lock_clear_rfid_code",
+        "attributes": []
+    },
+    "attr202": {
+        "message": "door_lock_clear_all_rfid_codes",
+        "attributes": [
+            "rfid_code_table"
+        ]
+    },
+    "attr203": {
+        "message": "door_lock_lock_door_response",
+        "attributes": []
+    },
+    "attr204": {
+        "message": "door_lock_unlock_door_response",
+        "attributes": []
+    },
+    "attr205": {
+        "message": "door_lock_toggle_door_response",
+        "attributes": []
+    },
+    "attr206": {
+        "message": "door_lock_unlock_with_timeout_response",
+        "attributes": []
+    },
+    "attr207": {
+        "message": "door_lock_get_log_record_response",
+        "attributes": [
+            "log_entry_id",
+            "timestamp",
+            "event_type",
+            "source",
+            "event_id_or_alarm_code",
+            "user_id",
+            "pin"
+        ]
+    },
+    "attr208": {
+        "message": "door_lock_set_pin_code_response",
+        "attributes": []
+    },
+    "attr209": {
+        "message": "door_lock_get_pin_code_response",
+        "attributes": [
+            "user_id",
+            "user_status",
+            "user_type",
+            "code"
+        ]
+    },
+    "attr210": {
+        "message": "door_lock_clear_pin_code_response",
+        "attributes": []
+    },
+    "attr211": {
+        "message": "door_lock_clear_all_pin_codes_response",
+        "attributes": []
+    },
+    "attr212": {
+        "message": "door_lock_set_user_status_response",
+        "attributes": []
+    },
+    "attr213": {
+        "message": "door_lock_get_user_status_response",
+        "attributes": [
+            "user_status"
+        ]
+    },
+    "attr214": {
+        "message": "door_lock_set_week_day_schedule_response",
+        "attributes": []
+    },
+    "attr215": {
+        "message": "door_lock_get_week_day_schedule_response",
+        "attributes": [
+            "schedule_id",
+            "user_id",
+            "status",
+            "days_mask",
+            "start_hour",
+            "start_minute",
+            "end_hour",
+            "end_minute"
+        ]
+    },
+    "attr216": {
+        "message": "door_lock_clear_week_day_schedule_response",
+        "attributes": []
+    },
+    "attr217": {
+        "message": "door_lock_set_year_day_schedule_response",
+        "attributes": []
+    },
+    "attr218": {
+        "message": "door_lock_get_year_day_schedule_response",
+        "attributes": []
+    },
+    "attr219": {
+        "message": "door_lock_clear_year_day_schedule_response",
+        "attributes": []
+    },
+    "attr220": {
+        "message": "door_lock_set_holiday_schedule_response",
+        "attributes": []
+    },
+    "attr221": {
+        "message": "door_lock_get_holiday_schedule_response",
+        "attributes": [
+            "holiday_schedule_id",
+            "status",
+            "local_start_time",
+            "local_end_time",
+            "operating_mode_during_holiday"
+        ]
+    },
+    "attr222": {
+        "message": "door_lock_clear_holiday_schedule_response",
+        "attributes": []
+    },
+    "attr223": {
+        "message": "door_lock_set_user_type_response",
+        "attributes": []
+    },
+    "attr224": {
+        "message": "door_lock_get_user_type_response",
+        "attributes": [
+            "user_type"
+        ]
+    },
+    "attr225": {
+        "message": "door_lock_set_rfid_code_response",
+        "attributes": []
+    },
+    "attr226": {
+        "message": "door_lock_get_rfid_code_response",
+        "attributes": [
+            "user_id",
+            "user_status",
+            "user_type",
+            "rfid_code"
+        ]
+    },
+    "attr227": {
+        "message": "door_lock_clear_rfid_code_response",
+        "attributes": []
+    },
+    "attr228": {
+        "message": "door_lock_clear_all_rfid_codes_response",
+        "attributes": []
+    },
+    "attr229": {
+        "message": "door_lock_operation_event_notification",
+        "attributes": [
+            "operation_event_source",
+            "operation_event_code",
+            "user_id",
+            "pin",
+            "local_time",
+            "data"
+        ]
+    },
+    "attr230": {
+        "message": "door_lock_programming_event_notification",
+        "attributes": [
+            "program_event_source",
+            "program_event_code",
+            "user_id",
+            "pin",
+            "user_type",
+            "user_status",
+            "local_time",
+            "data"
+        ]
+    },
+    "attr231": {
+        "message": "window_covering_up_open",
+        "attributes": []
+    },
+    "attr232": {
+        "message": "window_covering_down_close",
+        "attributes": []
+    },
+    "attr233": {
+        "message": "window_covering_stop",
+        "attributes": []
+    },
+    "attr234": {
+        "message": "window_covering_go_to_lift_value",
+        "attributes": [
+            "lift_value"
+        ]
+    },
+    "attr235": {
+        "message": "window_covering_go_to_lift_percentage",
+        "attributes": [
+            "percentage_lift_value"
+        ]
+    },
+    "attr236": {
+        "message": "window_covering_go_to_tilt_value",
+        "attributes": [
+            "tilt_value"
+        ]
+    },
+    "attr237": {
+        "message": "window_covering_go_to_tilt_percentage",
+        "attributes": [
+            "percentage_tilt_value"
+        ]
+    },
+    "attr238": {
+        "message": "basic_reset_fact_default",
+        "attributes": []
+    },
+    "attr239": {
+        "message": "identify_identify",
+        "attributes": [
+            "identify_time"
+        ]
+    },
+    "attr240": {
+        "message": "identify_identify_query",
+        "attributes": []
+    },
+    "attr241": {
+        "message": "identify_trigger_effect",
+        "attributes": []
+    },
+    "attr242": {
+        "message": "identify_identify_query_response",
+        "attributes": []
+    },
+    "attr243": {
+        "message": "groups_add",
+        "attributes": [
+            "group_id",
+            "group_name"
+        ]
+    },
+    "attr244": {
+        "message": "groups_view",
+        "attributes": []
+    },
+    "attr245": {
+        "message": "groups_get_membership",
+        "attributes": []
+    },
+    "attr246": {
+        "message": "groups_remove",
+        "attributes": [
+            "group_count"
+        ]
+    },
+    "attr247": {
+        "message": "groups_remove_all",
+        "attributes": [
+            "group_count"
+        ]
+    },
+    "attr248": {
+        "message": "groups_add_if_identifying",
+        "attributes": []
+    },
+    "attr249": {
+        "message": "groups_add_response",
+        "attributes": [
+            "group_id"
+        ]
+    },
+    "attr250": {
+        "message": "groups_view_response",
+        "attributes": [
+            "group_id",
+            "group_name"
+        ]
+    },
+    "attr251": {
+        "message": "groups_get_membership_response",
+        "attributes": [
+            "groups"
+        ]
+    },
+    "attr252": {
+        "message": "groups_remove_response",
+        "attributes": [
+            "group_count"
+        ]
+    },
+    "attr253": {
+        "message": "scenes_add",
+        "attributes": [
+            "group_id",
+            "scene_id",
+            "transition_time",
+            "scene_name"
+        ]
+    },
+    "attr254": {
+        "message": "scenes_view",
+        "attributes": []
+    },
+    "attr255": {
+        "message": "scenes_remove",
+        "attributes": [
+            "group_count"
+        ]
+    },
+    "attr256": {
+        "message": "scenes_remove_all",
+        "attributes": [
+            "group_id"
+        ]
+    },
+    "attr257": {
+        "message": "scenes_store",
+        "attributes": [
+            "scene_id"
+        ]
+    },
+    "attr258": {
+        "message": "scenes_recall",
+        "attributes": [
+            "scene_id",
+            "transition_time"
+        ]
+    },
+    "attr259": {
+        "message": "scenes_get_scene_membership",
+        "attributes": [
+            "group_id",
+            "scene_count"
+        ]
+    },
+    "attr260": {
+        "message": "scenes_enhanced_add",
+        "attributes": [
+            "group_id",
+            "scene_id",
+            "transition_time",
+            "scene_name"
+        ]
+    },
+    "attr261": {
+        "message": "scenes_enhanced_view",
+        "attributes": [
+            "scene_id"
+        ]
+    },
+    "attr262": {
+        "message": "scenes_copy",
+        "attributes": [
+            "group_id_from",
+            "scene_id_from",
+            "group_id_to",
+            "scene_id_to"
+        ]
+    },
+    "attr263": {
+        "message": "scenes_add_scene_response",
+        "attributes": [
+            "status",
+            "group_id",
+            "scene_id"
+        ]
+    },
+    "attr264": {
+        "message": "scenes_view_response",
+        "attributes": [
+            "group_id",
+            "scene_id",
+            "transition_time",
+            "scene_name"
+        ]
+    },
+    "attr265": {
+        "message": "scenes_remove_scene_response",
+        "attributes": []
+    },
+    "attr266": {
+        "message": "scenes_remove_all_scenes_response",
+        "attributes": [
+            "group_id"
+        ]
+    },
+    "attr267": {
+        "message": "scenes_store_scene_response",
+        "attributes": [
+            "status",
+            "group_id",
+            "scene_id"
+        ]
+    },
+    "attr268": {
+        "message": "scenes_get_scene_membership_response",
+        "attributes": [
+            "capacity",
+            "group_id",
+            "scenes"
+        ]
+    },
+    "attr269": {
+        "message": "scenes_enhanced_add_response",
+        "attributes": [
+            "status",
+            "group_id",
+            "scene_id"
+        ]
+    },
+    "attr270": {
+        "message": "scenes_enhanced_view_response",
+        "attributes": [
+            "group_id",
+            "scene_id",
+            "transition_time",
+            "scene_name"
+        ]
+    },
+    "attr271": {
+        "message": "scenes_copy_response",
+        "attributes": []
+    },
+    "attr272": {
+        "message": "on_off_off",
+        "attributes": []
+    },
+    "attr273": {
+        "message": "on_off_on",
+        "attributes": []
+    },
+    "attr274": {
+        "message": "on_off_toggle",
+        "attributes": [
+            "on_off"
+        ]
+    },
+    "attr275": {
+        "message": "on_off_off_with_effect",
+        "attributes": []
+    },
+    "attr276": {
+        "message": "on_off_on_with_recall_global_scene",
+        "attributes": []
+    },
+    "attr277": {
+        "message": "on_off_on_with_timed_off",
+        "attributes": [
+            "on_off_control",
+            "on_time",
+            "off_wait_time"
+        ]
+    },
+    "attr278": {
+        "message": "level_move_to_level",
+        "attributes": [
+            "level"
+        ]
+    },
+    "attr279": {
+        "message": "level_move",
+        "attributes": []
+    },
+    "attr280": {
+        "message": "level_step",
+        "attributes": []
+    },
+    "attr281": {
+        "message": "level_stop",
+        "attributes": []
+    },
+    "attr282": {
+        "message": "level_move_to_level_with_on_off",
+        "attributes": [
+            "level",
+            "transition_time"
+        ]
+    },
+    "attr283": {
+        "message": "level_move_with_on_off",
+        "attributes": []
+    },
+    "attr284": {
+        "message": "level_step_with_on_off",
+        "attributes": []
+    },
+    "attr285": {
+        "message": "level_stop_with_on_off",
+        "attributes": []
+    },
+    "attr286": {
+        "message": "level_move_to_closest_frequency",
+        "attributes": []
+    },
+    "attr287": {
+        "message": "alarms_reset_alarm",
+        "attributes": []
+    },
+    "attr288": {
+        "message": "alarms_reset_all_alarms",
+        "attributes": []
+    },
+    "attr289": {
+        "message": "alarms_get_alarm",
+        "attributes": []
+    },
+    "attr290": {
+        "message": "alarms_reset_alarm_log",
+        "attributes": []
+    },
+    "attr291": {
+        "message": "alarms_alarm",
+        "attributes": []
+    },
+    "attr292": {
+        "message": "alarms_get_alarm_response",
+        "attributes": []
+    },
+    "attr293": {
+        "message": "rssi_location_set_absolute_location",
+        "attributes": []
+    },
+    "attr294": {
+        "message": "rssi_location_set_dev_config",
+        "attributes": [
+            "power",
+            "path_loss_exponent",
+            "calculation_period",
+            "num_rssi_measurements",
+            "reporting_period"
+        ]
+    },
+    "attr295": {
+        "message": "rssi_location_get_dev_config",
+        "attributes": []
+    },
+    "attr296": {
+        "message": "rssi_location_get_location_data",
+        "attributes": []
+    },
+    "attr297": {
+        "message": "rssi_location_rssi_response",
+        "attributes": [
+            "x",
+            "y",
+            "z",
+            "rssi",
+            "num_rssi_measurements"
+        ]
+    },
+    "attr298": {
+        "message": "rssi_location_send_pings",
+        "attributes": []
+    },
+    "attr299": {
+        "message": "rssi_location_anchor_node_announce",
+        "attributes": []
+    },
+    "attr300": {
+        "message": "rssi_location_dev_config_response",
+        "attributes": [
+            "power",
+            "path_loss_exponent",
+            "calculation_period",
+            "num_rssi_measurements",
+            "reporting_period"
+        ]
+    },
+    "attr301": {
+        "message": "rssi_location_location_data_response",
+        "attributes": []
+    },
+    "attr302": {
+        "message": "rssi_location_location_data_notification",
+        "attributes": []
+    },
+    "attr303": {
+        "message": "rssi_location_compact_location_data_notification",
+        "attributes": []
+    },
+    "attr304": {
+        "message": "rssi_location_rssi_ping",
+        "attributes": []
+    },
+    "attr305": {
+        "message": "rssi_location_rssi_req",
+        "attributes": []
+    },
+    "attr306": {
+        "message": "rssi_location_report_rssi_measurements",
+        "attributes": []
+    },
+    "attr307": {
+        "message": "rssi_location_request_own_location",
+        "attributes": []
+    },
+    "attr308": {
+        "message": "commissioning_restart_device",
+        "attributes": []
+    },
+    "attr309": {
+        "message": "commissioning_save_startup_parameters",
+        "attributes": []
+    },
+    "attr310": {
+        "message": "commissioning_restore_startup_parameters",
+        "attributes": []
+    },
+    "attr311": {
+        "message": "commissioning_reset_startup_parameters",
+        "attributes": []
+    },
+    "attr312": {
+        "message": "commissioning_restart_device_response",
+        "attributes": []
+    },
+    "attr313": {
+        "message": "commissioning_save_startup_params_response",
+        "attributes": []
+    },
+    "attr314": {
+        "message": "commissioning_restore_startup_params_response",
+        "attributes": []
+    },
+    "attr315": {
+        "message": "commissioning_reset_startup_params_response",
+        "attributes": []
+    },
+    "attr316": {
+        "message": "ota_query_next_image",
+        "attributes": []
+    },
+    "attr317": {
+        "message": "ota_image_block",
+        "attributes": []
+    },
+    "attr318": {
+        "message": "ota_image_page",
+        "attributes": []
+    },
+    "attr319": {
+        "message": "ota_upgrade_end",
+        "attributes": []
+    },
+    "attr320": {
+        "message": "ota_query_specific_file",
+        "attributes": []
+    },
+    "attr321": {
+        "message": "ota_image_notify",
+        "attributes": []
+    },
+    "attr322": {
+        "message": "ota_query_next_image_response",
+        "attributes": []
+    },
+    "attr323": {
+        "message": "ota_image_block_response",
+        "attributes": []
+    },
+    "attr324": {
+        "message": "ota_upgrade_end_response",
+        "attributes": []
+    },
+    "attr325": {
+        "message": "ota_query_specific_file_response",
+        "attributes": []
+    },
+    "attr326": {
+        "message": "power_profile_power_profile_request",
+        "attributes": []
+    },
+    "attr327": {
+        "message": "power_profile_power_profile_state_request",
+        "attributes": []
+    },
+    "attr328": {
+        "message": "power_profile_get_power_profile_price_response",
+        "attributes": []
+    },
+    "attr329": {
+        "message": "power_profile_get_overall_schedule_price_response",
+        "attributes": []
+    },
+    "attr330": {
+        "message": "power_profile_energy_phases_schedule_notification",
+        "attributes": [
+            "power_profile_id",
+            "scheduled_phases"
+        ]
+    },
+    "attr331": {
+        "message": "power_profile_energy_phases_schedule_response",
+        "attributes": [
+            "power_profile_id",
+            "scheduled_phases"
+        ]
+    },
+    "attr332": {
+        "message": "power_profile_power_profile_schedule_constraints_request",
+        "attributes": []
+    },
+    "attr333": {
+        "message": "power_profile_energy_phases_schedule_state_request",
+        "attributes": []
+    },
+    "attr334": {
+        "message": "power_profile_get_power_profile_price_extended_response",
+        "attributes": []
+    },
+    "attr335": {
+        "message": "power_profile_power_profile_notification",
+        "attributes": [
+            "total_profile_num",
+            "power_profile_id",
+            "transfer_phases"
+        ]
+    },
+    "attr336": {
+        "message": "power_profile_power_profile_response",
+        "attributes": [
+            "total_profile_num",
+            "power_profile_id",
+            "transfer_phases"
+        ]
+    },
+    "attr337": {
+        "message": "power_profile_power_profile_state_response",
+        "attributes": [
+            "power_profile_id",
+            "energy_phase_id",
+            "power_profile_remote_control",
+            "power_profile_state"
+        ]
+    },
+    "attr338": {
+        "message": "power_profile_get_power_profile_price",
+        "attributes": []
+    },
+    "attr339": {
+        "message": "power_profile_power_profile_state_notification",
+        "attributes": [
+            "power_profile_id",
+            "energy_phase_id",
+            "power_profile_remote_control",
+            "power_profile_state"
+        ]
+    },
+    "attr340": {
+        "message": "power_profile_get_overall_schedule_price",
+        "attributes": []
+    },
+    "attr341": {
+        "message": "power_profile_energy_phases_schedule_request",
+        "attributes": []
+    },
+    "attr342": {
+        "message": "power_profile_energy_phases_schedule_state_response",
+        "attributes": [
+            "power_profile_id",
+            "num_scheduled_energy_phases"
+        ]
+    },
+    "attr343": {
+        "message": "power_profile_energy_phases_schedule_state_notification",
+        "attributes": [
+            "power_profile_id",
+            "num_scheduled_energy_phases"
+        ]
+    },
+    "attr344": {
+        "message": "power_profile_power_profile_schedule_constraints_notification",
+        "attributes": []
+    },
+    "attr345": {
+        "message": "power_profile_power_profile_schedule_constraints_response",
+        "attributes": []
+    },
+    "attr346": {
+        "message": "power_profile_get_power_profile_price_extended",
+        "attributes": []
+    },
+    "attr347": {
+        "message": "poll_control_checkin_response",
+        "attributes": [
+            "start_fast_polling",
+            "fast_poll_timeout"
+        ]
+    },
+    "attr348": {
+        "message": "poll_control_fast_poll_stop",
+        "attributes": []
+    },
+    "attr349": {
+        "message": "poll_control_set_long_poll_interval",
+        "attributes": [
+            "new_long_poll_interval"
+        ]
+    },
+    "attr350": {
+        "message": "poll_control_set_short_poll_interval",
+        "attributes": [
+            "new_short_poll_interval"
+        ]
+    },
+    "attr351": {
+        "message": "poll_control_checkin",
+        "attributes": []
+    },
+    "attr352": {
+        "message": "ias_zone_enroll_response",
+        "attributes": [
+            "enroll_response_code",
+            "zone_id"
+        ]
+    },
+    "attr353": {
+        "message": "ias_zone_init_normal_op_mode",
+        "attributes": []
+    },
+    "attr354": {
+        "message": "ias_zone_init_test_mode",
+        "attributes": [
+            "test_mode_duration",
+            "current_zone_sensitivity_level"
+        ]
+    },
+    "attr355": {
+        "message": "ias_zone_status_change_notification",
+        "attributes": [
+            "zone_status",
+            "extended_status",
+            "zone_id",
+            "delay"
+        ]
+    },
+    "attr356": {
+        "message": "ias_zone_enroll",
+        "attributes": []
+    },
+    "attr357": {
+        "message": "ias_ace_arm",
+        "attributes": [
+            "arm_mode",
+            "arm_disarm_code",
+            "zone_id"
+        ]
+    },
+    "attr358": {
+        "message": "ias_ace_bypass",
+        "attributes": [
+            "zones_ids",
+            "arm_disarm_code"
+        ]
+    },
+    "attr359": {
+        "message": "ias_ace_emergency",
+        "attributes": []
+    },
+    "attr360": {
+        "message": "ias_ace_fire",
+        "attributes": []
+    },
+    "attr361": {
+        "message": "ias_ace_panic",
+        "attributes": []
+    },
+    "attr362": {
+        "message": "ias_ace_get_zone_id_map",
+        "attributes": []
+    },
+    "attr363": {
+        "message": "ias_ace_get_zone_info",
+        "attributes": []
+    },
+    "attr364": {
+        "message": "ias_ace_get_panel_status",
+        "attributes": []
+    },
+    "attr365": {
+        "message": "ias_ace_get_bypassed_zone_list",
+        "attributes": []
+    },
+    "attr366": {
+        "message": "ias_ace_get_zone_status",
+        "attributes": [
+            "starting_zone_id",
+            "max_num_zone_ids",
+            "zone_status_mask_flag",
+            "zone_status_mask"
+        ]
+    },
+    "attr367": {
+        "message": "ias_ace_arm_response",
+        "attributes": []
+    },
+    "attr368": {
+        "message": "ias_ace_get_zone_id_map_response",
+        "attributes": [
+            "zone_id_map_sections"
+        ]
+    },
+    "attr369": {
+        "message": "ias_ace_get_zone_info_response",
+        "attributes": [
+            "zone_id",
+            "zone_type",
+            "ieee",
+            "zone_label"
+        ]
+    },
+    "attr370": {
+        "message": "ias_ace_zone_status_changed",
+        "attributes": [
+            "zone_id",
+            "zone_status",
+            "audible_notification",
+            "zone_label"
+        ]
+    },
+    "attr371": {
+        "message": "ias_ace_panel_status_changed",
+        "attributes": [
+            "panel_status",
+            "seconds_remaining",
+            "audible_notification",
+            "alarm_status"
+        ]
+    },
+    "attr372": {
+        "message": "ias_ace_panel_status_response",
+        "attributes": [
+            "panel_status",
+            "seconds_remaining",
+            "audible_notification",
+            "alarm_status"
+        ]
+    },
+    "attr373": {
+        "message": "ias_ace_set_bypassed_zone_list",
+        "attributes": [
+            "zone_ids"
+        ]
+    },
+    "attr374": {
+        "message": "ias_ace_bypass_response",
+        "attributes": [
+            "bypass_results"
+        ]
+    },
+    "attr375": {
+        "message": "ias_ace_get_zone_status_response",
+        "attributes": [
+            "zone_status_complete",
+            "zone_statuses"
+        ]
+    },
+    "attr376": {
+        "message": "ias_wd_start_warning",
+        "attributes": [
+            "warning",
+            "warning_duration",
+            "strobe_duty_cycle",
+            "stobe_level"
+        ]
+    },
+    "attr377": {
+        "message": "ias_wd_squawk",
+        "attributes": []
+    },
+    "attr378": {
+        "message": "light_color_move_to_hue",
+        "attributes": [
+            "hue",
+            "direction",
+            "transition_time"
+        ]
+    },
+    "attr379": {
+        "message": "light_color_move_hue",
+        "attributes": []
+    },
+    "attr380": {
+        "message": "light_color_step_hue",
+        "attributes": []
+    },
+    "attr381": {
+        "message": "light_color_move_to_saturation",
+        "attributes": [
+            "saturation"
+        ]
+    },
+    "attr382": {
+        "message": "light_color_move_saturation",
+        "attributes": []
+    },
+    "attr383": {
+        "message": "light_color_step_saturation",
+        "attributes": []
+    },
+    "attr384": {
+        "message": "light_color_move_to_hue_and_saturation",
+        "attributes": [
+            "hue",
+            "saturation"
+        ]
+    },
+    "attr385": {
+        "message": "light_color_move_to_color",
+        "attributes": [
+            "color_x",
+            "color_y",
+            "transition_time"
+        ]
+    },
+    "attr386": {
+        "message": "light_color_move_color",
+        "attributes": []
+    },
+    "attr387": {
+        "message": "light_color_step_color",
+        "attributes": []
+    },
+    "attr388": {
+        "message": "light_color_move_to_color_temp",
+        "attributes": [
+            "color_temp_mireds"
+        ]
+    },
+    "attr389": {
+        "message": "light_color_enhanced_move_to_hue",
+        "attributes": [
+            "enhanced_hue",
+            "direction",
+            "transition_time"
+        ]
+    },
+    "attr390": {
+        "message": "light_color_enhanced_move_hue",
+        "attributes": []
+    },
+    "attr391": {
+        "message": "light_color_enhanced_step_hue",
+        "attributes": []
+    },
+    "attr392": {
+        "message": "light_color_enhanced_move_to_hue_and_saturation",
+        "attributes": [
+            "enhanced_hue",
+            "saturation"
+        ]
+    },
+    "attr393": {
+        "message": "light_color_color_loop_set",
+        "attributes": [
+            "update_flags",
+            "action",
+            "direction",
+            "time",
+            "start_hue",
+            "options_mask",
+            "options_override"
+        ]
+    },
+    "attr394": {
+        "message": "light_color_stop_move_step",
+        "attributes": []
+    },
+    "attr395": {
+        "message": "light_color_move_color_temp",
+        "attributes": [
+            "move_mode",
+            "rate",
+            "color_temp_min_mireds",
+            "color_temp_max_mireds",
+            "options_mask",
+            "options_override"
+        ]
+    },
+    "attr396": {
+        "message": "light_color_step_color_temp",
+        "attributes": [
+            "step_mode",
+            "step_size",
+            "transition_time",
+            "color_temp_min_mireds",
+            "color_temp_max_mireds",
+            "options_mask",
+            "options_override"
+        ]
+    },
+    "attr397": {
+        "message": "lightlink_scan",
+        "attributes": []
+    },
+    "attr398": {
+        "message": "lightlink_device_info",
+        "attributes": []
+    },
+    "attr399": {
+        "message": "lightlink_identify",
+        "attributes": [
+            "identify_duration"
+        ]
+    },
+    "attr400": {
+        "message": "lightlink_reset_to_factory_new",
+        "attributes": []
+    },
+    "attr401": {
+        "message": "lightlink_network_start",
+        "attributes": [
+            "inter_pan_transaction_id",
+            "epid",
+            "key_index",
+            "encrypted_network_key",
+            "logical_channel",
+            "pan_id",
+            "nwk_addr",
+            "group_identifiers_begin",
+            "group_identifiers_end",
+            "free_network_addr_range_begin",
+            "free_network_addr_range_end",
+            "free_group_id_range_begin",
+            "free_group_id_range_end",
+            "initiator_ieee",
+            "initiator_nwk"
+        ]
+    },
+    "attr402": {
+        "message": "lightlink_network_join_router",
+        "attributes": [
+            "inter_pan_transaction_id",
+            "epid",
+            "key_index",
+            "encrypted_network_key",
+            "nwk_update_id",
+            "logical_channel",
+            "pan_id",
+            "nwk_addr",
+            "group_identifiers_begin",
+            "group_identifiers_end",
+            "free_network_addr_range_begin",
+            "free_network_addr_range_end",
+            "free_group_id_range_begin",
+            "free_group_id_range_end"
+        ]
+    },
+    "attr403": {
+        "message": "lightlink_network_join_end_device",
+        "attributes": [
+            "inter_pan_transaction_id",
+            "epid",
+            "key_index",
+            "encrypted_network_key",
+            "nwk_update_id",
+            "logical_channel",
+            "pan_id",
+            "nwk_addr",
+            "group_identifiers_begin",
+            "group_identifiers_end",
+            "free_network_addr_range_begin",
+            "free_network_addr_range_end",
+            "free_group_id_range_begin",
+            "free_group_id_range_end"
+        ]
+    },
+    "attr404": {
+        "message": "lightlink_network_update",
+        "attributes": [
+            "inter_pan_transaction_id",
+            "epid",
+            "nwk_update_id",
+            "logical_channel",
+            "pan_id",
+            "nwk_addr"
+        ]
+    },
+    "attr405": {
+        "message": "lightlink_get_group_identifiers",
+        "attributes": []
+    },
+    "attr406": {
+        "message": "lightlink_get_endpoint_list",
+        "attributes": []
+    },
+    "attr407": {
+        "message": "lightlink_scan_rsp",
+        "attributes": [
+            "inter_pan_transaction_id",
+            "rssi_correction",
+            "zigbee_info",
+            "touchlink_info",
+            "key_bitmask",
+            "response_id",
+            "epid",
+            "nwk_update_id",
+            "logical_channel",
+            "pan_id",
+            "nwk_addr",
+            "num_sub_devices",
+            "total_group_ids",
+            "endpoint_id",
+            "profile_id",
+            "device_id",
+            "version",
+            "group_id_count"
+        ]
+    },
+    "attr408": {
+        "message": "lightlink_device_info_rsp",
+        "attributes": [
+            "num_sub_devices",
+            "start_index",
+            "device_info_records",
+            "group_id_count"
+        ]
+    },
+    "attr409": {
+        "message": "lightlink_network_start_rsp",
+        "attributes": [
+            "inter_pan_transaction_id",
+            "status",
+            "epid",
+            "nwk_update_id",
+            "logical_channel",
+            "pan_id"
+        ]
+    },
+    "attr410": {
+        "message": "lightlink_network_join_router_rsp",
+        "attributes": []
+    },
+    "attr411": {
+        "message": "lightlink_network_join_end_device_rsp",
+        "attributes": []
+    },
+    "attr412": {
+        "message": "lightlink_endpoint_info",
+        "attributes": []
+    },
+    "attr413": {
+        "message": "lightlink_get_group_identifiers_rsp",
+        "attributes": [
+            "total",
+            "start_index",
+            "group_info_records"
+        ]
+    },
+    "attr414": {
+        "message": "lightlink_get_endpoint_list_rsp",
+        "attributes": [
+            "total",
+            "start_index",
+            "endpoint_info_records"
+        ]
+    }
+}

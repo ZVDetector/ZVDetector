@@ -1,0 +1,7 @@
+{
+    "ackframe": {
+        "frame_control": "uint16",
+        "sequence_number": "uint8",
+        "fcs": "uint16"
+    }
+}

@@ -1,0 +1,339 @@
+{
+    "correlation2": {
+        "messages": [
+            {
+                "route_request": {
+                    "command_options": "uint8",
+                    "route_request_identifier": "uint8",
+                    "destination_address": "uint16",
+                    "path_cost": "uint8",
+                    "destination_ieeeaddress": "uint64 (optional)"
+                }
+            },
+            {
+                "route_reply": {
+                    "command_options": "uint8",
+                    "route_request_identifier": "uint8",
+                    "originator_address": "uint16",
+                    "responder_address": "uint16",
+                    "path_cost": "uint8",
+                    "originator_ieeeaddress": "uint64 (optional)",
+                    "responder_ieeeaddress": "uint64 (optional)"
+                }
+            }
+        ],
+        "fields": [
+            "route_request_identifier",
+            "path_cost",
+            "command_options"
+        ]
+    },
+    "correlation3": {
+        "messages": [
+            {
+                "route_request": {
+                    "command_options": "uint8",
+                    "route_request_identifier": "uint8",
+                    "destination_address": "uint16",
+                    "path_cost": "uint8",
+                    "destination_ieeeaddress": "uint64 (optional)"
+                }
+            },
+            {
+                "leave": {
+                    "command_options": "uint8"
+                }
+            }
+        ],
+        "fields": [
+            "command_options"
+        ]
+    },
+    "correlation4": {
+        "messages": [
+            {
+                "route_request": {
+                    "command_options": "uint8",
+                    "route_request_identifier": "uint8",
+                    "destination_address": "uint16",
+                    "path_cost": "uint8",
+                    "destination_ieeeaddress": "uint64 (optional)"
+                }
+            },
+            {
+                "link_status": {
+                    "command_options": "uint8",
+                    "link_status_list": "variable"
+                }
+            }
+        ],
+        "fields": [
+            "command_options"
+        ]
+    },
+    "correlation5": {
+        "messages": [
+            {
+                "route_request": {
+                    "command_options": "uint8",
+                    "route_request_identifier": "uint8",
+                    "destination_address": "uint16",
+                    "path_cost": "uint8",
+                    "destination_ieeeaddress": "uint64 (optional)"
+                }
+            },
+            {
+                "network_report": {
+                    "command_options": "uint8",
+                    "epid": "uint64",
+                    "report_information": "variable"
+                }
+            }
+        ],
+        "fields": [
+            "command_options"
+        ]
+    },
+    "correlation6": {
+        "messages": [
+            {
+                "route_request": {
+                    "command_options": "uint8",
+                    "route_request_identifier": "uint8",
+                    "destination_address": "uint16",
+                    "path_cost": "uint8",
+                    "destination_ieeeaddress": "uint64 (optional)"
+                }
+            },
+            {
+                "network_update": {
+                    "command_options": "uint8",
+                    "epid": "uint64",
+                    "update_id": "uint8",
+                    "update_information": "variable"
+                }
+            }
+        ],
+        "fields": [
+            "command_options"
+        ]
+    },
+    "correlation7": {
+        "messages": [
+            {
+                "route_reply": {
+                    "command_options": "uint8",
+                    "route_request_identifier": "uint8",
+                    "originator_address": "uint16",
+                    "responder_address": "uint16",
+                    "path_cost": "uint8",
+                    "originator_ieeeaddress": "uint64 (optional)",
+                    "responder_ieeeaddress": "uint64 (optional)"
+                }
+            },
+            {
+                "leave": {
+                    "command_options": "uint8"
+                }
+            }
+        ],
+        "fields": [
+            "command_options"
+        ]
+    },
+    "correlation8": {
+        "messages": [
+            {
+                "route_reply": {
+                    "command_options": "uint8",
+                    "route_request_identifier": "uint8",
+                    "originator_address": "uint16",
+                    "responder_address": "uint16",
+                    "path_cost": "uint8",
+                    "originator_ieeeaddress": "uint64 (optional)",
+                    "responder_ieeeaddress": "uint64 (optional)"
+                }
+            },
+            {
+                "link_status": {
+                    "command_options": "uint8",
+                    "link_status_list": "variable"
+                }
+            }
+        ],
+        "fields": [
+            "command_options"
+        ]
+    },
+    "correlation9": {
+        "messages": [
+            {
+                "route_reply": {
+                    "command_options": "uint8",
+                    "route_request_identifier": "uint8",
+                    "originator_address": "uint16",
+                    "responder_address": "uint16",
+                    "path_cost": "uint8",
+                    "originator_ieeeaddress": "uint64 (optional)",
+                    "responder_ieeeaddress": "uint64 (optional)"
+                }
+            },
+            {
+                "network_report": {
+                    "command_options": "uint8",
+                    "epid": "uint64",
+                    "report_information": "variable"
+                }
+            }
+        ],
+        "fields": [
+            "command_options"
+        ]
+    },
+    "correlation10": {
+        "messages": [
+            {
+                "route_reply": {
+                    "command_options": "uint8",
+                    "route_request_identifier": "uint8",
+                    "originator_address": "uint16",
+                    "responder_address": "uint16",
+                    "path_cost": "uint8",
+                    "originator_ieeeaddress": "uint64 (optional)",
+                    "responder_ieeeaddress": "uint64 (optional)"
+                }
+            },
+            {
+                "network_update": {
+                    "command_options": "uint8",
+                    "epid": "uint64",
+                    "update_id": "uint8",
+                    "update_information": "variable"
+                }
+            }
+        ],
+        "fields": [
+            "command_options"
+        ]
+    },
+    "correlation11": {
+        "messages": [
+            {
+                "leave": {
+                    "command_options": "uint8"
+                }
+            },
+            {
+                "link_status": {
+                    "command_options": "uint8",
+                    "link_status_list": "variable"
+                }
+            }
+        ],
+        "fields": [
+            "command_options"
+        ]
+    },
+    "correlation12": {
+        "messages": [
+            {
+                "leave": {
+                    "command_options": "uint8"
+                }
+            },
+            {
+                "network_report": {
+                    "command_options": "uint8",
+                    "epid": "uint64",
+                    "report_information": "variable"
+                }
+            }
+        ],
+        "fields": [
+            "command_options"
+        ]
+    },
+    "correlation13": {
+        "messages": [
+            {
+                "leave": {
+                    "command_options": "uint8"
+                }
+            },
+            {
+                "network_update": {
+                    "command_options": "uint8",
+                    "epid": "uint64",
+                    "update_id": "uint8",
+                    "update_information": "variable"
+                }
+            }
+        ],
+        "fields": [
+            "command_options"
+        ]
+    },
+    "correlation14": {
+        "messages": [
+            {
+                "link_status": {
+                    "command_options": "uint8",
+                    "link_status_list": "variable"
+                }
+            },
+            {
+                "network_report": {
+                    "command_options": "uint8",
+                    "epid": "uint64",
+                    "report_information": "variable"
+                }
+            }
+        ],
+        "fields": [
+            "command_options"
+        ]
+    },
+    "correlation15": {
+        "messages": [
+            {
+                "link_status": {
+                    "command_options": "uint8",
+                    "link_status_list": "variable"
+                }
+            },
+            {
+                "network_update": {
+                    "command_options": "uint8",
+                    "epid": "uint64",
+                    "update_id": "uint8",
+                    "update_information": "variable"
+                }
+            }
+        ],
+        "fields": [
+            "command_options"
+        ]
+    },
+    "correlation16": {
+        "messages": [
+            {
+                "network_report": {
+                    "command_options": "uint8",
+                    "epid": "uint64",
+                    "report_information": "variable"
+                }
+            },
+            {
+                "network_update": {
+                    "command_options": "uint8",
+                    "epid": "uint64",
+                    "update_id": "uint8",
+                    "update_information": "variable"
+                }
+            }
+        ],
+        "fields": [
+            "command_options"
+        ]
+    }
+}

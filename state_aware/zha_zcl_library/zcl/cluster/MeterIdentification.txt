@@ -1,0 +1,42 @@
+class MeterIdentification(Cluster):
+    cluster_id: Final[t.uint16_t] = 0x0B01
+    name: Final = "Meter Identification"
+    ep_attribute: Final = "meter_id"
+
+    class AttributeDefs(BaseAttributeDefs):
+        company_name: Final = ZCLAttributeDef(
+            id=0x0000, type=t.LimitedCharString(16), access="r", mandatory=True
+        )
+        meter_type_id: Final = ZCLAttributeDef(
+            id=0x0001, type=t.uint16_t, access="r", mandatory=True
+        )
+        data_quality_id: Final = ZCLAttributeDef(
+            id=0x0004, type=t.uint16_t, access="r", mandatory=True
+        )
+        customer_name: Final = ZCLAttributeDef(
+            id=0x0005, type=t.LimitedCharString(16), access="rw"
+        )
+        model: Final = ZCLAttributeDef(id=0x0006, type=t.LimitedLVBytes(16), access="r")
+        part_number: Final = ZCLAttributeDef(
+            id=0x0007, type=t.LimitedLVBytes(16), access="r"
+        )
+        product_revision: Final = ZCLAttributeDef(
+            id=0x0008, type=t.LimitedLVBytes(6), access="r"
+        )
+        software_revision: Final = ZCLAttributeDef(
+            id=0x000A, type=t.LimitedLVBytes(6), access="r"
+        )
+        utility_name: Final = ZCLAttributeDef(
+            id=0x000B, type=t.LimitedCharString(16), access="r"
+        )
+        pod: Final = ZCLAttributeDef(
+            id=0x000C, type=t.LimitedCharString(16), access="r", mandatory=True
+        )
+        available_power: Final = ZCLAttributeDef(
+            id=0x000D, type=t.int24s, access="r", mandatory=True
+        )
+        power_threshold: Final = ZCLAttributeDef(
+            id=0x000E, type=t.int24s, access="r", mandatory=True
+        )
+        cluster_revision: Final = foundation.ZCL_CLUSTER_REVISION_ATTR
+        reporting_status: Final = foundation.ZCL_REPORTING_STATUS_ATTR

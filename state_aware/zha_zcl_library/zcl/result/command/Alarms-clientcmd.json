@@ -1,0 +1,6 @@
+{
+    "Commands": [
+        "alarm",
+        "get_alarm_response"
+    ]
+}

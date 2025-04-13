@@ -1,0 +1,4 @@
+class LeadConcentration(_ConcentrationMixin, Cluster):
+    cluster_id: Final[t.uint16_t] = 0x0422
+    name: Final = "Lead Concentration"
+    ep_attribute: Final = "lead_concentration"

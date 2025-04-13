@@ -1,0 +1,7 @@
+{
+    "Attributes": [
+        "max_income_trans_size",
+        "max_outgo_trans_size",
+        "protocol_addr"
+    ]
+}

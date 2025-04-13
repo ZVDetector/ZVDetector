@@ -1,0 +1,35 @@
+{
+    "AssociationRequest": {
+        "CapabilityInformation": "uint8"
+    },
+    "AssociationResponse": {
+        "ShortAddress": "uint16",
+        "AssociationStatus": "uint8"
+    },
+    "DisassociationNotification": {
+        "DisassociationReason": "uint8",
+        "DeviceAddress": "uint64 | uint16"
+    },
+    "DataRequest": {},
+    "PANIDConflictNotification": {
+        "PANID": "uint16"
+    },
+    "OrphanNotification": {
+        "OrphanAddress": "uint64"
+    },
+    "BeaconRequest": {
+        "SuperframeSpecification": "uint16",
+        "GTSFields": "byte[3]",
+        "PendingAddressFields": "byte[]"
+    },
+    "CoordinatorRealignment": {
+        "PANID": "uint16",
+        "CoordinatorShortAddress": "uint16",
+        "Channel": "uint8",
+        "DeviceShortAddress": "uint16",
+        "SuperframeSpecification": "uint16"
+    },
+    "GTSRequest": {
+        "GTSCharacteristics": "uint8"
+    }
+}

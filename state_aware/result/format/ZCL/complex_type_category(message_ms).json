@@ -1,0 +1,18 @@
+{
+    "tuya_smart_bulb": {
+        "t.Array": 12,
+        "t.StructClass": 12
+    },
+    "tuya_smart_plug": {
+        "t.Array": 6,
+        "t.StructClass": 1
+    },
+    "tuya_multiple_switch": {
+        "t.Array": 6,
+        "t.StructClass": 0
+    },
+    "tuya_water_valve": {
+        "t.Array": 0,
+        "t.StructClass": 9
+    }
+}

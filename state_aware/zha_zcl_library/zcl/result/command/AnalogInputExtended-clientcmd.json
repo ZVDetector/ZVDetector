@@ -1,0 +1,8 @@
+{
+    "Commands": [
+        "transfer_apdu",
+        "connect_req",
+        "disconnect_req",
+        "connect_status_noti"
+    ]
+}

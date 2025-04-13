@@ -1,0 +1,15 @@
+{
+    "Attributes": [
+        "measured_value",
+        "min_measured_value",
+        "max_measured_value",
+        "tolerance",
+        "scaled_value",
+        "min_scaled_value",
+        "max_scaled_value",
+        "scaled_tolerance",
+        "scale",
+        "cluster_revision",
+        "reporting_status"
+    ]
+}

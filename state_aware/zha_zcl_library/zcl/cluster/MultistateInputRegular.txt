@@ -1,0 +1,10 @@
+class MultistateInputRegular(Cluster):
+    cluster_id: Final[t.uint16_t] = 0x060E
+    ep_attribute: Final = "bacnet_regular_multistate_input"
+
+    class AttributeDefs(BaseAttributeDefs):
+        device_type: Final = ZCLAttributeDef(id=0x001F, type=t.CharacterString)
+        object_id: Final = ZCLAttributeDef(id=0x004B, type=t.FixedList[4, t.uint8_t])
+        object_name: Final = ZCLAttributeDef(id=0x004D, type=t.CharacterString)
+        object_type: Final = ZCLAttributeDef(id=0x004F, type=t.enum16)
+        profile_name: Final = ZCLAttributeDef(id=0x00A8, type=t.CharacterString)

@@ -1,0 +1,75 @@
+class IasZone(Cluster):
+    """The IAS Zone cluster defines an interface to the functionality of an IAS
+    security zone device. IAS Zone supports up to two alarm types per zone, low battery
+    reports and supervision of the IAS network.
+    """
+
+    ZoneState: Final = ZoneState
+    ZoneType: Final = ZoneType
+    ZoneStatus: Final = ZoneStatus
+    EnrollResponse: Final = EnrollResponse
+
+    cluster_id: Final[t.uint16_t] = 0x0500
+    name: Final = "IAS Zone"
+    ep_attribute: Final = "ias_zone"
+
+    class AttributeDefs(BaseAttributeDefs):
+        # Zone Information
+        zone_state: Final = ZCLAttributeDef(
+            id=0x0000, type=ZoneState, access="r", mandatory=True
+        )
+        zone_type: Final = ZCLAttributeDef(
+            id=0x0001, type=ZoneType, access="r", mandatory=True
+        )
+        zone_status: Final = ZCLAttributeDef(
+            id=0x0002, type=ZoneStatus, access="r", mandatory=True
+        )
+        # Zone Settings
+        cie_addr: Final = ZCLAttributeDef(
+            id=0x0010, type=t.EUI64, access="rw", mandatory=True
+        )
+        zone_id: Final = ZCLAttributeDef(
+            id=0x0011, type=t.uint8_t, access="r", mandatory=True
+        )
+        # Both attributes will be supported/unsupported
+        num_zone_sensitivity_levels_supported: Final = ZCLAttributeDef(
+            id=0x0012, type=t.uint8_t, access="r"
+        )
+        current_zone_sensitivity_level: Final = ZCLAttributeDef(
+            id=0x0013, type=t.uint8_t, access="rw"
+        )
+
+    class ServerCommandDefs(BaseCommandDefs):
+        enroll_response: Final = ZCLCommandDef(
+            id=0x00,
+            schema={"enroll_response_code": EnrollResponse, "zone_id": t.uint8_t},
+            direction=Direction.Server_to_Client,
+        )
+        init_normal_op_mode: Final = ZCLCommandDef(
+            id=0x01, schema={}, direction=Direction.Client_to_Server
+        )
+        init_test_mode: Final = ZCLCommandDef(
+            id=0x02,
+            schema={
+                "test_mode_duration": t.uint8_t,
+                "current_zone_sensitivity_level": t.uint8_t,
+            },
+            direction=Direction.Client_to_Server,
+        )
+
+    class ClientCommandDefs(BaseCommandDefs):
+        status_change_notification: Final = ZCLCommandDef(
+            id=0x00,
+            schema={
+                "zone_status": ZoneStatus,
+                "extended_status": t.bitmap8,
+                "zone_id": t.uint8_t,
+                "delay": t.uint16_t,
+            },
+            direction=Direction.Client_to_Server,
+        )
+        enroll: Final = ZCLCommandDef(
+            id=0x01,
+            schema={"zone_type": ZoneType, "manufacturer_code": t.uint16_t},
+            direction=Direction.Client_to_Server,
+        )

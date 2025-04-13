@@ -1,0 +1,16 @@
+{
+    "Attributes": [
+        "time",
+        "time_status",
+        "time_zone",
+        "dst_start",
+        "dst_end",
+        "dst_shift",
+        "standard_time",
+        "local_time",
+        "last_set_time",
+        "valid_until_time",
+        "cluster_revision",
+        "reporting_status"
+    ]
+}

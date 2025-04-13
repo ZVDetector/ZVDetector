@@ -1,0 +1,19 @@
+class OnOffConfiguration(Cluster):
+    """Attributes and commands for configuring On/Off switching devices"""
+
+    SwitchType: Final = SwitchType
+    SwitchActions: Final = SwitchActions
+
+    cluster_id: Final[t.uint16_t] = 0x0007
+    name: Final = "On/Off Switch Configuration"
+    ep_attribute: Final = "on_off_config"
+
+    class AttributeDefs(BaseAttributeDefs):
+        switch_type: Final = ZCLAttributeDef(
+            id=0x0000, type=SwitchType, access="r", mandatory=True
+        )
+        switch_actions: Final = ZCLAttributeDef(
+            id=0x0010, type=SwitchActions, access="rw", mandatory=True
+        )
+        cluster_revision: Final = foundation.ZCL_CLUSTER_REVISION_ATTR
+        reporting_status: Final = foundation.ZCL_REPORTING_STATUS_ATTR

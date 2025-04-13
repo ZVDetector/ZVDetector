@@ -1,0 +1,31 @@
+class AnalogInputExtended(Cluster):
+    cluster_id: Final[t.uint16_t] = 0x0603
+    ep_attribute: Final = "bacnet_extended_analog_input"
+
+    class AttributeDefs(BaseAttributeDefs):
+        acked_transitions: Final = ZCLAttributeDef(id=0x0000, type=t.bitmap8)
+        notification_class: Final = ZCLAttributeDef(id=0x0011, type=t.uint16_t)
+        deadband: Final = ZCLAttributeDef(id=0x0019, type=t.Single)
+        event_enable: Final = ZCLAttributeDef(id=0x0023, type=t.bitmap8)
+        event_state: Final = ZCLAttributeDef(id=0x0024, type=t.enum8)
+        high_limit: Final = ZCLAttributeDef(id=0x002D, type=t.Single)
+        limit_enable: Final = ZCLAttributeDef(id=0x0034, type=t.bitmap8)
+        low_limit: Final = ZCLAttributeDef(id=0x003B, type=t.Single)
+        notify_type: Final = ZCLAttributeDef(id=0x0048, type=t.enum8)
+        time_delay: Final = ZCLAttributeDef(id=0x0071, type=t.uint8_t)
+        # event_time_stamps: Final = ZCLAttributeDef(id=0x0082, type=t.Array[3, t.uint32_t])
+        # integer, time of day, or structure of (date, time of day))
+
+    class ServerCommandDefs(BaseCommandDefs):
+        transfer_apdu: Final = ZCLCommandDef(
+            id=0x00, schema={}, direction=Direction.Client_to_Server
+        )
+        connect_req: Final = ZCLCommandDef(
+            id=0x01, schema={}, direction=Direction.Client_to_Server
+        )
+        disconnect_req: Final = ZCLCommandDef(
+            id=0x02, schema={}, direction=Direction.Client_to_Server
+        )
+        connect_status_noti: Final = ZCLCommandDef(
+            id=0x03, schema={}, direction=Direction.Client_to_Server
+        )

@@ -1,0 +1,48 @@
+Timestamp:
+  - "20240530_02:08:37:561"
+Device:
+  - "Aqara Smart Plug"
+IEEE:
+  - "00:15:8d:00:01:58:72:00"
+Nwk_Address:
+  - "0x4A3F"
+State:
+  - "Any"
+Message_Relationship:
+  - "Correlation"
+Fuzzing_Messages:
+  - {
+    "bind_req": {
+      "src_address": "uint64",
+      "src_endp": "uint8",
+      "cluster_id": "uint16",
+      "dst_addr_mode": "uint8",
+      "dst_address": "uint16",
+      "dst_endp": "uint8"
+    },
+    "bind_register_rsp": {
+      "status": "uint8",
+      "binding_table_entries": "uint16",
+      "binding_table_list_count": "uint16",
+      "binding_table_list": {
+        "t.LVList": {
+          "src_address": "uint64",
+          "src_endpoint": "uint8",
+          "cluster_id": "uint16",
+          "dst_addr_mode": "uint8",
+          "dst_address": "uint64 or uint16",
+          "dst_endpoint": "uint8 (if applicable)"
+        }
+      }
+    }
+  }
+Layers:
+  - ["ZDP", "ZDP"]
+Mutation_Strategy:
+  - F-1-1
+  - "bind_req"
+  - {
+      "bind_req": "Truncated ZDP"
+  }
+Log:
+  - "[Device 1] Exploit: BindRequest BindRegisterResponse| Mutation: BindRequest: No ZDP frame | Device Crashed"

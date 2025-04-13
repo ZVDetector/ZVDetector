@@ -1,0 +1,6 @@
+class Turbidity(_ConcentrationMixin, Cluster):
+    """Cloudiness of particles in water where an average person would notice a 5 or higher"""
+
+    cluster_id: Final[t.uint16_t] = 0x0420
+    name: Final = "Turbidity"
+    ep_attribute: Final = "turbidity"

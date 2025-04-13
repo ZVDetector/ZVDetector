@@ -1,0 +1,12 @@
+{
+    "aps_data_frame_header": {
+        "frame control": "uint8",
+        "cluster identifier": "uint16",
+        "profile identifier": "uint16",
+        "source endpoint": "uint8",
+        "aps counter": "uint8",
+        "destination endpoint": "uint8 (optional, present if Delivery Mode is 0b00 or 0b10)",
+        "group address": "uint16 (optional, present if Delivery Mode is 0b11)",
+        "extended header": "variable (optional, present if Extended Header Present flag is set)"
+    }
+}

@@ -1,0 +1,14 @@
+{
+    "Attributes": [
+        "state_text",
+        "description",
+        "number_of_states",
+        "out_of_service",
+        "present_value",
+        "reliability",
+        "status_flags",
+        "application_type",
+        "cluster_revision",
+        "reporting_status"
+    ]
+}

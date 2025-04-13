@@ -1,0 +1,62 @@
+class Pump(Cluster):
+    """An interface for configuring and controlling pumps."""
+
+    AlarmMask: Final = PumpAlarmMask
+    ControlMode: Final = ControlMode
+    OperationMode: Final = OperationMode
+    PumpStatus: Final = PumpStatus
+
+    cluster_id: Final[t.uint16_t] = 0x0200
+    name: Final = "Pump Configuration and Control"
+    ep_attribute: Final = "pump"
+
+    class AttributeDefs(BaseAttributeDefs):
+        # Pump Information
+        max_pressure: Final = ZCLAttributeDef(
+            id=0x0000, type=t.int16s, access="r", mandatory=True
+        )
+        max_speed: Final = ZCLAttributeDef(
+            id=0x0001, type=t.uint16_t, access="r", mandatory=True
+        )
+        max_flow: Final = ZCLAttributeDef(
+            id=0x0002, type=t.uint16_t, access="r", mandatory=True
+        )
+        min_const_pressure: Final = ZCLAttributeDef(
+            id=0x0003, type=t.int16s, access="r"
+        )
+        max_const_pressure: Final = ZCLAttributeDef(
+            id=0x0004, type=t.int16s, access="r"
+        )
+        min_comp_pressure: Final = ZCLAttributeDef(id=0x0005, type=t.int16s, access="r")
+        max_comp_pressure: Final = ZCLAttributeDef(id=0x0006, type=t.int16s, access="r")
+        min_const_speed: Final = ZCLAttributeDef(id=0x0007, type=t.uint16_t, access="r")
+        max_const_speed: Final = ZCLAttributeDef(id=0x0008, type=t.uint16_t, access="r")
+        min_const_flow: Final = ZCLAttributeDef(id=0x0009, type=t.uint16_t, access="r")
+        max_const_flow: Final = ZCLAttributeDef(id=0x000A, type=t.uint16_t, access="r")
+        min_const_temp: Final = ZCLAttributeDef(id=0x000B, type=t.int16s, access="r")
+        max_const_temp: Final = ZCLAttributeDef(id=0x000C, type=t.int16s, access="r")
+        # Pump Dynamic Information
+        pump_status: Final = ZCLAttributeDef(id=0x0010, type=PumpStatus, access="rp")
+        effective_operation_mode: Final = ZCLAttributeDef(
+            id=0x0011, type=OperationMode, access="r", mandatory=True
+        )
+        effective_control_mode: Final = ZCLAttributeDef(
+            id=0x0012, type=ControlMode, access="r", mandatory=True
+        )
+        capacity: Final = ZCLAttributeDef(
+            id=0x0013, type=t.int16s, access="rp", mandatory=True
+        )
+        speed: Final = ZCLAttributeDef(id=0x0014, type=t.uint16_t, access="r")
+        lifetime_running_hours: Final = ZCLAttributeDef(
+            id=0x0015, type=t.uint24_t, access="rw"
+        )
+        power: Final = ZCLAttributeDef(id=0x0016, type=t.uint24_t, access="rw")
+        lifetime_energy_consumed: Final = ZCLAttributeDef(
+            id=0x0017, type=t.uint32_t, access="r"
+        )
+        # Pump Settings
+        operation_mode: Final = ZCLAttributeDef(
+            id=0x0020, type=OperationMode, access="rw", mandatory=True
+        )
+        control_mode: Final = ZCLAttributeDef(id=0x0021, type=ControlMode, access="rw")
+        alarm_mask: Final = ZCLAttributeDef(id=0x0022, type=PumpAlarmMask, access="r")

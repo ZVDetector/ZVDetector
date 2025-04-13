@@ -1,0 +1,15 @@
+{
+    "logical_type": 0,
+    "complex_descriptor_available": 0,
+    "user_descriptor_available": 0,
+    "reserved": 0,
+    "aps_flags": 0,
+    "frequency_band": 8,
+    "mac_capability_flags": 143,
+    "manufacturer_code": 0,
+    "maximum_buffer_size": 80,
+    "maximum_incoming_transfer_size": 160,
+    "server_mask": 11265,
+    "maximum_outgoing_transfer_size": 160,
+    "descriptor_capability_field": 0
+}

@@ -1,0 +1,130 @@
+class Commissioning(Cluster):
+    """Attributes and commands for commissioning and
+    managing a Zigbee device.
+    """
+
+    StartupControl: Final = StartupControl
+    NetworkKeyType: Final = NetworkKeyType
+
+    cluster_id: Final[t.uint16_t] = 0x0015
+    ep_attribute: Final = "commissioning"
+
+    class AttributeDefs(BaseAttributeDefs):
+        # Startup Parameters
+        short_address: Final = ZCLAttributeDef(
+            id=0x0000, type=t.uint16_t, access="rw", mandatory=True
+        )
+        extended_pan_id: Final = ZCLAttributeDef(
+            id=0x0001, type=t.EUI64, access="rw", mandatory=True
+        )
+        pan_id: Final = ZCLAttributeDef(
+            id=0x0002, type=t.uint16_t, access="rw", mandatory=True
+        )
+        channel_mask: Final = ZCLAttributeDef(
+            id=0x0003, type=t.Channels, access="rw", mandatory=True
+        )
+        protocol_version: Final = ZCLAttributeDef(
+            id=0x0004, type=t.uint8_t, access="rw", mandatory=True
+        )
+        stack_profile: Final = ZCLAttributeDef(
+            id=0x0005, type=t.uint8_t, access="rw", mandatory=True
+        )
+        startup_control: Final = ZCLAttributeDef(
+            id=0x0006, type=StartupControl, access="rw", mandatory=True
+        )
+        trust_center_address: Final = ZCLAttributeDef(
+            id=0x0010, type=t.EUI64, access="rw", mandatory=True
+        )
+        trust_center_master_key: Final = ZCLAttributeDef(
+            id=0x0011, type=t.KeyData, access="rw"
+        )
+        network_key: Final = ZCLAttributeDef(
+            id=0x0012, type=t.KeyData, access="rw", mandatory=True
+        )
+        use_insecure_join: Final = ZCLAttributeDef(
+            id=0x0013, type=t.Bool, access="rw", mandatory=True
+        )
+        preconfigured_link_key: Final = ZCLAttributeDef(
+            id=0x0014, type=t.KeyData, access="rw", mandatory=True
+        )
+        network_key_seq_num: Final = ZCLAttributeDef(
+            id=0x0015, type=t.uint8_t, access="rw", mandatory=True
+        )
+        network_key_type: Final = ZCLAttributeDef(
+            id=0x0016, type=NetworkKeyType, access="rw", mandatory=True
+        )
+        network_manager_address: Final = ZCLAttributeDef(
+            id=0x0017, type=t.uint16_t, access="rw", mandatory=True
+        )
+        # Join Parameters
+        scan_attempts: Final = ZCLAttributeDef(id=0x0020, type=t.uint8_t, access="rw")
+        time_between_scans: Final = ZCLAttributeDef(
+            id=0x0021, type=t.uint16_t, access="rw"
+        )
+        rejoin_interval: Final = ZCLAttributeDef(
+            id=0x0022, type=t.uint16_t, access="rw"
+        )
+        max_rejoin_interval: Final = ZCLAttributeDef(
+            id=0x0023, type=t.uint16_t, access="rw"
+        )
+        # End Device Parameters
+        indirect_poll_rate: Final = ZCLAttributeDef(
+            id=0x0030, type=t.uint16_t, access="rw"
+        )
+        parent_retry_threshold: Final = ZCLAttributeDef(
+            id=0x0031, type=t.uint8_t, access="r"
+        )
+        # Concentrator Parameters
+        concentrator_flag: Final = ZCLAttributeDef(id=0x0040, type=t.Bool, access="rw")
+        concentrator_radius: Final = ZCLAttributeDef(
+            id=0x0041, type=t.uint8_t, access="rw"
+        )
+        concentrator_discovery_time: Final = ZCLAttributeDef(
+            id=0x0042, type=t.uint8_t, access="rw"
+        )
+        cluster_revision: Final = foundation.ZCL_CLUSTER_REVISION_ATTR
+        reporting_status: Final = foundation.ZCL_REPORTING_STATUS_ATTR
+
+    class ServerCommandDefs(BaseCommandDefs):
+        restart_device: Final = ZCLCommandDef(
+            id=0x00,
+            schema={"options": t.bitmap8, "delay": t.uint8_t, "jitter": t.uint8_t},
+            direction=Direction.Client_to_Server,
+        )
+        save_startup_parameters: Final = ZCLCommandDef(
+            id=0x01,
+            schema={"options": t.bitmap8, "index": t.uint8_t},
+            direction=Direction.Client_to_Server,
+        )
+        restore_startup_parameters: Final = ZCLCommandDef(
+            id=0x02,
+            schema={"options": t.bitmap8, "index": t.uint8_t},
+            direction=Direction.Client_to_Server,
+        )
+        reset_startup_parameters: Final = ZCLCommandDef(
+            id=0x03,
+            schema={"options": t.bitmap8, "index": t.uint8_t},
+            direction=Direction.Client_to_Server,
+        )
+
+    class ClientCommandDefs(BaseCommandDefs):
+        restart_device_response: Final = ZCLCommandDef(
+            id=0x00,
+            schema={"status": foundation.Status},
+            direction=Direction.Server_to_Client,
+        )
+        save_startup_params_response: Final = ZCLCommandDef(
+            id=0x01,
+            schema={"status": foundation.Status},
+            direction=Direction.Server_to_Client,
+        )
+        restore_startup_params_response: Final = ZCLCommandDef(
+            id=0x02,
+            schema={"status": foundation.Status},
+            direction=Direction.Server_to_Client,
+        )
+        reset_startup_params_response: Final = ZCLCommandDef(
+            id=0x03,
+            schema={"status": foundation.Status},
+            direction=Direction.Server_to_Client,
+        )

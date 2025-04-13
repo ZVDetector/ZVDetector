@@ -1,0 +1,562 @@
+{
+    "NWK_addr_req": {
+        "IEEEAddr": "uint64",
+        "RequestType": "uint8",
+        "StartIndex": "uint8"
+    },
+    "IEEE_addr_req": {
+        "NWKAddrOfInterest": "uint16",
+        "RequestType": "uint8",
+        "StartIndex": "uint8"
+    },
+    "Node_Desc_req": {
+        "NWKAddrOfInterest": "uint16"
+    },
+    "Power_Desc_req": {
+        "NWKAddrOfInterest": "uint16"
+    },
+    "Simple_Desc_req": {
+        "NWKAddrOfInterest": "uint16",
+        "Endpoint": "uint8"
+    },
+    "Active_EP_req": {
+        "NWKAddrOfInterest": "uint16"
+    },
+    "Match_Desc_req": {
+        "NWKAddrOfInterest": "uint16",
+        "ProfileID": "uint16",
+        "NumInClusters": "uint8",
+        "InClusterList": {
+            "t.List": "uint16"
+        },
+        "NumOutClusters": "uint8",
+        "OutClusterList": {
+            "t.List": "uint16"
+        }
+    },
+    "Complex_Desc_req": {
+        "NWKAddrOfInterest": "uint16"
+    },
+    "User_Desc_req": {
+        "NWKAddrOfInterest": "uint16"
+    },
+    "Discovery_Cache_req": {
+        "NWKAddr": "uint16",
+        "IEEEAddr": "uint64"
+    },
+    "Device_annce": {
+        "NWKAddr": "uint16",
+        "IEEEAddr": "uint64",
+        "Capability": "bitmap8"
+    },
+    "Parent_annce": {
+        "Extended Address": "uint64"
+    },
+    "User_Desc_set": {
+        "NWKAddrOfInterest": "uint16",
+        "Length": "uint8",
+        "UserDescription": {
+            "t.List": "char16"
+        }
+    },
+    "System_Server_Discovery_req": {
+        "ServerMask": "bitmap16"
+    },
+    "Discovery_store_req": {
+        "NWKAddr": "uint16",
+        "IEEEAddr": "uint64",
+        "NodeDescSize": "uint8",
+        "PowerDescSize": "uint8",
+        "ActiveEPSize": "uint8",
+        "SimpleDescCount": "uint8",
+        "SimpleDescSizeList": {
+            "t.List": "uint8"
+        }
+    },
+    "Node_Desc_store_req": {
+        "NWKAddr": "uint16",
+        "IEEEAddr": "uint64",
+        "NodeDescriptor": "variable"
+    },
+    "Power_Desc_store_req": {
+        "NWKAddr": "uint16",
+        "IEEEAddr": "uint64",
+        "PowerDescriptor": "variable"
+    },
+    "Active_EP_store_req": {
+        "NWKAddr": "uint16",
+        "IEEEAddr": "uint64",
+        "ActiveEPCount": "uint8",
+        "ActiveEPList": {
+            "t.List": "uint8"
+        }
+    },
+    "Simple_Desc_store_req": {
+        "NWKAddr": "uint16",
+        "IEEEAddr": "uint64",
+        "Length": "uint8",
+        "SimpleDescriptor": "variable"
+    },
+    "Remove_node_cache_req": {
+        "NWKAddr": "uint16",
+        "IEEEAddr": "uint64"
+    },
+    "Find_node_cache_req": {
+        "NWKAddr": "uint16",
+        "IEEEAddr": "uint64"
+    },
+    "Extended_Simple_Desc_req": {
+        "NWKAddrOfInterest": "uint16",
+        "Endpoint": "uint8",
+        "StartIndex": "uint8"
+    },
+    "Extended_Active_EP_req": {
+        "NWKAddrOfInterest": "uint16",
+        "StartIndex": "uint8"
+    },
+    "End_Device_Bind_req": {
+        "BindingTarget": "uint16",
+        "SrcIEEEAddress": "uint64",
+        "SrcEndpoint": "uint8",
+        "ProfileID": "uint16",
+        "NumInClusters": "uint8",
+        "InClusterList": {
+            "t.List": "uint16"
+        },
+        "NumOutClusters": "uint8",
+        "OutClusterList": {
+            "t.List": "uint16"
+        }
+    },
+    "Bind_req": {
+        "SrcAddress": "uint64",
+        "SrcEndp": "uint8",
+        "ClusterID": "uint16",
+        "DstAddrMode": "uint8",
+        "DstAddress": "uint16",
+        "DstEndp": "uint8"
+    },
+    "Unbind_req": {
+        "SrcAddress": "uint64",
+        "SrcEndp": "uint8",
+        "ClusterID": "uint16",
+        "DstAddrMode": "uint8",
+        "DstAddress": "uint16",
+        "DstEndp": "uint8"
+    },
+    "Bind_Register_req": {
+        "NodeAddress": "uint64"
+    },
+    "Replace_Device_req": {
+        "OldAddress": "uint64",
+        "OldEndpoint": "uint8",
+        "NewAddress": "uint64",
+        "NewEndpoint": "uint8"
+    },
+    "Store_Bkup_Bind_Entry_req": {
+        "SrcAddress": "uint64",
+        "SrcEndpoint": "uint8",
+        "ClusterId": "uint16",
+        "DstAddrMode": "uint8",
+        "DstAddress": "uint16",
+        "DstEndp": "uint8"
+    },
+    "Remove_Bkup_Bind_Entry_req": {
+        "SrcAddress": "uint64",
+        "SrcEndpoint": "uint8",
+        "ClusterId": "uint16",
+        "DstAddrMode": "uint8",
+        "DstAddress": "uint16",
+        "DstEndp": "uint8"
+    },
+    "Backup_Bind_Table_req": {
+        "BindingTableEntries": "uint16",
+        "StartIndex": "uint16",
+        "BindingTableListCount": "uint16",
+        "BindingTableList": {
+            "t.LVList": {
+                "SrcAddress": "uint64",
+                "SrcEndpoint": "uint8",
+                "ClusterID": "uint16",
+                "DstAddrMode": "uint8",
+                "DstAddress": "uint64 or uint16",
+                "DstEndpoint": "uint8 (if applicable)"
+            }
+        }
+    },
+    "Recover_Bind_Table_req": {
+        "StartIndex": "uint16"
+    },
+    "Backup_Source_Bind_req": {
+        "SourceTableEntries": "uint16",
+        "StartIndex": "uint16",
+        "SourceTableListCount": "uint16",
+        "SourceTableList": "List of uint64"
+    },
+    "Recover_Source_Bind_req": {
+        "StartIndex": "uint16"
+    },
+    "Mgmt_NWK_Disc_req": {
+        "ScanChannels": "uint32",
+        "ScanDuration": "uint8",
+        "StartIndex": "uint8"
+    },
+    "Mgmt_Lqi_req": {
+        "StartIndex": "uint8"
+    },
+    "Mgmt_Rtg_req": {
+        "StartIndex": "uint8"
+    },
+    "Mgmt_Bind_req": {
+        "StartIndex": "uint8"
+    },
+    "Mgmt_Leave_req": {
+        "DeviceAddress": "uint64",
+        "RemoveChildren": "uint8",
+        "Rejoin": "uint8"
+    },
+    "Mgmt_Direct_Join_req": {
+        "DeviceAddress": "uint64",
+        "CapabilityInformation": "uint8"
+    },
+    "Mgmt_Permit_Joining_req": {
+        "PermitDuration": "uint8",
+        "TC_Significance": "uint8"
+    },
+    "Mgmt_Cache_req": {
+        "StartIndex": "uint8"
+    },
+    "Mgmt_NWK_Update_req": {
+        "ScanChannels": "uint32",
+        "ScanDuration": "uint8",
+        "ScanCount": "uint8",
+        "nwkUpdateId": "uint8",
+        "nwkManagerAddr": "uint16"
+    },
+    "NWK_addr_rsp": {
+        "Status": "uint8",
+        "IEEEAddrRemoteDev": "uint64",
+        "NWKAddrRemoteDev": "uint16",
+        "NumAssocDev": "uint8",
+        "StartIndex": "uint8",
+        "NWKAddrAssocDevList": "list of uint16"
+    },
+    "IEEE_addr_rsp": {
+        "Status": "uint8",
+        "IEEEAddrRemoteDev": "uint64",
+        "NWKAddrRemoteDev": "uint16",
+        "NumAssocDev": "uint8",
+        "StartIndex": "uint8",
+        "NWKAddrAssocDevList": "list of uint16"
+    },
+    "Node_Desc_rsp": {
+        "Status": "uint8",
+        "NWKAddrOfInterest": "uint16",
+        "NodeDescriptor": {
+            "t.LVList": {
+                "LogicalType": "uint8",
+                "ManufacturerCode": "uint16",
+                "MaxBufferSize": "uint8",
+                "MaxInTransferSize": "uint16",
+                "MaxOutTransferSize": "uint16",
+                "DescriptorCapabilities": "uint8",
+                "Reserved": "uint8",
+                "NetworkAddress": "uint16",
+                "ProfileID": "uint16"
+            }
+        }
+    },
+    "Power_Desc_rsp": {
+        "Status": "uint8",
+        "NWKAddrOfInterest": "uint16",
+        "PowerDescriptor": {
+            "t.LVList": {
+                "PowerMode": "uint8",
+                "VoltageMin": "uint8",
+                "VoltageMax": "uint8",
+                "CurrentMin": "uint8",
+                "CurrentMax": "uint8",
+                "Reserved": "uint8"
+            }
+        }
+    },
+    "Simple_Desc_rsp": {
+        "Status": "uint8",
+        "NWKAddrOfInterest": "uint16",
+        "Length": "uint8",
+        "SimpleDescriptor": {
+            "t.LVList": {
+                "Endpoint": "uint8",
+                "ProfileID": "uint16",
+                "DeviceID": "uint16",
+                "DeviceVersion": "uint8",
+                "InputClusters": "list of uint16",
+                "OutputClusters": "list of uint16"
+            }
+        }
+    },
+    "Active_EP_rsp": {
+        "Status": "uint8",
+        "NWKAddrOfInterest": "uint16",
+        "ActiveEPCount": "uint8",
+        "ActiveEPList": "list of uint8"
+    },
+    "Match_Desc_rsp": {
+        "Status": "uint8",
+        "NWKAddrOfInterest": "uint16",
+        "MatchLength": "uint8",
+        "MatchList": "list of uint8"
+    },
+    "Complex_Desc_rsp": {
+        "Status": "uint8",
+        "NWKAddrOfInterest": "uint16",
+        "Length": "uint8",
+        "ComplexDescriptor": "list of uint8"
+    },
+    "User_Desc_rsp": {
+        "Status": "uint8",
+        "NWKAddrOfInterest": "uint16",
+        "Length": "uint8",
+        "UserDescriptor": "list of uint8"
+    },
+    "System_Server_Discovery_rsp": {
+        "Status": "uint8",
+        "ServerMask": "bitmap16"
+    },
+    "User_Desc_conf": {
+        "Status": "uint8",
+        "NWKAddrOfInterest": "uint16"
+    },
+    "Discovery_Cache_rsp": {
+        "Status": "uint8"
+    },
+    "Discovery_store_rsp": {
+        "Status": "uint8"
+    },
+    "Node_Desc_store_rsp": {
+        "Status": "uint8"
+    },
+    "Power_Desc_store_rsp": {
+        "Status": "uint8"
+    },
+    "Active_EP_store_rsp": {
+        "Status": "uint8"
+    },
+    "Simple_Desc_store_rsp": {
+        "Status": "uint8"
+    },
+    "Remove_node_cache_rsp": {
+        "Status": "uint8"
+    },
+    "Find_node_cache_rsp": {
+        "CacheNWKAddr": "uint16",
+        "NWKAddr": "uint16",
+        "IEEEAddr": "uint64"
+    },
+    "Extended_Simple_Desc_rsp": {
+        "Status": "uint8",
+        "NWKAddrOfInterest": "uint16",
+        "Endpoint": "uint8",
+        "AppInputClusterCount": "uint8",
+        "AppOutputClusterCount": "uint8",
+        "StartIndex": "uint8",
+        "AppClusterList": "list[uint16]"
+    },
+    "Extended_Active_EP_rsp": {
+        "Status": "uint8",
+        "NWKAddrOfInterest": "uint16",
+        "ActiveEPCount": "uint8",
+        "StartIndex": "uint8",
+        "ActiveEPList": "list[uint8]"
+    },
+    "Parent_annce_rsp": {
+        "Status": "uint8",
+        "NumberOfChildren": "uint8",
+        "ChildInfo": {
+            "t.LVList": {
+                "ExtendedAddress": "uint64",
+                "NetworkAddress": "uint16",
+                "DeviceType": "uint8",
+                "RxOnWhenIdle": "uint8",
+                "Relationship": "uint8",
+                "PermitJoining": "uint8"
+            }
+        }
+    },
+    "End_Device_Bind_rsp": {
+        "Status": "uint8"
+    },
+    "Bind_rsp": {
+        "Status": "uint8"
+    },
+    "Unbind_rsp": {
+        "Status": "uint8"
+    },
+    "Bind_Register_rsp": {
+        "Status": "uint8",
+        "BindingTableEntries": "uint16",
+        "BindingTableListCount": "uint16",
+        "BindingTableList": {
+            "t.LVList": {
+                "SrcAddress": "uint64",
+                "SrcEndpoint": "uint8",
+                "ClusterID": "uint16",
+                "DstAddrMode": "uint8",
+                "DstAddress": "uint64 or uint16",
+                "DstEndpoint": "uint8 (if applicable)"
+            }
+        }
+    },
+    "Replace_Device_rsp": {
+        "Status": "uint8"
+    },
+    "Store_Bkup_Bind_Entry_rsp": {
+        "Status": "uint8"
+    },
+    "Remove_Bkup_Bind_Entry_rsp": {
+        "Status": "uint8"
+    },
+    "Backup_Bind_Table_rsp": {
+        "Status": "uint8",
+        "EntryCount": "uint16"
+    },
+    "Recover_Bind_Table_rsp": {
+        "Status": "uint8",
+        "BindingTableEntries": "uint16",
+        "StartIndex": "uint16",
+        "BindingTableListCount": "uint16",
+        "BindingTableList": {
+            "t.LVList": {
+                "SrcAddress": "uint64",
+                "SrcEndpoint": "uint8",
+                "ClusterID": "uint16",
+                "DstAddrMode": "uint8",
+                "DstAddress": "uint16 or uint64",
+                "DstEndpoint": "uint8 (if applicable)"
+            }
+        }
+    },
+    "Backup_Source_Bind_rsp": {
+        "Status": "uint8"
+    },
+    "Recover_Source_Bind_rsp": {
+        "Status": "uint8",
+        "SourceTableEntries": "uint16",
+        "StartIndex": "uint16",
+        "SourceTableListCount": "uint16",
+        "SourceTableList": {
+            "t.LVList": {
+                "IEEEAddress": "uint64"
+            }
+        }
+    },
+    "Mgmt_NWK_Disc_rsp": {
+        "Status": "uint8",
+        "NetworkCount": "uint8",
+        "StartIndex": "uint8",
+        "NetworkListCount": "uint8",
+        "NetworkList": {
+            "t.LVList": {
+                "ExtendedPANId": "uint64",
+                "LogicalChannel": "uint8",
+                "StackProfile": "uint8",
+                "ZigBeeVersion": "uint8",
+                "BeaconOrder": "uint8",
+                "SuperframeOrder": "uint8",
+                "PermitJoining": "uint8",
+                "RouterCapacity": "bool",
+                "EndDeviceCapacity": "bool",
+                "NetworkAddress": "uint16"
+            }
+        }
+    },
+    "Mgmt_Lqi_rsp": {
+        "Status": "uint8",
+        "NeighborTableEntries": "uint8",
+        "StartIndex": "uint8",
+        "NeighborTableListCount": "uint8",
+        "NeighborTableList": {
+            "t.LVList": {
+                "ExtendedPANId": "uint64",
+                "ExtendedAddress": "uint64",
+                "NetworkAddress": "uint16",
+                "DeviceType": "uint8",
+                "RxOnWhenIdle": "uint8",
+                "Relationship": "uint8",
+                "PermitJoining": "uint8",
+                "Depth": "uint8",
+                "LQI": "uint8"
+            }
+        }
+    },
+    "Mgmt_Rtg_rsp": {
+        "Status": "uint8",
+        "RoutingTableEntries": "uint8",
+        "StartIndex": "uint8",
+        "RoutingTableListCount": "uint8",
+        "RoutingTableList": {
+            "t.LVList": {
+                "DestinationAddress": "uint16",
+                "Status": "uint8",
+                "MemoryConstrained": "bool",
+                "ManyToOne": "bool",
+                "RouteRecordRequired": "bool",
+                "Reserved": "uint8",
+                "NextHopAddress": "uint16"
+            }
+        }
+    },
+    "Mgmt_Bind_rsp": {
+        "Status": "uint8",
+        "BindingTableEntries": "uint8",
+        "StartIndex": "uint8",
+        "BindingTableListCount": "uint8",
+        "BindingTableList": {
+            "t.LVList": {
+                "SrcAddr": "uint64",
+                "SrcEndpoint": "uint8",
+                "ClusterId": "uint16",
+                "DstAddrMode": "uint8",
+                "DstAddr": "uint64_or_uint16",
+                "DstEndpoint": "uint8 (if DstAddrMode == 0x03)"
+            }
+        }
+    },
+    "Mgmt_Leave_rsp": {
+        "Status": "uint8"
+    },
+    "Mgmt_Direct_Join_rsp": {
+        "Status": "uint8"
+    },
+    "Mgmt_Permit_Joining_rsp": {
+        "Status": "uint8"
+    },
+    "Mgmt_Cache_rsp": {
+        "Status": "uint8",
+        "DiscoveryCacheEntries": "uint8",
+        "StartIndex": "uint8",
+        "DiscoveryCacheListCount": "uint8",
+        "DiscoveryCacheList": {
+            "t.LVList": {
+                "ExtendedAddress": "uint64",
+                "NetworkAddress": "uint16",
+                "Endpoint": "uint8",
+                "ProfileID": "uint16",
+                "DeviceID": "uint16",
+                "DeviceVersion": "uint8",
+                "InputClusterCount": "uint8",
+                "InputClusterList": "list<uint16>",
+                "OutputClusterCount": "uint8",
+                "OutputClusterList": "list<uint16>"
+            }
+        }
+    },
+    "Mgmt_NWK_Update_notify": {
+        "Status": "uint8",
+        "ScannedChannels": "bitmap32",
+        "TotalTransmissions": "uint16",
+        "TransmissionFailures": "uint16",
+        "ScannedChannelsListCount": "uint8",
+        "EnergyValues": "list<uint8>"
+    }
+}

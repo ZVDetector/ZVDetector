@@ -1,0 +1,4 @@
+class BromoformConcentration(_ConcentrationMixin, Cluster):
+    cluster_id: Final[t.uint16_t] = 0x0426
+    name: Final = "Bromoform Concentration"
+    ep_attribute: Final = "bromoform_concentration"

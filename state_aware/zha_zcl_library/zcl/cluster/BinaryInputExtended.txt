@@ -1,0 +1,12 @@
+class BinaryInputExtended(Cluster):
+    cluster_id: Final[t.uint16_t] = 0x0609
+    ep_attribute: Final = "bacnet_extended_binary_input"
+
+    class AttributeDefs(BaseAttributeDefs):
+        acked_transitions: Final = ZCLAttributeDef(id=0x0000, type=t.bitmap8)
+        alarm_value: Final = ZCLAttributeDef(id=0x0006, type=t.Bool)
+        notification_class: Final = ZCLAttributeDef(id=0x0011, type=t.uint16_t)
+        event_enable: Final = ZCLAttributeDef(id=0x0023, type=t.bitmap8)
+        event_state: Final = ZCLAttributeDef(id=0x0024, type=t.enum8)
+        notify_type: Final = ZCLAttributeDef(id=0x0048, type=t.enum8)
+        time_delay: Final = ZCLAttributeDef(id=0x0071, type=t.uint8_t)

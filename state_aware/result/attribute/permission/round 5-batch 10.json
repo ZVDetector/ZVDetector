@@ -1,0 +1,257 @@
+{
+    "capability": {
+        "Read": [
+            "association_request"
+        ]
+    },
+    "short_address": {
+        "Read": [
+            "association_response",
+            "association_response"
+        ],
+        "Write": [
+            "association_response"
+        ]
+    },
+    "association_status": {
+        "Read": [
+            "association_response",
+            "association_response"
+        ],
+        "Write": [
+            "association_response"
+        ]
+    },
+    "device_short_address": {
+        "Read": [
+            "association_response"
+        ]
+    },
+    "active_epcount": {
+        "Read": [
+            "association_response"
+        ]
+    },
+    "active_eplist": {
+        "Read": [
+            "association_response"
+        ]
+    },
+    "binding_target": {
+        "Read": [
+            "association_response"
+        ]
+    },
+    "num_in_clusters": {
+        "Read": [
+            "association_response"
+        ]
+    },
+    "in_cluster_list": {
+        "Read": [
+            "association_response"
+        ]
+    },
+    "num_out_clusters": {
+        "Read": [
+            "association_response"
+        ]
+    },
+    "out_cluster_list": {
+        "Read": [
+            "association_response"
+        ]
+    },
+    "binding_table_entries": {
+        "Read": [
+            "association_response"
+        ]
+    },
+    "binding_table_list_count": {
+        "Read": [
+            "association_response"
+        ]
+    },
+    "binding_table_list": {
+        "Read": [
+            "association_response"
+        ]
+    },
+    "source_table_entries": {
+        "Read": [
+            "association_response"
+        ]
+    },
+    "source_table_list_count": {
+        "Read": [
+            "association_response"
+        ]
+    },
+    "source_table_list": {
+        "Read": [
+            "association_response"
+        ]
+    },
+    "scan_channels": {
+        "Read": [
+            "association_response"
+        ]
+    },
+    "scan_duration": {
+        "Read": [
+            "association_response"
+        ]
+    },
+    "scan_count": {
+        "Read": [
+            "association_response"
+        ]
+    },
+    "nwk_update_id": {
+        "Read": [
+            "association_response"
+        ]
+    },
+    "nwk_manager_addr": {
+        "Read": [
+            "association_response"
+        ]
+    },
+    "nwkaddr_remote_dev": {
+        "Read": [
+            "association_response",
+            "disassociation_notification"
+        ]
+    },
+    "num_assoc_dev": {
+        "Read": [
+            "association_response",
+            "disassociation_notification"
+        ]
+    },
+    "nwkaddr_assoc_dev_list": {
+        "Read": [
+            "association_response",
+            "disassociation_notification"
+        ]
+    },
+    "network_address": {
+        "Read": [
+            "association_response"
+        ]
+    },
+    "active_power_ph_c": {
+        "Read": [
+            "data_request"
+        ]
+    },
+    "active_power_min_ph_c": {
+        "Read": [
+            "data_request"
+        ]
+    },
+    "active_power_max_ph_c": {
+        "Read": [
+            "data_request"
+        ]
+    },
+    "reactive_power_ph_c": {
+        "Read": [
+            "data_request"
+        ]
+    },
+    "apparent_power_ph_c": {
+        "Read": [
+            "data_request"
+        ]
+    },
+    "power_factor_ph_c": {
+        "Read": [
+            "data_request"
+        ]
+    },
+    "average_rms_voltage_meas_period_ph_c": {
+        "Read": [
+            "data_request"
+        ]
+    },
+    "average_rms_over_voltage_counter_ph_c": {
+        "Read": [
+            "data_request"
+        ]
+    },
+    "average_under_voltage_counter_ph_c": {
+        "Read": [
+            "data_request"
+        ]
+    },
+    "rms_extreme_over_voltage_period_ph_c": {
+        "Read": [
+            "data_request"
+        ]
+    },
+    "rms_extreme_under_voltage_period_ph_c": {
+        "Read": [
+            "data_request"
+        ]
+    },
+    "rms_voltage_sag_period_ph_c": {
+        "Read": [
+            "data_request"
+        ]
+    },
+    "rms_voltage_swell_period_ph_c": {
+        "Read": [
+            "data_request"
+        ]
+    },
+    "cluster_revision": {
+        "Read": [
+            "data_request"
+        ]
+    },
+    "reporting_status": {
+        "Read": [
+            "data_request"
+        ],
+        "Write": [
+            "data_request"
+        ]
+    },
+    "lock_state": {
+        "Read": [
+            "data_request"
+        ],
+        "Write": [
+            "data_request"
+        ]
+    },
+    "lock_type": {
+        "Read": [
+            "data_request"
+        ]
+    },
+    "actuator_enabled": {
+        "Read": [
+            "data_request"
+        ],
+        "Write": [
+            "data_request"
+        ]
+    },
+    "door_state": {
+        "Read": [
+            "data_request"
+        ]
+    },
+    "door_open_events": {
+        "Read": [
+            "data_request"
+        ]
+    },
+    "pan_id": {
+        "Read": [
+            "panidconflict_notification"
+        ]
+    }
+}

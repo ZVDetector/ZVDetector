@@ -1,0 +1,12 @@
+{
+    "Attributes": [
+        "relative_humidity",
+        "dehumidification_cooling",
+        "rh_dehumidification_setpoint",
+        "relative_humidity_mode",
+        "dehumidification_lockout",
+        "dehumidification_hysteresis",
+        "dehumidification_max_cool",
+        "relative_humidity_display"
+    ]
+}

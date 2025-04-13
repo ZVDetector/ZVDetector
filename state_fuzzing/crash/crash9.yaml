@@ -1,0 +1,56 @@
+Timestamp:
+  - "20240521_14:29:12:709"
+Device:
+  - "Sengled Smart Bulb"
+IEEE:
+  - "b0:ce:18:14:03:68:57:34"
+Nwk_Address:
+  - "0x3597"
+State:
+  - "20240521_14:29:11.json"
+Message_Relationship:
+  - "Correlation"
+Fuzzing_Messages:
+  - {
+    "level_step": {
+      "id": 2,
+      "direction_header": 0,
+      "step_mode": {
+        "t.enum8": [
+          0,
+          1
+        ]
+      },
+      "step_size": "t.uint8_t",
+      "transition_time": "t.uint16_t",
+      "options_mask": "t.bitmap8",
+      "options_override": "t.bitmap8"
+    },
+    "level_move": {
+      "id": 1,
+      "direction_header": 0,
+      "move_mode": {
+        "t.enum8": [
+          0,
+          1
+        ]
+      },
+      "rate": "t.uint8_t",
+      "options_mask": "t.bitmap8",
+      "options_override": "t.bitmap8"
+    }
+  }
+Mutation_Strategy:
+  - T-1-1
+  - "level_step"
+  - {
+      "step_mode": 1,
+      "step_size": 255
+  }
+  - "level_move"
+  - {
+      "move_mode": 0,
+      "rate": 0
+  }
+Log:
+  - "[Device 6] Exploit: StepLevel, MoveLevel | Mutation: StepLevel: mode=0x01, size=0xff; MoveLevel: mode=0x00, rate=0x00 | Result: Device Crashed |"

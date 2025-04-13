@@ -1,0 +1,4 @@
+class ChlorineConcentration(_ConcentrationMixin, Cluster):
+    cluster_id: Final[t.uint16_t] = 0x041A
+    name: Final = "Chlorine Concentration"
+    ep_attribute: Final = "chlorine_concentration"

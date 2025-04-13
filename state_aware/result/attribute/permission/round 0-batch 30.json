@@ -1,0 +1,7 @@
+{
+    "capability": {
+        "Read": [
+            "association_request"
+        ]
+    }
+}

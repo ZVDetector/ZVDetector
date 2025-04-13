@@ -1,0 +1,17 @@
+class Fan(Cluster):
+    """An interface for controlling a fan in a heating /
+    cooling system.
+    """
+
+    FanMode: Final = FanMode
+    FanModeSequence: Final = FanModeSequence
+
+    cluster_id: Final[t.uint16_t] = 0x0202
+    name: Final = "Fan Control"
+    ep_attribute: Final = "fan"
+
+    class AttributeDefs(BaseAttributeDefs):
+        fan_mode: Final = ZCLAttributeDef(id=0x0000, type=FanMode, access="")
+        fan_mode_sequence: Final = ZCLAttributeDef(
+            id=0x0001, type=FanModeSequence, access=""
+        )

@@ -1,0 +1,20 @@
+{
+    "Attributes": [
+        "active_text",
+        "description",
+        "inactive_text",
+        "minimum_off_time",
+        "minimum_on_time",
+        "out_of_service",
+        "polarity",
+        "present_value",
+        "reliability",
+        "relinquish_default",
+        "resolution",
+        "status_flags",
+        "engineering_units",
+        "application_type",
+        "cluster_revision",
+        "reporting_status"
+    ]
+}

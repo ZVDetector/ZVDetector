@@ -1,0 +1,661 @@
+{
+    "capability": {
+        "Read": [
+            "association_request",
+            "route_request"
+        ]
+    },
+    "short_address": {
+        "Read": [
+            "association_response",
+            "association_response",
+            "coordinator_realignment",
+            "route_request",
+            "route_reply"
+        ],
+        "Write": [
+            "association_response",
+            "coordinator_realignment"
+        ]
+    },
+    "association_status": {
+        "Read": [
+            "association_response",
+            "association_response"
+        ],
+        "Write": [
+            "association_response"
+        ]
+    },
+    "device_short_address": {
+        "Read": [
+            "association_response",
+            "coordinator_realignment",
+            "route_request"
+        ],
+        "Write": [
+            "coordinator_realignment",
+            "coordinator_realignment",
+            "coordinator_realignment"
+        ]
+    },
+    "active_epcount": {
+        "Read": [
+            "association_response",
+            "orphan_notification",
+            "route_request",
+            "route_reply"
+        ]
+    },
+    "active_eplist": {
+        "Read": [
+            "association_response",
+            "orphan_notification",
+            "route_request",
+            "route_reply"
+        ]
+    },
+    "binding_target": {
+        "Read": [
+            "association_response",
+            "route_reply"
+        ]
+    },
+    "num_in_clusters": {
+        "Read": [
+            "association_response"
+        ]
+    },
+    "in_cluster_list": {
+        "Read": [
+            "association_response"
+        ]
+    },
+    "num_out_clusters": {
+        "Read": [
+            "association_response"
+        ]
+    },
+    "out_cluster_list": {
+        "Read": [
+            "association_response"
+        ]
+    },
+    "binding_table_entries": {
+        "Read": [
+            "association_response",
+            "orphan_notification",
+            "route_request",
+            "route_request",
+            "route_reply"
+        ]
+    },
+    "binding_table_list_count": {
+        "Read": [
+            "association_response",
+            "orphan_notification",
+            "route_request",
+            "route_request",
+            "route_reply"
+        ]
+    },
+    "binding_table_list": {
+        "Read": [
+            "association_response",
+            "orphan_notification",
+            "route_request",
+            "route_request",
+            "route_reply"
+        ]
+    },
+    "source_table_entries": {
+        "Read": [
+            "association_response"
+        ]
+    },
+    "source_table_list_count": {
+        "Read": [
+            "association_response"
+        ]
+    },
+    "source_table_list": {
+        "Read": [
+            "association_response"
+        ]
+    },
+    "scan_channels": {
+        "Read": [
+            "association_response",
+            "beacon_request"
+        ]
+    },
+    "scan_duration": {
+        "Read": [
+            "association_response",
+            "beacon_request"
+        ]
+    },
+    "scan_count": {
+        "Read": [
+            "association_response",
+            "beacon_request"
+        ]
+    },
+    "nwk_update_id": {
+        "Read": [
+            "association_response",
+            "route_request"
+        ]
+    },
+    "nwk_manager_addr": {
+        "Read": [
+            "association_response",
+            "route_reply"
+        ]
+    },
+    "nwkaddr_remote_dev": {
+        "Read": [
+            "association_response",
+            "disassociation_notification",
+            "orphan_notification",
+            "route_request",
+            "route_reply"
+        ]
+    },
+    "num_assoc_dev": {
+        "Read": [
+            "association_response",
+            "disassociation_notification",
+            "orphan_notification",
+            "route_request"
+        ]
+    },
+    "nwkaddr_assoc_dev_list": {
+        "Read": [
+            "association_response",
+            "disassociation_notification",
+            "orphan_notification",
+            "route_request",
+            "route_reply"
+        ]
+    },
+    "network_address": {
+        "Read": [
+            "association_response",
+            "route_request",
+            "route_request"
+        ]
+    },
+    "active_power_ph_c": {
+        "Read": [
+            "data_request"
+        ]
+    },
+    "active_power_min_ph_c": {
+        "Read": [
+            "data_request"
+        ]
+    },
+    "active_power_max_ph_c": {
+        "Read": [
+            "data_request"
+        ]
+    },
+    "reactive_power_ph_c": {
+        "Read": [
+            "data_request"
+        ]
+    },
+    "apparent_power_ph_c": {
+        "Read": [
+            "data_request"
+        ]
+    },
+    "power_factor_ph_c": {
+        "Read": [
+            "data_request"
+        ]
+    },
+    "average_rms_voltage_meas_period_ph_c": {
+        "Read": [
+            "data_request"
+        ]
+    },
+    "average_rms_over_voltage_counter_ph_c": {
+        "Read": [
+            "data_request"
+        ]
+    },
+    "average_under_voltage_counter_ph_c": {
+        "Read": [
+            "data_request"
+        ]
+    },
+    "rms_extreme_over_voltage_period_ph_c": {
+        "Read": [
+            "data_request"
+        ]
+    },
+    "rms_extreme_under_voltage_period_ph_c": {
+        "Read": [
+            "data_request"
+        ]
+    },
+    "rms_voltage_sag_period_ph_c": {
+        "Read": [
+            "data_request"
+        ]
+    },
+    "rms_voltage_swell_period_ph_c": {
+        "Read": [
+            "data_request"
+        ]
+    },
+    "cluster_revision": {
+        "Read": [
+            "data_request",
+            "route_reply"
+        ]
+    },
+    "reporting_status": {
+        "Read": [
+            "data_request"
+        ],
+        "Write": [
+            "data_request",
+            "route_reply"
+        ]
+    },
+    "lock_state": {
+        "Read": [
+            "data_request"
+        ],
+        "Write": [
+            "data_request"
+        ]
+    },
+    "lock_type": {
+        "Read": [
+            "data_request"
+        ]
+    },
+    "actuator_enabled": {
+        "Read": [
+            "data_request"
+        ],
+        "Write": [
+            "data_request"
+        ]
+    },
+    "door_state": {
+        "Read": [
+            "data_request"
+        ]
+    },
+    "door_open_events": {
+        "Read": [
+            "data_request"
+        ]
+    },
+    "pan_id": {
+        "Read": [
+            "panidconflict_notification",
+            "coordinator_realignment",
+            "route_request",
+            "route_reply"
+        ],
+        "Write": [
+            "coordinator_realignment"
+        ]
+    },
+    "nwkaddr_of_interest": {
+        "Read": [
+            "orphan_notification",
+            "route_request",
+            "route_reply"
+        ]
+    },
+    "match_length": {
+        "Read": [
+            "orphan_notification",
+            "route_request"
+        ]
+    },
+    "match_list": {
+        "Read": [
+            "orphan_notification",
+            "route_request"
+        ]
+    },
+    "app_input_cluster_count": {
+        "Read": [
+            "orphan_notification",
+            "route_request"
+        ]
+    },
+    "app_output_cluster_count": {
+        "Read": [
+            "orphan_notification",
+            "route_request"
+        ]
+    },
+    "app_cluster_list": {
+        "Read": [
+            "orphan_notification",
+            "route_request"
+        ]
+    },
+    "number_of_children": {
+        "Read": [
+            "orphan_notification",
+            "route_request"
+        ]
+    },
+    "child_info": {
+        "Read": [
+            "orphan_notification",
+            "route_request"
+        ]
+    },
+    "panid": {
+        "Write": [
+            "coordinator_realignment",
+            "coordinator_realignment",
+            "coordinator_realignment"
+        ]
+    },
+    "coordinator_short_address": {
+        "Write": [
+            "coordinator_realignment",
+            "coordinator_realignment",
+            "coordinator_realignment"
+        ]
+    },
+    "channel": {
+        "Write": [
+            "coordinator_realignment",
+            "coordinator_realignment",
+            "coordinator_realignment"
+        ]
+    },
+    "superframe_specification": {
+        "Write": [
+            "coordinator_realignment",
+            "coordinator_realignment",
+            "coordinator_realignment"
+        ]
+    },
+    "logical_channel": {
+        "Write": [
+            "coordinator_realignment",
+            "coordinator_realignment",
+            "coordinator_realignment"
+        ],
+        "Read": [
+            "coordinator_realignment",
+            "coordinator_realignment",
+            "route_request"
+        ]
+    },
+    "extended_pan_id": {
+        "Read": [
+            "route_request",
+            "route_reply"
+        ]
+    },
+    "channel_mask": {
+        "Read": [
+            "route_request",
+            "route_reply"
+        ]
+    },
+    "protocol_version": {
+        "Read": [
+            "route_request",
+            "route_reply"
+        ]
+    },
+    "stack_profile": {
+        "Read": [
+            "route_request",
+            "route_reply"
+        ]
+    },
+    "node_desc_size": {
+        "Read": [
+            "route_request"
+        ]
+    },
+    "power_desc_size": {
+        "Read": [
+            "route_request"
+        ]
+    },
+    "active_epsize": {
+        "Read": [
+            "route_request"
+        ]
+    },
+    "neighbor_table_entries": {
+        "Read": [
+            "route_request"
+        ]
+    },
+    "neighbor_table_list_count": {
+        "Read": [
+            "route_request"
+        ]
+    },
+    "neighbor_table_list": {
+        "Read": [
+            "route_request",
+            "route_reply"
+        ]
+    },
+    "routing_table_entries": {
+        "Read": [
+            "route_request",
+            "route_reply"
+        ]
+    },
+    "routing_table_list_count": {
+        "Read": [
+            "route_request",
+            "route_reply"
+        ]
+    },
+    "routing_table_list": {
+        "Read": [
+            "route_request",
+            "route_reply"
+        ]
+    },
+    "discovery_cache_entries": {
+        "Read": [
+            "route_request",
+            "route_reply"
+        ]
+    },
+    "discovery_cache_list_count": {
+        "Read": [
+            "route_request",
+            "route_reply"
+        ]
+    },
+    "discovery_cache_list": {
+        "Read": [
+            "route_request",
+            "route_reply"
+        ]
+    },
+    "scanned_channels": {
+        "Read": [
+            "route_request",
+            "route_reply"
+        ]
+    },
+    "total_transmissions": {
+        "Read": [
+            "route_request",
+            "route_reply"
+        ]
+    },
+    "transmission_failures": {
+        "Read": [
+            "route_request",
+            "route_reply"
+        ]
+    },
+    "scanned_channels_list_count": {
+        "Read": [
+            "route_request",
+            "route_reply"
+        ]
+    },
+    "energy_values": {
+        "Read": [
+            "route_request",
+            "route_reply"
+        ]
+    },
+    "ieee": {
+        "Read": [
+            "route_request"
+        ]
+    },
+    "device_info_records": {
+        "Read": [
+            "route_request"
+        ]
+    },
+    "group_id_count": {
+        "Read": [
+            "route_request"
+        ]
+    },
+    "inter_pan_transaction_id": {
+        "Read": [
+            "route_request"
+        ]
+    },
+    "total": {
+        "Read": [
+            "route_request"
+        ]
+    },
+    "group_info_records": {
+        "Read": [
+            "route_request"
+        ]
+    },
+    "endpoint_info_records": {
+        "Read": [
+            "route_request"
+        ]
+    },
+    "zcl_version": {
+        "Read": [
+            "route_reply"
+        ]
+    },
+    "app_version": {
+        "Read": [
+            "route_reply"
+        ]
+    },
+    "stack_version": {
+        "Read": [
+            "route_reply"
+        ]
+    },
+    "hw_version": {
+        "Read": [
+            "route_reply"
+        ]
+    },
+    "manufacturer": {
+        "Read": [
+            "route_reply"
+        ]
+    },
+    "model": {
+        "Read": [
+            "route_reply"
+        ]
+    },
+    "date_code": {
+        "Read": [
+            "route_reply"
+        ]
+    },
+    "power_source": {
+        "Read": [
+            "route_reply"
+        ]
+    },
+    "generic_device_class": {
+        "Read": [
+            "route_reply"
+        ]
+    },
+    "generic_device_type": {
+        "Read": [
+            "route_reply"
+        ]
+    },
+    "product_code": {
+        "Read": [
+            "route_reply"
+        ]
+    },
+    "product_url": {
+        "Read": [
+            "route_reply"
+        ]
+    },
+    "manufacturer_version_details": {
+        "Read": [
+            "route_reply"
+        ]
+    },
+    "serial_number": {
+        "Read": [
+            "route_reply"
+        ]
+    },
+    "product_label": {
+        "Read": [
+            "route_reply"
+        ]
+    },
+    "max_duration": {
+        "Write": [
+            "route_reply"
+        ]
+    },
+    "direction": {
+        "Read": [
+            "route_reply"
+        ]
+    },
+    "attrid": {
+        "Read": [
+            "route_reply"
+        ]
+    },
+    "value": {
+        "Read": [
+            "route_reply"
+        ]
+    },
+    "min_interval": {
+        "Read": [
+            "route_reply"
+        ]
+    },
+    "max_interval": {
+        "Read": [
+            "route_reply"
+        ]
+    }
+}

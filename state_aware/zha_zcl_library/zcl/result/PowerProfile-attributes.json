@@ -1,0 +1,11 @@
+{
+    "Attributes": [
+        "total_profile_num",
+        "multiple_scheduling",
+        "energy_formatting",
+        "energy_remote",
+        "schedule_mode",
+        "cluster_revision",
+        "reporting_status"
+    ]
+}

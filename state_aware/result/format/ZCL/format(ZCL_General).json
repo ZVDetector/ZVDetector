@@ -1,0 +1,280 @@
+{
+    "read_attributes": {
+        "id": 0,
+        "direction_header": 0,
+        "schema": {
+            "attribute_ids": {
+                "t.List": "t.uint16_t"
+            }
+        }
+    },
+    "read_attributes_rsp": {
+        "id": 1,
+        "direction_header": 1,
+        "schema": {
+            "status_records": {
+                "t.LVList": {
+                    "attrid": "t.uint16_t",
+                    "status": "foundation.Status",
+                    "value": {
+                        "t.LVList": {
+                            "type": "t.uint8_t",
+                            "value": "t.any"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "write_attributes": {
+        "id": 2,
+        "direction_header": 0,
+        "schema": {
+            "attributes": {
+                "t.LVList": {
+                    "attrid": "t.uint16_t",
+                    "value": {
+                        "t.LVList": {
+                            "type": "t.uint8_t",
+                            "value": "t.any"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "write_attributes_undivided": {
+        "id": 3,
+        "direction_header": 0,
+        "schema": {
+            "attributes": {
+                "t.LVList": {
+                    "attrid": "t.uint16_t",
+                    "value": {
+                        "t.LVList": {
+                            "type": "t.uint8_t",
+                            "value": "t.any"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "write_attributes_rsp": {
+        "id": 4,
+        "direction_header": 1,
+        "schema": {
+            "status_records": {
+                "t.List": "foundation.Status"
+            }
+        }
+    },
+    "write_attributes_no_response": {
+        "id": 5,
+        "direction_header": 0,
+        "schema": {
+            "attributes": {
+                "t.LVList": {
+                    "attrid": "t.uint16_t",
+                    "value": {
+                        "t.LVList": {
+                            "type": "t.uint8_t",
+                            "value": "t.any"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "configure_reporting": {
+        "id": 6,
+        "direction_header": 0,
+        "schema": {
+            "config_records": {
+                "t.LVList": {
+                    "direction": {
+                        "t.enum8": [
+                            0,
+                            1
+                        ]
+                    },
+                    "attrid": "t.uint16_t",
+                    "value": {
+                        "t.LVList": {
+                            "type": "t.uint8_t",
+                            "value": "t.any"
+                        }
+                    },
+                    "min_interval": "t.uint16_t",
+                    "max_interval": "t.uint16_t"
+                }
+            }
+        }
+    },
+    "configure_reporting_rsp": {
+        "id": 7,
+        "direction_header": 1,
+        "schema": {
+            "status_records": {
+                "t.LVList": {
+                    "status": "foundation.Status",
+                    "direction": {
+                        "t.enum8": [
+                            0,
+                            1
+                        ]
+                    },
+                    "attrid": "t.uint16_t"
+                }
+            }
+        }
+    },
+    "read_reporting_configuration": {
+        "id": 8,
+        "direction_header": 0,
+        "schema": {
+            "attribute_records": {
+                "t.LVList": {
+                    "direction": "t.uint8_t",
+                    "attrid": "t.uint16_t"
+                }
+            }
+        }
+    },
+    "read_reporting_configuration_rsp": {
+        "id": 9,
+        "direction_header": 1,
+        "schema": {
+            "attribute_configs": {
+                "t.LVList": {
+                    "status": "foundation.Status",
+                    "direction": {
+                        "t.enum8": [
+                            0,
+                            1
+                        ]
+                    },
+                    "attrid": "t.uint16_t",
+                    "value": {
+                        "t.LVList": {
+                            "type": "t.uint8_t",
+                            "value": "t.any"
+                        }
+                    },
+                    "min_interval": "t.uint16_t",
+                    "max_interval": "t.uint16_t"
+                }
+            }
+        }
+    },
+    "report_attributes": {
+        "id": 10,
+        "direction_header": 0,
+        "schema": {
+            "attribute_reports": {
+                "t.LVList": {
+                    "attrid": "t.uint16_t",
+                    "value": {
+                        "t.LVList": {
+                            "type": "t.uint8_t",
+                            "value": "t.any"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "default_response": {
+        "id": 11,
+        "direction_header": 1,
+        "schema": {
+            "command_id": "t.uint8_t",
+            "status": "foundation.Status"
+        }
+    },
+    "discover_attributes": {
+        "id": 12,
+        "direction_header": 0,
+        "schema": {
+            "start_attribute_id": "t.uint16_t",
+            "max_attribute_ids": "t.uint8_t"
+        }
+    },
+    "discover_attributes_rsp": {
+        "id": 13,
+        "direction_header": 1,
+        "schema": {
+            "discovery_complete": "t.Bool",
+            "attribute_info": {
+                "t.LVList": {
+                    "attrid": "t.uint16_t",
+                    "datatype": "t.uint8_t"
+                }
+            }
+        }
+    },
+    "discover_commands_received": {
+        "id": 17,
+        "direction_header": 0,
+        "schema": {
+            "start_command_id": "t.uint8_t",
+            "max_command_ids": "t.uint8_t"
+        }
+    },
+    "discover_commands_received_rsp": {
+        "id": 18,
+        "direction_header": 1,
+        "schema": {
+            "discovery_complete": "t.Bool",
+            "command_ids": {
+                "t.List": "t.uint8_t"
+            }
+        }
+    },
+    "discover_commands_generated": {
+        "id": 19,
+        "direction_header": 0,
+        "schema": {
+            "start_command_id": "t.uint8_t",
+            "max_command_ids": "t.uint8_t"
+        }
+    },
+    "discover_commands_generated_rsp": {
+        "id": 20,
+        "direction_header": 1,
+        "schema": {
+            "discovery_complete": "t.Bool",
+            "command_ids": {
+                "t.List": "t.uint8_t"
+            }
+        }
+    },
+    "discover_attribute_extended": {
+        "id": 21,
+        "direction_header": 0,
+        "schema": {
+            "start_attribute_id": "t.uint16_t",
+            "max_attribute_ids": "t.uint8_t"
+        }
+    },
+    "discover_attribute_extended_rsp": {
+        "id": 22,
+        "direction_header": 1,
+        "schema": {
+            "discovery_complete": "t.Bool",
+            "extended_attr_info": {
+                "t.LVList": {
+                    "attrid": "t.uint16_t",
+                    "datatype": "t.uint8_t",
+                    "acl": {
+                        "t.bitmap8": [
+                            1,
+                            2,
+                            4
+                        ]
+                    }
+                }
+            }
+        }
+    }
+}

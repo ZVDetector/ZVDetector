@@ -1,0 +1,11 @@
+{
+    "Attributes": [
+        "on_off",
+        "global_scene_control",
+        "on_time",
+        "off_wait_time",
+        "start_up_on_off",
+        "cluster_revision",
+        "reporting_status"
+    ]
+}

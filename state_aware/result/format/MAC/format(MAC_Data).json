@@ -1,0 +1,10 @@
+{
+    "data_frame": {
+        "frame_control": "uint16",
+        "sequence_number": "uint8",
+        "destination_panidentifier": "uint16 (optional, present if Destination Addressing Mode is nonzero)",
+        "destination_address": "uint16 | uint64 (optional, present if Destination Addressing Mode is nonzero)",
+        "source_panidentifier": "uint16 (optional, present if Source Addressing Mode is nonzero and Intra-PAN is 0)",
+        "source_address": "uint16 | uint64 (optional, present if Source Addressing Mode is nonzero)"
+    }
+}

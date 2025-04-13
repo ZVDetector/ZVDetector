@@ -1,0 +1,14 @@
+{
+    "Attributes": [
+        "acked_transitions",
+        "notification_class",
+        "deadband",
+        "event_enable",
+        "event_state",
+        "high_limit",
+        "limit_enable",
+        "low_limit",
+        "notify_type",
+        "time_delay"
+    ]
+}

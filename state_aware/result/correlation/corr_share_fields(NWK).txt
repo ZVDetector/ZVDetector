@@ -1,0 +1,3 @@
+path_cost
+route_request_identifier
+command_options

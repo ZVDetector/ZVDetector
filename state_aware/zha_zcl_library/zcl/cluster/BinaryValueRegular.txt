@@ -1,0 +1,14 @@
+class BinaryValueRegular(Cluster):
+    cluster_id: Final[t.uint16_t] = 0x060C
+    ep_attribute: Final = "bacnet_regular_binary_value"
+
+    class AttributeDefs(BaseAttributeDefs):
+        change_of_state_count: Final = ZCLAttributeDef(id=0x000F, type=t.uint32_t)
+        change_of_state_time: Final = ZCLAttributeDef(id=0x0010, type=DateTime)
+        elapsed_active_time: Final = ZCLAttributeDef(id=0x0021, type=t.uint32_t)
+        object_id: Final = ZCLAttributeDef(id=0x004B, type=t.FixedList[4, t.uint8_t])
+        object_name: Final = ZCLAttributeDef(id=0x004D, type=t.CharacterString)
+        object_type: Final = ZCLAttributeDef(id=0x004F, type=t.enum16)
+        time_of_at_reset: Final = ZCLAttributeDef(id=0x0072, type=DateTime)
+        time_of_sc_reset: Final = ZCLAttributeDef(id=0x0073, type=DateTime)
+        profile_name: Final = ZCLAttributeDef(id=0x00A8, type=t.CharacterString)

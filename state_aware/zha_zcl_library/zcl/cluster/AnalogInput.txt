@@ -1,0 +1,35 @@
+class AnalogInput(Cluster):
+    Reliability: Final = Reliability
+
+    cluster_id: Final[t.uint16_t] = 0x000C
+    ep_attribute: Final = "analog_input"
+
+    class AttributeDefs(BaseAttributeDefs):
+        description: Final = ZCLAttributeDef(
+            id=0x001C, type=t.CharacterString, access="r*w"
+        )
+        max_present_value: Final = ZCLAttributeDef(
+            id=0x0041, type=t.Single, access="r*w"
+        )
+        min_present_value: Final = ZCLAttributeDef(
+            id=0x0045, type=t.Single, access="r*w"
+        )
+        out_of_service: Final = ZCLAttributeDef(
+            id=0x0051, type=t.Bool, access="r*w", mandatory=True
+        )
+        present_value: Final = ZCLAttributeDef(
+            id=0x0055, type=t.Single, access="rwp", mandatory=True
+        )
+        reliability: Final = ZCLAttributeDef(id=0x0067, type=Reliability, access="r*w")
+        resolution: Final = ZCLAttributeDef(id=0x006A, type=t.Single, access="r*w")
+        status_flags: Final = ZCLAttributeDef(
+            id=0x006F, type=t.bitmap8, access="rp", mandatory=True
+        )
+        engineering_units: Final = ZCLAttributeDef(
+            id=0x0075, type=t.enum16, access="r*w"
+        )
+        application_type: Final = ZCLAttributeDef(
+            id=0x0100, type=t.uint32_t, access="r"
+        )
+        cluster_revision: Final = foundation.ZCL_CLUSTER_REVISION_ATTR
+        reporting_status: Final = foundation.ZCL_REPORTING_STATUS_ATTR

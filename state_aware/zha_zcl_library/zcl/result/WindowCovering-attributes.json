@@ -1,0 +1,24 @@
+{
+    "Attributes": [
+        "window_covering_type",
+        "physical_closed_limit_lift",
+        "physical_closed_limit_tilt",
+        "current_position_lift",
+        "current_position_tilt",
+        "number_of_actuations_lift",
+        "number_of_actuations_tilt",
+        "config_status",
+        "current_position_lift_percentage",
+        "current_position_tilt_percentage",
+        "installed_open_limit_lift",
+        "installed_closed_limit_lift",
+        "installed_open_limit_tilt",
+        "installed_closed_limit_tilt",
+        "velocity_lift",
+        "acceleration_time_lift",
+        "deceleration_time_lift",
+        "window_covering_mode",
+        "intermediate_setpoints_lift",
+        "intermediate_setpoints_tilt"
+    ]
+}

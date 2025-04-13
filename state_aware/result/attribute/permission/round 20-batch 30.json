@@ -1,0 +1,1860 @@
+{
+    "capability": {
+        "Read": [
+            "association_request",
+            "route_request",
+            "rejoin_request",
+            "link_status",
+            "network_report",
+            "end_device_timeout_response"
+        ]
+    },
+    "short_address": {
+        "Read": [
+            "association_response",
+            "association_response",
+            "coordinator_realignment",
+            "route_request",
+            "route_reply",
+            "network_status",
+            "route_record",
+            "rejoin_response",
+            "link_status"
+        ],
+        "Write": [
+            "association_response",
+            "coordinator_realignment"
+        ]
+    },
+    "association_status": {
+        "Read": [
+            "association_response",
+            "association_response",
+            "network_status",
+            "end_device_timeout_response"
+        ],
+        "Write": [
+            "association_response"
+        ]
+    },
+    "device_short_address": {
+        "Read": [
+            "association_response",
+            "coordinator_realignment",
+            "route_request",
+            "network_status",
+            "link_status",
+            "network_report",
+            "end_device_timeout_response"
+        ],
+        "Write": [
+            "coordinator_realignment",
+            "coordinator_realignment",
+            "coordinator_realignment"
+        ]
+    },
+    "active_epcount": {
+        "Read": [
+            "association_response",
+            "orphan_notification",
+            "route_request",
+            "route_reply",
+            "network_status",
+            "route_record",
+            "rejoin_response",
+            "link_status",
+            "network_report"
+        ]
+    },
+    "active_eplist": {
+        "Read": [
+            "association_response",
+            "orphan_notification",
+            "route_request",
+            "route_reply",
+            "network_status",
+            "route_record",
+            "rejoin_response",
+            "link_status",
+            "network_report"
+        ]
+    },
+    "binding_target": {
+        "Read": [
+            "association_response",
+            "route_reply",
+            "network_status",
+            "route_record",
+            "rejoin_response"
+        ]
+    },
+    "num_in_clusters": {
+        "Read": [
+            "association_response",
+            "network_status",
+            "rejoin_response"
+        ]
+    },
+    "in_cluster_list": {
+        "Read": [
+            "association_response",
+            "network_status",
+            "rejoin_response"
+        ]
+    },
+    "num_out_clusters": {
+        "Read": [
+            "association_response",
+            "network_status",
+            "rejoin_response"
+        ]
+    },
+    "out_cluster_list": {
+        "Read": [
+            "association_response",
+            "network_status",
+            "rejoin_response"
+        ]
+    },
+    "binding_table_entries": {
+        "Read": [
+            "association_response",
+            "orphan_notification",
+            "route_request",
+            "route_request",
+            "route_reply",
+            "network_status",
+            "network_status",
+            "route_record",
+            "route_record",
+            "route_record",
+            "route_record",
+            "rejoin_response",
+            "link_status",
+            "link_status",
+            "link_status",
+            "network_report",
+            "network_report",
+            "network_update"
+        ]
+    },
+    "binding_table_list_count": {
+        "Read": [
+            "association_response",
+            "orphan_notification",
+            "route_request",
+            "route_request",
+            "route_reply",
+            "network_status",
+            "network_status",
+            "route_record",
+            "route_record",
+            "route_record",
+            "route_record",
+            "rejoin_response",
+            "link_status",
+            "link_status",
+            "link_status",
+            "network_report",
+            "network_report",
+            "network_update"
+        ]
+    },
+    "binding_table_list": {
+        "Read": [
+            "association_response",
+            "orphan_notification",
+            "route_request",
+            "route_request",
+            "route_reply",
+            "network_status",
+            "network_status",
+            "route_record",
+            "route_record",
+            "route_record",
+            "route_record",
+            "rejoin_response",
+            "link_status",
+            "link_status",
+            "link_status",
+            "network_report",
+            "network_report",
+            "network_update"
+        ]
+    },
+    "source_table_entries": {
+        "Read": [
+            "association_response",
+            "network_status",
+            "route_record",
+            "route_record",
+            "rejoin_response",
+            "link_status"
+        ]
+    },
+    "source_table_list_count": {
+        "Read": [
+            "association_response",
+            "network_status",
+            "route_record",
+            "route_record",
+            "rejoin_response",
+            "link_status"
+        ]
+    },
+    "source_table_list": {
+        "Read": [
+            "association_response",
+            "network_status",
+            "route_record",
+            "route_record",
+            "rejoin_response",
+            "link_status"
+        ]
+    },
+    "scan_channels": {
+        "Read": [
+            "association_response",
+            "beacon_request",
+            "network_status",
+            "rejoin_response",
+            "network_report"
+        ]
+    },
+    "scan_duration": {
+        "Read": [
+            "association_response",
+            "beacon_request",
+            "network_status",
+            "rejoin_response",
+            "network_report"
+        ]
+    },
+    "scan_count": {
+        "Read": [
+            "association_response",
+            "beacon_request",
+            "network_status",
+            "rejoin_response",
+            "network_report"
+        ]
+    },
+    "nwk_update_id": {
+        "Read": [
+            "association_response",
+            "route_request",
+            "route_reply",
+            "network_status",
+            "route_record",
+            "rejoin_response",
+            "rejoin_response",
+            "link_status",
+            "network_report",
+            "network_report",
+            "network_report",
+            "network_update",
+            "network_update",
+            "network_update",
+            "network_update"
+        ],
+        "Write": [
+            "network_update",
+            "network_update",
+            "network_update"
+        ]
+    },
+    "nwk_manager_addr": {
+        "Read": [
+            "association_response",
+            "route_reply",
+            "network_status",
+            "rejoin_response",
+            "network_report",
+            "network_update"
+        ]
+    },
+    "nwkaddr_remote_dev": {
+        "Read": [
+            "association_response",
+            "disassociation_notification",
+            "orphan_notification",
+            "route_request",
+            "route_reply",
+            "route_record",
+            "rejoin_response",
+            "link_status",
+            "network_report"
+        ]
+    },
+    "num_assoc_dev": {
+        "Read": [
+            "association_response",
+            "disassociation_notification",
+            "orphan_notification",
+            "route_request",
+            "route_record",
+            "link_status",
+            "network_report"
+        ]
+    },
+    "nwkaddr_assoc_dev_list": {
+        "Read": [
+            "association_response",
+            "disassociation_notification",
+            "orphan_notification",
+            "route_request",
+            "route_reply",
+            "route_record",
+            "link_status",
+            "network_report"
+        ]
+    },
+    "network_address": {
+        "Read": [
+            "association_response",
+            "route_request",
+            "route_request",
+            "network_status",
+            "route_record",
+            "rejoin_response",
+            "rejoin_response",
+            "rejoin_response",
+            "link_status",
+            "network_report"
+        ],
+        "Write": [
+            "rejoin_response"
+        ]
+    },
+    "active_power_ph_c": {
+        "Read": [
+            "data_request",
+            "route_record"
+        ]
+    },
+    "active_power_min_ph_c": {
+        "Read": [
+            "data_request",
+            "route_record"
+        ]
+    },
+    "active_power_max_ph_c": {
+        "Read": [
+            "data_request",
+            "route_record"
+        ]
+    },
+    "reactive_power_ph_c": {
+        "Read": [
+            "data_request",
+            "route_record"
+        ]
+    },
+    "apparent_power_ph_c": {
+        "Read": [
+            "data_request",
+            "route_record"
+        ]
+    },
+    "power_factor_ph_c": {
+        "Read": [
+            "data_request",
+            "route_record"
+        ]
+    },
+    "average_rms_voltage_meas_period_ph_c": {
+        "Read": [
+            "data_request",
+            "route_record"
+        ]
+    },
+    "average_rms_over_voltage_counter_ph_c": {
+        "Read": [
+            "data_request",
+            "route_record"
+        ]
+    },
+    "average_under_voltage_counter_ph_c": {
+        "Read": [
+            "data_request",
+            "route_record"
+        ]
+    },
+    "rms_extreme_over_voltage_period_ph_c": {
+        "Read": [
+            "data_request",
+            "route_record"
+        ]
+    },
+    "rms_extreme_under_voltage_period_ph_c": {
+        "Read": [
+            "data_request",
+            "route_record"
+        ]
+    },
+    "rms_voltage_sag_period_ph_c": {
+        "Read": [
+            "data_request",
+            "route_record"
+        ]
+    },
+    "rms_voltage_swell_period_ph_c": {
+        "Read": [
+            "data_request",
+            "route_record"
+        ]
+    },
+    "cluster_revision": {
+        "Read": [
+            "data_request",
+            "route_reply",
+            "network_status",
+            "route_record",
+            "route_record",
+            "link_status",
+            "network_report"
+        ]
+    },
+    "reporting_status": {
+        "Read": [
+            "data_request",
+            "network_status",
+            "route_record",
+            "route_record",
+            "link_status",
+            "network_report",
+            "network_report",
+            "end_device_timeout_response"
+        ],
+        "Write": [
+            "data_request",
+            "route_reply",
+            "route_record"
+        ]
+    },
+    "lock_state": {
+        "Read": [
+            "data_request",
+            "route_record"
+        ],
+        "Write": [
+            "data_request",
+            "route_record"
+        ]
+    },
+    "lock_type": {
+        "Read": [
+            "data_request",
+            "route_record"
+        ]
+    },
+    "actuator_enabled": {
+        "Read": [
+            "data_request",
+            "route_record"
+        ],
+        "Write": [
+            "data_request",
+            "route_record"
+        ]
+    },
+    "door_state": {
+        "Read": [
+            "data_request",
+            "route_record"
+        ]
+    },
+    "door_open_events": {
+        "Read": [
+            "data_request",
+            "route_record"
+        ]
+    },
+    "pan_id": {
+        "Read": [
+            "panidconflict_notification",
+            "coordinator_realignment",
+            "route_request",
+            "route_reply",
+            "network_status",
+            "route_record",
+            "link_status"
+        ],
+        "Write": [
+            "coordinator_realignment"
+        ]
+    },
+    "nwkaddr_of_interest": {
+        "Read": [
+            "orphan_notification",
+            "route_request",
+            "route_reply",
+            "route_record",
+            "link_status",
+            "network_report"
+        ]
+    },
+    "match_length": {
+        "Read": [
+            "orphan_notification",
+            "route_request",
+            "route_record",
+            "link_status",
+            "network_report"
+        ]
+    },
+    "match_list": {
+        "Read": [
+            "orphan_notification",
+            "route_request",
+            "route_record",
+            "link_status",
+            "network_report"
+        ]
+    },
+    "app_input_cluster_count": {
+        "Read": [
+            "orphan_notification",
+            "route_request",
+            "route_record",
+            "link_status",
+            "network_report"
+        ]
+    },
+    "app_output_cluster_count": {
+        "Read": [
+            "orphan_notification",
+            "route_request",
+            "route_record",
+            "link_status",
+            "network_report"
+        ]
+    },
+    "app_cluster_list": {
+        "Read": [
+            "orphan_notification",
+            "route_request",
+            "route_record",
+            "link_status",
+            "network_report"
+        ]
+    },
+    "number_of_children": {
+        "Read": [
+            "orphan_notification",
+            "route_request",
+            "route_record",
+            "link_status",
+            "network_report"
+        ]
+    },
+    "child_info": {
+        "Read": [
+            "orphan_notification",
+            "route_request",
+            "route_record",
+            "link_status",
+            "network_report"
+        ]
+    },
+    "panid": {
+        "Write": [
+            "coordinator_realignment",
+            "coordinator_realignment",
+            "coordinator_realignment"
+        ]
+    },
+    "coordinator_short_address": {
+        "Write": [
+            "coordinator_realignment",
+            "coordinator_realignment",
+            "coordinator_realignment"
+        ]
+    },
+    "channel": {
+        "Write": [
+            "coordinator_realignment",
+            "coordinator_realignment",
+            "coordinator_realignment"
+        ]
+    },
+    "superframe_specification": {
+        "Write": [
+            "coordinator_realignment",
+            "coordinator_realignment",
+            "coordinator_realignment"
+        ]
+    },
+    "logical_channel": {
+        "Write": [
+            "coordinator_realignment",
+            "coordinator_realignment",
+            "coordinator_realignment",
+            "network_update",
+            "network_update"
+        ],
+        "Read": [
+            "coordinator_realignment",
+            "coordinator_realignment",
+            "route_request",
+            "route_reply",
+            "route_record",
+            "route_record",
+            "rejoin_response",
+            "link_status",
+            "network_report",
+            "network_report",
+            "network_update",
+            "network_update"
+        ]
+    },
+    "extended_pan_id": {
+        "Read": [
+            "route_request",
+            "route_reply",
+            "network_status",
+            "route_record",
+            "link_status",
+            "network_report",
+            "network_update"
+        ]
+    },
+    "channel_mask": {
+        "Read": [
+            "route_request",
+            "route_reply",
+            "network_status",
+            "route_record",
+            "link_status"
+        ]
+    },
+    "protocol_version": {
+        "Read": [
+            "route_request",
+            "route_reply",
+            "network_status",
+            "route_record",
+            "link_status"
+        ]
+    },
+    "stack_profile": {
+        "Read": [
+            "route_request",
+            "route_reply",
+            "network_status",
+            "route_record",
+            "link_status"
+        ]
+    },
+    "node_desc_size": {
+        "Read": [
+            "route_request",
+            "link_status",
+            "network_report",
+            "end_device_timeout_response"
+        ]
+    },
+    "power_desc_size": {
+        "Read": [
+            "route_request",
+            "link_status",
+            "network_report",
+            "end_device_timeout_response"
+        ]
+    },
+    "active_epsize": {
+        "Read": [
+            "route_request",
+            "link_status",
+            "network_report",
+            "end_device_timeout_response"
+        ]
+    },
+    "neighbor_table_entries": {
+        "Read": [
+            "route_request",
+            "route_record",
+            "link_status"
+        ]
+    },
+    "neighbor_table_list_count": {
+        "Read": [
+            "route_request",
+            "route_record",
+            "link_status"
+        ]
+    },
+    "neighbor_table_list": {
+        "Read": [
+            "route_request",
+            "route_reply",
+            "network_status",
+            "route_record",
+            "link_status",
+            "network_report",
+            "network_update"
+        ]
+    },
+    "routing_table_entries": {
+        "Read": [
+            "route_request",
+            "route_reply",
+            "network_status",
+            "route_record",
+            "link_status",
+            "network_report",
+            "network_update"
+        ]
+    },
+    "routing_table_list_count": {
+        "Read": [
+            "route_request",
+            "route_reply",
+            "network_status",
+            "route_record",
+            "link_status",
+            "network_report",
+            "network_update"
+        ]
+    },
+    "routing_table_list": {
+        "Read": [
+            "route_request",
+            "route_reply",
+            "network_status",
+            "route_record",
+            "link_status",
+            "network_report",
+            "network_update"
+        ]
+    },
+    "discovery_cache_entries": {
+        "Read": [
+            "route_request",
+            "route_reply",
+            "network_status",
+            "route_record",
+            "link_status",
+            "network_report",
+            "network_update"
+        ]
+    },
+    "discovery_cache_list_count": {
+        "Read": [
+            "route_request",
+            "route_reply",
+            "network_status",
+            "route_record",
+            "link_status",
+            "network_report",
+            "network_update"
+        ]
+    },
+    "discovery_cache_list": {
+        "Read": [
+            "route_request",
+            "route_reply",
+            "network_status",
+            "route_record",
+            "link_status",
+            "network_report",
+            "network_update"
+        ]
+    },
+    "scanned_channels": {
+        "Read": [
+            "route_request",
+            "route_reply",
+            "network_status",
+            "route_record",
+            "link_status",
+            "network_report",
+            "network_update"
+        ]
+    },
+    "total_transmissions": {
+        "Read": [
+            "route_request",
+            "route_reply",
+            "network_status",
+            "route_record",
+            "link_status",
+            "network_report",
+            "network_update"
+        ]
+    },
+    "transmission_failures": {
+        "Read": [
+            "route_request",
+            "route_reply",
+            "network_status",
+            "route_record",
+            "link_status",
+            "network_report",
+            "network_update"
+        ]
+    },
+    "scanned_channels_list_count": {
+        "Read": [
+            "route_request",
+            "route_reply",
+            "network_status",
+            "route_record",
+            "link_status",
+            "network_report",
+            "network_update"
+        ]
+    },
+    "energy_values": {
+        "Read": [
+            "route_request",
+            "route_reply",
+            "network_status",
+            "route_record",
+            "link_status",
+            "network_report",
+            "network_update"
+        ]
+    },
+    "ieee": {
+        "Read": [
+            "route_request",
+            "route_reply"
+        ]
+    },
+    "device_info_records": {
+        "Read": [
+            "route_request",
+            "route_record",
+            "link_status"
+        ]
+    },
+    "group_id_count": {
+        "Read": [
+            "route_request",
+            "route_record",
+            "rejoin_response",
+            "link_status"
+        ]
+    },
+    "inter_pan_transaction_id": {
+        "Read": [
+            "route_request",
+            "route_reply",
+            "route_record",
+            "rejoin_response",
+            "link_status"
+        ]
+    },
+    "total": {
+        "Read": [
+            "route_request",
+            "route_record",
+            "link_status"
+        ]
+    },
+    "group_info_records": {
+        "Read": [
+            "route_request",
+            "route_record",
+            "link_status"
+        ]
+    },
+    "endpoint_info_records": {
+        "Read": [
+            "route_request",
+            "route_record",
+            "link_status"
+        ]
+    },
+    "zcl_version": {
+        "Read": [
+            "route_reply",
+            "link_status"
+        ]
+    },
+    "app_version": {
+        "Read": [
+            "route_reply",
+            "link_status"
+        ]
+    },
+    "stack_version": {
+        "Read": [
+            "route_reply",
+            "link_status"
+        ]
+    },
+    "hw_version": {
+        "Read": [
+            "route_reply",
+            "link_status"
+        ]
+    },
+    "manufacturer": {
+        "Read": [
+            "route_reply",
+            "link_status"
+        ]
+    },
+    "model": {
+        "Read": [
+            "route_reply",
+            "link_status"
+        ]
+    },
+    "date_code": {
+        "Read": [
+            "route_reply",
+            "link_status"
+        ]
+    },
+    "power_source": {
+        "Read": [
+            "route_reply",
+            "link_status"
+        ]
+    },
+    "generic_device_class": {
+        "Read": [
+            "route_reply",
+            "link_status"
+        ]
+    },
+    "generic_device_type": {
+        "Read": [
+            "route_reply",
+            "link_status"
+        ]
+    },
+    "product_code": {
+        "Read": [
+            "route_reply",
+            "link_status"
+        ]
+    },
+    "product_url": {
+        "Read": [
+            "route_reply",
+            "link_status"
+        ]
+    },
+    "manufacturer_version_details": {
+        "Read": [
+            "route_reply",
+            "link_status"
+        ]
+    },
+    "serial_number": {
+        "Read": [
+            "route_reply",
+            "link_status"
+        ]
+    },
+    "product_label": {
+        "Read": [
+            "route_reply",
+            "link_status"
+        ]
+    },
+    "max_duration": {
+        "Write": [
+            "route_reply"
+        ],
+        "Read": [
+            "link_status"
+        ]
+    },
+    "direction": {
+        "Read": [
+            "route_reply"
+        ],
+        "Write": [
+            "network_status",
+            "route_record"
+        ]
+    },
+    "attrid": {
+        "Read": [
+            "route_reply"
+        ],
+        "Write": [
+            "network_status",
+            "route_record"
+        ]
+    },
+    "value": {
+        "Read": [
+            "route_reply"
+        ],
+        "Write": [
+            "network_status",
+            "route_record"
+        ]
+    },
+    "min_interval": {
+        "Read": [
+            "route_reply"
+        ],
+        "Write": [
+            "network_status",
+            "route_record"
+        ]
+    },
+    "max_interval": {
+        "Read": [
+            "route_reply"
+        ],
+        "Write": [
+            "network_status",
+            "route_record"
+        ]
+    },
+    "initiator_ieee": {
+        "Read": [
+            "route_reply"
+        ]
+    },
+    "initiator_nwk": {
+        "Read": [
+            "route_reply"
+        ]
+    },
+    "key_index": {
+        "Read": [
+            "route_reply"
+        ]
+    },
+    "encrypted_network_key": {
+        "Read": [
+            "route_reply"
+        ]
+    },
+    "group_identifiers_begin": {
+        "Read": [
+            "route_reply"
+        ]
+    },
+    "group_identifiers_end": {
+        "Read": [
+            "route_reply"
+        ]
+    },
+    "free_network_addr_range_begin": {
+        "Read": [
+            "route_reply",
+            "rejoin_response"
+        ]
+    },
+    "free_network_addr_range_end": {
+        "Read": [
+            "route_reply",
+            "rejoin_response"
+        ]
+    },
+    "free_group_id_range_begin": {
+        "Read": [
+            "route_reply",
+            "rejoin_response"
+        ]
+    },
+    "free_group_id_range_end": {
+        "Read": [
+            "route_reply",
+            "rejoin_response"
+        ]
+    },
+    "status": {
+        "Read": [
+            "network_status",
+            "route_record",
+            "network_report",
+            "end_device_timeout_response"
+        ]
+    },
+    "remaining_battery_life": {
+        "Read": [
+            "network_status",
+            "route_record",
+            "network_report"
+        ]
+    },
+    "hours_in_operation": {
+        "Read": [
+            "network_status",
+            "route_record",
+            "network_report"
+        ]
+    },
+    "hours_in_fault": {
+        "Read": [
+            "network_status",
+            "route_record",
+            "network_report"
+        ]
+    },
+    "extended_status": {
+        "Read": [
+            "network_status",
+            "route_record",
+            "network_report"
+        ]
+    },
+    "remaining_battery_life_days": {
+        "Read": [
+            "network_status",
+            "route_record",
+            "network_report"
+        ]
+    },
+    "current_meter_id": {
+        "Read": [
+            "network_status",
+            "route_record",
+            "network_report"
+        ]
+    },
+    "log_max_size": {
+        "Read": [
+            "network_status",
+            "route_record",
+            "network_report"
+        ]
+    },
+    "log_queue_max_size": {
+        "Read": [
+            "network_status",
+            "route_record",
+            "network_report"
+        ]
+    },
+    "measurement_type": {
+        "Read": [
+            "network_status",
+            "route_record",
+            "network_report"
+        ]
+    },
+    "dc_voltage": {
+        "Read": [
+            "network_status",
+            "route_record",
+            "network_report"
+        ]
+    },
+    "dc_voltage_min": {
+        "Read": [
+            "network_status",
+            "route_record",
+            "network_report"
+        ]
+    },
+    "dc_voltage_max": {
+        "Read": [
+            "network_status",
+            "route_record",
+            "network_report"
+        ]
+    },
+    "dc_current": {
+        "Read": [
+            "network_status",
+            "route_record",
+            "network_report"
+        ]
+    },
+    "dc_current_min": {
+        "Read": [
+            "network_status",
+            "route_record",
+            "network_report"
+        ]
+    },
+    "dc_current_max": {
+        "Read": [
+            "network_status",
+            "route_record",
+            "network_report"
+        ]
+    },
+    "dc_power": {
+        "Read": [
+            "network_status",
+            "route_record",
+            "network_report"
+        ]
+    },
+    "dc_power_min": {
+        "Read": [
+            "network_status",
+            "route_record",
+            "network_report"
+        ]
+    },
+    "dc_power_max": {
+        "Read": [
+            "network_status",
+            "route_record",
+            "network_report"
+        ]
+    },
+    "dc_voltage_multiplier": {
+        "Read": [
+            "network_status",
+            "route_record",
+            "network_report"
+        ]
+    },
+    "dc_voltage_divisor": {
+        "Read": [
+            "network_status",
+            "route_record",
+            "network_report"
+        ]
+    },
+    "dc_current_multiplier": {
+        "Read": [
+            "network_status",
+            "route_record",
+            "network_report"
+        ]
+    },
+    "dc_current_divisor": {
+        "Read": [
+            "network_status",
+            "route_record",
+            "network_report"
+        ]
+    },
+    "dc_power_multiplier": {
+        "Read": [
+            "network_status",
+            "route_record",
+            "network_report"
+        ]
+    },
+    "dc_power_divisor": {
+        "Read": [
+            "network_status",
+            "route_record",
+            "network_report"
+        ]
+    },
+    "rejoin_status": {
+        "Read": [
+            "network_status",
+            "rejoin_response",
+            "rejoin_response",
+            "end_device_timeout_response"
+        ],
+        "Write": [
+            "rejoin_response"
+        ]
+    },
+    "user_type": {
+        "Read": [
+            "network_status",
+            "route_record"
+        ]
+    },
+    "user_status": {
+        "Read": [
+            "network_status",
+            "route_record"
+        ]
+    },
+    "local_time": {
+        "Read": [
+            "network_status",
+            "route_record"
+        ]
+    },
+    "lift_value": {
+        "Read": [
+            "network_status",
+            "route_record"
+        ],
+        "Write": [
+            "route_record"
+        ]
+    },
+    "percentage_lift_value": {
+        "Read": [
+            "network_status",
+            "route_record"
+        ],
+        "Write": [
+            "route_record"
+        ]
+    },
+    "tilt_value": {
+        "Read": [
+            "network_status",
+            "route_record"
+        ],
+        "Write": [
+            "route_record"
+        ]
+    },
+    "percentage_tilt_value": {
+        "Read": [
+            "network_status",
+            "route_record"
+        ],
+        "Write": [
+            "route_record"
+        ]
+    },
+    "group_id": {
+        "Read": [
+            "network_status",
+            "route_record"
+        ]
+    },
+    "group_name": {
+        "Read": [
+            "network_status",
+            "route_record"
+        ]
+    },
+    "group_count": {
+        "Read": [
+            "network_status",
+            "route_record"
+        ]
+    },
+    "groups": {
+        "Read": [
+            "network_status",
+            "route_record"
+        ]
+    },
+    "scene_id": {
+        "Read": [
+            "network_status",
+            "route_record"
+        ]
+    },
+    "scene_name": {
+        "Read": [
+            "network_status",
+            "route_record"
+        ]
+    },
+    "transition_time": {
+        "Write": [
+            "network_status",
+            "route_record"
+        ]
+    },
+    "local_temperature": {
+        "Read": [
+            "route_record"
+        ]
+    },
+    "outdoor_temperature": {
+        "Read": [
+            "route_record"
+        ]
+    },
+    "occupancy": {
+        "Read": [
+            "route_record"
+        ]
+    },
+    "abs_min_heat_setpoint_limit": {
+        "Read": [
+            "route_record"
+        ]
+    },
+    "abs_max_heat_setpoint_limit": {
+        "Read": [
+            "route_record"
+        ]
+    },
+    "abs_min_cool_setpoint_limit": {
+        "Read": [
+            "route_record"
+        ]
+    },
+    "abs_max_cool_setpoint_limit": {
+        "Read": [
+            "route_record"
+        ]
+    },
+    "pi_cooling_demand": {
+        "Read": [
+            "route_record"
+        ]
+    },
+    "pi_heating_demand": {
+        "Read": [
+            "route_record"
+        ]
+    },
+    "system_type_config": {
+        "Read": [
+            "route_record"
+        ]
+    },
+    "local_temperature_calibration": {
+        "Read": [
+            "route_record"
+        ],
+        "Write": [
+            "route_record"
+        ]
+    },
+    "occupied_cooling_setpoint": {
+        "Read": [
+            "route_record"
+        ],
+        "Write": [
+            "route_record"
+        ]
+    },
+    "occupied_heating_setpoint": {
+        "Read": [
+            "route_record"
+        ],
+        "Write": [
+            "route_record"
+        ]
+    },
+    "unoccupied_cooling_setpoint": {
+        "Read": [
+            "route_record"
+        ],
+        "Write": [
+            "route_record"
+        ]
+    },
+    "unoccupied_heating_setpoint": {
+        "Read": [
+            "route_record"
+        ],
+        "Write": [
+            "route_record"
+        ]
+    },
+    "min_heat_setpoint_limit": {
+        "Read": [
+            "route_record"
+        ],
+        "Write": [
+            "route_record"
+        ]
+    },
+    "max_heat_setpoint_limit": {
+        "Read": [
+            "route_record"
+        ],
+        "Write": [
+            "route_record"
+        ]
+    },
+    "min_cool_setpoint_limit": {
+        "Read": [
+            "route_record"
+        ],
+        "Write": [
+            "route_record"
+        ]
+    },
+    "max_cool_setpoint_limit": {
+        "Read": [
+            "route_record"
+        ],
+        "Write": [
+            "route_record"
+        ]
+    },
+    "min_setpoint_dead_band": {
+        "Read": [
+            "route_record"
+        ],
+        "Write": [
+            "route_record"
+        ]
+    },
+    "current_tier9_summ_received": {
+        "Read": [
+            "route_record",
+            "network_report"
+        ]
+    },
+    "current_tier10_summ_delivered": {
+        "Read": [
+            "route_record",
+            "network_report"
+        ]
+    },
+    "current_tier10_summ_received": {
+        "Read": [
+            "route_record",
+            "network_report"
+        ]
+    },
+    "current_tier11_summ_delivered": {
+        "Read": [
+            "route_record",
+            "network_report"
+        ]
+    },
+    "current_tier11_summ_received": {
+        "Read": [
+            "route_record",
+            "network_report"
+        ]
+    },
+    "current_tier12_summ_delivered": {
+        "Read": [
+            "route_record",
+            "network_report"
+        ]
+    },
+    "current_tier12_summ_received": {
+        "Read": [
+            "route_record",
+            "network_report"
+        ]
+    },
+    "current_tier13_summ_delivered": {
+        "Read": [
+            "route_record",
+            "network_report"
+        ]
+    },
+    "current_tier13_summ_received": {
+        "Read": [
+            "route_record",
+            "network_report"
+        ]
+    },
+    "current_tier14_summ_delivered": {
+        "Read": [
+            "route_record",
+            "network_report"
+        ]
+    },
+    "current_tier14_summ_received": {
+        "Read": [
+            "route_record",
+            "network_report"
+        ]
+    },
+    "current_tier15_summ_delivered": {
+        "Read": [
+            "route_record",
+            "network_report"
+        ]
+    },
+    "current_tier15_summ_received": {
+        "Read": [
+            "route_record",
+            "network_report"
+        ]
+    },
+    "ac_frequency": {
+        "Read": [
+            "route_record"
+        ]
+    },
+    "ac_frequency_min": {
+        "Read": [
+            "route_record"
+        ]
+    },
+    "ac_frequency_max": {
+        "Read": [
+            "route_record"
+        ]
+    },
+    "neutral_current": {
+        "Read": [
+            "route_record"
+        ]
+    },
+    "total_active_power": {
+        "Read": [
+            "route_record"
+        ]
+    },
+    "total_reactive_power": {
+        "Read": [
+            "route_record"
+        ]
+    },
+    "total_apparent_power": {
+        "Read": [
+            "route_record"
+        ]
+    },
+    "meas1st_harmonic_current": {
+        "Read": [
+            "route_record"
+        ]
+    },
+    "meas3rd_harmonic_current": {
+        "Read": [
+            "route_record"
+        ]
+    },
+    "meas5th_harmonic_current": {
+        "Read": [
+            "route_record"
+        ]
+    },
+    "meas7th_harmonic_current": {
+        "Read": [
+            "route_record"
+        ]
+    },
+    "meas9th_harmonic_current": {
+        "Read": [
+            "route_record"
+        ]
+    },
+    "meas11th_harmonic_current": {
+        "Read": [
+            "route_record"
+        ]
+    },
+    "meas_phase1st_harmonic_current": {
+        "Read": [
+            "route_record"
+        ]
+    },
+    "meas_phase3rd_harmonic_current": {
+        "Read": [
+            "route_record"
+        ]
+    },
+    "meas_phase5th_harmonic_current": {
+        "Read": [
+            "route_record"
+        ]
+    },
+    "meas_phase7th_harmonic_current": {
+        "Read": [
+            "route_record"
+        ]
+    },
+    "meas_phase9th_harmonic_current": {
+        "Read": [
+            "route_record"
+        ]
+    },
+    "meas_phase11th_harmonic_current": {
+        "Read": [
+            "route_record"
+        ]
+    },
+    "ac_frequency_multiplier": {
+        "Read": [
+            "route_record"
+        ]
+    },
+    "ac_frequency_divisor": {
+        "Read": [
+            "route_record"
+        ]
+    },
+    "power_multiplier": {
+        "Read": [
+            "route_record"
+        ]
+    },
+    "power_divisor": {
+        "Read": [
+            "route_record"
+        ]
+    },
+    "harmonic_current_multiplier": {
+        "Read": [
+            "route_record"
+        ]
+    },
+    "phase_harmonic_current_multiplier": {
+        "Read": [
+            "route_record"
+        ]
+    },
+    "instantaneous_voltage": {
+        "Read": [
+            "route_record"
+        ]
+    },
+    "instantaneous_line_current": {
+        "Read": [
+            "route_record"
+        ]
+    },
+    "instantaneous_active_current": {
+        "Read": [
+            "route_record"
+        ]
+    },
+    "instantaneous_reactive_current": {
+        "Read": [
+            "route_record"
+        ]
+    },
+    "instantaneous_power": {
+        "Read": [
+            "route_record"
+        ]
+    },
+    "rms_voltage": {
+        "Read": [
+            "route_record"
+        ]
+    },
+    "rms_voltage_min": {
+        "Read": [
+            "route_record"
+        ]
+    },
+    "rms_voltage_max": {
+        "Read": [
+            "route_record"
+        ]
+    },
+    "rms_current": {
+        "Read": [
+            "route_record"
+        ]
+    },
+    "rms_current_min": {
+        "Read": [
+            "route_record"
+        ]
+    },
+    "rms_current_max": {
+        "Read": [
+            "route_record"
+        ]
+    },
+    "active_power": {
+        "Read": [
+            "route_record"
+        ]
+    },
+    "active_power_min": {
+        "Read": [
+            "route_record"
+        ]
+    },
+    "active_power_max": {
+        "Read": [
+            "route_record"
+        ]
+    },
+    "reactive_power": {
+        "Read": [
+            "route_record"
+        ]
+    },
+    "relay_count": {
+        "Read": [
+            "route_record"
+        ]
+    },
+    "relay_list": {
+        "Read": [
+            "route_record"
+        ]
+    },
+    "entry_count": {
+        "Read": [
+            "route_record"
+        ]
+    },
+    "network_count": {
+        "Read": [
+            "route_record"
+        ]
+    },
+    "network_list_count": {
+        "Read": [
+            "route_record"
+        ]
+    },
+    "extended_panid": {
+        "Read": [
+            "route_record",
+            "network_report",
+            "network_update"
+        ]
+    },
+    "zig_bee_version": {
+        "Read": [
+            "route_record"
+        ]
+    },
+    "beacon_order": {
+        "Read": [
+            "route_record"
+        ]
+    },
+    "superframe_order": {
+        "Read": [
+            "route_record"
+        ]
+    },
+    "permit_joining": {
+        "Read": [
+            "route_record"
+        ]
+    },
+    "router_capacity": {
+        "Read": [
+            "route_record"
+        ]
+    },
+    "end_device_capacity": {
+        "Read": [
+            "route_record"
+        ]
+    },
+    "relay_status": {
+        "Read": [
+            "route_record"
+        ]
+    },
+    "rssi_correction": {
+        "Read": [
+            "rejoin_response"
+        ]
+    },
+    "zigbee_info": {
+        "Read": [
+            "rejoin_response"
+        ]
+    },
+    "touchlink_info": {
+        "Read": [
+            "rejoin_response"
+        ]
+    },
+    "key_bitmask": {
+        "Read": [
+            "rejoin_response"
+        ]
+    },
+    "response_id": {
+        "Read": [
+            "rejoin_response"
+        ]
+    },
+    "num_sub_devices": {
+        "Read": [
+            "rejoin_response"
+        ]
+    },
+    "total_group_ids": {
+        "Read": [
+            "rejoin_response"
+        ]
+    }
+}

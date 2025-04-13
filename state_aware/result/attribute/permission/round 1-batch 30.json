@@ -1,0 +1,118 @@
+{
+    "capability": {
+        "Read": [
+            "association_request"
+        ]
+    },
+    "short_address": {
+        "Read": [
+            "association_response"
+        ],
+        "Write": [
+            "association_response"
+        ]
+    },
+    "association_status": {
+        "Read": [
+            "association_response"
+        ],
+        "Write": [
+            "association_response"
+        ]
+    },
+    "device_short_address": {
+        "Read": [
+            "association_response"
+        ]
+    },
+    "active_epcount": {
+        "Read": [
+            "association_response"
+        ]
+    },
+    "active_eplist": {
+        "Read": [
+            "association_response"
+        ]
+    },
+    "binding_target": {
+        "Read": [
+            "association_response"
+        ]
+    },
+    "num_in_clusters": {
+        "Read": [
+            "association_response"
+        ]
+    },
+    "in_cluster_list": {
+        "Read": [
+            "association_response"
+        ]
+    },
+    "num_out_clusters": {
+        "Read": [
+            "association_response"
+        ]
+    },
+    "out_cluster_list": {
+        "Read": [
+            "association_response"
+        ]
+    },
+    "binding_table_entries": {
+        "Read": [
+            "association_response"
+        ]
+    },
+    "binding_table_list_count": {
+        "Read": [
+            "association_response"
+        ]
+    },
+    "binding_table_list": {
+        "Read": [
+            "association_response"
+        ]
+    },
+    "source_table_entries": {
+        "Read": [
+            "association_response"
+        ]
+    },
+    "source_table_list_count": {
+        "Read": [
+            "association_response"
+        ]
+    },
+    "source_table_list": {
+        "Read": [
+            "association_response"
+        ]
+    },
+    "scan_channels": {
+        "Read": [
+            "association_response"
+        ]
+    },
+    "scan_duration": {
+        "Read": [
+            "association_response"
+        ]
+    },
+    "scan_count": {
+        "Read": [
+            "association_response"
+        ]
+    },
+    "nwk_update_id": {
+        "Read": [
+            "association_response"
+        ]
+    },
+    "nwk_manager_addr": {
+        "Read": [
+            "association_response"
+        ]
+    }
+}

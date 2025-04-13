@@ -1,0 +1,30 @@
+{
+    "Attributes": [
+        "short_address",
+        "extended_pan_id",
+        "pan_id",
+        "channel_mask",
+        "protocol_version",
+        "stack_profile",
+        "startup_control",
+        "trust_center_address",
+        "trust_center_master_key",
+        "network_key",
+        "use_insecure_join",
+        "preconfigured_link_key",
+        "network_key_seq_num",
+        "network_key_type",
+        "network_manager_address",
+        "scan_attempts",
+        "time_between_scans",
+        "rejoin_interval",
+        "max_rejoin_interval",
+        "indirect_poll_rate",
+        "parent_retry_threshold",
+        "concentrator_flag",
+        "concentrator_radius",
+        "concentrator_discovery_time",
+        "cluster_revision",
+        "reporting_status"
+    ]
+}

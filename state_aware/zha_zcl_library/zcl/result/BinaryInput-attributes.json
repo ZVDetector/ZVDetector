@@ -1,0 +1,15 @@
+{
+    "Attributes": [
+        "active_text",
+        "description",
+        "inactive_text",
+        "out_of_service",
+        "polarity",
+        "present_value",
+        "reliability",
+        "status_flags",
+        "application_type",
+        "cluster_revision",
+        "reporting_status"
+    ]
+}

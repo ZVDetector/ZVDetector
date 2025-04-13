@@ -1,0 +1,7 @@
+{
+    "ACKFrame": {
+        "FrameControl": "uint16",
+        "SequenceNumber": "uint8",
+        "FCS": "uint16"
+    }
+}

@@ -1,0 +1,7 @@
+{
+    "Attributes": [
+        "temperature_display_mode",
+        "keypad_lockout",
+        "schedule_programming_visibility"
+    ]
+}

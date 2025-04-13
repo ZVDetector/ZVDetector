@@ -1,0 +1,21 @@
+class TemperatureMeasurement(Cluster):
+    cluster_id: Final[t.uint16_t] = 0x0402
+    name: Final = "Temperature Measurement"
+    ep_attribute: Final = "temperature"
+
+    class AttributeDefs(BaseAttributeDefs):
+        # Temperature Measurement Information
+        measured_value: Final = ZCLAttributeDef(
+            id=0x0000, type=t.int16s, access="rp", mandatory=True
+        )
+        min_measured_value: Final = ZCLAttributeDef(
+            id=0x0001, type=t.int16s, access="r", mandatory=True
+        )
+        max_measured_value: Final = ZCLAttributeDef(
+            id=0x0002, type=t.int16s, access="r", mandatory=True
+        )
+        tolerance: Final = ZCLAttributeDef(id=0x0003, type=t.uint16_t, access="r")
+        # 0x0010: ('min_percent_change', UNKNOWN),
+        # 0x0011: ('min_absolute_change', UNKNOWN),
+        cluster_revision: Final = foundation.ZCL_CLUSTER_REVISION_ATTR
+        reporting_status: Final = foundation.ZCL_REPORTING_STATUS_ATTR

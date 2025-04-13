@@ -1,0 +1,11 @@
+{
+    "Attributes": [
+        "zone_state",
+        "zone_type",
+        "zone_status",
+        "cie_addr",
+        "zone_id",
+        "num_zone_sensitivity_levels_supported",
+        "current_zone_sensitivity_level"
+    ]
+}

@@ -1,0 +1,4 @@
+class EthyleneOxideConcentration(_ConcentrationMixin, Cluster):
+    cluster_id: Final[t.uint16_t] = 0x040F
+    name: Final = "Ethylene Oxide (C₂H₄O) Concentration"
+    ep_attribute: Final = "ethylene_oxide_concentration"

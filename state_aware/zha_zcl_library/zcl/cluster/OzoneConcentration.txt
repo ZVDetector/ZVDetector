@@ -1,0 +1,4 @@
+class OzoneConcentration(_ConcentrationMixin, Cluster):
+    cluster_id: Final[t.uint16_t] = 0x0415
+    name: Final = "Ozone (O₃) Concentration"
+    ep_attribute: Final = "ozone_concentration

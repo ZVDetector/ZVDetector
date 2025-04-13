@@ -1,0 +1,142 @@
+{
+    "General MAC frame format": {
+        "description": "The MAC frame format is composed of a MHR, a MAC payload, and a MFR. The fields of the MHR appear in a fixed order, however, the addressing fields may not be included in all frames. The general MAC frame shall be formatted as illustrated in Figure 34.",
+        "fields": [
+            "Frame control",
+            "Sequence number",
+            "Destination PAN identifier",
+            "Destination address",
+            "Source PAN identifier",
+            "Source address",
+            "Frame payload",
+            "FCS"
+        ],
+        "Frame Control Field": {
+            "description": "The frame control field is 16 bits in length and contains information defining the frame type, addressing fields, and other control flags. The frame control field shall be formatted as illustrated in Figure 35.",
+            "fields": [
+                "Frame type",
+                "Security enabled",
+                "Frame pending",
+                "Ack request",
+                "Intra-PAN",
+                "Reserved",
+                "Dest addressing mode",
+                "Reserved",
+                "Source addressing mode"
+            ],
+            "Frame Type Sub-Field": "The frame type subfield is 3 bits in length and shall be set to one of the nonreserved values listed in Table 65.",
+            "Security enabled subfield": "The security enabled subfield is 1 bit in length and shall be set to 0 if the frame is not cryptographically protected by the MAC sublayer. If the security enabled subfield is set to 1, the frame shall be protected using the keys stored in the MAC PIB for the security relationship indicated by the current frame. The cryptographic operations used to protect the frame are defined by the security suite selected for that security relationship. If no security suite is defined for that relationship, the security enabled subfield shall be set to 0.",
+            "Frame pending subfield": "The frame pending subfield is 1 bit in length and shall be set to 1 if the device sending the frame has additional data to send to the recipient following the current transfer. If more data are pending, the recipient shall retrieve them by sending another data request command to the device. If the device sending the frame does not have any more data for the recipient, this subfield shall be set to 0. The frame pending subfield shall be used only in frames transmitted either during the CAP by devices operating on a beacon-enabled PAN or at any time by devices operating on a nonbeacon-enabled PAN. At all other times it shall be set to 0 on transmission and ignored on reception.",
+            "Acknowledgement request subfield": "The acknowledgment request subfield is 1 bit in length and specifies whether an acknowledgment is required from the recipient device on receipt of a data or MAC command frame. If this subfield is set to 1, the recipient device shall send an acknowledgment frame after determining that the frame is valid (see 7.5.6.2 for a list of requirements necessary for frame validity). If this subfield is set to 0, the recipient device shall not send an acknowledgment frame after determining that the frame is valid.",
+            "Intra-PAN subfield": "The intra-PAN subfield is 1 bit in length and specifies whether the MAC frame is to be sent within the same PAN (intra-PAN) or to another PAN (inter-PAN). If this subfield is set to 1 and both destination and source addresses are present, the frame shall not contain the source PAN identifier field. If this subfield is set to 0 and both destination and source addresses are present, the frame shall contain both destination and source PAN identifier fields.",
+            "Destination addressing mode subfield": "The destination addressing mode subfield is 2 bits in length and shall be set to one of the values listed in Table 66. If this subfield is equal to 0 and the frame type subfield does not specify that this frame is an acknowledgment or beacon frame, the source addressing mode subfield shall be nonzero, implying that the frame is directed to the PAN coordinator with the PAN identifier as specified in the source PAN identifier field.",
+            "Source addressing mode subfield": "The source addressing mode subfield is 2 bits in length and shall be set to one of the values listed in Table 66. If this subfield is equal to 0 and the frame type subfield does not specify that this frame is an acknowledgment frame, the destination addressing mode subfield shall be nonzero, implying that the frame has originated from the PAN coordinator with the PAN identifier as specified in the destination PAN identifier field."
+        },
+        "Sequence number field": {
+            "description": "The sequence number field is 8 bits in length and specifies a unique sequence identifier for the frame. For a beacon frame, the sequence number field shall specify a BSN. Each coordinator shall store its current BSN value in the MAC PIB attribute macBSN and initialize it to a random value. The algorithm for choosing a random number is out of the scope of this standard. The coordinator shall copy the value of the macBSN attribute into the sequence number field of a beacon frame, each time one is generated, and shall then increment macBSN by one. For a data, acknowledgment, or MAC command frame, the sequence number field shall specify a data sequence number (DSN) that is used to match an acknowledgment frame to the data or MAC command frame. Each device shall support exactly one DSN regardless of the number of unique devices with which it wishes to communicate. Each device shall store its current DSN value in the MAC PIB attribute macDSN and initialize it to a random value. The algorithm for choosing a random number is out of the scope of this standard. The device shall copy the value of the macDSN attribute into the sequence number field of a data or MAC command frame, each time one is generated, and shall then increment macDSN by one. If an acknowledgment is requested, the recipient device shall copy the DSN received in the data or MAC command frame into the DSN field of the corresponding acknowledgment frame. If the acknowledgment was not received after macAckWaitDuration symbols, the MAC sublayer of the originating device shall retransmit the frame using the same DSN as was used in the original transmission.",
+            "fields": []
+        },
+        "Destination PAN identifier field": {
+            "description": "The destination PAN identifier field is 16 bits in length and specifies the unique PAN identifier of the intended recipient of the frame. A value of 0 x ffff in this field shall represent the broadcast PAN identifier, which shall be accepted as a valid PAN identifier by all devices currently listening to the channel. This field shall be included in the MAC frame only if the destination addressing mode subfield of the frame control field is nonzero.",
+            "fields": []
+        },
+        "Destination address field": {
+            "description": "The destination address field is either 16 bits or 64 bits in length, according to the value specified in the destination addressing mode subfield of the frame control field (see 7.2.1.1.6), and specifies the address of the intended recipient of the frame. A 16 bit value of 0 x ffff in this field shall represent the broadcast short address, which shall be accepted as a valid short address by all devices currently listening to the channel. This field shall be included in the MAC frame only if the destination addressing mode subfield of the frame control field is nonzero.",
+            "fields": []
+        },
+        "Source PAN identifier field": {
+            "description": "The source PAN identifier field is 16 bits in length and specifies the unique PAN identifier of the originator of the frame. This field shall be included in the MAC frame only if the source addressing mode and intra- PAN subfields of the frame control field are nonzero and equal to zero, respectively. The PAN identifier of a device is initially determined during association on a PAN, but may change following a PAN identifier conflict resolution (see 7.5.2.2).",
+            "fields": []
+        },
+        "Source address field": {
+            "description": "The source address field is either 16 bits or 64 bits in length, according to the value specified in the destination addressing mode subfield of the frame control field (see 7.2.1.1.7), and specifies the address of the originator of the frame. This field shall be included in the MAC frame only if the source addressing mode subfield of the frame control field is nonzero.",
+            "fields": []
+        },
+        "Frame payload field": {
+            "description": "The frame payload field has a variable length and contains information specific to individual frame types. If the security enabled subfield is set to 1 in the frame control field, the frame payload is protected as defined by the security suite selected for that relationship.",
+            "fields": []
+        },
+        "FCS field": {
+            "description": "The FCS field is 16 bits in length and contains a 16 bit ITU-T CRC. The FCS is calculated over the MHR and MAC payload parts of the frame. The FCS shall be calculated using the following standard generator polynomial of degree 16: The FCS shall be calculated for transmission using the following algorithm: — Let be the polynomial representing the sequence of bits for which the checksum is to be computed. — Multiply M(x) by x16, giving the polynomial . — Divide modulo 2 by the generator polynomial, G16(x), to obtain the remainder polynomial, . — The FCS field is given by the remainder coefficients. As an example, consider an acknowledgment frame with no payload and the following 3 byte MHR: 0100 0000 0000 0000 0101 0110 b0.................................................b23 [leftmost bit (b0) transmitted first in time].The FCS for this case would be the following: 0010 0111 1001 1110 r0..............................r15 [leftmost bit (r0) transmitted first in time]. A typical implementation is depicted in Figure 36. CRC-16 Generator Polynomial: G(x) = x16 + x12 + x5 + 1 r2 r3 r5 r4 r6 r7 r8 r9 r10 r11 r12 r13 r14 r15 1. Initialize the remainder register (r0 through r15) to zero. 2. Shift MHR and payload into the divider in the order of transmission (LSB first). 3. After the last bit of the data field is shifted into the divider, the remainder register contains the FCS. 4. The FCS is appended to the data field so that r0 is transmitted first.",
+            "fields": []
+        }
+    },
+    "Format of Individual Frame Types": {
+        "Beacon frame format": {
+            "MAC header": [
+                "Frame control",
+                "Sequence number",
+                "Addressing fields"
+            ],
+            "MAC payload": [
+                "Superframe specification",
+                "GTS fields",
+                "Pending address fields",
+                "Beacon payload"
+            ],
+            "MFR": ["FCS"]
+        },
+        "Data frame format": {
+            "MAC header": [
+                "Frame control",
+                "Sequence number",
+                "Addressing fields"
+            ],
+            "MAC payload": [
+                "Data payload"
+            ],
+            "MFR": [
+                "FCS"
+            ],
+            "MAC header Fields": "The order of the fields of the acknowledgment frame shall conform to the order of the general MAC frame as illustrated in Figure 34."
+        },
+        "Acknowledgement Frame Format": {
+            "MAC header": [
+                "Frame control",
+                "Sequence number"
+            ],
+            "MAC header Fields": "The order of the fields of the acknowledgment frame shall conform to the order of the general MAC frame as illustrated in Figure 34."
+        },
+        "MAC Command Frame Format": {
+            "MAC header": [
+                "Frame control",
+                "Sequence number",
+                "Addressing fields"
+            ],
+            "MAC payload": [
+                "Command frame identifier",
+                "Command payload"
+            ],
+            "MFR": [
+                "FCS"
+            ],
+            "APS Header Fields": "The APS header field for an APS command frame shall contain the frame control and APS counter fields. In this version of the specification, the APS command frame shall not be fragmented and the extended header field shall not be present. In the frame control field, the frame type sub-field shall contain the value that indicates an APS command frame, as shown in Table 2.20. The APS Command Payload shall be set appropriately according to the intended use of the APS command frame. "
+        }
+    },
+    "Command Frames": {
+        "Command Identifier": [
+            "Association Request",
+            "Association Response",
+            "Disassociation Notification",
+            "Data Request",
+            "PAN ID Conflict Notification",
+            "Orphan Notification",
+            "Beacon Request",
+            "Coordinator Realignment",
+            "GTS Request",
+            "Reserved"
+        ],
+        "Value": [
+            "0x01",
+            "0x02",
+            "0x03",
+            "0x04",
+            "0x05",
+            "0x06",
+            "0x07",
+            "0x08",
+            "0x09",
+            "0x0a–0xff"
+        ]
+    }
+}

@@ -1,0 +1,79 @@
+{
+    "transport_key": {
+        "apscommand_identifier": "uint8",
+        "standard_key_type": "uint8",
+        "key_descriptor": {
+            "trust_center_link_key_descriptor_field": {
+                "key": "uint128",
+                "destination_address": "uint64",
+                "source_address": "uint64",
+                "tlvs": "byte[]"
+            },
+            "network_key_descriptor_field": {
+                "key": "uint128",
+                "sequence_number": "uint8",
+                "destination_address": "uint64",
+                "source_address": "uint64"
+            },
+            "application_link_key_descriptor_field": {
+                "key": "uint128",
+                "partner_address": "uint64",
+                "initiator_flag": "uint8",
+                "tlvs": "byte[]"
+            }
+        }
+    },
+    "update_device": {
+        "apscommand_identifier": "uint8",
+        "device_address": "uint64",
+        "device_short_address": "uint16",
+        "status": "uint8"
+    },
+    "remove_device": {
+        "apscommand_identifier": "uint8",
+        "target_address": "uint64"
+    },
+    "request_key": {
+        "apscommand_identifier": "uint8",
+        "request_key_type": "uint8",
+        "partner_address": "uint64 | None"
+    },
+    "switch_key": {
+        "apscommand_identifier": "uint8",
+        "sequence_number": "uint8"
+    },
+    "tunnel": {
+        "apscommand_identifier": "uint8",
+        "destination_address": "uint64",
+        "tunneled_apsheader": "uint16",
+        "tunneled_auxiliary_frame": "byte[13]",
+        "tunneled_command": "byte[]",
+        "tunneled_apsmic": "uint32"
+    },
+    "verify_key": {
+        "apscommand_identifier": "uint8",
+        "standard_key_type": "uint8",
+        "source_address": "uint64",
+        "initiator_verify_key_hash_value": "uint128"
+    },
+    "confirm_key": {
+        "apscommand_identifier": "uint8",
+        "status": "uint8",
+        "standard_key_type": "uint8",
+        "destination_address": "uint64"
+    },
+    "relay_message_downstream": {
+        "apscommand_identifier": "uint8",
+        "tlvs": {
+            "destination_eui64": "uint64",
+            "message_to_be_relayed": "byte[]"
+        }
+    },
+    "relay_message_upstream": {
+        "apscommand_identifier": "uint8",
+        "tlvs": {
+            "source_eui64": "uint64",
+            "message_to_be_relayed": "byte[]"
+        }
+    }
+}

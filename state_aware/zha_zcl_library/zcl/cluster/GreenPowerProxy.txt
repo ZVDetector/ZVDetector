@@ -1,0 +1,3 @@
+class GreenPowerProxy(Cluster):
+    cluster_id: Final[t.uint16_t] = 0x0021
+    ep_attribute: Final = "green_power"

@@ -1,0 +1,15 @@
+{
+    "Attributes": [
+        "current_temperature",
+        "min_temp_experienced",
+        "max_temp_experienced",
+        "over_temp_total_dwell",
+        "dev_temp_alarm_mask",
+        "low_temp_thres",
+        "high_temp_thres",
+        "low_temp_dwell_trip_point",
+        "high_temp_dwell_trip_point",
+        "cluster_revision",
+        "reporting_status"
+    ]
+}

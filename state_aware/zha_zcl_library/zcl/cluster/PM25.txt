@@ -1,0 +1,6 @@
+class PM25(_ConcentrationMixin, Cluster):
+    """Particulate Matter 2.5 microns or less"""
+
+    cluster_id: Final[t.uint16_t] = 0x042A
+    name: Final = "PM2.5"
+    ep_attribute: Final = "pm25"

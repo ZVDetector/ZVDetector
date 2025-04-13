@@ -1,0 +1,59 @@
+{
+    "route_request": {
+        "command_options": "uint8",
+        "route_request_identifier": "uint8",
+        "destination_address": "uint16",
+        "path_cost": "uint8",
+        "destination_ieeeaddress": "uint64 (optional)"
+    },
+    "route_reply": {
+        "command_options": "uint8",
+        "route_request_identifier": "uint8",
+        "originator_address": "uint16",
+        "responder_address": "uint16",
+        "path_cost": "uint8",
+        "originator_ieeeaddress": "uint64 (optional)",
+        "responder_ieeeaddress": "uint64 (optional)"
+    },
+    "network_status": {
+        "status_code": "uint8",
+        "destination_address": "uint16"
+    },
+    "leave": {
+        "command_options": "uint8"
+    },
+    "route_record": {
+        "relay_count": "uint8",
+        "relay_list": "variable"
+    },
+    "rejoin_request": {
+        "capability_information": "uint8"
+    },
+    "rejoin_response": {
+        "network_address": "uint16",
+        "rejoin_status": "uint8"
+    },
+    "link_status": {
+        "command_options": "uint8",
+        "link_status_list": "variable"
+    },
+    "network_report": {
+        "command_options": "uint8",
+        "epid": "uint64",
+        "report_information": "variable"
+    },
+    "network_update": {
+        "command_options": "uint8",
+        "epid": "uint64",
+        "update_id": "uint8",
+        "update_information": "variable"
+    },
+    "end_device_timeout_request": {
+        "request_timeout_enumeration": "uint8",
+        "end_device_configuration": "uint8"
+    },
+    "end_device_timeout_response": {
+        "status": "uint8",
+        "parent_information": "uint8"
+    }
+}

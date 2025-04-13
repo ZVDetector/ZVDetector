@@ -1,0 +1,3 @@
+class Drlc(Cluster):
+    cluster_id: Final[t.uint16_t] = 0x0701
+    ep_attribute: Final = "smartenergy_drlc"

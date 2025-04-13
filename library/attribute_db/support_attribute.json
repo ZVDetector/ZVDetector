@@ -1,0 +1,1196 @@
+{
+    "28:2c:02:bf:ff:ea:47:eb": {
+        "1": {
+            "Unknown": [],
+            "basic": [
+                {
+                    "attr_type": 32,
+                    "attr_id": 0,
+                    "attr_name": "zcl_version"
+                },
+                {
+                    "attr_type": 32,
+                    "attr_id": 1,
+                    "attr_name": "app_version"
+                },
+                {
+                    "attr_type": 32,
+                    "attr_id": 2,
+                    "attr_name": "stack_version"
+                },
+                {
+                    "attr_type": 32,
+                    "attr_id": 3,
+                    "attr_name": "hw_version"
+                },
+                {
+                    "attr_type": 66,
+                    "attr_id": 4,
+                    "attr_name": "manufacturer"
+                },
+                {
+                    "attr_type": 66,
+                    "attr_id": 5,
+                    "attr_name": "model"
+                },
+                {
+                    "attr_type": 48,
+                    "attr_id": 7,
+                    "attr_name": "power_source"
+                },
+                {
+                    "attr_type": 16,
+                    "attr_id": 18,
+                    "attr_name": "device_enabled"
+                },
+                {
+                    "attr_type": 66,
+                    "attr_id": 16384,
+                    "attr_name": "sw_build_id"
+                },
+                {
+                    "attr_type": 33,
+                    "attr_id": 65533,
+                    "attr_name": "cluster_revision"
+                }
+            ],
+            "identify": [
+                {
+                    "attr_type": 33,
+                    "attr_id": 0,
+                    "attr_name": "identify_time"
+                },
+                {
+                    "attr_type": 33,
+                    "attr_id": 65533,
+                    "attr_name": "cluster_revision"
+                }
+            ],
+            "groups": [
+                {
+                    "attr_type": 24,
+                    "attr_id": 0,
+                    "attr_name": "name_support"
+                },
+                {
+                    "attr_type": 33,
+                    "attr_id": 65533,
+                    "attr_name": "cluster_revision"
+                }
+            ],
+            "scenes": [
+                {
+                    "attr_type": 32,
+                    "attr_id": 0,
+                    "attr_name": "count"
+                },
+                {
+                    "attr_type": 32,
+                    "attr_id": 1,
+                    "attr_name": "current_scene"
+                },
+                {
+                    "attr_type": 33,
+                    "attr_id": 2,
+                    "attr_name": "current_group"
+                },
+                {
+                    "attr_type": 16,
+                    "attr_id": 3,
+                    "attr_name": "scene_valid"
+                },
+                {
+                    "attr_type": 24,
+                    "attr_id": 4,
+                    "attr_name": "name_support"
+                },
+                {
+                    "attr_type": 33,
+                    "attr_id": 65533,
+                    "attr_name": "cluster_revision"
+                }
+            ],
+            "on_off": [
+                {
+                    "attr_type": 16,
+                    "attr_id": 0,
+                    "attr_name": "on_off"
+                },
+                {
+                    "attr_type": 16,
+                    "attr_id": 16384,
+                    "attr_name": "global_scene_control"
+                },
+                {
+                    "attr_type": 33,
+                    "attr_id": 16385,
+                    "attr_name": "on_time"
+                },
+                {
+                    "attr_type": 33,
+                    "attr_id": 16386,
+                    "attr_name": "off_wait_time"
+                },
+                {
+                    "attr_type": 48,
+                    "attr_id": 16387,
+                    "attr_name": "start_up_on_off"
+                },
+                {
+                    "attr_type": 33,
+                    "attr_id": 65533,
+                    "attr_name": "cluster_revision"
+                }
+            ],
+            "lightlink": [],
+            "electrical_measurement": [
+                {
+                    "attr_type": 33,
+                    "attr_id": 768,
+                    "attr_name": "ac_frequency"
+                },
+                {
+                    "attr_type": 33,
+                    "attr_id": 1285,
+                    "attr_name": "rms_voltage"
+                },
+                {
+                    "attr_type": 33,
+                    "attr_id": 1288,
+                    "attr_name": "rms_current"
+                },
+                {
+                    "attr_type": 41,
+                    "attr_id": 1291,
+                    "attr_name": "active_power"
+                },
+                {
+                    "attr_type": 33,
+                    "attr_id": 1536,
+                    "attr_name": "ac_voltage_multiplier"
+                },
+                {
+                    "attr_type": 33,
+                    "attr_id": 1537,
+                    "attr_name": "ac_voltage_divisor"
+                },
+                {
+                    "attr_type": 33,
+                    "attr_id": 1538,
+                    "attr_name": "ac_current_multiplier"
+                },
+                {
+                    "attr_type": 33,
+                    "attr_id": 1539,
+                    "attr_name": "ac_current_divisor"
+                },
+                {
+                    "attr_type": 33,
+                    "attr_id": 1540,
+                    "attr_name": "ac_power_multiplier"
+                },
+                {
+                    "attr_type": 33,
+                    "attr_id": 1541,
+                    "attr_name": "ac_power_divisor"
+                },
+                {
+                    "attr_type": 40,
+                    "attr_id": 1296,
+                    "attr_name": "power_factor"
+                }
+            ],
+            "smartenergy_metering": [
+                {
+                    "attr_type": 37,
+                    "attr_id": 0,
+                    "attr_name": "current_summ_delivered"
+                },
+                {
+                    "attr_type": 48,
+                    "attr_id": 768,
+                    "attr_name": "unit_of_measure"
+                },
+                {
+                    "attr_type": 34,
+                    "attr_id": 769,
+                    "attr_name": "multiplier"
+                },
+                {
+                    "attr_type": 34,
+                    "attr_id": 770,
+                    "attr_name": "divisor"
+                },
+                {
+                    "attr_type": 24,
+                    "attr_id": 771,
+                    "attr_name": "summation_formatting"
+                },
+                {
+                    "attr_type": 24,
+                    "attr_id": 774,
+                    "attr_name": "metering_device_type"
+                }
+            ],
+            "ota": [
+                {
+                    "attr_type": 240,
+                    "attr_id": 0,
+                    "attr_name": "upgrade_server_id"
+                },
+                {
+                    "attr_type": 35,
+                    "attr_id": 1,
+                    "attr_name": "file_offset"
+                },
+                {
+                    "attr_type": 35,
+                    "attr_id": 2,
+                    "attr_name": "current_file_version"
+                },
+                {
+                    "attr_type": 33,
+                    "attr_id": 3,
+                    "attr_name": "current_zigbee_stack_version"
+                },
+                {
+                    "attr_type": 35,
+                    "attr_id": 4,
+                    "attr_name": "downloaded_file_version"
+                },
+                {
+                    "attr_type": 33,
+                    "attr_id": 5,
+                    "attr_name": "downloaded_zigbee_stack_version"
+                },
+                {
+                    "attr_type": 48,
+                    "attr_id": 6,
+                    "attr_name": "image_upgrade_status"
+                },
+                {
+                    "attr_type": 33,
+                    "attr_id": 7,
+                    "attr_name": "manufacturer_id"
+                },
+                {
+                    "attr_type": 33,
+                    "attr_id": 8,
+                    "attr_name": "image_type_id"
+                },
+                {
+                    "attr_type": 33,
+                    "attr_id": 9,
+                    "attr_name": "minimum_block_req_delay"
+                },
+                {
+                    "attr_type": 33,
+                    "attr_id": 65533,
+                    "attr_name": "cluster_revision"
+                }
+            ]
+        },
+        "242": {
+            "Unknown": [],
+            "green_power": []
+        }
+    },
+    "a4:c1:38:b8:c2:f4:4e:e6": {
+        "1": {
+            "Unknown": [
+                {
+                    "attr_type": 72,
+                    "attr_id": 53249,
+                    "attr_name": "Manufacturer-Specific1",
+                    "cluster_id": 57344
+                },
+                {
+                    "attr_type": 72,
+                    "attr_id": 53250,
+                    "attr_name": "Manufacturer-Specific2",
+                    "cluster_id": 57344
+                },
+                {
+                    "attr_type": 66,
+                    "attr_id": 53251,
+                    "attr_name": "Manufacturer-Specific3",
+                    "cluster_id": 57344
+                },
+                {
+                    "attr_type": 33,
+                    "attr_id": 53252,
+                    "attr_name": "Manufacturer-Specific4",
+                    "cluster_id": 57344
+                },
+                {
+                    "attr_type": 33,
+                    "attr_id": 53253,
+                    "attr_name": "Manufacturer-Specific5",
+                    "cluster_id": 57344
+                },
+                {
+                    "attr_type": 48,
+                    "attr_id": 53264,
+                    "attr_name": "Manufacturer-Specific6",
+                    "cluster_id": 57345
+                },
+                {
+                    "attr_type": 48,
+                    "attr_id": 53280,
+                    "attr_name": "Manufacturer-Specific7",
+                    "cluster_id": 57345
+                },
+                {
+                    "attr_type": 48,
+                    "attr_id": 53296,
+                    "attr_name": "Manufacturer-Specific8",
+                    "cluster_id": 57345
+                }
+            ],
+            "identify": [],
+            "groups": [
+                {
+                    "attr_type": 24,
+                    "attr_id": 0,
+                    "attr_name": "name_support"
+                },
+                {
+                    "attr_type": 33,
+                    "attr_id": 65533,
+                    "attr_name": "cluster_revision"
+                }
+            ],
+            "scenes": [
+                {
+                    "attr_type": 32,
+                    "attr_id": 0,
+                    "attr_name": "count"
+                },
+                {
+                    "attr_type": 32,
+                    "attr_id": 1,
+                    "attr_name": "current_scene"
+                },
+                {
+                    "attr_type": 33,
+                    "attr_id": 2,
+                    "attr_name": "current_group"
+                },
+                {
+                    "attr_type": 16,
+                    "attr_id": 3,
+                    "attr_name": "scene_valid"
+                },
+                {
+                    "attr_type": 24,
+                    "attr_id": 4,
+                    "attr_name": "name_support"
+                },
+                {
+                    "attr_type": 33,
+                    "attr_id": 65533,
+                    "attr_name": "cluster_revision"
+                }
+            ],
+            "on_off": [
+                {
+                    "attr_type": 16,
+                    "attr_id": 0,
+                    "attr_name": "on_off"
+                },
+                {
+                    "attr_type": 33,
+                    "attr_id": 65533,
+                    "attr_name": "cluster_revision"
+                },
+                {
+                    "attr_type": 33,
+                    "attr_id": 16385,
+                    "attr_name": "on_time"
+                },
+                {
+                    "attr_type": 33,
+                    "attr_id": 16386,
+                    "attr_name": "off_wait_time"
+                },
+                {
+                    "attr_type": 48,
+                    "attr_id": 32769,
+                    "attr_name": "Manufacturer-Specific"
+                },
+                {
+                    "attr_type": 48,
+                    "attr_id": 32770,
+                    "attr_name": "Manufacturer-Specific"
+                },
+                {
+                    "attr_type": 48,
+                    "attr_id": 20480,
+                    "attr_name": "Manufacturer-Specific"
+                }
+            ],
+            "basic": [
+                {
+                    "attr_type": 32,
+                    "attr_id": 0,
+                    "attr_name": "zcl_version"
+                },
+                {
+                    "attr_type": 32,
+                    "attr_id": 1,
+                    "attr_name": "app_version"
+                },
+                {
+                    "attr_type": 32,
+                    "attr_id": 2,
+                    "attr_name": "stack_version"
+                },
+                {
+                    "attr_type": 32,
+                    "attr_id": 3,
+                    "attr_name": "hw_version"
+                },
+                {
+                    "attr_type": 66,
+                    "attr_id": 4,
+                    "attr_name": "manufacturer"
+                },
+                {
+                    "attr_type": 66,
+                    "attr_id": 5,
+                    "attr_name": "model"
+                },
+                {
+                    "attr_type": 66,
+                    "attr_id": 6,
+                    "attr_name": "date_code"
+                },
+                {
+                    "attr_type": 48,
+                    "attr_id": 7,
+                    "attr_name": "power_source"
+                },
+                {
+                    "attr_type": 32,
+                    "attr_id": 65502,
+                    "attr_name": "Manufacturer-Specific"
+                },
+                {
+                    "attr_type": 33,
+                    "attr_id": 65533,
+                    "attr_name": "cluster_revision"
+                },
+                {
+                    "attr_type": 48,
+                    "attr_id": 65534,
+                    "attr_name": "reporting_status"
+                },
+                {
+                    "attr_type": 32,
+                    "attr_id": 65506,
+                    "attr_name": "Manufacturer-Specific"
+                },
+                {
+                    "attr_type": 72,
+                    "attr_id": 65507,
+                    "attr_name": "Manufacturer-Specific"
+                }
+            ],
+            "ota": [
+                {
+                    "attr_type": 240,
+                    "attr_id": 0,
+                    "attr_name": "upgrade_server_id"
+                },
+                {
+                    "attr_type": 35,
+                    "attr_id": 1,
+                    "attr_name": "file_offset"
+                },
+                {
+                    "attr_type": 35,
+                    "attr_id": 2,
+                    "attr_name": "current_file_version"
+                },
+                {
+                    "attr_type": 33,
+                    "attr_id": 3,
+                    "attr_name": "current_zigbee_stack_version"
+                },
+                {
+                    "attr_type": 35,
+                    "attr_id": 4,
+                    "attr_name": "downloaded_file_version"
+                },
+                {
+                    "attr_type": 33,
+                    "attr_id": 5,
+                    "attr_name": "downloaded_zigbee_stack_version"
+                },
+                {
+                    "attr_type": 48,
+                    "attr_id": 6,
+                    "attr_name": "image_upgrade_status"
+                },
+                {
+                    "attr_type": 33,
+                    "attr_id": 7,
+                    "attr_name": "manufacturer_id"
+                },
+                {
+                    "attr_type": 33,
+                    "attr_id": 8,
+                    "attr_name": "image_type_id"
+                },
+                {
+                    "attr_type": 33,
+                    "attr_id": 9,
+                    "attr_name": "minimum_block_req_delay"
+                },
+                {
+                    "attr_type": 33,
+                    "attr_id": 65533,
+                    "attr_name": "cluster_revision"
+                }
+            ],
+            "time": [
+                {
+                    "attr_type": 33,
+                    "attr_id": 65533,
+                    "attr_name": "cluster_revision"
+                }
+            ]
+        },
+        "242": {
+            "Unknown": [],
+            "green_power": []
+        }
+    },
+    "00:15:8d:00:01:58:72:00": {
+        "1": {
+            "Unknown": [],
+            "basic": [
+                {
+                    "attr_type": 32,
+                    "attr_id": 0,
+                    "attr_name": "zcl_version"
+                },
+                {
+                    "attr_type": 32,
+                    "attr_id": 1,
+                    "attr_name": "app_version"
+                },
+                {
+                    "attr_type": 32,
+                    "attr_id": 2,
+                    "attr_name": "stack_version"
+                },
+                {
+                    "attr_type": 32,
+                    "attr_id": 3,
+                    "attr_name": "hw_version"
+                },
+                {
+                    "attr_type": 66,
+                    "attr_id": 4,
+                    "attr_name": "manufacturer"
+                },
+                {
+                    "attr_type": 66,
+                    "attr_id": 5,
+                    "attr_name": "model"
+                },
+                {
+                    "attr_type": 66,
+                    "attr_id": 6,
+                    "attr_name": "date_code"
+                },
+                {
+                    "attr_type": 48,
+                    "attr_id": 7,
+                    "attr_name": "power_source"
+                }
+            ],
+            "groups": [
+                {
+                    "attr_type": 24,
+                    "attr_id": 0,
+                    "attr_name": "name_support"
+                }
+            ],
+            "identify": [
+                {
+                    "attr_type": 33,
+                    "attr_id": 0,
+                    "attr_name": "identify_time"
+                }
+            ],
+            "on_off": [
+                {
+                    "attr_type": 16,
+                    "attr_id": 0,
+                    "attr_name": "on_off"
+                }
+            ],
+            "binary_output": [
+                {
+                    "attr_type": 16,
+                    "attr_id": 81,
+                    "attr_name": "out_of_service"
+                },
+                {
+                    "attr_type": 16,
+                    "attr_id": 85,
+                    "attr_name": "present_value"
+                },
+                {
+                    "attr_type": 24,
+                    "attr_id": 111,
+                    "attr_name": "status_flags"
+                }
+            ],
+            "scenes": [
+                {
+                    "attr_type": 32,
+                    "attr_id": 0,
+                    "attr_name": "count"
+                },
+                {
+                    "attr_type": 32,
+                    "attr_id": 1,
+                    "attr_name": "current_scene"
+                },
+                {
+                    "attr_type": 33,
+                    "attr_id": 2,
+                    "attr_name": "current_group"
+                },
+                {
+                    "attr_type": 16,
+                    "attr_id": 3,
+                    "attr_name": "scene_valid"
+                },
+                {
+                    "attr_type": 24,
+                    "attr_id": 4,
+                    "attr_name": "name_support"
+                },
+                {
+                    "attr_type": 240,
+                    "attr_id": 5,
+                    "attr_name": "last_configured_by"
+                }
+            ],
+            "time": [],
+            "power": [
+                {
+                    "attr_type": 33,
+                    "attr_id": 0,
+                    "attr_name": "mains_voltage"
+                }
+            ],
+            "device_temperature": [
+                {
+                    "attr_type": 41,
+                    "attr_id": 0,
+                    "attr_name": "current_temperature"
+                }
+            ],
+            "ota": []
+        },
+        "2": {
+            "Unknown": [],
+            "analog_input": [
+                {
+                    "attr_type": 16,
+                    "attr_id": 81,
+                    "attr_name": "out_of_service"
+                },
+                {
+                    "attr_type": 57,
+                    "attr_id": 85,
+                    "attr_name": "present_value"
+                },
+                {
+                    "attr_type": 24,
+                    "attr_id": 111,
+                    "attr_name": "status_flags"
+                },
+                {
+                    "attr_type": 35,
+                    "attr_id": 256,
+                    "attr_name": "application_type"
+                },
+                {
+                    "attr_type": 57,
+                    "attr_id": 261,
+                    "attr_name": "Manufacturer-Specific"
+                },
+                {
+                    "attr_type": 57,
+                    "attr_id": 262,
+                    "attr_name": "Manufacturer-Specific"
+                },
+                {
+                    "attr_type": 16,
+                    "attr_id": 81,
+                    "attr_name": "out_of_service"
+                },
+                {
+                    "attr_type": 57,
+                    "attr_id": 85,
+                    "attr_name": "present_value"
+                },
+                {
+                    "attr_type": 24,
+                    "attr_id": 111,
+                    "attr_name": "status_flags"
+                },
+                {
+                    "attr_type": 35,
+                    "attr_id": 256,
+                    "attr_name": "application_type"
+                },
+                {
+                    "attr_type": 57,
+                    "attr_id": 261,
+                    "attr_name": "Manufacturer-Specific"
+                },
+                {
+                    "attr_type": 57,
+                    "attr_id": 262,
+                    "attr_name": "Manufacturer-Specific"
+                }
+            ],
+            "groups": []
+        },
+        "3": {
+            "Unknown": [],
+            "analog_input": [
+                {
+                    "attr_type": 16,
+                    "attr_id": 81,
+                    "attr_name": "out_of_service"
+                },
+                {
+                    "attr_type": 57,
+                    "attr_id": 85,
+                    "attr_name": "present_value"
+                },
+                {
+                    "attr_type": 24,
+                    "attr_id": 111,
+                    "attr_name": "status_flags"
+                },
+                {
+                    "attr_type": 35,
+                    "attr_id": 256,
+                    "attr_name": "application_type"
+                },
+                {
+                    "attr_type": 57,
+                    "attr_id": 261,
+                    "attr_name": "Manufacturer-Specific"
+                },
+                {
+                    "attr_type": 57,
+                    "attr_id": 262,
+                    "attr_name": "Manufacturer-Specific"
+                },
+                {
+                    "attr_type": 16,
+                    "attr_id": 81,
+                    "attr_name": "out_of_service"
+                },
+                {
+                    "attr_type": 57,
+                    "attr_id": 85,
+                    "attr_name": "present_value"
+                },
+                {
+                    "attr_type": 24,
+                    "attr_id": 111,
+                    "attr_name": "status_flags"
+                },
+                {
+                    "attr_type": 35,
+                    "attr_id": 256,
+                    "attr_name": "application_type"
+                },
+                {
+                    "attr_type": 57,
+                    "attr_id": 261,
+                    "attr_name": "Manufacturer-Specific"
+                },
+                {
+                    "attr_type": 57,
+                    "attr_id": 262,
+                    "attr_name": "Manufacturer-Specific"
+                }
+            ]
+        }
+    },
+    "a4:c1:38:ba:81:3f:fc:88": {},
+    "a4:c1:38:8d:4b:e3:c8:1d": {
+        "1": {
+            "Unknown": [
+                {
+                    "attr_type": 72,
+                    "attr_id": 53249,
+                    "attr_name": "Manufacturer-Specific1",
+                    "cluster_id": 57344
+                },
+                {
+                    "attr_type": 72,
+                    "attr_id": 53250,
+                    "attr_name": "Manufacturer-Specific2",
+                    "cluster_id": 57344
+                },
+                {
+                    "attr_type": 33,
+                    "attr_id": 65533,
+                    "attr_name": "Manufacturer-Specific3",
+                    "cluster_id": 57344
+                }
+            ],
+            "basic": [
+                {
+                    "attr_type": 32,
+                    "attr_id": 0,
+                    "attr_name": "zcl_version"
+                },
+                {
+                    "attr_type": 32,
+                    "attr_id": 1,
+                    "attr_name": "app_version"
+                },
+                {
+                    "attr_type": 32,
+                    "attr_id": 2,
+                    "attr_name": "stack_version"
+                },
+                {
+                    "attr_type": 32,
+                    "attr_id": 3,
+                    "attr_name": "hw_version"
+                },
+                {
+                    "attr_type": 66,
+                    "attr_id": 4,
+                    "attr_name": "manufacturer"
+                },
+                {
+                    "attr_type": 66,
+                    "attr_id": 5,
+                    "attr_name": "model"
+                },
+                {
+                    "attr_type": 48,
+                    "attr_id": 7,
+                    "attr_name": "power_source"
+                },
+                {
+                    "attr_type": 16,
+                    "attr_id": 18,
+                    "attr_name": "device_enabled"
+                },
+                {
+                    "attr_type": 66,
+                    "attr_id": 16384,
+                    "attr_name": "sw_build_id"
+                },
+                {
+                    "attr_type": 33,
+                    "attr_id": 65533,
+                    "attr_name": "cluster_revision"
+                }
+            ],
+            "identify": [
+                {
+                    "attr_type": 33,
+                    "attr_id": 0,
+                    "attr_name": "identify_time"
+                },
+                {
+                    "attr_type": 33,
+                    "attr_id": 65533,
+                    "attr_name": "cluster_revision"
+                }
+            ],
+            "groups": [
+                {
+                    "attr_type": 24,
+                    "attr_id": 0,
+                    "attr_name": "name_support"
+                },
+                {
+                    "attr_type": 33,
+                    "attr_id": 65533,
+                    "attr_name": "cluster_revision"
+                }
+            ],
+            "scenes": [
+                {
+                    "attr_type": 32,
+                    "attr_id": 0,
+                    "attr_name": "count"
+                },
+                {
+                    "attr_type": 32,
+                    "attr_id": 1,
+                    "attr_name": "current_scene"
+                },
+                {
+                    "attr_type": 33,
+                    "attr_id": 2,
+                    "attr_name": "current_group"
+                },
+                {
+                    "attr_type": 16,
+                    "attr_id": 3,
+                    "attr_name": "scene_valid"
+                },
+                {
+                    "attr_type": 24,
+                    "attr_id": 4,
+                    "attr_name": "name_support"
+                },
+                {
+                    "attr_type": 33,
+                    "attr_id": 65533,
+                    "attr_name": "cluster_revision"
+                }
+            ],
+            "on_off": [
+                {
+                    "attr_type": 16,
+                    "attr_id": 0,
+                    "attr_name": "on_off"
+                },
+                {
+                    "attr_type": 16,
+                    "attr_id": 16384,
+                    "attr_name": "global_scene_control"
+                },
+                {
+                    "attr_type": 33,
+                    "attr_id": 16385,
+                    "attr_name": "on_time"
+                },
+                {
+                    "attr_type": 33,
+                    "attr_id": 16386,
+                    "attr_name": "off_wait_time"
+                },
+                {
+                    "attr_type": 48,
+                    "attr_id": 16387,
+                    "attr_name": "start_up_on_off"
+                },
+                {
+                    "attr_type": 16,
+                    "attr_id": 32768,
+                    "attr_name": "Manufacturer-Specific"
+                },
+                {
+                    "attr_type": 48,
+                    "attr_id": 32769,
+                    "attr_name": "Manufacturer-Specific"
+                },
+                {
+                    "attr_type": 48,
+                    "attr_id": 32770,
+                    "attr_name": "Manufacturer-Specific"
+                },
+                {
+                    "attr_type": 33,
+                    "attr_id": 65533,
+                    "attr_name": "cluster_revision"
+                }
+            ],
+            "time": [
+                {
+                    "attr_type": 35,
+                    "attr_id": 7,
+                    "attr_name": "local_time"
+                },
+                {
+                    "attr_type": 33,
+                    "attr_id": 65533,
+                    "attr_name": "cluster_revision"
+                }
+            ],
+            "smartenergy_metering": [
+                {
+                    "attr_type": 37,
+                    "attr_id": 0,
+                    "attr_name": "current_summ_delivered"
+                },
+                {
+                    "attr_type": 24,
+                    "attr_id": 512,
+                    "attr_name": "status"
+                },
+                {
+                    "attr_type": 48,
+                    "attr_id": 768,
+                    "attr_name": "unit_of_measure"
+                },
+                {
+                    "attr_type": 34,
+                    "attr_id": 769,
+                    "attr_name": "multiplier"
+                },
+                {
+                    "attr_type": 34,
+                    "attr_id": 770,
+                    "attr_name": "divisor"
+                },
+                {
+                    "attr_type": 24,
+                    "attr_id": 771,
+                    "attr_name": "summation_formatting"
+                },
+                {
+                    "attr_type": 24,
+                    "attr_id": 774,
+                    "attr_name": "metering_device_type"
+                },
+                {
+                    "attr_type": 33,
+                    "attr_id": 65533,
+                    "attr_name": "Manufacturer-Specific"
+                }
+            ],
+            "electrical_measurement": [
+                {
+                    "attr_type": 33,
+                    "attr_id": 1285,
+                    "attr_name": "rms_voltage"
+                },
+                {
+                    "attr_type": 33,
+                    "attr_id": 1288,
+                    "attr_name": "rms_current"
+                },
+                {
+                    "attr_type": 33,
+                    "attr_id": 1291,
+                    "attr_name": "active_power"
+                },
+                {
+                    "attr_type": 33,
+                    "attr_id": 1536,
+                    "attr_name": "ac_voltage_multiplier"
+                },
+                {
+                    "attr_type": 33,
+                    "attr_id": 1537,
+                    "attr_name": "ac_voltage_divisor"
+                },
+                {
+                    "attr_type": 33,
+                    "attr_id": 1538,
+                    "attr_name": "ac_current_multiplier"
+                },
+                {
+                    "attr_type": 33,
+                    "attr_id": 1539,
+                    "attr_name": "ac_current_divisor"
+                },
+                {
+                    "attr_type": 33,
+                    "attr_id": 1540,
+                    "attr_name": "ac_power_multiplier"
+                },
+                {
+                    "attr_type": 33,
+                    "attr_id": 1541,
+                    "attr_name": "ac_power_divisor"
+                },
+                {
+                    "attr_type": 41,
+                    "attr_id": 2049,
+                    "attr_name": "ac_voltage_overload"
+                },
+                {
+                    "attr_type": 41,
+                    "attr_id": 2050,
+                    "attr_name": "ac_current_overload"
+                },
+                {
+                    "attr_type": 41,
+                    "attr_id": 2051,
+                    "attr_name": "ac_active_power_overload"
+                },
+                {
+                    "attr_type": 33,
+                    "attr_id": 65533,
+                    "attr_name": "cluster_revision"
+                }
+            ],
+            "lightlink": [],
+            "ota": [
+                {
+                    "attr_type": 240,
+                    "attr_id": 0,
+                    "attr_name": "upgrade_server_id"
+                },
+                {
+                    "attr_type": 35,
+                    "attr_id": 1,
+                    "attr_name": "file_offset"
+                },
+                {
+                    "attr_type": 35,
+                    "attr_id": 2,
+                    "attr_name": "current_file_version"
+                },
+                {
+                    "attr_type": 33,
+                    "attr_id": 3,
+                    "attr_name": "current_zigbee_stack_version"
+                },
+                {
+                    "attr_type": 35,
+                    "attr_id": 4,
+                    "attr_name": "downloaded_file_version"
+                },
+                {
+                    "attr_type": 33,
+                    "attr_id": 5,
+                    "attr_name": "downloaded_zigbee_stack_version"
+                },
+                {
+                    "attr_type": 48,
+                    "attr_id": 6,
+                    "attr_name": "image_upgrade_status"
+                },
+                {
+                    "attr_type": 33,
+                    "attr_id": 7,
+                    "attr_name": "manufacturer_id"
+                },
+                {
+                    "attr_type": 33,
+                    "attr_id": 8,
+                    "attr_name": "image_type_id"
+                },
+                {
+                    "attr_type": 33,
+                    "attr_id": 9,
+                    "attr_name": "minimum_block_req_delay"
+                },
+                {
+                    "attr_type": 33,
+                    "attr_id": 65533,
+                    "attr_name": "cluster_revision"
+                }
+            ]
+        },
+        "242": {
+            "Unknown": [],
+            "green_power": []
+        }
+    }
+}

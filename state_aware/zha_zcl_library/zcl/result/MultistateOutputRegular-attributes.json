@@ -1,0 +1,10 @@
+{
+    "Attributes": [
+        "device_type",
+        "feed_back_value",
+        "object_id",
+        "object_name",
+        "object_type",
+        "profile_name"
+    ]
+}

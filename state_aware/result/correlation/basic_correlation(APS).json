@@ -1,0 +1,107 @@
+{
+    "correlation17": {
+        "messages": [
+            {
+                "transport_key": {
+                    "apscommand_identifier": "uint8",
+                    "standard_key_type": "uint8",
+                    "key_descriptor": {
+                        "trust_center_link_key_descriptor_field": {
+                            "key": "uint128",
+                            "destination_address": "uint64",
+                            "source_address": "uint64",
+                            "tlvs": "byte[]"
+                        },
+                        "network_key_descriptor_field": {
+                            "key": "uint128",
+                            "sequence_number": "uint8",
+                            "destination_address": "uint64",
+                            "source_address": "uint64"
+                        },
+                        "application_link_key_descriptor_field": {
+                            "key": "uint128",
+                            "partner_address": "uint64",
+                            "initiator_flag": "uint8",
+                            "tlvs": "byte[]"
+                        }
+                    }
+                }
+            },
+            {
+                "verify_key": {
+                    "apscommand_identifier": "uint8",
+                    "standard_key_type": "uint8",
+                    "source_address": "uint64",
+                    "initiator_verify_key_hash_value": "uint128"
+                }
+            }
+        ],
+        "fields": [
+            "standard_key_type"
+        ]
+    },
+    "correlation18": {
+        "messages": [
+            {
+                "transport_key": {
+                    "apscommand_identifier": "uint8",
+                    "standard_key_type": "uint8",
+                    "key_descriptor": {
+                        "trust_center_link_key_descriptor_field": {
+                            "key": "uint128",
+                            "destination_address": "uint64",
+                            "source_address": "uint64",
+                            "tlvs": "byte[]"
+                        },
+                        "network_key_descriptor_field": {
+                            "key": "uint128",
+                            "sequence_number": "uint8",
+                            "destination_address": "uint64",
+                            "source_address": "uint64"
+                        },
+                        "application_link_key_descriptor_field": {
+                            "key": "uint128",
+                            "partner_address": "uint64",
+                            "initiator_flag": "uint8",
+                            "tlvs": "byte[]"
+                        }
+                    }
+                }
+            },
+            {
+                "confirm_key": {
+                    "apscommand_identifier": "uint8",
+                    "status": "uint8",
+                    "standard_key_type": "uint8",
+                    "destination_address": "uint64"
+                }
+            }
+        ],
+        "fields": [
+            "standard_key_type"
+        ]
+    },
+    "correlation19": {
+        "messages": [
+            {
+                "verify_key": {
+                    "apscommand_identifier": "uint8",
+                    "standard_key_type": "uint8",
+                    "source_address": "uint64",
+                    "initiator_verify_key_hash_value": "uint128"
+                }
+            },
+            {
+                "confirm_key": {
+                    "apscommand_identifier": "uint8",
+                    "status": "uint8",
+                    "standard_key_type": "uint8",
+                    "destination_address": "uint64"
+                }
+            }
+        ],
+        "fields": [
+            "standard_key_type"
+        ]
+    }
+}

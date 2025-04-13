@@ -1,0 +1,22 @@
+{
+  "Managed Public Key": {
+    "cluster_id": "0x0017",
+    "message": []
+  },
+  "Key Establishment": {
+    "cluster_id": "0x0018",
+    "message": ["InitiateKeyEstablishmentRequest", "InitiateKeyEstablishmentResponse", "EphemeralDataRequest", "EphemeralDataResponse", "ConfirmKeyDataRequest", "ConfirmKeyDataResponse", "TerminateKeyEstablishment"]
+  },
+  "IAS Zone": {
+    "cluster_id": "0x0500",
+    "message": ["EnrollRequest", "EnrollResponse", "StatusChangeNotification", "InitTestModeRequest", "InitNormalOpMode"]
+  },
+  "IAS ACE": {
+    "cluster_id": "0x0501",
+    "message": ["Arm", "Bypass", "Panic", "GetZoneInfo", "GetZoneIdMap", "GetBypassedZoneList", "SetBypassedZoneList", "Emergency", "GetZoneStatus", "ZoneStatusChanged", "GetPanelStatus", "ArmResponse", "BypassResponse", "GetZoneIdMapResponse", "GetZoneInfoResponse", "GetZoneStatusResponse", "PanelStatusResponse"]
+  },
+  "IAS WD": {
+    "cluster_id": "0x0502",
+    "message": ["StartWarning", "Squawk"]
+  }
+}

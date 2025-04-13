@@ -1,0 +1,39 @@
+Timestamp:
+  - "20240523_16:08:34:637"
+Device:
+  - "Sengled Strip"
+IEEE:
+  - "b0:ce:18:14:03:68:56:fc"
+Nwk_Address:
+  - "0x3597"
+State:
+  - "20240521_16:08:33.json"
+Message_Relationship:
+  - "Correlation"
+Fuzzing_Messages:
+  - {
+    "on_off_on": {
+      "id": 1,
+      "direction_header": 0
+    },
+    "level_move_with_on_off": {
+      "id": 5,
+      "direction_header": 0,
+      "move_mode": {
+        "t.enum8": [
+          0,
+          1
+        ]
+      },
+      "rate": "t.uint8_t"
+    }
+  }
+Mutation_Strategy:
+  - T-1-1
+  - "level_move_with_on_off"
+  - {
+    "move_mode": 1,
+    "rate": 0
+  }
+Log:
+  - "[Device 7] Exploit: On, MoveWithOnOff | Mutation: MoveWithOnOff: mode=0x01, rate=0x00 | Result: Device Crashed |"

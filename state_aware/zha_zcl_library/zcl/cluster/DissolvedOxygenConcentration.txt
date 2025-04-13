@@ -1,0 +1,4 @@
+class DissolvedOxygenConcentration(_ConcentrationMixin, Cluster):
+    cluster_id: Final[t.uint16_t] = 0x0417
+    name: Final = "Dissolved Oxygen (DO) Concentration"
+    ep_attribute: Final = "dissolved_oxygen_concentration"

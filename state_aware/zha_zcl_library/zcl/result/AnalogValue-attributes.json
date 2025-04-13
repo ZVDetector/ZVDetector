@@ -1,0 +1,14 @@
+{
+    "Attributes": [
+        "description",
+        "out_of_service",
+        "present_value",
+        "reliability",
+        "relinquish_default",
+        "status_flags",
+        "engineering_units",
+        "application_type",
+        "cluster_revision",
+        "reporting_status"
+    ]
+}

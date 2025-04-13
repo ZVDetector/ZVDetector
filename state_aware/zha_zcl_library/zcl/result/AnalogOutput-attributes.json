@@ -1,0 +1,17 @@
+{
+    "Attributes": [
+        "description",
+        "max_present_value",
+        "min_present_value",
+        "out_of_service",
+        "present_value",
+        "reliability",
+        "relinquish_default",
+        "resolution",
+        "status_flags",
+        "engineering_units",
+        "application_type",
+        "cluster_revision",
+        "reporting_status"
+    ]
+}

@@ -1,0 +1,13 @@
+{
+    "Attributes": [
+        "checkin_interval",
+        "long_poll_interval",
+        "short_poll_interval",
+        "fast_poll_timeout",
+        "checkin_interval_min",
+        "long_poll_interval_min",
+        "fast_poll_timeout_max",
+        "cluster_revision",
+        "reporting_status"
+    ]
+}

@@ -1,0 +1,6 @@
+class FecalColiformAndEColiFraction(_ConcentrationMixin, Cluster):
+    """Percent of positive samples"""
+
+    cluster_id: Final[t.uint16_t] = 0x041B
+    name: Final = "Fecal coliform & E. Coli Fraction"
+    ep_attribute: Final = "fecal_coliform_and_e_coli_fraction"

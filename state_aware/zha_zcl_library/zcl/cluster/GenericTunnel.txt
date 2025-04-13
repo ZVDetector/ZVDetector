@@ -1,0 +1,21 @@
+class GenericTunnel(Cluster):
+    cluster_id: Final[t.uint16_t] = 0x0600
+    ep_attribute: Final = "generic_tunnel"
+
+    class AttributeDefs(BaseAttributeDefs):
+        max_income_trans_size: Final = ZCLAttributeDef(id=0x0001, type=t.uint16_t)
+        max_outgo_trans_size: Final = ZCLAttributeDef(id=0x0002, type=t.uint16_t)
+        protocol_addr: Final = ZCLAttributeDef(id=0x0003, type=t.LVBytes)
+
+    class ServerCommandDefs(BaseCommandDefs):
+        match_protocol_addr: Final = ZCLCommandDef(
+            id=0x00, schema={}, direction=Direction.Client_to_Server
+        )
+
+    class ClientCommandDefs(BaseCommandDefs):
+        match_protocol_addr_response: Final = ZCLCommandDef(
+            id=0x00, schema={}, direction=Direction.Server_to_Client
+        )
+        advertise_protocol_address: Final = ZCLCommandDef(
+            id=0x01, schema={}, direction=Direction.Client_to_Server
+        )

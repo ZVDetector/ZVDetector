@@ -1,0 +1,1143 @@
+{
+    "messages": {
+        "Device and Service Discovery": [
+            "NWK_addr_req",
+            "IEEE_addr_req",
+            "Node_Desc_req",
+            "Power_Desc_req",
+            "Simple_Desc_req",
+            "Active_EP_req",
+            "Match_Desc_req",
+            "Complex_Desc_req",
+            "User_Desc_req",
+            "Discovery_Cache_req",
+            "Device_annce",
+            "Parent_annce",
+            "Parent_annce_rsp",
+            "User_Desc_set",
+            "System_Server_Discover_req",
+            "Discovery_store_req",
+            "Node_Desc_store_req",
+            "Power_Desc_store_req",
+            "Active_EP_store_req",
+            "Simple_Desc_store_req",
+            "Remove_node_cache_req",
+            "Find_node_cache_req",
+            "Extended_Simple_Desc_req",
+            "Extended_Active_EP_req"
+        ],
+        "End Device Bind, Bind, Unbind, and Bind Management": [
+            "End_Device_Bind_req",
+            "Bind_req",
+            "Unbind_req",
+            "Bind_Register_req",
+            "Replace_Device_req",
+            "Store_Bkup_Bind_Entry_req",
+            "Remove_Bkup_Bind_Entry_req",
+            "Backup_Bind_Table_req",
+            "Recover_Bind_Table_req",
+            "Backup_Source_Bind_req",
+            "Recover_Source_Bind_req"
+        ],
+        "Network Management": [
+            "Mgmt_NWK_Disc_req",
+            "Mgmt_Lqi_req",
+            "Mgmt_Rtg_req",
+            "Mgmt_Bind_req",
+            "Mgmt _Leave_req",
+            "Mgmt_Direct_Join_req",
+            "Mgmt_Permit_Joining_req",
+            "Mgmt_Cache_req",
+            "Mgmt_NWK_Update_req"
+        ]
+    },
+    "NWK_addr_req": {
+        "fields": {
+            "Name": [
+                "IEEEAddr",
+                "RequestType",
+                "StartIndex"
+            ],
+            "Type": [
+                "IEEE Address",
+                "Integer",
+                "Integer"
+            ],
+            "Valid Range": [
+                "A valid 64-bit IEEE address",
+                "0x00-0xff",
+                "0x00-0xff"
+            ],
+            "Description": [
+                "TheIEEE address to be matched by the Remote Device",
+                "Request type for this command: Ox00-Single device response Ox01-Extended response 0x02-0xFF - reserved",
+                "If the Request type for this command is Extended response, the StartIndex provides the starting index for the requested elements of the associated devices list"
+            ]
+        },
+        "When Generated ": "The NWK_addr_req is generated from a Local Device wishing to inquire as to the 16-bit address of the Remote Device based on its known IEEE address. The destination addressing on this command shall be unicast or broadcast to all devices for which macRxOnWhenIdle $=$ TRUE. ",
+        "Effect on Receipt ": "Upon receipt, a Remote Device shall compare the IEEEAddr to its nwkIeeeAddress in the NIB or any IEEE address held in its nwkNeighborTable where the Device Type field of the entry is 0x02 (End Device). If there is no match and the request was unicast, a NWK_addr_resp command shall be generated and sent back to the local device with the Status field set to DEVICE_NOT_FOUND, the IEEEAddrRemoteDev field set to the IEEE address of the request; the NWKAddrRemoteDev field set to the NWK address of this device; and the NumAssocDev, StartIndex, and NWKAddrAssocDevList fields shall not be included in the frame. If there is no match and the command was received as a broadcast, the request shall be discarded and no response generated. If a match is detected between the contained IEEEAddr and the receiving device’s nwkIeeeAddress or one held in the receiving device’s nwkNeighborTable, the RequestType shall be used to create a response. If the RequestType is one of the reserved values, a NWK_addr_resp command shall be generated and sent back to the local device with the Status field set to INV_REQUESTTYPE; the IEEEAddrRemoteDev field set to the IEEE address of the request; the NWKAddrRemoteDev field set to the network address corresponding to the IEEE address in the request; the NumAssocDev, StartIndex, and NWKAddrAssocDevList fields shall not be included in the frame. If the RequestType is single device response, a NWK_addr_resp command shall be generated and sent back to the local device with the Status field set to SUCCESS, the IEEEAddrRemoteDev field set to the IEEE address of the request; the NWKAddrRemoteDev field set to the NWK address of the discovered device; and the NumAssocDev, StartIndex, and NWKAddrAssocDevList fields shall not be included in the frame. If the RequestType was Extended response and the Remote Device is either the ZigBee coordinator or router, a NWK_addr_resp command shall be generated and sent back to the local device with the Status field set to SUCCESS, the IEEEAddrRemoteDev field set to the IEEE address of the device itself, and the NWKAddrRemoteDev field set to the NWK address of the device itself. The Remote Device shall also supply a list of all 16-bit NWK addresses in the NWKAddrAssocDevList field, starting with the entry StartIndex and continuing with whole entries until the maximum APS packet length is reached, for all devices in its nwkNeighborTable where the Device Type is 0x02 (End Device). It shall then set the NumAssocDev field to the number of entries in the   \nNWKAddrAssocDevList field. "
+    },
+    "IEEE_addr_req": {
+        "fields": {
+            "Name": [
+                "NWKAddrOfInterest",
+                "RequestType",
+                "StartIndex"
+            ],
+            "Type": [
+                "Device Address",
+                "Integer",
+                "Integer"
+            ],
+            "ValidRange": [
+                "16-bit NWK address",
+                "0x00-0xff",
+                "0x00-0xff"
+            ],
+            "Description": [
+                "NWK address that is used for IEEE address mapping.",
+                "Request typefor thiscommand: Ox00 - Single device response Ox01 - Extended response 0x02-0xff-reserved",
+                "If the Request type for this command is Extended response, the StartIndex provides the starting index for the requested elements of the associated devices list."
+            ]
+        },
+        "When Generated ": "The IEEE_addr_req is generated from a Local Device wishing to inquire as to the 64-bit IEEE address of the Remote Device based on their known 16-bit address. The destination addressing on this command shall be unicast. ",
+        "Effect on Receipt ": "Upon receipt a Remote Device shall compare the NWKAddrOfInterest to its local nwkNetworkAddress value in the NIB, or compare any Network address field held in its nwkNeighborTable that also has the Device Type field set to $_{0\\mathrm{x}02}$ (End Device). If there is no match, an IEEE_addr_resp command shall be generated and sent back to the local device with the Status field set to DEVICE_NOT_FOUND; the IEEEAddrRemoteDev field set to the IEEE address of this device; the NWKAddrRemoteDev field set to the NWK address of the request; and the NumAssocDev, StartIndex, and NWKAddrAssocDevList fields shall not be included in the frame. If a match is detected between the contained NWKAddrOfInterest and the receiving device’s nwkNetworkAddress or one held in the nwkNeighborTable, the RequestType shall be used to create a response. If the RequestType is one of the reserved values, an IEEE_addr_resp command shall be generated and sent back to the local device with the Status field set to INV_REQUESTTYPE, the IEEEAddrRemoteDev field set to the IEEE address of this device, the NWKAddrRemoteDev field set to the network address of this device and the NumAssocDev, StartIndex, and NWKAddrAssocDevList fields shall not be included in the frame. If the RequestType is single device response, an IEEE_addr_resp command shall be generated and sent back to the local device with the Status field set to SUCCESS, the IEEEAddrRemoteDev field set to the IEEE address of the discovered device, the NWKAddrRemoteDev field set to the NWK address of the request and the NumAssocDev, StartIndex, and NWKAddrAssocDevList fields shall not be included in the frame. If the RequestType indicates an Extended Response and the Remote Device is the ZigBee coordinator or router with associated devices, an IEEE_addr_resp command shall be generated and sent back to the local device with the Status field set to SUCCESS, the IEEEAddrRemoteDev field set to the IEEE address of the device itself, and the NWKAddrRemoteDev field set to the NWK address of the device itself. The Remote Device shall also supply a list of all 16-bit network addresses in the NWKAddrAssocDevList field, starting with the entry StartIndex and continuing with whole entries until the maximum APS packet length is reached, for each entry in the nwkNeighborTable where the Device Type field is set to $_{0\\mathrm{x}02}$ (End Device). It shall then set the NumAssocDev field to the number of entries in the NWKAddrAssocDevList field. "
+    },
+    "Node_Desc_req": {
+        "fields": {
+            "Name": [
+                "NWKAddrOfInterest"
+            ],
+            "Type": [
+                "DeviceAddress"
+            ],
+            "Valid Range": [
+                "16-bitNWKaddress"
+            ],
+            "Description": [
+                "NWK address for the request"
+            ]
+        },
+        "When Generated ": "The Node_Desc_req command is generated from a local device wishing to inquire as to the node descriptor of a remote device. This command shall be unicast either to the remote device itself or to an alternative device that contains the discovery information of the remote device. The local device shall generate the Node_Desc_req command using the format illustrated in Table 2.48. The NWKAddrOfInterest field shall contain the network address of the remote device for which the node descriptor is required. ",
+        "Effect on Receipt ": "Upon receipt of this command, the recipient device shall process the command and generate a Node_Desc_rsp command in response, according to the description in section 2.4.4.2.3.1. "
+    },
+    "Power_Desc_req": {
+        "fields": {
+            "Name": [
+                "NWKAddrOfInterest"
+            ],
+            "Type": [
+                "DeviceAddress"
+            ],
+            "ValidRange": [
+                "16-bitNWKaddress"
+            ],
+            "Description": [
+                "NWK address for the request."
+            ]
+        },
+        "When Generated ": "The Power_Desc_req command is generated from a local device wishing to inquire as to the power descriptor of a remote device. This command shall be unicast either to the remote device itself or to an alternative device that contains the discovery information of the remote device. The local device shall generate the Power_Desc_req command using the format illustrated in Table 2.49. The NWKAddrOfInterest field shall contain the network address of the remote device for which the power descriptor is required. ",
+        "Effect on Receipt ": "Upon receipt of this command, the recipient device shall process the command and generate a Power_Desc_rsp command in response according to the description in section 2.4.4.2.4.1. "
+    },
+    "Simple_Desc_req": {
+        "fields": {
+            "Name": [
+                "NWKAddrOfInterest",
+                "Endpoint"
+            ],
+            "Type": [
+                "DeviceAddress",
+                "8bits"
+            ],
+            "ValidRange": [
+                "16-bitNWKaddress",
+                "1-254"
+            ],
+            "Description": [
+                "NWK addressfor therequest",
+                "The endpoint on the destination"
+            ]
+        },
+        "When Generated ": "The Simple_Desc_req command is generated from a local device wishing to inquire as to the simple descriptor of a remote device on a specified endpoint. This command shall be unicast either to the remote device itself or to an alternative device that contains the discovery information of the remote device. The local device shall generate the Simple_Desc_req command using the format illustrated in Table 2.50. The NWKAddrOfInterest field shall contain the network address of the remote device for which the simple descriptor is required and the endpoint field shall contain the endpoint identifier from which to obtain the required simple descriptor. ",
+        "Effect on Receipt ": "Upon receipt of this command, the recipient device shall process the command and generate a Simple_Desc_rsp command in response, according to the description in section 2.4.4.2.5.1. "
+    },
+    "Active_EP_req": {
+        "fields": {
+            "Name": [
+                "NWKAddrOfInterest"
+            ],
+            "Type": [
+                "DeviceAddress"
+            ],
+            "ValidRange": [
+                "16-bitNWKaddress"
+            ],
+            "Description": [
+                "NWK address for the request."
+            ]
+        },
+        "When Generated ": "The Active_EP_req command is generated from a local device wishing to acquire the list of endpoints on a remote device with simple descriptors. This command shall be unicast either to the remote device itself or to an alternative device that contains the discovery information of the remote device. The local device shall generate the Active_EP_req command using the format illustrated in Table 2.51. The NWKAddrOfInterest field shall contain the network address of the remote device for which the active endpoint list is required. ",
+        "Effect on Receipt ": "Upon receipt of this command, the recipient device shall process the command and generate an Active_EP_rsp command in response, according to the description in section 2.4.4.2.6.1. "
+    },
+    "Match_Desc_req": {
+        "fields": {
+            "Name": [
+                "NWKAddrOfInterest",
+                "ProfileID",
+                "NumInClusters",
+                "InClusterList",
+                "NumOutClusters",
+                "OutClusterList"
+            ],
+            "Type": [
+                "Device Address",
+                "Integer",
+                "Integer",
+                "2 bytes * NumInClusters",
+                "Integer",
+                "2 bytes * NumOutClusters"
+            ],
+            "Valid Range": [
+                "16-bit NWK address",
+                "0x0000-0xffff",
+                "0x00-0xff",
+                "",
+                "0x00-0xff",
+                ""
+            ],
+            "Description": [
+                "NWK address for the request.",
+                "ProfileID to be matched at the destination.",
+                "The number of Input Clusters provided for matching within the InClusterList.",
+                "List of Input ClusterIDs to be used for matching; the InClusterList is the desired list to be matched by the Remote Device (the elements of the InClusterList are the supported output clusters of the Local Device).",
+                "The number of Output Clusters provided for matching within OutClusterList.",
+                "List of Output ClusterIDs to be used for matching; the OutClusterList is the desired list to be matched by the Remote Device (the elements of the OutClusterList are the supported input clusters of the Local Device)."
+            ]
+        },
+        "When Generated ": "The Match_Desc_req command is generated from a local device wishing to find remote devices supporting a specific simple descriptor match criterion. This command shall either be broadcast to all devices for which macRxOnWhenIdle $=$ TRUE, or unicast. If the command is unicast, it shall be directed either to the remote device itself or to an alternative device that contains the discovery information of the remote device. The local device shall generate the Match_Desc_req command using the format illustrated in Table 2.52. The NWKAddrOfInterest field shall contain the network address indicating a broadcast to all devices for which macRxOnWhenIdle $=$ TRUE (0xfffd) if the command is to be broadcast, or the network address of the remote device for which the match is required. The remaining fields shall contain the required criterion for which the simple descriptor match is requested. The ProfileID field shall contain the identifier of the profile for which the match is being sought or the wildcard profile ID of 0xFFFF. The NumInClusters field shall contain the number of elements in the InClusterList field. If the value of this field is 0, the InClusterList field shall not be included. If the value of the NumInClusters field is not equal to 0, the InClusterList field shall contain the list of input cluster identifiers for which the match is being sought. The NumOutClusters field shall contain the number of elements in the OutClusterList field. If the value of this field is 0, the OutClusterList field shall not be included. If the value of the NumOutClusters field is not equal to 0, the OutClusterList field shall contain the list of output cluster identifiers for which the match is being sought. ",
+        "Effect on Receipt ": "Upon receipt of this command, the recipient device shall process the command and generate a Match_Desc_rsp command in response, according to the description in section 2.4.4.2.7.1. "
+    },
+    "Complex_Desc_req": {
+        "fields": {
+            "Name": [
+                "NWKAddrOfInterest"
+            ],
+            "Type": [
+                "DeviceAddress"
+            ],
+            "ValidRange": [
+                "16-bitNWKaddress"
+            ],
+            "Description": [
+                "NWK address for the request"
+            ]
+        },
+        "When Generated ": "The Complex_Desc_req command is generated from a local device wishing to inquire as to the complex descriptor of a remote device. This command shall be unicast either to the remote device itself or to an alternative device that contains the discovery information of the remote device. The local device shall generate the Complex_Desc_req command using the format illustrated in Table 2.53. The NWKAddrOfInterest field shall contain the network address of the remote device for which the complex descriptor is required. ",
+        "Effect on Receipt ": "Upon receipt of this command, the recipient device shall process the command and generate a Complex_Desc_rsp command in response, according to the description in section 2.4.4.2.8.1. "
+    },
+    "User_Desc_req": {
+        "fields": {
+            "Name": [
+                "NWKAddrOfInterest"
+            ],
+            "Type": [
+                "DeviceAddress"
+            ],
+            "ValidRange": [
+                "16-bit NWK address"
+            ],
+            "Description": [
+                "NWK address for the request."
+            ]
+        },
+        "When Generated ": "The User_Desc_req command is generated from a local device wishing to inquire as to the user descriptor of a remote device. This command shall be unicast either to the remote device itself or to an alternative device that contains the discovery information of the remote device. The local device shall generate the User_Desc_req command using the format illustrated in Table 2.54. The NWKAddrOfInterest field shall contain the network address of the remote device for which the user descriptor is required. ",
+        "Effect on Receipt ": "Upon receipt of this command, the recipient device shall process the command and generate a User_Desc_rsp command in response, according to the description in section 2.4.4.2.9.1. "
+    },
+    "Discovery_Cache_req": {
+        "fields": {
+            "Name": [
+                "NWKAddr",
+                "IEEEAddr"
+            ],
+            "Type": [
+                "DeviceAddress",
+                "DeviceAddress"
+            ],
+            "ValidRange": [
+                "16-bitNWKaddress",
+                "64-bitIEEEaddress"
+            ],
+            "Description": [
+                "NWKaddressfortheLocalDevice.",
+                "IEEE address for the Local Device."
+            ]
+        },
+        "When Generated ": "The Discovery_Cache_req is provided to enable devices on the network to locate a Primary Discovery Cache device on the network. The destination addressing on this primitive shall be broadcast to all devices for which macRxOnWhenIdle $=$ TRUE. ",
+        "Effect on Receipt ": "Upon receipt, if the Remote Device does not support the Discovery_Cache_req, the request shall be dropped and no further processing performed. If the Discovery_Cache_req is supported, the Remote Device shall create a unicast Discovery_Cache_rsp message to the source indicated by the Discovery_Cache_req and include a SUCCESS status. "
+    },
+    "Device_annce": {
+        "fields": {
+            "Name": [
+                "NWKAddr",
+                "IEEEAddr",
+                "Capability"
+            ],
+            "Type": [
+                "DeviceAddress",
+                "DeviceAddress",
+                "Bitmap"
+            ],
+            "ValidRange": [
+                "16-bitNWKaddress",
+                "64-bitIEEEaddress",
+                "See Figure 2.17"
+            ],
+            "Description": [
+                "NWKaddressfor theLocal Device",
+                "IEEEaddressfortheLocalDevice",
+                "Capabilityof thelocal device"
+            ]
+        },
+        "When Generated ": "The Device_annce is provided to enable ZigBee devices on the network to notify other ZigBee devices that the device has joined or re-joined the network, identifying the device’s 64-bit IEEE address and new 16-bit NWK address, and informing the Remote Devices of the capability of the ZigBee device. This command shall be invoked for all ZigBee end devices upon join or rejoin. This command may also be invoked by ZigBee routers upon join or rejoin as part of NWK address conflict resolution. The destination addressing on this primitive is broadcast to all devices for which macRxOnWhenIdle $=$ TRUE. ",
+        "Effect on Receipt ": "Upon receipt, the Remote Device shall use the IEEEAddr in the message to find a match with any other IEEE address held in the Remote Device. If a match is detected, the Remote Device shall update the nwkAddressMap attribute of the NIB with the updated NWKAddr corresponding to the IEEEAddr received. The Remote Device shall also use the NWKAddr in the message to find a match with any other 16-bit NWK address held in the Remote Device, even if the IEEEAddr field in the message carries the value of 0xffffffffffffffff. If a match is detected for a device with an IEEE address other than that indicated in the IEEEAddr field received, then this entry shall be marked as not having a known valid 16-bit NWK address. "
+    },
+    "Parent_annce": {
+        "fields": {
+            "Name": [
+                "Extended Address"
+            ],
+            "Type": [
+                "64-bitIEEE address"
+            ],
+            "Description": [
+                "The IEEE address ofthe child bound to the parent."
+            ]
+        },
+        "When Generated ": "The Parent_annce is provided to enable ZigBee routers (including the coordinator) on the network to notify other ZigBee routers about all the end devices known to the local device. This command provides a means to resolve conflicts more quickly than aging out the child, when multiple routers purport to be the active parent of a particular end-device.  The command may be broadcast from one router to all routers and the coordinator using the broadcast address 0xFFFC or unicast from one router to another router. This message must be generated if all the following conditions are met: 1. The router or coordinator device has rebooted.   \n2. The router or coordinator is operating in the joined and authenticated state. The message generated under the above circumstances must be broadcast.  Before broadcasting a Parent_annce message, the device shall start a countdown timer, apsParentAnnounceTimer equal to apsParentAnnounceBaseTimer $^+$ a random value from 0 to apsParentAnnounceJitterMax. When the timer expires, a router shall examine its neighbor table for all devices.  The router shall construct, but not yet send, an empty Parent_annce message and set NumberOfChildren to 0.  For each end device in the neighbor table, it shall do the following. 1. If the Neighbor Table entry indicates a Device Type not equal to End Device (0x02), do not p cess this entry.  Continue to the next one.   \n2. Incorporate end device information into the Parent_annce message by doing the following: a. Append a ChildInfo structure to the message. b. Increment NumberOfChildren by 1.   \n3. Note:  The value of Keepalive Received for the Neighbor Table Entry is not considered. After processing all entries in the neighbor table, if the NumberOfChildren is greater than 0, then it shall send the message to the all routers broadcast address (0xFFFC).   If NumberOfChildren is 0, it shall discard the previously constructed Parent_annce message and not send it. If the device has more ChildInfo entries than fit in a single message, it shall send additional messages. Each additional message needed shall trigger the device to calculate and start a new apsParentAnnounceTimer  equal to apsParentAnnounceBaseTimer $^+$ a random value from 0 to apsParentAnnounceJitterMax.  The local device shall wait until that timer expires before sending each additional message. .  The NumberOfChildren for each message shall be set according to the number of ChildInfo entries contained within the message. If the device must send multiple Parent_annce message but receives a keepalive from an end device before it has sent the Parent_Annce message, it shall not include that device in the message. ",
+        "Effect on receipt ": "If the message is received by an end device, it shall be dropped.  No further processing shall be done. Upon receipt of a broadcast Parent_annce, if the local device has a non-zero value for its apsParentAnnounceTimer it shall immediately re-calculate a new value and start a new countdown.  The apsParentAnnounceTimer shall be set to apsParentAnnounceBaseTimer $^+$ a random value from 0 to apsParentAnnounceJitterMax.  It shall continue processing the message. A router shall construct, but not yet send, an empty Parent_Annce_Rsp message with NumberOfChildren set to 0.  It shall examine each Extended Address present in the message and search its Neighbor Table for an Extended Address entry that matches.  For each match, process as follows: 1. If the Device Type is Zigbee End Device (0x02) and the Keepalive Received value is TRUE, do the following: a. It shall append to the Parent_annce_rsp frame the ChildInfo structure. b.  Increment the NumberOfChildren by 1.   \n2. If the Device Type is not ZigBee End Device (0x02) or the Keepalive Received value is FALSE, do not process any further.  Continue to the next entry. If the NumberOfChildren field value is 0, the local device shall discard the previously constructed Parent_Annce_rsp.  No response message shall be sent. If the NumberOfChildren field in the Parent_Annce_rsp is greater than 0, it shall unicast the message to the sender of the Parent_Annce message. If the device has more ChildInfo entries than fit in a single message, it shall send additional messages. These messages do not have to be jittered or delayed since they are unicast to a single device.  Each Parent_annce_rsp shall set the NumberOfChildren field to the number of entries contained within the message. "
+    },
+    "User_Desc_set": {
+        "fields": {
+            "Name": [
+                "NWKAddrOfInterest",
+                "Length",
+                "UserDescription"
+            ],
+            "Type": [
+                "Device Address",
+                "Integer",
+                "User Descriptor"
+            ],
+            "Valid Range": [
+                "16-bit NWK address",
+                "0x00 -0x10",
+                ""
+            ],
+            "Description": [
+                "NWK addressfor the request.",
+                "Length of the User Descriptor in bytes.",
+                "The user description to configure; if the ASCII character string to be entered here is less than 16 characters in length, it shall be padded with space characters (0x20) to make a total length of 16 characters. Characters with codes Ox00-0x1f are not permitted."
+            ]
+        },
+        "When Generated ": "The User_Desc_set command is generated from a local device wishing to configure the user descriptor on a remote device. This command shall be unicast either to the remote device itself or to an alternative device that contains the discovery information of the remote device. The local device shall generate the User_Desc_set command using the format illustrated in Table 2.58. The NWKAddrOfInterest field shall contain the network address of the remote device for which the user descriptor is to be configured and the UserDescription field shall contain the ASCII character string that is to be configured in the user descriptor. Characters with ASCII codes numbered $0\\mathrm{x00}$ through 0x1f are not permitted to be included in this string. ",
+        "Effect on Receipt ": "Upon receipt of this command, the recipient device shall process the command and generate a User_Desc_conf command in response, according to the description in section 2.4.4.2.11.1. "
+    },
+    "System_Server_Discovery_req": {
+        "fields": {
+            "Name": [
+                "ServerMask"
+            ],
+            "Type": [
+                "Bitmap"
+            ],
+            "Valid Range": [
+                "16bits"
+            ],
+            "Description": [
+                "See Table 2.32 for bit assignments"
+            ]
+        },
+        "When Generated ": "The System_Server_Discovery_req is generated from a Local Device wishing to discover the location of a particular system server or servers as indicated by the ServerMask parameter. The destination addressing on this request is ‘broadcast to all devices for which macRxOnWhenIdle $=$ TRUE.’ ",
+        "Effect on Receipt ": "Upon receipt, remote devices shall compare the ServerMask parameter to the Server Mask field in their own Node descriptor. If no bits are found to match, no action is taken. If any matching bits are found, the remote device shall send a System_Server_Discovery_rsp back to the originator using unicast transmission (with acknowledgement request) and indicating the matching bits. "
+    },
+    "Discovery_store_req": {
+        "fields": {
+            "Name": [
+                "NWKAddr",
+                "IEEEAddr",
+                "NodeDescSize",
+                "PowerDescSize",
+                "ActiveEPSize",
+                "SimpleDescCount",
+                "SimpleDescSizeList"
+            ],
+            "Type": [
+                "DeviceAddress",
+                "DeviceAddress",
+                "Integer",
+                "Integer",
+                "Integer",
+                "Integer",
+                "Array of bytes"
+            ],
+            "ValidRange": [
+                "16-bitNWKAddress",
+                "64-bitIEEEAddress"
+            ],
+            "Description": [
+                "NWKAddressfortheLocalDevice.",
+                "IEEEAddressfortheLocalDevice.",
+                "Size in bytes of the Node Descriptor for the Local Device.",
+                "Size in bytes of the Power Descriptor for the Local Device.",
+                "Size in bytes of the ActiveEPCount and ActiveEPList fields of the Active_EP_rsp for the Local Device.",
+                "Number of Simple Descriptors supported by the Local Device (should be the same value as the ActiveEPSize).",
+                "List of bytes of SimpleDescCount length. each of which represents the size in bytes of the Simple Descriptor for each Active Endpoint on the Local Device."
+            ]
+        },
+        "When Generated ": "The Discovery_store_req is provided to enable ZigBee end devices on the network to request storage of their discovery cache information on a Primary Discovery Cache device. Included in the request is the amount of storage space the Local Device requires. The destination addressing on this request is unicast. ",
+        "Effect on Receipt ": "Upon receipt, the Remote Device shall determine whether it is a Primary Discovery Cache device. If it is not a Primary Discovery Cache device, the Remote Device shall return a status of NOT_SUPPORTED. Next, the Remote Device shall determine whether it has storage for the requested discovery cache size determined by summing the sizes of the NWKAddr and IEEEAddr plus the NodeDescSize, PowerDescSize, ActiveEPSize, and the sizes from the SimpleDescSizeList. If sufficient space exists, the Local Device shall be provided a SUCCESS status. Otherwise, the Local Device shall return INSUFFICIENT_SPACE. If a SUCCESS status is returned, the Remote Device shall reserve the storage requested for the upload of the discovery information from the Local Device. Additionally, if the Local Device supplies an IEEEAddr which matches a previously stored entry, but the NWKAddr differs from the previous entry, the Remote Device shall remove the previous entry and discovery cache information in favor of the newly registered data. "
+    },
+    "Node_Desc_store_req": {
+        "fields": {
+            "Name": [
+                "NWKAddr",
+                "IEEEAddr",
+                "NodeDescriptor"
+            ],
+            "Type": [
+                "DeviceAddress",
+                "DeviceAddress",
+                "NodeDescriptor"
+            ],
+            "ValidRange": [
+                "16-bitNWKAddress",
+                "64-bit IEEE Address",
+                ""
+            ],
+            "Description": [
+                "NWKAddressfortheLocal Device",
+                "IEEE address for the Local Device",
+                "See the Node Descriptor format in section 2.3.2.3"
+            ]
+        },
+        "When Generated ": "The Node_Desc_store_req is provided to enable ZigBee end devices on the network to request storage of their Node Descriptor on a Primary Discovery Cache device which has previously received a SUCCESS status from a Discovery_store_req to the same Primary Discovery Cache device. Included in this request is the Node Descriptor the Local Device wishes to cache. ",
+        "Effect on Receipt ": "Upon receipt, the Remote Device shall determine whether it is a Primary Discovery Cache device. If it is not a Primary Discovery Cache device, the Remote Device shall return a status of NOT_SUPPORTED. Next, the Remote Device shall determine whether it has previously processed a Discovery_store_req for the Local Device and returned a status of SUCCESS. If a previous Discovery_store_req has not been processed with a SUCCESS status, the Remote Device shall return NOT_PERMITTED. Next, the Remote Device shall determine if enough space is available to store the Node Descriptor for the Local Device. If not, the Remote Device shall return INSUFFICIENT_SPACE. Finally, the Remote Device shall store the Node Descriptor for the Local Device and return SUCCESS. If the request returned a status of SUCCESS and the NWKAddr and IEEEAddr in the request referred to addresses already held in the Primary Discovery Cache, the descriptor in this request shall overwrite the previously held entry. "
+    },
+    "Power_Desc_store_req": {
+        "fields": {
+            "Name": [
+                "NWKAddr",
+                "IEEEAddr",
+                "PowerDescriptor"
+            ],
+            "Type": [
+                "DeviceAddress",
+                "DeviceAddress",
+                "PowerDescriptor"
+            ],
+            "ValidRange": [
+                "16-bitNWKAddress",
+                "64-bitAddress"
+            ],
+            "Description": [
+                "NWKAddressfor theLocalDevice.",
+                "IEEE addressfor theLocal Device.",
+                "See the Power Descriptor format in section 2.3.2.4; This field shall only be included in the frame if the status fieldis equal to SUCCESS."
+            ]
+        },
+        "When Generated ": "The Power_Desc_store_req is provided to enable ZigBee end devices on the network to request storage of their Power Descriptor on a Primary Discovery Cache device which has previously received a SUCCESS status from a Discovery_store_req to the same Primary Discovery Cache device. Included in this request is the Power Descriptor the Local Device wishes to cache. ",
+        "Effect on Receipt ": "Upon receipt, the Remote Device shall determine whether it is a Primary Discovery Cache device. If it is not a Primary Discovery Cache device, the Remote Device shall return a status of NOT_SUPPORTED. Next, the Remote Device shall determine whether it has previously processed a Discovery_store_req for the Local Device and returned a status of SUCCESS. If a previous Discovery_store_req has not been processed with a SUCCESS status, the Remote Device shall return NOT_PERMITTED. Next, the Remote Device shall determine if enough space is available to store the Power Descriptor for the Local Device. If not, the Remote Device shall return INSUFFICIENT_SPACE. Finally, the Remote Device shall store the Power Descriptor for the Local Device and return SUCCESS. If the request returned a status of SUCCESS, and the NWKAddr and IEEEAddr in the request referred to addresses already held in the Primary Discovery Cache, the descriptor in this request shall overwrite the previously held entry. "
+    },
+    "Active_EP_store_req": {
+        "fields": {
+            "Name": [
+                "NWKAddr",
+                "IEEEAddr",
+                "ActiveEPCount",
+                "ActiveEPList"
+            ],
+            "Type": [
+                "DeviceAddress",
+                "DeviceAddress",
+                "Integer",
+                ""
+            ],
+            "ValidRange": [
+                "16-bitNWKAddress",
+                "64-bitIEEEAddress",
+                "0x00-0xff",
+                ""
+            ],
+            "Description": [
+                "NWKAddressfortheLocalDevice.",
+                "IEEEAddressfortheLocalDevice.",
+                "The count of active endpoints on the Local Device.",
+                "List of bytes, each of which represents an 8-bit endpoint number."
+            ]
+        },
+        "When Generated ": "The Active_EP_store_req is provided to enable ZigBee end devices on the network to request storage of their list of Active Endpoints on a Primary Discovery Cache device which has previously received a SUCCESS status from a Discovery_store_req to the same Primary Discovery Cache device. Included in this request is the count of Active Endpoints the Local Device wishes to cache and the endpoint list itself. ",
+        "Effect on Receipt ": "Upon receipt, the Remote Device shall determine whether it is a Primary Discovery Cache device. If it is not a Primary Discovery Cache device, the Remote Device shall return a status of NOT_SUPPORTED. Next, the Remote Device shall determine whether it has previously processed a Discovery_store_req for the Local Device and returned a status of SUCCESS. If a previous Discovery_store_req has not been processed with a SUCCESS status, the Remote Device shall return NOT_PERMITTED. Next, the Remote Device shall determine if enough space is available to store the Active Endpoint count and list for the Local Device. If not, the Remote Device shall return INSUFFICIENT_SPACE. Finally, the Remote Device shall store the Active Endpoint count and list for the Local Device and return SUCCESS. If the request returned a status of SUCCESS, and the NWKAddr and the IEEEAddr in the request referred to addresses already held in the Primary Discovery Cache, the descriptor in this request shall overwrite the previously held entry. "
+    },
+    "Simple_Desc_store_req": {
+        "fields": {
+            "Name": [
+                "NWKAddr",
+                "IEEEAddr",
+                "Length",
+                "SimpleDescriptor"
+            ],
+            "Type": [
+                "DeviceAddress",
+                "DeviceAddress",
+                "Device Address",
+                "SimpleDescriptor"
+            ],
+            "ValidRange": [
+                "16-bit NWKAddress",
+                "64-bitIEEEAddress",
+                "0x00 -0xff",
+                ""
+            ],
+            "Description": [
+                "NWKAddressfortheLocalDevice.",
+                "IEEE Address for theLocal Device.",
+                "The length in bytes of the Simple Descriptor to follow.",
+                "See the Simple Descriptor format in section2.3.2.5."
+            ]
+        },
+        "When Generated ": "The Simple_desc_store_req is provided to enable ZigBee end devices on the network to request storage of their list of Simple Descriptors on a Primary Discovery Cache device which has previously received a SUCCESS status from a Discovery_store_req to the same Primary Discovery Cache device. Note that each Simple Descriptor for every active endpoint on the Local Device must be individually uploaded to the Primary Discovery Cache device via this command to enable cached discovery. Included in this request is the length of the Simple Descriptor the Local Device wishes to cache and the Simple Descriptor itself. The endpoint is a field within the Simple Descriptor and is accessed by the Remote Device to manage the discovery cache information for the Local Device. ",
+        "Effect on Receipt ": "Upon receipt, the Remote Device shall determine whether it is a Primary Discovery Cache device. If it is not a Primary Discovery Cache device, the Remote Device shall return a status of NOT_SUPPORTED. Next, the Remote Device shall determine whether it has previously processed a Discovery_store_req for the Local Device and returned a status of SUCCESS. If a previous Discovery_store_req has not been processed with a SUCCESS status, the Remote Device shall return NOT_PERMITTED. Next, the Remote Device shall determine if enough space is available to store the Simple Descriptor for the Local Device. If not, the Remote Device shall return INSUFFICIENT_SPACE. Finally, the Remote Device shall store the Simple Descriptor for the Local Device and return SUCCESS. If the request returned a status of SUCCESS and the NWKAddr and the IEEEAddr in the request referred to addresses already held in the Primary Discovery Cache, the descriptor in this request shall overwrite the previously held entry. "
+    },
+    "Remove_node_cache_req": {
+        "fields": {
+            "Name": [
+                "NWKAddr",
+                "IEEEAddr"
+            ],
+            "Type": [
+                "DeviceAddress",
+                "DeviceAddress"
+            ],
+            "Valid Range": [
+                "16-bitNWKAddress",
+                "64-bitIEEEAddress"
+            ],
+            "Description": [
+                "NWKAddressforthedeviceofinterest.",
+                "IEEEAddressforthedeviceofinterest."
+            ]
+        },
+        "When Generated ": "The Remove_node_cache_req is provided to enable ZigBee devices on the network to request removal of discovery cache information for a specified ZigBee end device from a Primary Discovery Cache device. The effect of a successful Remove_node_cache_req is to undo a previously successful Discovery_store_req and additionally remove any cache information stored on behalf of the specified ZigBee end device on the Primary Discovery Cache device. ",
+        "Effect on Receipt ": "Upon receipt, the Remote Device shall determine whether it is a Primary Discovery Cache device. If it is not a Primary Discovery Cache device, the Remote Device shall return a status of NOT_SUPPORTED. Next, the Remote Device shall determine whether it has previously processed a Discovery_store_req for the indicated device and returned a status of SUCCESS. If a previous Discovery_store_req has not been processed with a SUCCESS status, the Remote Device shall return DEVICE_NOT_FOUND. Finally, the Remote Device shall remove all cached discovery information for the device of interest and return SUCCESS to the Local Device. "
+    },
+    "Find_node_cache_req": {
+        "fields": {
+            "Name": [
+                "NWKAddr",
+                "IEEEAddr"
+            ],
+            "Type": [
+                "DeviceAddress",
+                "DeviceAddress"
+            ],
+            "Valid Range": [
+                "16-bitNWKAddress",
+                "64-bitIEEEAddress"
+            ],
+            "Description": [
+                "NWKAddressforthedeviceofinterest.",
+                "IEEEAddressforthedeviceofinterest."
+            ]
+        },
+        "When Generated ": "The Find_node_cache_req is provided to enable ZigBee devices on the network to broadcast to all devices for which macRxOnWhenIdle $=$ TRUE a request to find a device on the network that holds discovery information for the device of interest, as specified in the request parameters. The effect of a successful Find_node_cache_req is to have the Primary Discovery Cache device, holding discovery information for the device of interest, unicast a Find_node_cache_rsp back to the Local Device. Note that, like the NWK_addr_req, only the device meeting this criteria shall respond to the request generated by Find_node_cache_req. ",
+        "Effect on Receipt ": "Upon receipt, the Remote Device shall determine whether it is the device of interest or a Primary Discovery Cache device, and if so, if it holds discovery cache information for the device of interest. If it is not the device of interest or a Primary Discovery Cache device, and does not hold discovery cache information for the device of interest, the Remote Device shall cease processing the request and not supply a response. If the Remote Device is the device of interest, or a Primary Discovery Cache device, and, if the device holds discovery information for the indicated device of interest, the Remote Device shall return the NWKAddr and IEEEaddr for the device of interest. "
+    },
+    "Extended_Simple_Desc_req": {
+        "fields": {
+            "Name": [
+                "NWKAddrOfInterest",
+                "Endpoint",
+                "StartIndex"
+            ],
+            "Type": [
+                "Device Address",
+                "8 bits",
+                "8 bits"
+            ],
+            "ValidRange": [
+                "16-bitNWK address",
+                "1-254",
+                "0x00-0xff"
+            ],
+            "Description": [
+                "NWK address for the request.",
+                "The endpoint on the destination.",
+                "Starting index within the cluster list of the response represented by an ordered list of the Application Input Cluster List and Application Output Cluster List."
+            ]
+        },
+        "When Generated ": "The Extended_Simple_Desc_req command is generated from a local device wishing to inquire as to the simple descriptor of a remote device on a specified endpoint. This command shall be unicast either to the remote device itself or to an alternative device that contains the discovery information of the remote device. The Extended_Simple_Desc_req is intended for use with devices which employ a larger number of application input or output clusters than can be described by the Simple_Desc_req. The local device shall generate the Extended_Simple_Desc_req command using the format illustrated in Table 2.67. The NWKAddrOfInterest field shall contain the network address of the remote device for which the simple descriptor is required and the endpoint field shall contain the endpoint identifier from which to obtain the required simple descriptor. The StartIndex is the first entry requested in the Application Input Cluster List and Application Output Cluster List sequence within the resulting response. ",
+        "Effect on Receipt ": "Upon receipt of this command, the recipient device shall process the command and generate an Extended_Simple_Desc_rsp command in response, according to the description in section 2.4.4.2.20.1. The results in the Extended_Simple_Desc_rsp shall include the elements described in Table 2.111 with a selectable set of the application input cluster and application output cluster lists starting with the entry StartIndex and continuing with whole entries until the maximum APS packet length is reached, along with a status of SUCCESS. "
+    },
+    "Extended_Active_EP_req": {
+        "fields": {
+            "Name": [
+                "NWKAddrOfInterest",
+                "StartIndex"
+            ],
+            "Type": [
+                "DeviceAddress",
+                "8 bits"
+            ],
+            "ValidRange": [
+                "16-bitNWKaddress",
+                "0x00-0xff"
+            ],
+            "Description": [
+                "NWK addressfor therequest.",
+                "Starting index within the Active Endpoint list in the response."
+            ]
+        },
+        "When Generated ": "The Extended_Active_EP_req command is generated from a local device wishing to acquire the list of endpoints on a remote device with simple descriptors. This command shall be unicast either to the remote device itself or to an alternative device that contains the discovery information of the remote device. The Extended_Active_EP_req is used for devices which support more active endpoints than can be returned by a single Active_EP_req. The local device shall generate the Extended_Active_EP_req command using the format illustrated in Table 2.68. The NWKAddrOfInterest field shall contain the network address of the remote device for which the active endpoint list is required. The StartIndex field shall be set in the request to enable retrieval of lists of active endpoints from devices whose list exceeds the size of a single ASDU and where fragmentation is not supported. ",
+        "Effect on Receipt ": "Upon receipt of this command, the recipient device shall process the command and generate an Extended_Active_EP_rsp command in response, according to the description in section 2.4.4.2.21.1. The results in the Extended_Active_EP_rsp shall include the elements described in Table 2.68 with a selectable set of the list of active endpoints on the remote device starting with the entry StartIndex and continuing with whole entries until the maximum APS packet length is reached or the application input and output cluster lists is exhausted, along with a status of SUCCESS. "
+    },
+    "End_Device_Bind_req": {
+        "fields": {
+            "Name": [
+                "BindingTarget",
+                "SrcIEEEAddress",
+                "SrcEndpoint",
+                "ProfileID",
+                "NumInClusters",
+                "InClusterList",
+                "NumOutClusters",
+                "OutClusterList"
+            ],
+            "Type": [
+                "Device Address",
+                "IEEE Address",
+                "8 bits",
+                "Integer",
+                "Integer",
+                "2 bytes * NumInClusters",
+                "Integer",
+                "2 bytes * NumOutClusters"
+            ],
+            "Valid Range": [
+                "16-bit NWK Address",
+                "A valid 64-bit IEEE Address",
+                "1-254",
+                "0x0000-0xffff",
+                "0x00-0xff",
+                "",
+                "0x00-0xff",
+                ""
+            ],
+            "Description": [
+                "The address of the target for the binding. This can be either the primary binding cache device or the short address of the local device.",
+                "The IEEE address of the device generating the request.",
+                "The endpoint on the device generating the request.",
+                "ProfileID which is to be matched between two End_Device_Bind_req received at the ZigBee Coordinator within the timeout value pre-configured in the ZigBee Coordinator.",
+                "The number of Input Clusters provided for end device binding within the InClusterList.",
+                "List of Input ClusterIDs to be used for matching. The InClusterList is the desired list to be matched by the ZigBee coordinator with the Remote Device's output clusters (the elements of the InClusterList are supported input clusters of the Local Device).",
+                "The number of Output Clusters provided for matching within OutClusterList.",
+                "List of Output ClusterIDs to be used for matching. The OutClusterList is the desired list to be matched by the ZigBee coordinator with the Remote Device's input clusters (the elements of the OutClusterList are supported output clusters of the Local Device)."
+            ]
+        },
+        "When Generated ": "The End_Device_Bind_req is generated from a Local Device wishing to perform End Device Bind with a Remote Device. The End_Device_Bind_req is generated, typically based on some user action like a button press. The destination addressing on this command shall be unicast, and the destination address shall be that of the ZigBee Coordinator. ",
+        "Effect on Receipt ": "On receipt of this command, the ZigBee coordinator shall first check that the supplied endpoint is within the specified range. If the supplied endpoint does not fall within the specified range, the ZigBee coordinator shall return an End_Device_Bind_rsp with a status of INVALID_EP. If the supplied endpoint is within the specified range, the ZigBee Coordinator shall retain the End_Device_Bind_req for a pre-configured timeout duration awaiting a second End_Device_Bind_req. If the second request does not appear within the timeout period, the ZigBee Coordinator shall generate a TIMEOUT status and return it with the End_Device_Bind_rsp to the originating Local Device. Assuming the second End_Device_Bind_req is received within the timeout period, it shall be matched with the first request on the basis of the ProfileID, InClusterList and OutClusterList. If no match of the ProfileID is detected by using the Profile Id Endpoint Matching Rules (see section 2.3.3.2), or if the ProfileID matches but none of the InClusterList or OutClusterList elements match, a status of NO_MATCH shall be supplied to both Local Devices via End_Device_Bind_rsp to each device. If a match of Profile ID and at least one input or output clusterID is detected, an End_Device_Bind_rsp with status SUCCESS shall be issued to each Local Device which generated the End_Device_Bind_req. In order to facilitate a toggle action, the ZigBee Coordinator shall then issue an Unbind_req command to the BindingTarget, specifying any one of the matched ClusterID values. If the returned status value is NO_ENTRY, the ZigBee Coordinator shall issue a Bind_req command for each matched ClusterID value. Otherwise, the ZigBee Coordinator shall conclude that the binding records are instead to be removed and shall issue an Unbind_req command for any further matched ClusterID values. The initial Unbind_req and any subsequent Bind_reqs or Unbind_reqs containing the matched clusters shall be directed to one of the BindingTargets specified by the generating devices. The BindingTarget is selected on an individual basis for each matched cluster, as the Binding Target selected by the generating device having that cluster as an output cluster. The SrcAddress field shall contain the 64-bit IEEE address of that same generating device and the SrcEndp field shall contain its endpoint. The DstAddress field shall contain the 64-bit IEEE address of the generating device having the matched cluster in its input cluster list and the DstEndp field shall contain its endpoint. "
+    },
+    "Bind_req": {
+        "fields": {
+            "Name": [
+                "SrcAddress",
+                "SrcEndp",
+                "ClusterID",
+                "DstAddrMode",
+                "DstAddress",
+                "DstEndp"
+            ],
+            "Type": [
+                "IEEEAddress",
+                "Integer",
+                "Integer",
+                "Integer",
+                "Address",
+                "Integer"
+            ],
+            "ValidRange": [
+                "Avalid64-bit IEEEaddress",
+                "0x01-0xfe",
+                "0x0000-0xffff"
+            ],
+            "Description": [
+                "TheIEEEaddressforthesource.",
+                "The source endpoint for the binding entry.",
+                "Theidentifieroftheclusteronthesourcedevicethatis boundtothedestination.",
+                "The addressing mode for the destination address used in this command. This field can take one of the non-reserved values from the following list: 0x00 = reserved 0x01 = 16-bit group address for DstAddress and DstEndp not present 0x02 = reserved Ox03 = 64-bit extended address for DstAddress and DstEndp present Ox04 - 0xff = reserved",
+                "The destination address for the binding entry.",
+                "This field shall be present only if the DstAddrMode field has a value of Ox03 and, if present, shall be the destination endpoint for the binding entry."
+            ]
+        },
+        "When Generated ": "The Bind_req is generated from a Local Device wishing to create a Binding Table entry for the source and destination addresses contained as parameters. The destination addressing on this command shall be unicast only, and the destination address shall be that of a Primary binding table cache or to the SrcAddress itself. The Binding Manager is optionally supported on the source device (unless that device is also the ZigBee Coordinator) so that device shall issue a NOT_SUPPORTED status to the Bind_req if not supported. ",
+        "Effect on Receipt ": "Upon receipt, a Remote Device (a Primary binding table cache or the device designated by SrcAddress) shall create a Binding Table entry based on the parameters supplied in the Bind_req if the Binding Manager is supported. If the remote device is a primary binding table cache, the following additional processing is required. First, the primary cache shall check its table of devices holding their own source bindings for the device in SrcAddress and, if it is found, shall issue another Bind_req to that device with the same entry. Second, the primary cache shall check if there is a backup binding table cache and, if so, shall issue a Store_Bkup_Binding_Entry_req command to backup the new entry. The Remote Device shall then respond with SUCCESS if the entry has been created by the Binding Manager; otherwise, the Remote Device shall respond with NOT_SUPPORTED. "
+    },
+    "Unbind_req": {
+        "fields": {
+            "Name": [
+                "SrcAddress",
+                "SrcEndp",
+                "ClusterID",
+                "DstAddrMode",
+                "DstAddress",
+                "DstEndp"
+            ],
+            "Type": [
+                "IEEE Address",
+                "Integer",
+                "Integer",
+                "Integer",
+                "Address",
+                "Integer"
+            ],
+            "Valid Range": [
+                "A valid 64-bit IEEE address",
+                "0x01-0xfe",
+                "0x0000-0xffff",
+                "0x00-0xff",
+                "As specified by the DstAddrMode field",
+                "0x01-00xfe"
+            ],
+            "Description": [
+                "TheIEEE addressfor the source",
+                "The source endpoint for the binding entry",
+                "The identifier of the cluster on the source device that is bound to the destination.",
+                "The addressing mode for the destination address used in this command. This field can take one of the non-reserved values from the following list: 0x00 = reserved 0x01 = 16-bit group address for DstAddress and DstEndp not present 0x02 = reserved 0x03 = 64-bit extended address for DstAddress and DstEndp present 0x04 - 0xff = reserved",
+                "The destination address for the binding entry.",
+                "This field shall be present only if the DstAddrMode field has a value of 0x03 and, if present, shall be the destination endpoint for the binding entry."
+            ]
+        },
+        "When Generated ": "The Unbind_req is generated from a Local Device wishing to remove a Binding Table entry for the source and destination addresses contained as parameters. The destination addressing on this command shall be unicast only and the destination address must be that of the Primary binding table cache or the SrcAddress. ",
+        "Effect on Receipt ": "The Remote Device shall evaluate whether this request is supported. If the request is not supported, a Status of NOT_SUPPORTED shall be returned. If the request is supported, the Remote Device (a Primary binding table cache or the SrcAddress) shall remove a Binding Table entry based on the parameters supplied in the Unbind_req. If the Remote Device is a primary binding table cache, the following additional processing is required. First, the primary cache shall check its table of devices holding their own source bindings for the device in SrcAddress and, if it is found, shall issue another Unbind_req to that device with the same entry. Second, the primary cache shall check if there is a backup binding table cache and, if so, shall issue a Remove_Bkup_Bind_Entry_req command to remove the backup of this entry. If a Binding Table entry for the SrcAddress, SrcEndp, ClusterID, DstAddress, DstEndp contained as parameters does not exist, the Remote Device shall respond with NO_ENTRY. Otherwise, the Remote Device shall delete the indicated Binding Table entry and respond with SUCCESS. "
+    },
+    "Bind_Register_req": {
+        "fields": {
+            "Name": [
+                "NodeAddress"
+            ],
+            "Type": [
+                "IEEEAddress"
+            ],
+            "ValidRange": [
+                "Avalid64-bitIEEE address"
+            ],
+            "Description": [
+                "The address of the node wishing to hold its own binding table."
+            ]
+        },
+        "When Generated": "The Bind_Register_req is generated from a Local Device and sent to a primary binding table cache device to register that the local device wishes to hold its own binding table entries. The destination addressing mode for this request is unicast. ",
+        "Effect on Receipt ": "If the remote device is not a primary binding table cache it shall return a status of NOT_SUPPORTED. Otherwise, the primary binding table cache shall add the NodeAddress given by the parameter to its table of source devices which have chosen to store their own binding table. If this fails, it shall return a status of TABLE_FULL. Otherwise, it returns a status of SUCCESS. If an entry for the NodeAddress already exists in the table of source devices, the behavior will be the same as if it had been newly added. The source device should clear its source binding table before issuing this command to avoid synchronization problems. In the successful case, any existing bind entries from the binding table whose source address is NodeAddress will be sent to the requesting device for inclusion in its source binding table. See Bind_Register_rsp for further details. Subsequent bind entries written to the binding list will cause copies to be written to the source device using Bind_req. "
+    },
+    "Replace_Device_req": {
+        "fields": {
+            "Name": [
+                "OldAddress",
+                "OldEndpoint",
+                "NewAddress",
+                "NewEndpoint"
+            ],
+            "Type": [
+                "IEEEAddress",
+                "Integer",
+                "IEEEAddress",
+                "Integer"
+            ],
+            "Valid Range": [
+                "Avalid64-bitIEEE",
+                "0x00 -0xfe",
+                "Avalid64-bitIEEE",
+                "0x01 -0xfe"
+            ],
+            "Description": [
+                "The address of the node being replaced.",
+                "The endpoint being replaced.",
+                "The replacement address.",
+                "The replacement endpoint."
+            ]
+        },
+        "When Generated ": "The Replace_Device_req is intended for use by a special device such as a Commissioning tool and is sent to a primary binding table cache device to change all binding table entries which match OldAddress and OldEndpoint as specified. Note that OldEndpoint $=0$ has special meaning and signifies that only the address needs to be matched. The endpoint in the binding table will not be changed in this case and so NewEndpoint is ignored. The processing changes all binding table entries for which the source address is the same as OldAddress and, if OldEndpoint is non-zero, for which the source endpoint is the same as OldEndpoint. It shall also change all binding table entries which have the destination address the same as OldAddress and, if OldEndpoint is non-zero, the destination endpoint the same as OldEndpoint. The destination addressing mode for this request is unicast. ",
+        "Effect on Receipt ": "If the remote device is not a primary binding table cache, it shall return a status of NOT_SUPPORTED. The primary binding table cache shall check if the OldAddress parameter is non-zero and, if so, shall search its binding table for entries of source addresses and source endpoint, or destination addresses and destination endpoint, that are set the same as OldAddress and OldEndpoint. It shall change these entries to have NewAddress and NewEndpoint. In the case that OldEndpoint is zero, the primary binding table cache shall search its binding table for entries whose source address or destination address match OldAddress. It shall change these entries to have NewAddress leaving the endpoint value unchanged and ignoring NewEndpoint. It shall then return a response of SUCCESS. The primary binding table cache shall also be responsible for notifying affected devices which are registered as holding their own source binding table of the changes. This will be necessary for each changed binding table entry, where the destination address was changed and the source address appears in the list of source devices which have chosen to store their own binding table. In each of these cases, the amended binding table entry will be sent to the source device using an Unbind_req command for the old entry followed by a Bind_req command for the new one. In the case that the source address of the bind entry has been changed, it will be necessary for the primary binding table cache to send an Unbind_req command to the old source device if it is a source bind device and to send a Bind_req command to the new source bind device if it is a source bind device. The primary binding table cache shall also update the backup binding table cache by means of the Remove_bkup_binding_entry_req command for the old entry and Store_bkup_binding_entry_req for the altered entry. "
+    },
+    "Store_Bkup_Bind_Entry_req": {
+        "fields": {
+            "Name": [
+                "SrcAddress",
+                "SrcEndpoint",
+                "ClusterId",
+                "DstAddrMode",
+                "DstAddress",
+                "DstEndp"
+            ],
+            "Type": [
+                "IEEE Address",
+                "Integer",
+                "Integer",
+                "Integer",
+                "Address",
+                "Integer"
+            ],
+            "Valid Range": [
+                "A valid 64-bit IEEE address",
+                "0x01 - 0xfe",
+                "0x0000 -0xffff",
+                "0x00-0xff",
+                "As specified by the DstAddrMode field",
+                "0x01-0xfe"
+            ],
+            "Description": [
+                "TheIEEE addressfor the source.",
+                "The source endpoint for the binding entry.",
+                "The identifier of the cluster on the source device that is bound to the destination.",
+                "The addressing mode for the destination address used in this command. This field can take one of the non-reserved values from the following list: 0x00 = reserved Ox01 = 16-bit group address for DstAddress and DstEndp not present 0x02 = reserved 0x03 = 64-bit extended address for DstAddress and DstEndp present 0x04 - 0xff = reserved",
+                "The destination address for the binding entry.",
+                "This field shall be present only if the DstAddrMode field has a value of Ox03 and, if present, shall be the destination endpoint for the binding entry."
+            ]
+        },
+        "When Generated ": "The Store_Bkup_Bind_Entry_req is generated from a local primary binding table cache and sent to a remote backup binding table cache device to request backup storage of the entry. It will be generated whenever a new binding table entry has been created by the primary binding table cache. The destination addressing mode for this request is unicast. ",
+        "Effect on Receipt ": "If the remote device is not a backup binding table cache it shall return a status of NOT_SUPPORTED. If it is the backup binding table cache, it should maintain the identity of the primary binding table cache from previous discovery. If the contents of the Store_Bkup_Bind_Entry parameters match an existing entry in the binding table cache, then the remote device shall return SUCCESS. Otherwise, the backup binding table cache shall add the binding entry to its binding table and return a status of SUCCESS. If there is no room, it shall return a status of TABLE_FULL. "
+    },
+    "Remove_Bkup_Bind_Entry_req": {
+        "fields": {
+            "Name": [
+                "SrcAddress",
+                "SrcEndpoint",
+                "ClusterId",
+                "DstAddrMode",
+                "DstAddress",
+                "DstEndp"
+            ],
+            "Type": [
+                "IEEE Address",
+                "Integer",
+                "Integer",
+                "Integer",
+                "Address",
+                "Integer"
+            ],
+            "Valid Range": [
+                "A valid 64-bit IEEE address",
+                "0x01 - 0xfe",
+                "0x0000 -0xffff",
+                "0x00-0xff",
+                "As specified by the DstAddrModefield"
+            ],
+            "Description": [
+                "TheIEEE address for the source.",
+                "The endpoint for the binding entry.",
+                "The identifier of the cluster on the source device that is bound to the destination.",
+                "The addressing mode for the destination address used in this command. This field can take one of the non-reserved values from the following list: 0x00 = reserved Ox01 = 16-bit group address for DstAddress and DstEndp not present 0x02 = reserved 0x03 = 64-bit extended address for DstAddress and DstEndp present 0x04 - 0xff = reserved",
+                "The destination address for the binding entry.",
+                "This field shall be present only if the DstAddrMode field has a value of Ox03 and, if present, shall be the destination endpoint for the binding entry."
+            ]
+        },
+        "When Generated ": "The Remove_Bkup_Bind_Entry_req is generated from a local primary binding table cache and sent to a remote backup binding table cache device to request removal of the entry from backup storage. It will be generated whenever a binding table entry has been unbound by the primary binding table cache. The destination addressing mode for this request is unicast. ",
+        "Effect on Receipt ": "If the remote device is not a backup binding table cache, it shall return a status of NOT_SUPPORTED. If it is a backup binding table cache, it should maintain the identity of the primary binding table cache from previous discovery. If it does not recognize the sending device as the primary binding table cache, it shall return a status of INV_REQUESTTYPE. Otherwise, the backup binding table cache shall search its binding table for the entry corresponding to the supplied parameters. If no entry is found, it shall return a status of NO_ENTRY. Otherwise, it shall delete the entry and return a status of SUCCESS. "
+    },
+    "Backup_Bind_Table_req": {
+        "fields": {
+            "Name": [
+                "BindingTableEntries",
+                "StartIndex",
+                "BindingTableListCount",
+                "BindingTableList"
+            ],
+            "Type": [
+                "Integer",
+                "Integer",
+                "Integer",
+                "Listofbinding descriptors"
+            ],
+            "Valid Range": [
+                "0x0000 -0xffff",
+                "0x0000 -0xffff",
+                "Ox0000-Oxffff",
+                "Thelistshallcontainthe number of elements given by the BindingTableListCount"
+            ],
+            "Description": [
+                "Total number of binding table entries on the primary binding table cache device.",
+                "Starting index within the binding table of entries.",
+                "Number of binding table entries included within BindingTableList.",
+                "A list of descriptors beginning with the StartIndexelement and continuingfor BindingTableListCount of the elements in the primary binding table cache devices's binding table (see Table 2.134 for details.)"
+            ]
+        },
+        "When Generated ": "The Backup_Bind_Table_req is generated from a local primary binding table cache and sent to the remote backup binding table cache device to request backup storage of its entire binding table. The destination addressing mode for this request is unicast. ",
+        "Effect on Receipt ": "If the remote device is not a backup binding table cache, it shall return a status of NOT_SUPPORTED. If it is a backup binding table cache, it should maintain the identity of the primary binding table cache from previous discovery. If it does not recognize the sending device as a primary binding table cache, it shall return a status of INV_REQUESTTYPE. Otherwise, the backup binding table cache shall overwrite the binding entries in its binding table starting with StartIndex and continuing for BindingTableListCount entries. If this exceeds its table size, it shall fill in as many entries as possible and return a status of TABLE_FULL. Otherwise, it shall return a status of SUCCESS. The table is effectively truncated to the end of the last entry written by this request. The new size of the table is returned in the response and will be equal to StartIndex $^+$ BindingTableListCount unless TABLE_FULL is being returned it which case it will be the maximum size of the table. "
+    },
+    "Recover_Bind_Table_req": {
+        "fields": {
+            "Name": [
+                "StartIndex"
+            ],
+            "Type": [
+                "Integer"
+            ],
+            "ValidRange": [
+                "Ox0oo0-Oxffff"
+            ],
+            "Description": [
+                "Starting index for the requested elements of the binding table"
+            ]
+        },
+        "When Generated ": "The Recover_Bind_Table_req is generated from a local primary binding table cache and sent to a remote backup binding table cache device when it wants a complete restore of the binding table. The destination addressing mode for this request is unicast. ",
+        "Effect on Receipt ": "If the remote device is not the backup binding table cache, it shall return a status of NOT_SUPPORTED. If it does not recognize the sending device as a primary binding table cache it shall return a status of INV_REQUESTTYPE. Otherwise, the backup binding table cache shall prepare a list of binding table entries from its backup beginning with StartIndex. It will fit in as many entries as possible into a Recover_Bind_Table_rsp command and return a status of SUCCESS. "
+    },
+    "Backup_Source_Bind_req": {
+        "fields": {
+            "Name": [
+                "SourceTableEntries",
+                "StartIndex",
+                "SourceTableListCount",
+                "SourceTableList"
+            ],
+            "Type": [
+                "Integer",
+                "Integer",
+                "Integer",
+                "List of IEEE Addresses"
+            ],
+            "Valid Range": [
+                "0x0000-0xffff",
+                "0x0000-0xffff",
+                "0x0000 -0xffff",
+                "The list shall contain the number of elements given by the SourceTableListCount"
+            ],
+            "Description": [
+                "Total number of source table entries on the primary binding table cache device.",
+                "Starting index within the binding table of the entries in SourceTableList.",
+                "Number of source table entries included within SourceTableList.",
+                "A list of addresses beginning with the StartIndex element and continuing for SourceTableListCount of source addresses in the primary binding table cache device's source table."
+            ]
+        },
+        "When Generated ": "The Backup_Source_Bind_req is generated from a local primary binding table cache and sent to a remote backup binding table cache device to request backup storage of its entire source table. The destination addressing mode for this request is unicast. ",
+        "Effect on Receipt ": "If the remote device is not the backup binding table cache, it shall return a status of NOT_SUPPORTED. If it does not recognize the sending device as a primary binding table cache, it shall return a status of INV_REQUESTTYPE. Otherwise, the backup binding table cache shall overwrite the source entries in its backup source table starting with StartIndex and continuing for SourceTableListCount entries. If this exceeds its table size, it shall return a status of TABLE_FULL. Otherwise, it shall return a status of SUCCESS. The command always truncates the backup table to a number of entries equal to its maximum size or SourceTableEntries, whichever is smaller. "
+    },
+    "Recover_Source_Bind_req": {
+        "fields": {
+            "Name": [
+                "StartIndex"
+            ],
+            "Type": [
+                "Integer"
+            ],
+            "Valid Range": [
+                "OxOoo0-Oxffff"
+            ],
+            "Description": [
+                "Starting index for the requested elements of the binding table"
+            ]
+        },
+        "When Generated ": "The Recover_Source_Bind_req is generated from a local primary binding table cache and sent to the remote backup binding table cache device when it wants a complete restore of the source binding table. The destination addressing mode for this request is unicast. ",
+        "Effect on Receipt ": "If the remote device is not the backup binding table cache it shall return a status of NOT_SUPPORTED. If it does not recognize the sending device as a primary binding table cache, it shall return a status of INV_REQUESTTYPE. Otherwise, the backup binding table cache shall prepare a list of source binding table entries from its backup beginning with StartIndex. It will fit in as many entries as possible into a Recover_Source_Bind_rsp command and return a status of SUCCESS. "
+    },
+    "Mgmt_NWK_Disc_req": {
+        "fields": {
+            "Name": [
+                "ScanChannels",
+                "ScanDuration",
+                "StartIndex"
+            ],
+            "Type": [
+                "Bitmap",
+                "Integer",
+                "Integer"
+            ],
+            "ValidRange": [
+                "32-bit field",
+                "",
+                "0x00-0xff"
+            ],
+            "Description": [
+                "Seesection3.2.2.1fordetailsonNLME-NETWORKDISCOVERY.requestScanChannelsparameter.",
+                "A value used to calculate the length of time tospend scanning each channel. The time spent scanning each channel is (aBaseSuperframeDuration * (2\" + 1)) symbols, where n is the value of the ScanDuration parameter. For more information on MAC sub-layer scanning (see [B 1].",
+                "Starting index within the resulting NLME-NETWORKDISCOVERY.confirm NetworkList to begin reporting for the Mgmt_NWK_Disc_rsp."
+            ]
+        },
+        "When Generated ": "The Mgmt_NWK_Disc_req is generated from a Local Device requesting that the Remote Device execute a Scan to report back networks in the vicinity of the Local Device. The destination addressing on this command shall be unicast. ",
+        "Effect on Receipt ": "The Remote Device shall execute an NLME-NETWORK-DISCOVERY.request using the ScanChannels and ScanDuration parameters supplied with the Mgmt_NWK_Disc_req command. The results of the Scan shall be reported back to the Local Device via the Mgmt_NWK_Disc_rsp command. If this command is not supported in the Remote Device, the return status provided with the Mgmt_NWK_Disc_rsp shall be NOT_SUPPORTED. If the scan was successful, the Mgmt_NWK_Disc_rsp command shall contain a status of SUCCESS and the results of the scan shall be reported, beginning with the StartIndex element of the NetworkList. If the scan was unsuccessful, the Mgmt_NWK_Disc_rsp command shall contain the error code reported in the NLME-NETWORK-DISCOVERY.confirm primitive. "
+    },
+    "Mgmt_Lqi_req": {
+        "fields": {
+            "Name": [
+                "StartIndex"
+            ],
+            "Type": [
+                "Integer"
+            ],
+            "ValidRange": [
+                "0x00-0xff"
+            ],
+            "Description": [
+                "Starting Index for the requested elements of the Neighbor Table."
+            ]
+        },
+        "When Generated ": "The Mgmt_Lqi_req is generated from a Local Device wishing to obtain a neighbor list for the Remote Device along with associated LQI values to each neighbor. The destination addressing on this command shall be unicast only.  It may be sent to a coordinator, router, or end device. ",
+        "Effect on Receipt ": "Upon receipt, a Remote Device (ZigBee Router or ZigBee Coordinator) shall retrieve the entries of the neighbor table and associated LQI values via the NLME-GET.request primitive (for the nwkNeighborTable attribute) and report the resulting neighbor table (obtained via the NLME-GET.confirm primitive) via the Mgmt_Lqi_rsp command. Prior to revision 21 of this specification, server processing of this command was optional.  Additionally end devices were not required to support the command.  As a result some devices may return NOT_SUPPORTED. If this command is not supported in the Remote Device, the return status provided with the Mgmt_Lqi_rsp shall be NOT_SUPPORTED. If the neighbor table was obtained successfully, the Mgmt_Lqi_rsp command shall contain a status of SUCCESS and the neighbor table shall be reported, beginning with the element in the list enumerated as StartIndex. If the neighbor table was not obtained successfully, the Mgmt_Lqi_rsp command shall contain the error code reported in the NLME-GET.confirm primitive. "
+    },
+    "Mgmt_Rtg_req": {
+        "fields": {
+            "Name": [
+                "StartIndex"
+            ],
+            "Type": [
+                "Integer"
+            ],
+            "ValidRange": [
+                "0x00-0xff"
+            ],
+            "Description": [
+                "Starting Index for the requested elements of the Routing Table."
+            ]
+        },
+        "When Generated ": "The Mgmt_Rtg_req is generated from a Local Device wishing to retrieve the contents of the Routing Table from the Remote Device. The destination addressing on this command shall be unicast only and the destination address must be that of the ZigBee Router or ZigBee Coordinator. ",
+        "Effect on Receipt ": "Upon receipt, a Remote Device (ZigBee Coordinator or ZigBee Router) shall retrieve the entries of the routing table from the NWK layer via the NLME-GET.request primitive (for the nwkRouteTable attribute) and report the resulting routing table (obtained via the NLME-GET.confirm primitive) via the Mgmt_Rtg_rsp command. If the Remote Device does not support this optional management request, it shall return a Status of NOT_SUPPORTED. If the routing table was obtained successfully, the Mgmt_Rtg_req command shall contain a status of SUCCESS and the routing table shall be reported, beginning with the element in the list enumerated as StartIndex. If the routing table was not obtained successfully, the Mgmt_Rtg_rsp command shall contain the error code reported in the NLME-GET.confirm primitive. "
+    },
+    "Mgmt_Bind_req": {
+        "fields": {
+            "Name": [
+                "StartIndex"
+            ],
+            "Type": [
+                "Integer"
+            ],
+            "ValidRange": [
+                "Ox00-Oxff"
+            ],
+            "Description": [
+                "Starting g Index for the requested elements of the Binding Table."
+            ]
+        },
+        "When Generated ": "The Mgmt_Bind_req is generated from a Local Device wishing to retrieve the contents of the Binding Table from the Remote Device. The destination addressing on this command shall be unicast only and the destination address must be that of a Primary binding table cache or source device holding its own binding table. ",
+        "Effect on Receipt ": "Upon receipt, a Remote Device shall retrieve the entries of the binding table from the APS sub-layer via the APSME-GET.request primitive (for the apsBindingTable attribute) and report the resulting binding table (obtained via the APSME-GET.confirm primitive) via the Mgmt_Bind_rsp command. If the Remote Device does not support this optional management request, it shall return a status of NOT_SUPPORTED. If the binding table was obtained successfully, the Mgmt_Bind_rsp command shall contain a status of SUCCESS and the binding table shall be reported, beginning with the element in the list enumerated as StartIndex. If the binding table was not obtained successfully, the Mgmt_Bind_rsp command shall contain the error code reported in the APSME-GET.confirm primitive. "
+    },
+    "Mgmt_Leave_req": {
+        "fields": {
+            "Name": [
+                "DeviceAddress",
+                "Remove Children",
+                "Rejoin"
+            ],
+            "Type": [
+                "Device Address",
+                "Bit",
+                "Bit"
+            ],
+            "Valid Range": [
+                "Anextended64-bit, IEEE address",
+                "0 or 1",
+                "0 or 1"
+            ],
+            "Description": [
+                "See section 3.2.2.16 for details on the Device Address parameter within NLME-LEAVE.request. For DeviceAddress of NULL, a value of 0x0000000000000000 shall be used.",
+                "This field has a value of 1 if the devicebeing asked to leave the network is also being asked to remove its child devices, if any. Otherwise, it has a value of 0.",
+                "This field has a value of 1 if the device being asked to leave from the current parent is requested to rejoin the network. Otherwise, it has a value of 0."
+            ]
+        },
+        "When Generated ": "The Mgmt_Leave_req is generated from a Local Device requesting that a Remote Device leave the network or to request that another device leave the network. The Mgmt_Leave_req is generated by a management application which directs the request to a Remote Device where the NLME-LEAVE.request is to be executed using the parameter supplied by Mgmt_Leave_req. ",
+        "Effect on Receipt ": "Upon receipt, the remote device shall process the leave request by executing the procedure in section 3.6.1.10.3.1.  If the leave request was validated and accepted, then the receiving device shall generate the NLME-LEAVE.request to disassociate from the currently associated network. The NLME-LEAVE.request shall have the DeviceAddress parameter set to the local device’s nwkIeeeAddress from the NIB, the RemoveChildren shall be set to FALSE, and the Rejoin parameter shall be set to FALSE. The results of the leave attempt shall be reported back to the local device via the Mgmt_Leave_rsp command. Versions of this specification prior to revision 21 did not mandate the requirement to support this command.  Therefore if the remote device did not support this optional management request, it would return a status of  NOT_SUPPORTED. All devices certified against version 21 and later are now required to support this command. If the leave attempt was executed successfully, the Mgmt_Leave_rsp command shall contain a status of SUCCESS. If the leave attempt was not executed successfully, the Mgmt_Leave_rsp command shall contain the error code reported in the NLME-LEAVE.confirm primitive. "
+    },
+    "Mgmt_Direct_Join_req": {
+        "fields": {
+            "Name": [
+                "DeviceAddress",
+                "CapabilityInformation"
+            ],
+            "Type": [
+                "Device Address",
+                "Bitmap"
+            ],
+            "ValidRange": [
+                "An extended 64-bit, IEEEaddress",
+                "SeeTable3-47"
+            ],
+            "Description": [
+                "Seesection3.2.2.14fordetailson theDeviceAddress parameter within NLME-DIRECT-JOIN.request.",
+                "The operating capabilities of the device being directly joined."
+            ]
+        },
+        "When Generated ": "The Mgmt_Direct_Join_req is generated from a Local Device requesting that a Remote Device permit a device designated by DeviceAddress to join the network directly. The Mgmt_Direct_Join_req is generated by a management application which directs the request to a Remote Device where the NLME-DIRECT-JOIN.request is to be executed using the parameter supplied by Mgmt_Direct_Join_req. ",
+        "Effect on Receipt ": "Upon receipt, the remote device shall issue the NLME-DIRECT-JOIN.request primitive using the DeviceAddress and CapabilityInformation parameters supplied with the Mgmt_Direct_Join_req command. The results of the direct join attempt shall be reported back to the local device via the Mgmt_Direct_Join_rsp command. If the remote device does not support this optional management request, it shall return a status of NOT_SUPPORTED. If the direct join attempt was executed successfully, the Mgmt_Direct_Join_rsp command shall contain a status of SUCCESS. If the direct join attempt was not executed successfully, the Mgmt_Direct_Join_rsp command shall contain the error code reported in the NLME-DIRECT-JOIN.confirm primitive. "
+    },
+    "Mgmt_Permit_Joining_req": {
+        "fields": {
+            "Name": [
+                "PermitDuration",
+                "TC_Significance"
+            ],
+            "Type": [
+                "Integer",
+                "Boolean Integer"
+            ],
+            "ValidRange": [
+                "0x00-0xfe",
+                "0x00-0x01"
+            ],
+            "Description": [
+                "See section 3.2.2.5 for details on the PermitDuration parameter within NLME-PERMIT-JOINING.request.",
+                "This field shall always have a value of 1, indicating a request to change the Trust Center policy.If a frame is received with a value of O, it shall be treated as having a value of 1."
+            ]
+        },
+        "When Generated ": "The Mgmt_Permit_Joining_req is generated from a Local Device requesting that a remote device or devices allow or disallow association. The Mgmt_Permit_Joining_req is generated by a management application or commissioning tool which directs the request to a remote device(s) where the NLME-PERMIT-JOINING.request is executed using the PermitDuration parameter supplied by Mgmt_Permit_Joining_req. Additionally, if the remote device is the Trust Center and TC_Significance is set to 1, the Trust Center authentication policy will be affected. The addressing may be unicast or ‘broadcast to all routers and coordinator.’ ",
+        "Effect on Receipt ": "Upon receipt, the remote device(s) shall issue the NLME-PERMIT-JOINING.request primitive using the PermitDuration parameter supplied with the Mgmt_Permit_Joining_req command. If the PermitDuration parameter is not equal to zero or 0xFF, the parameter is a number of seconds and joining is permitted until it counts down to zero, after which time, joining is not permitted. If the PermitDuration is set to zero, joining is not permitted. Versions of this specification prior to revision 21 allowed a value of 0xFF to be interpreted as ‘forever’. Version 21 and later do not allow this.  All devices conforming to this specification shall interpret 0xFF as 0xFE. Devices that wish to extend the PermitDuration beyond 0xFE seconds shall periodically re-send the Mgmt_Permit_Joining_req. If a second Mgmt_Permit_Joining_req is received while the previous one is still counting down, it will supersede the previous request. A value of zero for the TC_Significance field has been deprecated.  The field shall always be included in the message and all received frames shall be treated as though set to 1, regardless of the actual received value.  In other words, all Mgmt_Permit_Joining_req shall be treated as a request to change the TC Policy. If the remote device is the Trust Center the Trust Center authorization policy may be affected. Whether the Trust Center accepts a change in its authorization policy is dependent upon its Trust Center policies.  A Trust Center device receiving a Mgmt_Permit_Joining_req shall execute the procedure in section 4.7.3.2 to determine if the request is permitted.  If the operation was not permitted, the status code of INVALID_REQUEST shall be set.  If the operation was allowed, the status code of SUCCESS shall be set. If the Mgmt_Permit_Joining_req primitive was received as a unicast, the results of the NLME-PERMITJOINING.request shall be reported back to the local device via the Mgmt_Permit_Joining_rsp command. If the command was received as a broadcast, no response shall be sent back. "
+    },
+    "Mgmt_Cache_req": {
+        "fields": {
+            "Name": [
+                "StartIndex"
+            ],
+            "Type": [
+                "Integer"
+            ],
+            "Valid Range": [
+                "0x00-0xff"
+            ],
+            "Description": [
+                "Starting Index for the requested elements of the discoverycachelist."
+            ]
+        },
+        "When Generated ": "The Mgmt_Cache_req is provided to enable ZigBee devices on the network to retrieve a list of ZigBee End Devices registered with a Primary Discovery Cache device. The destination addressing on this primitive shall be unicast. ",
+        "Effect on Receipt ": "Upon receipt, the Remote Device shall determine whether it is a Primary Discovery Cache or whether this optional request primitive is supported. If it is not a Primary Discovery Cache device or the Mgmt_Cache_req primitive is not supported, the Remote Device shall return a status of NOT_SUPPORTED. If the Remote Device is a Primary Discovery Cache and supports the Mgmt_Cache_req, the Remote Device shall return SUCCESS to the Local Device along with the discovery cache list which consists of the NWKAddr and IEEEaddr for each ZigBee End Device registered. "
+    },
+    "Mgmt_NWK_Update_req": {
+        "fields": {
+            "Name": [
+                "ScanChannels",
+                "ScanDuration",
+                "ScanCount",
+                "nwkUpdateId",
+                "nwkManagerAddr"
+            ],
+            "Type": [
+                "Bitmap",
+                "Integer",
+                "Integer",
+                "Integer",
+                "Device Address"
+            ],
+            "Valid Range": [
+                "32-bit field",
+                "0x00-0x05 or Oxfe or Oxff",
+                "0x00 -0x05",
+                "0x00 - 0xFF",
+                "16-bit NWK address"
+            ],
+            "Description": [
+                "See section 3.2.2.1 for details on NLME-ED-SCAN.request ScanChannels parameter.",
+                "A value used to calculate the length of time to spend scanning each channel. The time spent scanning each channel is (aBaseSuperframeDuration * (2\" + 1)) symbols, where n is the value of the ScanDuration parameter. For more information on MAC sub-layer scanning (see [B1]). If ScanDuration has a value of Oxfe this is a request for channel change. If ScanDuration has a value of Oxff this is a request to change the apsChannelMask and nwkManagerAddr attributes.",
+                "This field represents the number of energy scans to be conducted and reported. This field shall be present only if the ScanDuration is within the range of 0x00 to 0x05.",
+                "The value of the nwkUpdateld contained in this request. This value is set by the Network Channel Manager prior to sending the message. This field shall only be present of the ScanDuration is Oxfe or Oxff. If the ScanDuration is Oxff, then the value in the nwkUpdateID shall be ignored.",
+                "This field shall be present only if the ScanDuration is set to Oxff, and, where present, indicates the NWK address for the device with the Network Manager bit set in its Node Descriptor."
+            ]
+        },
+        "When Generated ": "This command is provided to allow updating of network configuration parameters or to request information from devices on network conditions in the local operating environment. The destination addressing on this primitive shall be unicast or broadcast to all devices for which macRxOnWhenIdle $=$ TRUE. ",
+        "Effect on Receipt ": "Upon receipt, the Remote Device shall determine from the contents of the ScanDuration parameter whether this request is an update to the apsChannelMask and nwkManagerAddr attributes, a channel change command, or a request to scan channels and report the results. If the ScanDuration parameter is equal to 0xfe, the message is a command to change channels. The receiver shall determine if the channel is one within the range of the current PHY, and if the command has a channel outside that range a response of INVALID_REQUEST shall be generated, and the original request shall be dropped and no further processing shall be done. This command provides a new active channel as a single channel in the ChannelMask in which case the APS IB is not updated. If the channel is valid for the current PHY then the procedure for channel change shall be initiated. If the ScanDuration parameter is equal to 0xff, the command provides a set of new apsChannelMask along with a new nwkManagerAddr. The Remote Device shall store the apsChannelMask in the APS IB and the nwkManagerAddr in the NIB without invocation of an NLME-ED-SCAN.request. If this command is unicast with ScanDuration set to 0xfe or 0xff, the Remote Device shall not respond. The network manager should request an APS acknowledgement in this case. If the ScanDuration is equal to $0\\mathrm{x00}$ to $0\\mathrm{x}05$ and the destination addressing on this command was unicast then the command is interpreted as a request to scan the channels described in ChannelMask. If the channel mask contains a channel outside the range of the current PHY, then a response of INVALID_REQUEST shall be sent back. Otherwise the device shall use the parameter ScanDuration and ScanCount, via invocation of an NLME-ED-SCAN.request. If the Remote Device does not support fragmentation and the resulting response will exceed the APDU, the Remote Device shall perform the Energy Detect Scan on as many of the requested channels as will fit into a single APDU, highlighting the list of actual scanned channels in the response parameter. If multiple scans are requested in the ScanCount, each scan is reported as a separate result. The Remote Device will employ an Energy Detect Scan using the request parameters, modified by the limitation described for fragmentation, and supply the results to the requesting device with a Mgmt_NWK_Update_notify with a SUCCESS status. Otherwise, if the ScanDuration is equal to $0\\mathrm{x}06$ to 0xfd and the destination addressing on this command was unicast then the Remote Device shall return a status of INVALID_REQUEST. If the destination addressing on this command was not unicast then the Remote Device shall not transmit a response. "
+    }
+}

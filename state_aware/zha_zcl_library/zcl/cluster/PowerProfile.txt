@@ -1,0 +1,177 @@
+class PowerProfile(Cluster):
+    ScheduleRecord: Final = ScheduleRecord
+    PowerProfilePhase: Final = PowerProfilePhase
+    PowerProfile: Final = PowerProfileType
+
+    cluster_id: Final[t.uint16_t] = 0x001A
+    ep_attribute: Final = "power_profile"
+
+    class AttributeDefs(BaseAttributeDefs):
+        total_profile_num: Final = ZCLAttributeDef(
+            id=0x0000, type=t.uint8_t, access="r", mandatory=True
+        )
+        multiple_scheduling: Final = ZCLAttributeDef(
+            id=0x0001, type=t.Bool, access="r", mandatory=True
+        )
+        energy_formatting: Final = ZCLAttributeDef(
+            id=0x0002, type=t.bitmap8, access="r", mandatory=True
+        )
+        energy_remote: Final = ZCLAttributeDef(
+            id=0x0003, type=t.Bool, access="r", mandatory=True
+        )
+        schedule_mode: Final = ZCLAttributeDef(
+            id=0x0004, type=t.bitmap8, access="rwp", mandatory=True
+        )
+        cluster_revision: Final = foundation.ZCL_CLUSTER_REVISION_ATTR
+        reporting_status: Final = foundation.ZCL_REPORTING_STATUS_ATTR
+
+    class ServerCommandDefs(BaseCommandDefs):
+        power_profile_request: Final = ZCLCommandDef(
+            id=0x00,
+            schema={"power_profile_id": t.uint8_t},
+            direction=Direction.Client_to_Server,
+        )
+        power_profile_state_request: Final = ZCLCommandDef(
+            id=0x01, schema={}, direction=Direction.Client_to_Server
+        )
+        get_power_profile_price_response: Final = ZCLCommandDef(
+            id=0x02,
+            schema={
+                "power_profile_id": t.uint8_t,
+                "currency": t.uint16_t,
+                "price": t.uint32_t,
+                "price_trailing_digit": t.uint8_t,
+            },
+            direction=Direction.Server_to_Client,
+        )
+        get_overall_schedule_price_response: Final = ZCLCommandDef(
+            id=0x03,
+            schema={
+                "currency": t.uint16_t,
+                "price": t.uint32_t,
+                "price_trailing_digit": t.uint8_t,
+            },
+            direction=Direction.Server_to_Client,
+        )
+        energy_phases_schedule_notification: Final = ZCLCommandDef(
+            id=0x04,
+            schema={
+                "power_profile_id": t.uint8_t,
+                "scheduled_phases": t.LVList[ScheduleRecord],
+            },
+            direction=Direction.Client_to_Server,
+        )
+        energy_phases_schedule_response: Final = ZCLCommandDef(
+            id=0x05,
+            schema={
+                "power_profile_id": t.uint8_t,
+                "scheduled_phases": t.LVList[ScheduleRecord],
+            },
+            direction=Direction.Server_to_Client,
+        )
+        power_profile_schedule_constraints_request: Final = ZCLCommandDef(
+            id=0x06,
+            schema={"power_profile_id": t.uint8_t},
+            direction=Direction.Client_to_Server,
+        )
+        energy_phases_schedule_state_request: Final = ZCLCommandDef(
+            id=0x07,
+            schema={"power_profile_id": t.uint8_t},
+            direction=Direction.Client_to_Server,
+        )
+        get_power_profile_price_extended_response: Final = ZCLCommandDef(
+            id=0x08,
+            schema={
+                "power_profile_id": t.uint8_t,
+                "currency": t.uint16_t,
+                "price": t.uint32_t,
+                "price_trailing_digit": t.uint8_t,
+            },
+            direction=Direction.Server_to_Client,
+        )
+
+    class ClientCommandDefs(BaseCommandDefs):
+        power_profile_notification: Final = ZCLCommandDef(
+            id=0x00,
+            schema={
+                "total_profile_num": t.uint8_t,
+                "power_profile_id": t.uint8_t,
+                "transfer_phases": t.LVList[PowerProfilePhase],
+            },
+            direction=Direction.Client_to_Server,
+        )
+        power_profile_response: Final = ZCLCommandDef(
+            id=0x01,
+            schema={
+                "total_profile_num": t.uint8_t,
+                "power_profile_id": t.uint8_t,
+                "transfer_phases": t.LVList[PowerProfilePhase],
+            },
+            direction=Direction.Server_to_Client,
+        )
+        power_profile_state_response: Final = ZCLCommandDef(
+            id=0x02,
+            schema={"power_profiles": t.LVList[PowerProfileType]},
+            direction=Direction.Server_to_Client,
+        )
+        get_power_profile_price: Final = ZCLCommandDef(
+            id=0x03,
+            schema={"power_profile_id": t.uint8_t},
+            direction=Direction.Client_to_Server,
+        )
+        power_profile_state_notification: Final = ZCLCommandDef(
+            id=0x04,
+            schema={"power_profiles": t.LVList[PowerProfileType]},
+            direction=Direction.Client_to_Server,
+        )
+        get_overall_schedule_price: Final = ZCLCommandDef(
+            id=0x05, schema={}, direction=Direction.Client_to_Server
+        )
+        energy_phases_schedule_request: Final = ZCLCommandDef(
+            id=0x06,
+            schema={"power_profile_id": t.uint8_t},
+            direction=Direction.Client_to_Server,
+        )
+        energy_phases_schedule_state_response: Final = ZCLCommandDef(
+            id=0x07,
+            schema={
+                "power_profile_id": t.uint8_t,
+                "num_scheduled_energy_phases": t.uint8_t,
+            },
+            direction=Direction.Server_to_Client,
+        )
+        energy_phases_schedule_state_notification: Final = ZCLCommandDef(
+            id=0x08,
+            schema={
+                "power_profile_id": t.uint8_t,
+                "num_scheduled_energy_phases": t.uint8_t,
+            },
+            direction=Direction.Client_to_Server,
+        )
+        power_profile_schedule_constraints_notification: Final = ZCLCommandDef(
+            id=0x09,
+            schema={
+                "power_profile_id": t.uint8_t,
+                "start_after": t.uint16_t,
+                "stop_before": t.uint16_t,
+            },
+            direction=Direction.Client_to_Server,
+        )
+        power_profile_schedule_constraints_response: Final = ZCLCommandDef(
+            id=0x0A,
+            schema={
+                "power_profile_id": t.uint8_t,
+                "start_after": t.uint16_t,
+                "stop_before": t.uint16_t,
+            },
+            direction=Direction.Server_to_Client,
+        )
+        get_power_profile_price_extended: Final = ZCLCommandDef(
+            id=0x0B,
+            schema={
+                "options": t.bitmap8,
+                "power_profile_id": t.uint8_t,
+                "power_profile_start_time?": t.uint16_t,
+            },
+            direction=Direction.Client_to_Server,
+        )

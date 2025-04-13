@@ -1,0 +1,19 @@
+{
+    "Attributes": [
+        "type",
+        "method",
+        "age",
+        "quality_measure",
+        "num_of_devices",
+        "coordinate1",
+        "coordinate2",
+        "coordinate3",
+        "power",
+        "path_loss_exponent",
+        "reporting_period",
+        "calculation_period",
+        "number_rssi_measurements",
+        "cluster_revision",
+        "reporting_status"
+    ]
+}

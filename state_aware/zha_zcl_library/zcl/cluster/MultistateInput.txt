@@ -1,0 +1,31 @@
+class MultistateInput(Cluster):
+    cluster_id: Final[t.uint16_t] = 0x0012
+    ep_attribute: Final = "multistate_input"
+
+    class AttributeDefs(BaseAttributeDefs):
+        state_text: Final = ZCLAttributeDef(
+            id=0x000E, type=t.LVList[t.CharacterString, t.uint16_t], access="r*w"
+        )
+        description: Final = ZCLAttributeDef(
+            id=0x001C, type=t.CharacterString, access="r*w"
+        )
+        number_of_states: Final = ZCLAttributeDef(
+            id=0x004A, type=t.uint16_t, access="r*w"
+        )
+        out_of_service: Final = ZCLAttributeDef(
+            id=0x0051, type=t.Bool, access="r*w", mandatory=True
+        )
+        present_value: Final = ZCLAttributeDef(
+            id=0x0055, type=t.Single, access="r*w", mandatory=True
+        )
+        # 0x0057: ('priority_array', TODO.array),  # Array of 16 structures of (boolean,
+        # single precision)
+        reliability: Final = ZCLAttributeDef(id=0x0067, type=t.enum8, access="r*w")
+        status_flags: Final = ZCLAttributeDef(
+            id=0x006F, type=t.bitmap8, access="r", mandatory=True
+        )
+        application_type: Final = ZCLAttributeDef(
+            id=0x0100, type=t.uint32_t, access="r"
+        )
+        cluster_revision: Final = foundation.ZCL_CLUSTER_REVISION_ATTR
+        reporting_status: Final = foundation.ZCL_REPORTING_STATUS_ATTR

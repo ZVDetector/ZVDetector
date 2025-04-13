@@ -1,0 +1,4 @@
+class SulfurDioxideConcentration(_ConcentrationMixin, Cluster):
+    cluster_id: Final[t.uint16_t] = 0x0416
+    name: Final = "Sulfur Dioxide (SO₂) Concentration"
+    ep_attribute: Final = "sulfur_dioxide_concentration"

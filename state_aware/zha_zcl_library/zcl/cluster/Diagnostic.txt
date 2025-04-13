@@ -1,0 +1,73 @@
+class Diagnostic(Cluster):
+    cluster_id: Final[t.uint16_t] = 0x0B05
+    ep_attribute: Final = "diagnostic"
+
+    class AttributeDefs(BaseAttributeDefs):
+        # Hardware Information
+        number_of_resets: Final = ZCLAttributeDef(
+            id=0x0000, type=t.uint16_t, access="r"
+        )
+        persistent_memory_writes: Final = ZCLAttributeDef(
+            id=0x0001, type=t.uint16_t, access="r"
+        )
+        # Stack/Network Information
+        mac_rx_bcast: Final = ZCLAttributeDef(id=0x0100, type=t.uint32_t, access="r")
+        mac_tx_bcast: Final = ZCLAttributeDef(id=0x0101, type=t.uint32_t, access="r")
+        mac_rx_ucast: Final = ZCLAttributeDef(id=0x0102, type=t.uint32_t, access="r")
+        mac_tx_ucast: Final = ZCLAttributeDef(id=0x0103, type=t.uint32_t, access="r")
+        mac_tx_ucast_retry: Final = ZCLAttributeDef(
+            id=0x0104, type=t.uint16_t, access="r"
+        )
+        mac_tx_ucast_fail: Final = ZCLAttributeDef(
+            id=0x0105, type=t.uint16_t, access="r"
+        )
+        aps_rx_bcast: Final = ZCLAttributeDef(id=0x0106, type=t.uint16_t, access="r")
+        aps_tx_bcast: Final = ZCLAttributeDef(id=0x0107, type=t.uint16_t, access="r")
+        aps_rx_ucast: Final = ZCLAttributeDef(id=0x0108, type=t.uint16_t, access="r")
+        aps_tx_ucast_success: Final = ZCLAttributeDef(
+            id=0x0109, type=t.uint16_t, access="r"
+        )
+        aps_tx_ucast_retry: Final = ZCLAttributeDef(
+            id=0x010A, type=t.uint16_t, access="r"
+        )
+        aps_tx_ucast_fail: Final = ZCLAttributeDef(
+            id=0x010B, type=t.uint16_t, access="r"
+        )
+        route_disc_initiated: Final = ZCLAttributeDef(
+            id=0x010C, type=t.uint16_t, access="r"
+        )
+        neighbor_added: Final = ZCLAttributeDef(id=0x010D, type=t.uint16_t, access="r")
+        neighbor_removed: Final = ZCLAttributeDef(
+            id=0x010E, type=t.uint16_t, access="r"
+        )
+        neighbor_stale: Final = ZCLAttributeDef(id=0x010F, type=t.uint16_t, access="r")
+        join_indication: Final = ZCLAttributeDef(id=0x0110, type=t.uint16_t, access="r")
+        child_moved: Final = ZCLAttributeDef(id=0x0111, type=t.uint16_t, access="r")
+        nwk_fc_failure: Final = ZCLAttributeDef(id=0x0112, type=t.uint16_t, access="r")
+        aps_fc_failure: Final = ZCLAttributeDef(id=0x0113, type=t.uint16_t, access="r")
+        aps_unauthorized_key: Final = ZCLAttributeDef(
+            id=0x0114, type=t.uint16_t, access="r"
+        )
+        nwk_decrypt_failures: Final = ZCLAttributeDef(
+            id=0x0115, type=t.uint16_t, access="r"
+        )
+        aps_decrypt_failures: Final = ZCLAttributeDef(
+            id=0x0116, type=t.uint16_t, access="r"
+        )
+        packet_buffer_allocate_failures: Final = ZCLAttributeDef(
+            id=0x0117, type=t.uint16_t, access="r"
+        )
+        relayed_ucast: Final = ZCLAttributeDef(id=0x0118, type=t.uint16_t, access="r")
+        phy_to_mac_queue_limit_reached: Final = ZCLAttributeDef(
+            id=0x0119, type=t.uint16_t, access="r"
+        )
+        packet_validate_drop_count: Final = ZCLAttributeDef(
+            id=0x011A, type=t.uint16_t, access="r"
+        )
+        average_mac_retry_per_aps_message_sent: Final = ZCLAttributeDef(
+            id=0x011B, type=t.uint16_t, access="r"
+        )
+        last_message_lqi: Final = ZCLAttributeDef(id=0x011C, type=t.uint8_t, access="r")
+        last_message_rssi: Final = ZCLAttributeDef(id=0x011D, type=t.int8s, access="r")
+        cluster_revision: Final = foundation.ZCL_CLUSTER_REVISION_ATTR
+        reporting_status: Final = foundation.ZCL_REPORTING_STATUS_ATTR

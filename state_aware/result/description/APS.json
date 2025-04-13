@@ -1,0 +1,292 @@
+{
+    "General APS Frame Format": {
+        "description": "The APS frame format is composed of an APS header and an APS payload. The fields of the APS header appear in a fixed order, however, the addressing fields may not be included in all frames. The general APS frame shall be formatted as illustrated in Figure 2.2. ",
+        "fields": [
+            "Frame control",
+            "Destination endpoint",
+            "Group address",
+            "Cluster identifier",
+            "Profile identifier",
+            "Source endpoint",
+            "APS counter",
+            "Extended header",
+            "Frame payload"
+        ],
+        "Frame Control Field": {
+            "description": "The frame control field is 8-bits in length and contains information defining the frame type, addressing fields, and other control flags. The frame control field shall be formatted as illustrated in Figure 2.3. ",
+            "fields": [
+                "Frame type",
+                "Delivery mode",
+                "Ack.format",
+                "Security",
+                "Ack.request",
+                "Extended header present"
+            ],
+            "Frame Type Sub-Field": "The frame type sub-field is two bits in length and shall be set to one of the non-reserved values listed in Table 2.20. ",
+            "Delivery Mode Sub-Field ": "The delivery mode sub-field is two bits in length and shall be set to one of the non-reserved values from Table 2.21. If the value is 0b00, the frame will be delivered to a given endpoint on the receiving device. If the value is 0b10, the message is a broadcast. In this case, the message will go to all devices defined for the selected broadcast address in use as defined in section 3.6.5. The destination endpoint field shall be set to a value between 0x01-0xfe (for broadcasts to specific endpoints) or to 0xff (for broadcasts to all active endpoints). If the value is 0b11, then group addressing is in use and that frame will only be delivered to device endpoints that express group membership in the group identified by the group address field in the APS header. Note that other endpoints on the source device may be members of the group addressed by the outgoing frame. The frame shall be delivered to any member of the group, including other endpoints on the source device that are members of the specified group. Devices where nwkUseMulticast is set to TRUE, shall never set the delivery mode of an outgoing frame to 0b11. In this case, the delivery mode of the outgoing frame shall be set to 0b10 (broadcast) and the frame shall be sent using an NLDE-DATA.request with the destination address mode set to group addressing. ",
+            "Ack Format Field ": "This bit indicates if the destination endpoint, cluster identifier, profile identifier and source endpoint fields shall be present in the acknowledgement frame. This is set to 0 for data frame acknowledgement and 1 for APS command frame acknowledgement. ",
+            "Security Sub-Field ": "The Security Services Provider (see Chapter 4) manages the security sub-field. ",
+            "Acknowledgement Request Sub-Field ": "The acknowledgement request sub-field is one bit in length and specifies whether the current transmission requires an acknowledgement frame to be sent to the originator on receipt of the frame. If this sub-field is set to 1, the recipient shall construct and send an acknowledgement frame back to the originator after determining that the frame is valid. If this sub-field is set to 0, the recipient shall not send an acknowledgement frame back to the originator. This sub-field shall be set to 0 for all frames that are broadcast or multicast. ",
+            "Extended Header Present": "The extended header present sub-field is one bit in length and specifies whether the extended header shall be included in the frame. If this sub-field is set to 1, then the extended header shall be included in the frame. Otherwise, it shall not be included in the frame. "
+        },
+        "Destination Endpoint Field": {
+            "description": "The destination endpoint field is 8-bits in length and specifies the endpoint of the final recipient of the frame. This frame shall be included in the frame only if the delivery mode subfield is set to 0b00 (normal unicast delivery), or 0b10 (broadcast delivery). In the case of broadcast delivery, the frame shall be delivered to the destination endpoint specified within the range 0x01-0xfe or to all active endpoints if specified as 0xff. A destination endpoint value of $0\\mathrm{x00}$ addresses the frame to the ZigBee device object (ZDO), resident in each device. A destination endpoint value of 0x01-0xfe addresses the frame to an application operating on that endpoint. A destination endpoint value of 0xff addresses the frame to all active endpoints except endpoint $0\\mathrm{x00}$ . ",
+            "fields": []
+        },
+        "Group Address Field": {
+            "description": "The group address field is 16 bits in length and will only be present if the delivery mode sub-field of the frame control has a value of 0b11. In this case, the destination endpoint shall not be present. If the APS header of a frame contains a group address field, the frame will be delivered to all endpoints for which the group table in the device contains an association between that endpoint and the group identified by the contents of the group address field. Devices where nwkUseMulticast is set to TRUE shall never set the group address field of an outgoing frame. ",
+            "fields": []
+        },
+        "Cluster Identifier Field": {
+            "description": "The cluster identifier field is 16 bits in length and specifies the identifier of the cluster to which the frame relates and which shall be made available for filtering and interpretation of messages at each device that takes delivery of the frame. This field shall be present only for data or acknowledgement frames. ",
+            "fields": []
+        },
+        "Profile Identifier Field": {
+            "description": "The profile identifier is two octets in length and specifies the ZigBee profile identifier for which the frame is intended and shall be used during the filtering of messages at each device that takes delivery of the frame. This field shall be present only for data or acknowledgement frames. ",
+            "fields": []
+        },
+        "Source Endpoint Field": {
+            "description": "The source endpoint field is eight-bits in length and specifies the endpoint of the initial originator of the frame. A source endpoint value of $0\\mathrm{x00}$ indicates that the frame originated from the ZigBee device object (ZDO) resident in each device. A source endpoint value of 0x01-0xfe indicates that the frame originated from an application operating on that endpoint. ",
+            "fields": []
+        },
+        "APS Counter": {
+            "description": "This field is eight bits in length and is used as described in section 2.2.8.4.2 to prevent the reception of duplicate frames. This value shall be incremented by one for each new transmission. ",
+            "fields": []
+        },
+        "Extended Header Sub-Frame": {
+            "description": "The extended header sub-frame contains further sub-fields and shall be formatted as illustrated in Figure 2.4. ",
+            "fields": [
+                "Extended frame control",
+                "Block number",
+                "ACK bitfield"
+            ],
+            "Extended Frame Control Field": "The extended frame control field is eight-bits in length and contains information defining the use of fragmentation. The extended frame control field shall be formatted as illustrated in Figure 2.5. The fragmentation sub-field is two bits in length and shall be set to one of the non-reserved values listed in Table 2.22. ",
+            "Block Number": "The block number field is one octet in length and is used for fragmentation control as follows: If the fragmentation sub-field is set to indicate that the transmission is not fragmented then the block number field shall not be included in the sub-frame. If the fragmentation sub-field is set to 01, then the block number field shall be included in the sub-frame and shall indicate the number of blocks in the fragmented transmission. If the fragmentation sub-field is set to 10, then the block number field shall be included in the sub-frame and shall indicate which block number of the transmission the current frame represents, taking the value $0\\mathrm{x}01$ for the second fragment, $_{0\\mathrm{x}02}$ for the third, etc. ",
+            "Ack Bitfield": "The ack bitfield field is one octet in length and is used in an APS acknowledgement as described in section 2.2.8.4.5.2 to indicate which blocks of a fragmented ASDU have been successfully received. This field is only present if the frame type sub-field indicates an acknowledgement and the fragmentation sub-field indicates a fragmented transmission. "
+        }
+    },
+    "Format of Individual Frame Types": {
+        "Data Frame Format": {
+            "APS header": [
+                "Frame control",
+                "Destination endpoint",
+                "Group address",
+                "Cluster identifier",
+                "Profile Identifier",
+                "Source endpoint",
+                "APS counter",
+                "Extended header"
+            ],
+            "APS payload": [
+                "Frame payload"
+            ],
+            "APS Header Fields": "The APS header field for a data frame shall contain the frame control, cluster identifier, profile identifier, source endpoint and APS counter fields. The destination endpoint, group address and extended header fields shall be included in a data frame according to the values of the delivery mode and extended header present sub-fields of the frame control field. In the frame control field, the frame type sub-field shall contain the value that indicates a data frame, as shown in Table 2.20. All other sub-fields shall be set appropriately according to the intended use of the data frame. "
+        },
+        "APS Command Frame Format": {
+            "APS header": [
+                "Frame control",
+                "APS counter"
+            ],
+            "APS payload": [
+                "APS command identifier",
+                "APS command payload"
+            ],
+            "APS Header Fields": "The APS header field for an APS command frame shall contain the frame control and APS counter fields. In this version of the specification, the APS command frame shall not be fragmented and the extended header field shall not be present. In the frame control field, the frame type sub-field shall contain the value that indicates an APS command frame, as shown in Table 2.20. The APS Command Payload shall be set appropriately according to the intended use of the APS command frame. "
+        },
+        "Acknowledgement Frame Format": {
+            "APS header": [
+                "Frame control",
+                "Destination endpoint",
+                "Cluster identifier",
+                "Profile identifier",
+                "Source endpoint",
+                "APS counter",
+                "Extended header"
+            ],
+            "APS Header Fields": "If the ack format field is not set in the frame control field, the destination endpoint, cluster identifier, profile identifier and source endpoint shall be present. This is not set for data frame acknowledgement. The extended header field shall be included in a data frame according to the value of the extended header present sub-field of the frame control field. In the frame control field, the frame type sub-field shall contain the value that indicates an acknowledgement frame, as shown in Table 2.20. The extended header present sub-field shall contain the same value as in the frame to which this frame is an acknowledgement. All other sub-fields shall be set appropriately according to the intended use of the acknowledgement frame. If the ack format field is set in the frame control field, the frame is an APS command frame acknowledgement and the destination endpoint, cluster identifier, profile identifier and source endpoint fields shall not be included. Alternatively, if an APS data frame is being acknowledged, the source endpoint field shall reflect the value in the destination endpoint field of the frame that is being acknowledged. Similarly, the destination endpoint field shall reflect the value in the source endpoint field of the frame that is being acknowledged. And the Cluster identifier and Profile identifier fields shall contain the same values as in the frame to which this frame is an acknowledgement. The APS counter field shall contain the same value as the frame to which this frame is an acknowledgment. Where the extended header is present, the fragmentation sub-field of the extended frame control field shall contain the same value as in the frame to which this frame is an acknowledgement. If fragmentation is in use for this frame, then the block number and ack bitfield fields shall be present. Where present, the block number field shall contain block number to which this frame is an acknowledgement. If fragmentation is in use, the acknowledgement frames shall be issued according to section 2.2.8.4.5.2 and not for each received frame unless the transmission window size is set to request acknowledgement of each frame. "
+        }
+    },
+    "Command Frames": {
+        "Command Identifier": [
+            "Reserved",
+            "Reserved",
+            "Reserved",
+            "Reserved",
+            "APS_CMD_TRANSPORT_KEY",
+            "APS_CMD_UPDATE_DEVICE",
+            "APS_CMD_REMOVE_DEVICE",
+            "APS_CMD_REQUEST_KEY",
+            "APS_CMD_SWITCH_KEY",
+            "Reserved",
+            "Reserved",
+            "Reserved",
+            "Reserved",
+            "APS_CMD_TUNNEL",
+            "APS_CMD_VERIFY_KEY",
+            "APS_CMD_CONFIRM_KEY",
+            "APS_CMD_RELAY_MESSAGE_DOWNSTREAM",
+            "APS_CMD_RELAY_MESSAGE_UPSTREAM"
+        ],
+        "Value": [
+            "0x01",
+            "0x02",
+            "0x03",
+            "0x04",
+            "0x05",
+            "0x06",
+            "0x07",
+            "0x08",
+            "0x09",
+            "0x0A",
+            "OxOB",
+            "Ox0C",
+            "OxOD",
+            "0x0E",
+            "0xOF",
+            "0x10",
+            "0x11",
+            "0x12"
+        ]
+    },
+    "Transport-Key Commands": {
+        "APS header": {
+            "Frame control": "Octets:1",
+            "APS counter": "1"
+        },
+        "Payload": {
+            "APS command identifier": "1",
+            "StandardKeyType": "1",
+            "Key descriptor": "Variable",
+            "Key descriptor field": {
+                "description": "This field is variable in length and SHALL contain the actual (unprotected) value of the transported key along with any relevant identification and usage parameters. The information in this field depends on the type of key being trans-ported (as indicated by the StandardKeyType field — see Table 4-9) and shall be set to one of the formats described in the following subsections.",
+                "Trust Center Link Key Descriptor Field": {
+                    "Key": "Octets: 16",
+                    "Destination address": "8",
+                    "Source address": "8",
+                    "TLVs": "Varies"
+                },
+                "Network Key Descriptor Field": {
+                    "Key": "Octets: 16",
+                    "Sequence number": "1",
+                    "Destination address": "8",
+                    "Source address": "8"
+                },
+                "Application Link Key Descriptor Field": {
+                    "Key": "Octets: 16",
+                    "Partner address": "8",
+                    "Initiator flag": "1",
+                    "TLVs": "Varies"
+                }
+            }
+        }
+    },
+    "Update Device Commands": {
+        "APS header": {
+            "Frame control": "Octets:1",
+            "APS counter": "1"
+        },
+        "Payload": {
+            "APS command identifier": "1",
+            "Device Address": "8",
+            "Device short address": "2",
+            "Status": "1"
+        }
+    },
+    "Remove Device Commands": {
+        "APS header": {
+            "Frame control": "Octets:1",
+            "APScounter": "1"
+        },
+        "Payload": {
+            "APS command identifier": "1",
+            "Target address": "8"
+        }
+    },
+    "Request-Key Commands": {
+        "APS header": {
+            "Frame control": "Octets:1",
+            "APS counter": "1"
+        },
+        "Payload": {
+            "APS command identifier": "1",
+            "RequestKeyType": "1",
+            "Partner address": "0/8"
+        }
+    },
+    "Switch-Key Commands": {
+        "APS header": {
+            "Frame control": "Octets:1",
+            "APS counter": "1"
+        },
+        "Payload": {
+            "APS command identifier": "1",
+            "Sequence number": "1"
+        }
+    },
+    "Tunnel Command": {
+        "APS header": {
+            "Frame control": "Octets:1",
+            "APS counter": "1"
+        },
+        "Payload": {
+            "APS command identifier": "1",
+            "Destination address": "8",
+            "Tunneled APS header": "2",
+            "Tunneled auxiliary frame": "13",
+            "Tunneled command": "Variable",
+            "Tunneled APS MIC": "4"
+        }
+    },
+    "Verify-Key Command": {
+        "APS header": {
+            "Frame control": "Octets:1",
+            "APS counter": "1"
+        },
+        "Payload": {
+            "APS command identifier": "1",
+            "StandardKeyType": "1",
+            "Source address": "8",
+            "Initiator Verify-Key HashValue": "16"
+        }
+    },
+    "Confirm-Key Command": {
+        "APS header": {
+            "Frame control": "Octets:1",
+            "APS counter": "1"
+        },
+        "Payload": {
+            "APS command identifier": "1",
+            "Status": "1",
+            "StandardKeyType": "1",
+            "Destination address": "8"
+        }
+    },
+    "Relay Message Downstream Command": {
+        "APS header": {
+            "Frame control": "Octets:1",
+            "APS Counter": "1"
+        },
+        "Payload": {
+            "APS Command Identifier": "1",
+            "TLVs": "varies",
+            "TLVs Field":{
+                "Destination EUI64": "Octets: 8",
+                "Message to be relayed": "Varies"
+            }
+        }
+    },
+    "Relay Message Upstream Command": {
+        "APS header": {
+            "Frame control": "Octets:1",
+            "APS Counter": "1"
+        },
+        "Payload": {
+            "APS Command Identifier": "1",
+            "TLVs": "varies",
+            "TLVs Field":{
+                "Source EUI64": "Octets: 8",
+                "Message to be relayed": "Varies"
+            }
+        }
+    }
+}

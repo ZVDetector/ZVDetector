@@ -1,0 +1,32 @@
+{
+    "light_color_step_hue, light_color_move_to_hue": {
+        "attribute": "current_hue"
+    },
+    "light_color_step_hue, light_color_move_hue": {
+        "attribute": "current_hue"
+    },
+    "light_color_step_hue, light_color_move_to_saturation": {
+        "attribute": null
+    },
+    "light_color_step_hue, light_color_move_saturation": {
+        "attribute": null
+    },
+    "light_color_step_hue, light_color_step_saturation": {
+        "attribute": null
+    },
+    "light_color_step_hue, light_color_move_to_hue_and_saturation": {
+        "attribute": "current_hue"
+    },
+    "light_color_step_hue, light_color_move_to_color": {
+        "attribute": "current_hue"
+    },
+    "light_color_step_hue, light_color_move_color": {
+        "attribute": "current_hue"
+    },
+    "light_color_step_hue, light_color_step_color": {
+        "attribute": "current_hue"
+    },
+    "light_color_step_hue, light_color_move_to_color_temp": {
+        "attribute": null
+    }
+}

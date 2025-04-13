@@ -1,0 +1,28 @@
+{
+    "Attributes": [
+        "max_pressure",
+        "max_speed",
+        "max_flow",
+        "min_const_pressure",
+        "max_const_pressure",
+        "min_comp_pressure",
+        "max_comp_pressure",
+        "min_const_speed",
+        "max_const_speed",
+        "min_const_flow",
+        "max_const_flow",
+        "min_const_temp",
+        "max_const_temp",
+        "pump_status",
+        "effective_operation_mode",
+        "effective_control_mode",
+        "capacity",
+        "speed",
+        "lifetime_running_hours",
+        "power",
+        "lifetime_energy_consumed",
+        "operation_mode",
+        "control_mode",
+        "alarm_mask"
+    ]
+}

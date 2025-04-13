@@ -1,0 +1,12 @@
+{
+    "Attributes": [
+        "count",
+        "current_scene",
+        "current_group",
+        "scene_valid",
+        "name_support",
+        "last_configured_by",
+        "cluster_revision",
+        "reporting_status"
+    ]
+}

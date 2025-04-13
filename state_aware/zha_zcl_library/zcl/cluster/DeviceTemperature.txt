@@ -1,0 +1,40 @@
+class DeviceTemperature(Cluster):
+    """Attributes for determining information about a device’s
+    internal temperature, and for configuring under/over
+    temperature alarms.
+    """
+
+    DeviceTempAlarmMask: Final = DeviceTempAlarmMask
+
+    cluster_id: Final[t.uint16_t] = 0x0002
+    name: Final = "Device Temperature"
+    ep_attribute: Final = "device_temperature"
+
+    class AttributeDefs(BaseAttributeDefs):
+        # Device Temperature Information
+        current_temperature: Final = ZCLAttributeDef(
+            id=0x0000, type=t.int16s, access="r", mandatory=True
+        )
+        min_temp_experienced: Final = ZCLAttributeDef(
+            id=0x0001, type=t.int16s, access="r"
+        )
+        max_temp_experienced: Final = ZCLAttributeDef(
+            id=0x0002, type=t.int16s, access="r"
+        )
+        over_temp_total_dwell: Final = ZCLAttributeDef(
+            id=0x0003, type=t.uint16_t, access="r"
+        )
+        # Device Temperature Settings
+        dev_temp_alarm_mask: Final = ZCLAttributeDef(
+            id=0x0010, type=DeviceTempAlarmMask, access="rw"
+        )
+        low_temp_thres: Final = ZCLAttributeDef(id=0x0011, type=t.int16s, access="rw")
+        high_temp_thres: Final = ZCLAttributeDef(id=0x0012, type=t.int16s, access="rw")
+        low_temp_dwell_trip_point: Final = ZCLAttributeDef(
+            id=0x0013, type=t.uint24_t, access="rw"
+        )
+        high_temp_dwell_trip_point: Final = ZCLAttributeDef(
+            id=0x0014, type=t.uint24_t, access="rw"
+        )
+        cluster_revision: Final = foundation.ZCL_CLUSTER_REVISION_ATTR
+        reporting_status: Final = foundation.ZCL_REPORTING_STATUS_ATTR

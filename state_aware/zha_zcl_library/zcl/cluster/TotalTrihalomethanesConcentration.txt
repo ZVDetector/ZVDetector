@@ -1,0 +1,4 @@
+class TotalTrihalomethanesConcentration(_ConcentrationMixin, Cluster):
+    cluster_id: Final[t.uint16_t] = 0x041E
+    name: Final = "Total Trihalomethanes Concentration"
+    ep_attribute: Final = "total_trihalomethanes_concentration"

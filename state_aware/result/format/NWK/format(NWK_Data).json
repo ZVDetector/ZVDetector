@@ -1,0 +1,12 @@
+{
+    "nwkdata_frame_header": {
+        "frame control": "uint16",
+        "destination address": "uint16",
+        "source address": "uint16",
+        "radius": "uint8",
+        "sequence number": "uint8",
+        "destination ieee address": "uint64 (optional)",
+        "source ieee address": "uint64 (optional)",
+        "source route subframe": "variable (optional)"
+    }
+}

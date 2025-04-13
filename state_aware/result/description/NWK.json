@@ -1,0 +1,156 @@
+{
+    "General NPDU Frame Format": {
+        "description": "The NWK frame format is composed of a NWK header and a NWK payload. The fields of the NWK header appear in a fixed order. The NWK frame SHALL be formatted as illustrated in Figure 3-4. ",
+        "fields": [
+            "Frame control",
+            "Destination address",
+            "Source address",
+            "Radius",
+            "Sequence number",
+            "Destination IEEE Address",
+            "Source IEEE Address",
+            "Source Route subframe",
+            "Frame payload"
+        ],
+        "Frame Control Field": {
+            "description": "The frame control field is 16 bits in length and contains information defining the frame type, addressing and sequencing fields and other control flags. The frame control field shall be formatted as illustrated in Figure 3.6. ",
+            "fields": [
+                "Frame type",
+                "Protocol version",
+                "Discover route",
+                "Multicast flag",
+                "Security",
+                "Source Route",
+                "Destination IEEE Address",
+                "Source IEEE Address",
+                "EndDevice Initiator",
+                "Reserved"
+            ],
+            "Frame Type Sub-Field": "The frame type sub-field is 2 bits in length and shall be set to one of the non-reserved values listed in Table 3.37. [{\"Frame Type Value b1 b0\":[\"00\",\"01\",\"10\",\"11\"]},{\"Frame Type Name\":[\"Data\",\"NWK command\",\"Reserved\",\"Inter-PAN\"]}]",
+            "Protocol Version Sub-Field": "The protocol version sub-field is 4 bits in length and shall be set to a number reflecting the ZigBee NWK protocol version in use. The protocol version in use on a particular device shall be made available as the value of the NWK constant nwkcProtocolVersion. ",
+            "Discover Route Sub-Field": "The discover route sub-field may be used to control route discovery operations for the transit of this frame (see section 3.6.3.5). [{\"DiscoverRouteFieldValue\":[\"0x00\",\"0x01\",\"0x02,0x03\"]},{\"Field Meaning\":[\"Suppress route discovery\",\"Enable route discovery\",\"Reserved\"]}]",
+            "Multicast Flag Sub-Field": "The multicast flag sub-field is 1 bit in length and has the value 0 if the frame is a unicast or broadcast frame and the value 1 if it is a multicast frame. The multicast control field of the NWK header shall be present only if the multicast flag has the value 1. ",
+            "Security Sub-Field": "The security sub-field shall have a value of 1 if, and only if, the frame is to have NWK security operations enabled. If security for this frame is implemented at another layer or disabled entirely, it shall have a value of 0. ",
+            "Source Route Sub-Field": "The source route sub-field shall have a value of 1 if and only if a source route subframe is present in the NWK header. If the source route subframe is not present, the source route sub-field shall have a value of 0. ",
+            "Destination IEEE Address Sub-Field": "The destination IEEE address sub-field shall have a value of 1 if, and only if, the NWK header is to include the full IEEE address of the destination. ",
+            "Source IEEE Address Sub-Field": "The source IEEE address sub-field shall have a value of 1 if, and only if, the NWK header is to include the full IEEE address of the source device. ",
+            "End Device Initiator": "If the source of the message is an end device and the nwkParentInformation field of the NIB is a value other than 0, then this sub-field shall be set to 1.  Otherwise this sub-field shall be set to 0.  After validating the source (see section 3.6.2.2), a router parent device shall clear this field when relaying a message sent by one of its end device children. "
+        }
+    },
+    "Format of Individual Frame Types": {
+        "Data Frame Format": {
+            "NWK header": [
+                "Frame control",
+                "Routing fields"
+            ],
+            "NWK payload": [
+                "Data payload"
+            ]
+        },
+        "NWK Command Frame Format": {
+            "NWK header": [
+                "Frame control",
+                "Routing fields"
+            ],
+            "NWK payload": [
+                "NWKcommand identifier",
+                "NWKcommand payload"
+            ]
+        }
+    },
+    "Command Frames": {
+        "Route Request Command": {
+            "description": "The route request command allows a device to request other devices within radio range to engage in a search for a particular destination device and establish a state within the network that will allow messages to be routed to that destination more easily and economically in the future. The payload of a route request command shall be formatted as illustrated in Figure 3.11. ",
+            "payload": {
+                "Command options": "Octets:1",
+                "Route request identifier": "1",
+                "Destination address": "2",
+                "Path cost": "1",
+                "Destination IEEE Address": "0/8"
+            }
+        },
+        "Route Reply Command": {
+            "description": "The route reply command allows the specified destination device of a route request command to inform the originator of the route request that the request has been received. It also allows ZigBee routers along the path taken by the route request to establish state information that will enable frames sent from the source device to the destination device to travel more efficiently. The payload of the route reply command shall be formatted as illustrated in Figure 3.13. ",
+            "payload": {
+                "Command options": "Octets:1",
+                "Route request identifier": "1",
+                "Originator address": "2",
+                "Responder address": "2",
+                "Path cost": "1",
+                "Originator IEEE address": "0/8",
+                "Responder IEEE address": "0/8"
+            }
+        },
+        "Network Status Command": {
+            "description": "A device uses the network status command to report errors and other conditions arising in the NWK layer of a particular device to the peer NWK layer entities of other devices in the network. The NWK status command may be also used to diagnose network problems, for example address conflicts. The payload of a network status command shall be formatted as illustrated in Figure 3.15. ",
+            "payload": {
+                "Status code": "Octets:1",
+                "Destination address": "2"
+            }
+        },
+        "Leave Command": {
+            "description": "The leave command is used by the NLME to inform other devices on the network that a device is leaving the network or else to request that a device leave the network. The payload of the leave command shall be formatted as shown in Figure 3.16. ",
+            "payload": {
+                "Command options": "1"
+            }
+        },
+        "Route Record Command": {
+            "description": "The route record command allows the route taken by a unicast packet through the network to be recorded in the command payload and delivered to the destination device. The payload of the route record command shall be formatted as illustrated in Figure 3.18. ",
+            "payload": {
+                "Relay count": "Octets:1",
+                "Relay list": "Variable"
+            }
+        },
+        "Rejoin Request Command": {
+            "description": "The rejoin request command allows a device to rejoin its network. This is normally done in response to a communication failure, such as when an end device can no longer communicate with its original parent. The rejoin request command shall be formatted as shown in Figure 3.19. ",
+            "payload": {
+                "Capability Information": "Octets:1"
+            }
+        },
+        "Rejoin Response Command": {
+            "description": "The rejoin response command is sent by a device to inform a child of its network address and rejoin status The rejoin request command shall be formatted as shown in Figure 3.20. ",
+            "payload": {
+                "Networkaddress": "Octets:2",
+                "Rejoin status": "1"
+            }
+        },
+        "Link Status Command": {
+            "description": "The link status command frame allows neighboring routers to communicate their incoming link costs to each other as described in section 3.6.3.4. Link status frames are transmitted as one-hop broadcasts without retries. ",
+            "payload": {
+                "Command options": "Octets:1",
+                "Link status list": "Variable"
+            }
+        },
+        "Network Report Command": {
+            "description": "The network report command allows a device to report network events to the device identified by the address contained in the nwkManagerAddr in the NIB. Such events are radio channel condition and PAN ID conflicts. The payload of a network report command shall be formatted as illustrated in Figure 3.24. ",
+            "payload": {
+                "Command options (see Figure 3.25)": "Octets:1",
+                "EPID": "8",
+                "Report information": "Variable"
+            }
+        },
+        "Network Update Command": {
+            "description": "The network update command allows the device identified by the nwkManagerAddr attribute of the NIB to broadcast the change of configuration information to all devices in the network. For example, broadcasting the fact that the network is about to change its short PAN identifier. ",
+            "payload": {
+                "Command Options (see Figure 3.25)": "Octets:1",
+                "EPID": "8",
+                "Update Id": "1",
+                "Update Information": "Variable"
+            }
+        },
+        "End Device Timeout Request Command": {
+            "description": "The End Device Timeout Request command is sent by an end device informing its parent of its timeout requirements.  This allows the parent the ability to delete the child entry from the neighbor table if the child has not communicated with the parent in the specified amount of time. ",
+            "payload": {
+                "Request Timeout Enumeration": "Octets: 1",
+                "End Device Configuration": "1"
+            }
+        },
+        "End Device Timeout Response Command": {
+            "description": "The End Device Timeout Response is sent by a router parent informing the end device whether it has accepted the timeout value that it was previously sent, and what its capabilities are. ",
+            "payload": {
+                "Status": "Octets: 1",
+                "Parent Information": "1"
+            }
+        }
+    }
+}

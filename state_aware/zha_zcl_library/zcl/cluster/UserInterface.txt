@@ -1,0 +1,29 @@
+class UserInterface(Cluster):
+    """An interface for configuring the user interface of a
+    thermostat (which may be remote from the
+    thermostat).
+    """
+
+    TemperatureDisplayMode: Final = TemperatureDisplayMode
+    KeypadLockout: Final = KeypadLockout
+    ScheduleProgrammingVisibility: Final = ScheduleProgrammingVisibility
+
+    cluster_id: Final[t.uint16_t] = 0x0204
+    name: Final = "Thermostat User Interface Configuration"
+    ep_attribute: Final = "thermostat_ui"
+
+    class AttributeDefs(BaseAttributeDefs):
+        temperature_display_mode: Final = ZCLAttributeDef(
+            id=0x0000,
+            type=TemperatureDisplayMode,
+            access="rw",
+            mandatory=True,
+        )
+        keypad_lockout: Final = ZCLAttributeDef(
+            id=0x0001, type=KeypadLockout, access="rw", mandatory=True
+        )
+        schedule_programming_visibility: Final = ZCLAttributeDef(
+            id=0x0002,
+            type=ScheduleProgrammingVisibility,
+            access="rw",
+        )

@@ -1,0 +1,3 @@
+class Prepayment(Cluster):
+    cluster_id: Final[t.uint16_t] = 0x0705
+    ep_attribute: Final = "smartenergy_prepayment"

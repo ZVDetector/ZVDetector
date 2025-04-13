@@ -1,0 +1,7 @@
+{
+    "Commands": [
+        "get_alerts_response",
+        "alerts_notification",
+        "event_notification"
+    ]
+}

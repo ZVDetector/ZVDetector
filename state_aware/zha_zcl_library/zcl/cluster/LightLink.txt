@@ -1,0 +1,215 @@
+class LightLink(Cluster):
+    cluster_id: Final[t.uint16_t] = 0x1000
+    ep_attribute: Final = "lightlink"
+
+    class ServerCommandDefs(BaseCommandDefs):
+        scan: Final = ZCLCommandDef(
+            id=0x00,
+            schema={
+                "inter_pan_transaction_id": t.uint32_t,
+                "zigbee_information": ZigbeeInformation,
+                "touchlink_information": ScanRequestInformation,
+            },
+            direction=Direction.Client_to_Server,
+        )
+        device_info: Final = ZCLCommandDef(
+            id=0x02,
+            schema={"inter_pan_transaction_id": t.uint32_t, "start_index": t.uint8_t},
+            direction=Direction.Client_to_Server,
+        )
+        identify: Final = ZCLCommandDef(
+            id=0x06,
+            schema={
+                "inter_pan_transaction_id": t.uint32_t,
+                "identify_duration": t.uint16_t,
+            },
+            direction=Direction.Client_to_Server,
+        )
+        reset_to_factory_new: Final = ZCLCommandDef(
+            id=0x07,
+            schema={"inter_pan_transaction_id": t.uint32_t},
+            direction=Direction.Client_to_Server,
+        )
+        network_start: Final = ZCLCommandDef(
+            id=0x10,
+            schema={
+                "inter_pan_transaction_id": t.uint32_t,
+                "epid": t.EUI64,
+                "key_index": t.uint8_t,
+                "encrypted_network_key": t.KeyData,
+                "logical_channel": t.uint8_t,
+                "pan_id": t.PanId,
+                "nwk_addr": t.NWK,
+                "group_identifiers_begin": t.Group,
+                "group_identifiers_end": t.Group,
+                "free_network_addr_range_begin": t.NWK,
+                "free_network_addr_range_end": t.NWK,
+                "free_group_id_range_begin": t.Group,
+                "free_group_id_range_end": t.Group,
+                "initiator_ieee": t.EUI64,
+                "initiator_nwk": t.NWK,
+            },
+            direction=Direction.Client_to_Server,
+        )
+        network_join_router: Final = ZCLCommandDef(
+            id=0x12,
+            schema={
+                "inter_pan_transaction_id": t.uint32_t,
+                "epid": t.EUI64,
+                "key_index": t.uint8_t,
+                "encrypted_network_key": t.KeyData,
+                "nwk_update_id": t.uint8_t,
+                "logical_channel": t.uint8_t,
+                "pan_id": t.PanId,
+                "nwk_addr": t.NWK,
+                "group_identifiers_begin": t.Group,
+                "group_identifiers_end": t.Group,
+                "free_network_addr_range_begin": t.NWK,
+                "free_network_addr_range_end": t.NWK,
+                "free_group_id_range_begin": t.Group,
+                "free_group_id_range_end": t.Group,
+            },
+            direction=Direction.Client_to_Server,
+        )
+        network_join_end_device: Final = ZCLCommandDef(
+            id=0x14,
+            schema={
+                "inter_pan_transaction_id": t.uint32_t,
+                "epid": t.EUI64,
+                "key_index": t.uint8_t,
+                "encrypted_network_key": t.KeyData,
+                "nwk_update_id": t.uint8_t,
+                "logical_channel": t.uint8_t,
+                "pan_id": t.PanId,
+                "nwk_addr": t.NWK,
+                "group_identifiers_begin": t.Group,
+                "group_identifiers_end": t.Group,
+                "free_network_addr_range_begin": t.NWK,
+                "free_network_addr_range_end": t.NWK,
+                "free_group_id_range_begin": t.Group,
+                "free_group_id_range_end": t.Group,
+            },
+            direction=Direction.Client_to_Server,
+        )
+        network_update: Final = ZCLCommandDef(
+            id=0x16,
+            schema={
+                "inter_pan_transaction_id": t.uint32_t,
+                "epid": t.EUI64,
+                "nwk_update_id": t.uint8_t,
+                "logical_channel": t.uint8_t,
+                "pan_id": t.PanId,
+                "nwk_addr": t.NWK,
+            },
+            direction=Direction.Client_to_Server,
+        )
+        # Utility
+        get_group_identifiers: Final = ZCLCommandDef(
+            id=0x41,
+            schema={
+                "start_index": t.uint8_t,
+            },
+            direction=Direction.Client_to_Server,
+        )
+        get_endpoint_list: Final = ZCLCommandDef(
+            id=0x42,
+            schema={
+                "start_index": t.uint8_t,
+            },
+            direction=Direction.Client_to_Server,
+        )
+
+    class ClientCommandDefs(BaseCommandDefs):
+        scan_rsp: Final = ZCLCommandDef(
+            id=0x01,
+            schema={
+                "inter_pan_transaction_id": t.uint32_t,
+                "rssi_correction": t.uint8_t,
+                "zigbee_info": ZigbeeInformation,
+                "touchlink_info": ScanResponseInformation,
+                "key_bitmask": t.uint16_t,
+                "response_id": t.uint32_t,
+                "epid": t.EUI64,
+                "nwk_update_id": t.uint8_t,
+                "logical_channel": t.uint8_t,
+                "pan_id": t.PanId,
+                "nwk_addr": t.NWK,
+                "num_sub_devices": t.uint8_t,
+                "total_group_ids": t.uint8_t,
+                "endpoint_id?": t.uint8_t,
+                "profile_id?": t.uint16_t,
+                "device_id?": t.uint16_t,
+                "version?": t.uint8_t,
+                "group_id_count?": t.uint8_t,
+            },
+            direction=Direction.Server_to_Client,
+        )
+        device_info_rsp: Final = ZCLCommandDef(
+            id=0x03,
+            schema={
+                "inter_pan_transaction_id": t.uint32_t,
+                "num_sub_devices": t.uint8_t,
+                "start_index": t.uint8_t,
+                "device_info_records": t.LVList[DeviceInfoRecord],
+            },
+            direction=Direction.Server_to_Client,
+        )
+        network_start_rsp: Final = ZCLCommandDef(
+            id=0x11,
+            schema={
+                "inter_pan_transaction_id": t.uint32_t,
+                "status": Status,
+                "epid": t.EUI64,
+                "nwk_update_id": t.uint8_t,
+                "logical_channel": t.uint8_t,
+                "pan_id": t.PanId,
+            },
+            direction=Direction.Server_to_Client,
+        )
+        network_join_router_rsp: Final = ZCLCommandDef(
+            id=0x13,
+            schema={
+                "inter_pan_transaction_id": t.uint32_t,
+                "status": Status,
+            },
+            direction=Direction.Server_to_Client,
+        )
+        network_join_end_device_rsp: Final = ZCLCommandDef(
+            id=0x15,
+            schema={
+                "inter_pan_transaction_id": t.uint32_t,
+                "status": Status,
+            },
+            direction=Direction.Server_to_Client,
+        )
+        # Utility
+        endpoint_info: Final = ZCLCommandDef(
+            id=0x40,
+            schema={
+                "ieee_addr": t.EUI64,
+                "nwk_addr": t.NWK,
+                "endpoint_id": t.uint8_t,
+                "profile_id": t.uint16_t,
+                "device_id": t.uint16_t,
+                "version": t.uint8_t,
+            },
+            direction=Direction.Server_to_Client,
+        )
+        get_group_identifiers_rsp: Final = ZCLCommandDef(
+            id=0x41,
+            schema={
+                "total": t.uint8_t,
+                "start_index": t.uint8_t,
+                "group_info_records": t.LVList[GroupInfoRecord],
+            },
+            direction=Direction.Server_to_Client,
+        )
+        get_endpoint_list_rsp: Final = ZCLCommandDef(
+            id=0x42,
+            schema={
+                "total": t.uint8_t,
+                "start_index": t.uint8_t,
+                "endpoint_info_records": t.LVList[EndpointInfoRecord],
+            },
+            direction=Direction.Server_to_Client,
+        )

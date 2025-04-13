@@ -1,0 +1,55 @@
+{
+    "0x20-0x01 message format": {
+        "Command Class": "0x20",
+        "Command": "0x01",
+        "Value": "0x00 for off, 0xFF for on"
+    },
+    "0x20-0x02 message format": {
+        "Command Class": "0x20",
+        "Command": "0x02",
+        "Level": "0x00-0x63 for valid levels, 0xFF for default level"
+    },
+    "0x20-0x03 message format": {
+        "Command Class": "0x20",
+        "Command": "0x03",
+        "Level": "0x00-0x63 for specific level, 0xFF for on"
+    },
+    "0x25-0x01 message format": {
+        "Command Class": "0x25",
+        "Command": "0x01"
+    },
+    "0x25-0x02 message format": {
+        "Command Class": "0x25",
+        "Command": "0x02",
+        "Value": "0x00 for off, 0xFF for on"
+    },
+    "0x25-0x03 message format": {
+        "Command Class": "0x25",
+        "Command": "0x03",
+        "Node ID": "0x00",
+        "Value": "0x00 for off, 0xFF for on"
+    },
+    "0x26-0x01 message format": {
+        "Command Class": "0x26",
+        "Command": "0x01",
+        "Value": "0x00 to 0x63 (0-99%) or 0xFF (turn on)"
+    },
+    "0x26-0x02 message format": {
+        "Command Class": "0x26",
+        "Command": "0x02",
+        "Level": "0x00-0x63 for level, 0xFF for default",
+        "Duration": "0x00-0x7F for duration, 0xFF for factory default"
+    },
+    "0x26-0x03 message format": {
+        "Command Class": "0x26",
+        "Command": "0x03",
+        "Value": "0x00 to 0xFF for switch level"
+    },
+    "0x71-0x05 message format": {
+        "Command Class": "0x71",
+        "Command": "0x05",
+        "Notification Type": "0x00-0xFF",
+        "Event": "0x00-0xFF",
+        "Sequence Number": "0x00-0xFF"
+    }
+}

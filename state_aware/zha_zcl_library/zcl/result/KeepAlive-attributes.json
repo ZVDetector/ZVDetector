@@ -1,0 +1,6 @@
+{
+    "Attributes": [
+        "tc_keep_alive_base",
+        "tc_keep_alive_jitter"
+    ]
+}

@@ -1,0 +1,22 @@
+{
+    "Attributes": [
+        "physical_min_level",
+        "physical_max_level",
+        "ballast_status",
+        "min_level",
+        "max_level",
+        "power_on_level",
+        "power_on_fade_time",
+        "intrinsic_ballast_factor",
+        "ballast_factor_adjustment",
+        "lamp_quantity",
+        "lamp_type",
+        "lamp_manufacturer",
+        "lamp_rated_hours",
+        "lamp_burn_hours",
+        "lamp_alarm_mode",
+        "lamp_burn_hours_trip_point",
+        "cluster_revision",
+        "reporting_status"
+    ]
+}

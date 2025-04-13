@@ -1,0 +1,2674 @@
+{
+    "thermostat": {
+        "Server": {
+            "setpoint_raise_lower": {
+                "id": 0,
+                "direction_header": 0,
+                "mode": {
+                    "t.enum8": [
+                        0,
+                        1,
+                        2
+                    ]
+                },
+                "amount": "t.int8s"
+            },
+            "set_weekly_schedule": {
+                "id": 1,
+                "direction_header": 0,
+                "num_transitions_for_sequence": "t.enum8",
+                "day_of_week_for_sequence": {
+                    "t.bitmap8": [
+                        1,
+                        2,
+                        4,
+                        8,
+                        16,
+                        32,
+                        64,
+                        128
+                    ]
+                },
+                "mode_for_sequence": {
+                    "t.bitmap8": [
+                        1,
+                        2
+                    ]
+                },
+                "values": {
+                    "t.List": "int16s"
+                }
+            },
+            "get_weekly_schedule": {
+                "id": 2,
+                "direction_header": 0,
+                "days_to_return": {
+                    "t.bitmap8": [
+                        1,
+                        2,
+                        4,
+                        8,
+                        16,
+                        32,
+                        64,
+                        128
+                    ]
+                },
+                "mode_to_return": {
+                    "t.bitmap8": [
+                        1,
+                        2
+                    ]
+                }
+            },
+            "clear_weekly_schedule": {
+                "id": 3,
+                "direction_header": 0
+            },
+            "get_relay_status_log": {
+                "id": 4,
+                "direction_header": 0
+            }
+        },
+        "Client": {
+            "get_weekly_schedule_response": {
+                "id": 0,
+                "direction_header": 1,
+                "num_transitions_for_sequence": "t.enum8",
+                "day_of_week_for_sequence": {
+                    "t.bitmap8": [
+                        1,
+                        2,
+                        4,
+                        8,
+                        16,
+                        32,
+                        64,
+                        128
+                    ]
+                },
+                "mode_for_sequence": {
+                    "t.bitmap8": [
+                        1,
+                        2
+                    ]
+                },
+                "values": {
+                    "t.List": "int16s"
+                }
+            },
+            "get_relay_status_log_response": {
+                "id": 1,
+                "direction_header": 1,
+                "time_of_day": "t.uint16_t",
+                "relay_status": "t.bitmap8",
+                "local_temperature": "t.int16s",
+                "humidity_in_percentage": "t.uint8_t",
+                "set_point": "t.int16s",
+                "unread_entries": "t.uint16_t"
+            }
+        }
+    },
+    "smartenergy_metering": {
+        "Server": {
+            "get_profile": {
+                "id": 0,
+                "direction_header": 0
+            },
+            "req_mirror": {
+                "id": 1,
+                "direction_header": 0
+            },
+            "mirror_rem": {
+                "id": 2,
+                "direction_header": 0
+            },
+            "req_fast_poll_mode": {
+                "id": 3,
+                "direction_header": 0
+            },
+            "get_snapshot": {
+                "id": 4,
+                "direction_header": 0
+            },
+            "take_snapshot": {
+                "id": 5,
+                "direction_header": 0
+            },
+            "mirror_report_attr_response": {
+                "id": 6,
+                "direction_header": 1
+            }
+        },
+        "Client": {
+            "get_profile_response": {
+                "id": 0,
+                "direction_header": 1
+            },
+            "req_mirror_response": {
+                "id": 1,
+                "direction_header": 1
+            },
+            "mirror_rem_response": {
+                "id": 2,
+                "direction_header": 1
+            },
+            "req_fast_poll_mode_response": {
+                "id": 3,
+                "direction_header": 1
+            },
+            "get_snapshot_response": {
+                "id": 4,
+                "direction_header": 1
+            }
+        }
+    },
+    "generic_tunnel": {
+        "Server": {
+            "match_protocol_addr": {
+                "id": 0,
+                "direction_header": 0
+            }
+        },
+        "Client": {
+            "match_protocol_addr_response": {
+                "id": 0,
+                "direction_header": 1
+            },
+            "advertise_protocol_address": {
+                "id": 1,
+                "direction_header": 0
+            }
+        }
+    },
+    "bacnet_tunnel": {
+        "Server": {
+            "transfer_npdu": {
+                "id": 0,
+                "direction_header": 0,
+                "npdu": "t.LVBytes"
+            }
+        }
+    },
+    "bacnet_extended_analog_input": {
+        "Server": {
+            "transfer_apdu": {
+                "id": 0,
+                "direction_header": 0
+            },
+            "connect_req": {
+                "id": 1,
+                "direction_header": 0
+            },
+            "disconnect_req": {
+                "id": 2,
+                "direction_header": 0
+            },
+            "connect_status_noti": {
+                "id": 3,
+                "direction_header": 0
+            }
+        }
+    },
+    "appliance_event": {
+        "Server": {
+            "get_alerts": {
+                "id": 0,
+                "direction_header": 0
+            }
+        },
+        "Client": {
+            "get_alerts_response": {
+                "id": 0,
+                "direction_header": 1
+            },
+            "alerts_notification": {
+                "id": 1,
+                "direction_header": 0
+            },
+            "event_notification": {
+                "id": 2,
+                "direction_header": 0
+            }
+        }
+    },
+    "appliance_stats": {
+        "Server": {
+            "log": {
+                "id": 0,
+                "direction_header": 0
+            },
+            "log_queue": {
+                "id": 1,
+                "direction_header": 0
+            }
+        },
+        "Client": {
+            "log_notification": {
+                "id": 0,
+                "direction_header": 0
+            },
+            "log_response": {
+                "id": 1,
+                "direction_header": 1
+            },
+            "log_queue_response": {
+                "id": 2,
+                "direction_header": 1
+            },
+            "statistics_available": {
+                "id": 3,
+                "direction_header": 0
+            }
+        }
+    },
+    "electrical_measurement": {
+        "Server": {
+            "get_profile_info": {
+                "id": 0,
+                "direction_header": 0
+            },
+            "get_measurement_profile": {
+                "id": 1,
+                "direction_header": 0
+            }
+        },
+        "Client": {
+            "get_profile_info_response": {
+                "id": 0,
+                "direction_header": 1
+            },
+            "get_measurement_profile_response": {
+                "id": 1,
+                "direction_header": 1
+            }
+        }
+    },
+    "door_lock": {
+        "Server": {
+            "lock_door": {
+                "id": 0,
+                "direction_header": 0,
+                "pin_code": "t.CharacterString"
+            },
+            "unlock_door": {
+                "id": 1,
+                "direction_header": 0,
+                "pin_code": "t.CharacterString"
+            },
+            "toggle_door": {
+                "id": 2,
+                "direction_header": 0,
+                "pin_code": "t.CharacterString"
+            },
+            "unlock_with_timeout": {
+                "id": 3,
+                "direction_header": 0,
+                "timeout": "t.uint16_t",
+                "pin_code": "t.CharacterString"
+            },
+            "get_log_record": {
+                "id": 4,
+                "direction_header": 0,
+                "log_index": "t.uint16_t"
+            },
+            "set_pin_code": {
+                "id": 5,
+                "direction_header": 0,
+                "user_id": "t.uint16_t",
+                "user_status": {
+                    "t.enum8": [
+                        0,
+                        1,
+                        3,
+                        255
+                    ]
+                },
+                "user_type": {
+                    "t.enum8": [
+                        0,
+                        1,
+                        2,
+                        3,
+                        4,
+                        255
+                    ]
+                },
+                "pin_code": "t.CharacterString"
+            },
+            "get_pin_code": {
+                "id": 6,
+                "direction_header": 0,
+                "user_id": "t.uint16_t"
+            },
+            "clear_pin_code": {
+                "id": 7,
+                "direction_header": 0,
+                "user_id": "t.uint16_t"
+            },
+            "clear_all_pin_codes": {
+                "id": 8,
+                "direction_header": 0
+            },
+            "set_user_status": {
+                "id": 9,
+                "direction_header": 0,
+                "user_id": "t.uint16_t",
+                "user_status": {
+                    "t.enum8": [
+                        0,
+                        1,
+                        3,
+                        255
+                    ]
+                }
+            },
+            "get_user_status": {
+                "id": 10,
+                "direction_header": 0,
+                "user_id": "t.uint16_t"
+            },
+            "set_week_day_schedule": {
+                "id": 11,
+                "direction_header": 0,
+                "schedule_id": "t.uint8_t",
+                "user_id": "t.uint16_t",
+                "days_mask": {
+                    "t.bitmap8": [
+                        1,
+                        2,
+                        4,
+                        8,
+                        16,
+                        32,
+                        64
+                    ]
+                },
+                "start_hour": "t.uint8_t",
+                "start_minute": "t.uint8_t",
+                "end_hour": "t.uint8_t",
+                "end_minute": "t.uint8_t"
+            },
+            "get_week_day_schedule": {
+                "id": 12,
+                "direction_header": 0,
+                "schedule_id": "t.uint8_t",
+                "user_id": "t.uint16_t"
+            },
+            "clear_week_day_schedule": {
+                "id": 13,
+                "direction_header": 0,
+                "schedule_id": "t.uint8_t",
+                "user_id": "t.uint16_t"
+            },
+            "set_year_day_schedule": {
+                "id": 14,
+                "direction_header": 0,
+                "schedule_id": "t.uint8_t",
+                "user_id": "t.uint16_t",
+                "local_start_time": "t.LocalTime",
+                "local_end_time": "t.LocalTime"
+            },
+            "get_year_day_schedule": {
+                "id": 15,
+                "direction_header": 0,
+                "schedule_id": "t.uint8_t",
+                "user_id": "t.uint16_t"
+            },
+            "clear_year_day_schedule": {
+                "id": 16,
+                "direction_header": 0,
+                "schedule_id": "t.uint8_t",
+                "user_id": "t.uint16_t"
+            },
+            "set_holiday_schedule": {
+                "id": 17,
+                "direction_header": 0,
+                "holiday_schedule_id": "t.uint8_t",
+                "local_start_time": "t.LocalTime",
+                "local_end_time": "t.LocalTime",
+                "operating_mode_during_holiday": {
+                    "t.enum8": [
+                        0,
+                        1,
+                        2,
+                        3,
+                        4
+                    ]
+                }
+            },
+            "get_holiday_schedule": {
+                "id": 18,
+                "direction_header": 0,
+                "holiday_schedule_id": "t.uint8_t"
+            },
+            "clear_holiday_schedule": {
+                "id": 19,
+                "direction_header": 0,
+                "holiday_schedule_id": "t.uint8_t"
+            },
+            "set_user_type": {
+                "id": 20,
+                "direction_header": 0,
+                "user_id": "t.uint16_t",
+                "user_type": {
+                    "t.enum8": [
+                        0,
+                        1,
+                        2,
+                        3,
+                        4,
+                        255
+                    ]
+                }
+            },
+            "get_user_type": {
+                "id": 21,
+                "direction_header": 0,
+                "user_id": "t.uint16_t"
+            },
+            "set_rfid_code": {
+                "id": 22,
+                "direction_header": 0,
+                "user_id": "t.uint16_t",
+                "user_status": {
+                    "t.enum8": [
+                        0,
+                        1,
+                        3,
+                        255
+                    ]
+                },
+                "user_type": {
+                    "t.enum8": [
+                        0,
+                        1,
+                        2,
+                        3,
+                        4,
+                        255
+                    ]
+                },
+                "rfid_code": "t.CharacterString"
+            },
+            "get_rfid_code": {
+                "id": 23,
+                "direction_header": 0,
+                "user_id": "t.uint16_t"
+            },
+            "clear_rfid_code": {
+                "id": 24,
+                "direction_header": 0,
+                "user_id": "t.uint16_t"
+            },
+            "clear_all_rfid_codes": {
+                "id": 25,
+                "direction_header": 0
+            }
+        },
+        "Client": {
+            "lock_door_response": {
+                "id": 0,
+                "direction_header": 1,
+                "status": "foundation.Status"
+            },
+            "unlock_door_response": {
+                "id": 1,
+                "direction_header": 1,
+                "status": "foundation.Status"
+            },
+            "toggle_door_response": {
+                "id": 2,
+                "direction_header": 1,
+                "status": "foundation.Status"
+            },
+            "unlock_with_timeout_response": {
+                "id": 3,
+                "direction_header": 1,
+                "status": "foundation.Status"
+            },
+            "get_log_record_response": {
+                "id": 4,
+                "direction_header": 1,
+                "log_entry_id": "t.uint16_t",
+                "timestamp": "t.uint32_t",
+                "event_type": {
+                    "t.enum8": [
+                        0,
+                        1,
+                        2
+                    ]
+                },
+                "source": {
+                    "t.enum8": [
+                        0,
+                        1,
+                        2,
+                        3,
+                        255
+                    ]
+                },
+                "event_id_or_alarm_code": "t.uint8_t",
+                "user_id": "t.uint16_t",
+                "pin": "t.CharacterString"
+            },
+            "set_pin_code_response": {
+                "id": 5,
+                "direction_header": 1,
+                "status": "foundation.Status"
+            },
+            "get_pin_code_response": {
+                "id": 6,
+                "direction_header": 1,
+                "user_id": "t.uint16_t",
+                "user_status": {
+                    "t.enum8": [
+                        0,
+                        1,
+                        3,
+                        255
+                    ]
+                },
+                "user_type": {
+                    "t.enum8": [
+                        0,
+                        1,
+                        2,
+                        3,
+                        4,
+                        255
+                    ]
+                },
+                "code": "t.CharacterString"
+            },
+            "clear_pin_code_response": {
+                "id": 7,
+                "direction_header": 1,
+                "status": "foundation.Status"
+            },
+            "clear_all_pin_codes_response": {
+                "id": 8,
+                "direction_header": 1,
+                "status": "foundation.Status"
+            },
+            "set_user_status_response": {
+                "id": 9,
+                "direction_header": 1,
+                "status": "foundation.Status"
+            },
+            "get_user_status_response": {
+                "id": 10,
+                "direction_header": 1,
+                "user_id": "t.uint16_t",
+                "user_status": {
+                    "t.enum8": [
+                        0,
+                        1,
+                        3,
+                        255
+                    ]
+                }
+            },
+            "set_week_day_schedule_response": {
+                "id": 11,
+                "direction_header": 1,
+                "status": "foundation.Status"
+            },
+            "get_week_day_schedule_response": {
+                "id": 12,
+                "direction_header": 1,
+                "schedule_id": "t.uint8_t",
+                "user_id": "t.uint16_t",
+                "status": "foundation.Status",
+                "days_mask": "t.uint8_t",
+                "start_hour": "t.uint8_t",
+                "start_minute": "t.uint8_t",
+                "end_hour": "t.uint8_t",
+                "end_minute": "t.uint8_t"
+            },
+            "clear_week_day_schedule_response": {
+                "id": 13,
+                "direction_header": 1,
+                "status": "foundation.Status"
+            },
+            "set_year_day_schedule_response": {
+                "id": 14,
+                "direction_header": 1,
+                "status": "foundation.Status"
+            },
+            "get_year_day_schedule_response": {
+                "id": 15,
+                "direction_header": 1,
+                "schedule_id": "t.uint8_t",
+                "user_id": "t.uint16_t",
+                "status": "foundation.Status",
+                "local_start_time": "t.LocalTime",
+                "local_end_time": "t.LocalTime"
+            },
+            "clear_year_day_schedule_response": {
+                "id": 16,
+                "direction_header": 1,
+                "status": "foundation.Status"
+            },
+            "set_holiday_schedule_response": {
+                "id": 17,
+                "direction_header": 1,
+                "status": "foundation.Status"
+            },
+            "get_holiday_schedule_response": {
+                "id": 18,
+                "direction_header": 1,
+                "holiday_schedule_id": "t.uint8_t",
+                "status": "foundation.Status",
+                "local_start_time": "t.LocalTime",
+                "local_end_time": "t.LocalTime",
+                "operating_mode_during_holiday": "t.uint8_t"
+            },
+            "clear_holiday_schedule_response": {
+                "id": 19,
+                "direction_header": 1,
+                "status": "foundation.Status"
+            },
+            "set_user_type_response": {
+                "id": 20,
+                "direction_header": 1,
+                "status": "foundation.Status"
+            },
+            "get_user_type_response": {
+                "id": 21,
+                "direction_header": 1,
+                "user_id": "t.uint16_t",
+                "user_type": {
+                    "t.enum8": [
+                        0,
+                        1,
+                        2,
+                        3,
+                        4,
+                        255
+                    ]
+                }
+            },
+            "set_rfid_code_response": {
+                "id": 22,
+                "direction_header": 1,
+                "status": "foundation.Status"
+            },
+            "get_rfid_code_response": {
+                "id": 23,
+                "direction_header": 1,
+                "user_id": "t.uint16_t",
+                "user_status": {
+                    "t.enum8": [
+                        0,
+                        1,
+                        3,
+                        255
+                    ]
+                },
+                "user_type": {
+                    "t.enum8": [
+                        0,
+                        1,
+                        2,
+                        3,
+                        4,
+                        255
+                    ]
+                },
+                "rfid_code": "t.CharacterString"
+            },
+            "clear_rfid_code_response": {
+                "id": 24,
+                "direction_header": 1,
+                "status": "foundation.Status"
+            },
+            "clear_all_rfid_codes_response": {
+                "id": 25,
+                "direction_header": 1,
+                "status": "foundation.Status"
+            },
+            "operation_event_notification": {
+                "id": 32,
+                "direction_header": 0,
+                "operation_event_source": {
+                    "t.enum8": [
+                        0,
+                        1,
+                        2,
+                        3,
+                        255
+                    ]
+                },
+                "operation_event_code": {
+                    "t.enum8": [
+                        0,
+                        1,
+                        2,
+                        3,
+                        4,
+                        5,
+                        6,
+                        7,
+                        8,
+                        9,
+                        10,
+                        11,
+                        12,
+                        13,
+                        14,
+                        15
+                    ]
+                },
+                "user_id": "t.uint16_t",
+                "pin": "t.CharacterString",
+                "local_time": "t.LocalTime",
+                "data": "t.CharacterString"
+            },
+            "programming_event_notification": {
+                "id": 33,
+                "direction_header": 0,
+                "program_event_source": {
+                    "t.enum8": [
+                        0,
+                        1,
+                        2,
+                        3,
+                        255
+                    ]
+                },
+                "program_event_code": {
+                    "t.enum8": [
+                        0,
+                        1,
+                        2,
+                        3,
+                        4,
+                        5,
+                        6
+                    ]
+                },
+                "user_id": "t.uint16_t",
+                "pin": "t.CharacterString",
+                "user_type": {
+                    "t.enum8": [
+                        0,
+                        1,
+                        2,
+                        3,
+                        4,
+                        255
+                    ]
+                },
+                "user_status": {
+                    "t.enum8": [
+                        0,
+                        1,
+                        3,
+                        255
+                    ]
+                },
+                "local_time": "t.LocalTime",
+                "data": "t.CharacterString"
+            }
+        }
+    },
+    "window_covering": {
+        "Server": {
+            "up_open": {
+                "id": 0,
+                "direction_header": 0
+            },
+            "down_close": {
+                "id": 1,
+                "direction_header": 0
+            },
+            "stop": {
+                "id": 2,
+                "direction_header": 0
+            },
+            "go_to_lift_value": {
+                "id": 4,
+                "direction_header": 0,
+                "lift_value": "t.uint16_t"
+            },
+            "go_to_lift_percentage": {
+                "id": 5,
+                "direction_header": 0,
+                "percentage_lift_value": "t.uint8_t"
+            },
+            "go_to_tilt_value": {
+                "id": 7,
+                "direction_header": 0,
+                "tilt_value": "t.uint16_t"
+            },
+            "go_to_tilt_percentage": {
+                "id": 8,
+                "direction_header": 0,
+                "percentage_tilt_value": "t.uint8_t"
+            }
+        }
+    },
+    "basic": {
+        "Server": {
+            "reset_fact_default": {
+                "id": 0,
+                "direction_header": 0
+            }
+        }
+    },
+    "identify": {
+        "Server": {
+            "identify": {
+                "id": 0,
+                "direction_header": 0,
+                "identify_time": "t.uint16_t"
+            },
+            "identify_query": {
+                "id": 1,
+                "direction_header": 0
+            },
+            "trigger_effect": {
+                "id": 64,
+                "direction_header": 0,
+                "effect_id": {
+                    "t.enum8": [
+                        0,
+                        1,
+                        2,
+                        3,
+                        254,
+                        255
+                    ]
+                },
+                "effect_variant": {
+                    "t.enum8": [
+                        0
+                    ]
+                }
+            }
+        },
+        "Client": {
+            "identify_query_response": {
+                "id": 0,
+                "direction_header": 1,
+                "timeout": "t.uint16_t"
+            }
+        }
+    },
+    "groups": {
+        "Server": {
+            "add": {
+                "id": 0,
+                "direction_header": 0,
+                "group_id": "t.Group",
+                "group_name": "t.LimitedCharString(16)"
+            },
+            "view": {
+                "id": 1,
+                "direction_header": 0,
+                "group_id": "t.Group"
+            },
+            "get_membership": {
+                "id": 2,
+                "direction_header": 0,
+                "groups": {
+                    "t.LVList": "t.Group"
+                }
+            },
+            "remove": {
+                "id": 3,
+                "direction_header": 0,
+                "group_id": "t.Group"
+            },
+            "remove_all": {
+                "id": 4,
+                "direction_header": 0
+            },
+            "add_if_identifying": {
+                "id": 5,
+                "direction_header": 0,
+                "group_id": "t.Group",
+                "group_name": "t.LimitedCharString(16)"
+            }
+        },
+        "Client": {
+            "add_response": {
+                "id": 0,
+                "direction_header": 1,
+                "status": "foundation.Status",
+                "group_id": "t.Group"
+            },
+            "view_response": {
+                "id": 1,
+                "direction_header": 1,
+                "status": "foundation.Status",
+                "group_id": "t.Group",
+                "group_name": "t.LimitedCharString(16)"
+            },
+            "get_membership_response": {
+                "id": 2,
+                "direction_header": 1,
+                "capacity": "t.uint8_t",
+                "groups": {
+                    "t.LVList": "t.Group"
+                }
+            },
+            "remove_response": {
+                "id": 3,
+                "direction_header": 1,
+                "status": "foundation.Status",
+                "group_id": "t.Group"
+            }
+        }
+    },
+    "scenes": {
+        "Server": {
+            "add": {
+                "id": 0,
+                "direction_header": 0,
+                "group_id": "t.Group",
+                "scene_id": "t.uint8_t",
+                "transition_time": "t.uint16_t",
+                "scene_name": "t.LimitedCharString(16)"
+            },
+            "view": {
+                "id": 1,
+                "direction_header": 0,
+                "group_id": "t.Group",
+                "scene_id": "t.uint8_t"
+            },
+            "remove": {
+                "id": 2,
+                "direction_header": 0,
+                "group_id": "t.Group",
+                "scene_id": "t.uint8_t"
+            },
+            "remove_all": {
+                "id": 3,
+                "direction_header": 0,
+                "group_id": "t.Group"
+            },
+            "store": {
+                "id": 4,
+                "direction_header": 0,
+                "group_id": "t.Group",
+                "scene_id": "t.uint8_t"
+            },
+            "recall": {
+                "id": 5,
+                "direction_header": 0,
+                "group_id": "t.Group",
+                "scene_id": "t.uint8_t",
+                "transition_time": "t.uint16_t"
+            },
+            "get_scene_membership": {
+                "id": 6,
+                "direction_header": 0,
+                "group_id": "t.Group"
+            },
+            "enhanced_add": {
+                "id": 64,
+                "direction_header": 0,
+                "group_id": "t.Group",
+                "scene_id": "t.uint8_t",
+                "transition_time": "t.uint16_t",
+                "scene_name": "t.LimitedCharString(16)"
+            },
+            "enhanced_view": {
+                "id": 65,
+                "direction_header": 0,
+                "group_id": "t.Group",
+                "scene_id": "t.uint8_t"
+            },
+            "copy": {
+                "id": 66,
+                "direction_header": 0,
+                "mode": "t.uint8_t",
+                "group_id_from": "t.uint16_t",
+                "scene_id_from": "t.uint8_t",
+                "group_id_to": "t.uint16_t",
+                "scene_id_to": "t.uint8_t"
+            }
+        },
+        "Client": {
+            "add_scene_response": {
+                "id": 0,
+                "direction_header": 1,
+                "status": "foundation.Status",
+                "group_id": "t.Group",
+                "scene_id": "t.uint8_t"
+            },
+            "view_response": {
+                "id": 1,
+                "direction_header": 1,
+                "status": "foundation.Status",
+                "group_id": "t.Group",
+                "scene_id": "t.uint8_t",
+                "transition_time": "t.uint16_t",
+                "scene_name": "t.LimitedCharString(16)"
+            },
+            "remove_scene_response": {
+                "id": 2,
+                "direction_header": 1,
+                "status": "foundation.Status",
+                "group_id": "t.Group",
+                "scene_id": "t.uint8_t"
+            },
+            "remove_all_scenes_response": {
+                "id": 3,
+                "direction_header": 1,
+                "status": "foundation.Status",
+                "group_id": "t.Group"
+            },
+            "store_scene_response": {
+                "id": 4,
+                "direction_header": 1,
+                "status": "foundation.Status",
+                "group_id": "t.Group",
+                "scene_id": "t.uint8_t"
+            },
+            "get_scene_membership_response": {
+                "id": 6,
+                "direction_header": 1,
+                "status": "foundation.Status",
+                "capacity": "t.uint8_t",
+                "group_id": "t.Group",
+                "scenes": {
+                    "t.LVList": "t.uint8_t"
+                }
+            },
+            "enhanced_add_response": {
+                "id": 64,
+                "direction_header": 1,
+                "status": "foundation.Status",
+                "group_id": "t.Group",
+                "scene_id": "t.uint8_t"
+            },
+            "enhanced_view_response": {
+                "id": 65,
+                "direction_header": 1,
+                "status": "foundation.Status",
+                "group_id": "t.Group",
+                "scene_id": "t.uint8_t",
+                "transition_time": "t.uint16_t",
+                "scene_name": "t.LimitedCharString(16)"
+            },
+            "copy_response": {
+                "id": 66,
+                "direction_header": 1,
+                "status": "foundation.Status",
+                "group_id": "t.Group",
+                "scene_id": "t.uint8_t"
+            }
+        }
+    },
+    "on_off": {
+        "Server": {
+            "off": {
+                "id": 0,
+                "direction_header": 0
+            },
+            "on": {
+                "id": 1,
+                "direction_header": 0
+            },
+            "toggle": {
+                "id": 2,
+                "direction_header": 0
+            },
+            "off_with_effect": {
+                "id": 64,
+                "direction_header": 0,
+                "effect_id": {
+                    "t.enum8": [
+                        0,
+                        1
+                    ]
+                },
+                "effect_variant": "t.uint8_t"
+            },
+            "on_with_recall_global_scene": {
+                "id": 65,
+                "direction_header": 0
+            },
+            "on_with_timed_off": {
+                "id": 66,
+                "direction_header": 0,
+                "on_off_control": {
+                    "t.bitmap8": [
+                        1
+                    ]
+                },
+                "on_time": "t.uint16_t",
+                "off_wait_time": "t.uint16_t"
+            }
+        }
+    },
+    "level": {
+        "Server": {
+            "move_to_level": {
+                "id": 0,
+                "direction_header": 0,
+                "level": "t.uint8_t",
+                "transition_time": "t.uint16_t",
+                "options_mask": "t.bitmap8",
+                "options_override": "t.bitmap8"
+            },
+            "move": {
+                "id": 1,
+                "direction_header": 0,
+                "move_mode": {
+                    "t.enum8": [
+                        0,
+                        1
+                    ]
+                },
+                "rate": "t.uint8_t",
+                "options_mask": "t.bitmap8",
+                "options_override": "t.bitmap8"
+            },
+            "step": {
+                "id": 2,
+                "direction_header": 0,
+                "step_mode": {
+                    "t.enum8": [
+                        0,
+                        1
+                    ]
+                },
+                "step_size": "t.uint8_t",
+                "transition_time": "t.uint16_t",
+                "options_mask": "t.bitmap8",
+                "options_override": "t.bitmap8"
+            },
+            "stop": {
+                "id": 3,
+                "direction_header": 0,
+                "options_mask": "t.bitmap8",
+                "options_override": "t.bitmap8"
+            },
+            "move_to_level_with_on_off": {
+                "id": 4,
+                "direction_header": 0,
+                "level": "t.uint8_t",
+                "transition_time": "t.uint16_t"
+            },
+            "move_with_on_off": {
+                "id": 5,
+                "direction_header": 0,
+                "move_mode": {
+                    "t.enum8": [
+                        0,
+                        1
+                    ]
+                },
+                "rate": "t.uint8_t"
+            },
+            "step_with_on_off": {
+                "id": 6,
+                "direction_header": 0,
+                "step_mode": {
+                    "t.enum8": [
+                        0,
+                        1
+                    ]
+                },
+                "step_size": "t.uint8_t",
+                "transition_time": "t.uint16_t"
+            },
+            "stop_with_on_off": {
+                "id": 7,
+                "direction_header": 0
+            },
+            "move_to_closest_frequency": {
+                "id": 8,
+                "direction_header": 0,
+                "frequency": "t.uint16_t"
+            }
+        }
+    },
+    "alarms": {
+        "Server": {
+            "reset_alarm": {
+                "id": 0,
+                "direction_header": 0,
+                "alarm_code": "t.uint8_t",
+                "cluster_id": "t.uint16_t"
+            },
+            "reset_all_alarms": {
+                "id": 1,
+                "direction_header": 0
+            },
+            "get_alarm": {
+                "id": 2,
+                "direction_header": 0
+            },
+            "reset_alarm_log": {
+                "id": 3,
+                "direction_header": 0
+            }
+        },
+        "Client": {
+            "alarm": {
+                "id": 0,
+                "direction_header": 0,
+                "alarm_code": "t.uint8_t",
+                "cluster_id": "t.uint16_t"
+            },
+            "get_alarm_response": {
+                "id": 1,
+                "direction_header": 1,
+                "status": "foundation.Status",
+                "alarm_code": "t.uint8_t",
+                "cluster_id": "t.uint16_t",
+                "timestamp": "t.uint32_t"
+            }
+        }
+    },
+    "rssi_location": {
+        "Server": {
+            "set_absolute_location": {
+                "id": 0,
+                "direction_header": 0,
+                "coordinate1": "t.int16s",
+                "coordinate2": "t.int16s",
+                "coordinate3": "t.int16s",
+                "power": "t.int16s",
+                "path_loss_exponent": "t.uint16_t"
+            },
+            "set_dev_config": {
+                "id": 1,
+                "direction_header": 0,
+                "power": "t.int16s",
+                "path_loss_exponent": "t.uint16_t",
+                "calculation_period": "t.uint16_t",
+                "num_rssi_measurements": "t.uint8_t",
+                "reporting_period": "t.uint16_t"
+            },
+            "get_dev_config": {
+                "id": 2,
+                "direction_header": 0,
+                "target_addr": "t.EUI64"
+            },
+            "get_location_data": {
+                "id": 3,
+                "direction_header": 0,
+                "packed": "t.bitmap8",
+                "num_responses": "t.uint8_t",
+                "target_addr": "t.EUI64"
+            },
+            "rssi_response": {
+                "id": 4,
+                "direction_header": 1,
+                "replying_device": "t.EUI64",
+                "x": "t.int16s",
+                "y": "t.int16s",
+                "z": "t.int16s",
+                "rssi": "t.int8s",
+                "num_rssi_measurements": "t.uint8_t"
+            },
+            "send_pings": {
+                "id": 5,
+                "direction_header": 0,
+                "target_addr": "t.EUI64",
+                "num_rssi_measurements": "t.uint8_t",
+                "calculation_period": "t.uint16_t"
+            },
+            "anchor_node_announce": {
+                "id": 6,
+                "direction_header": 0,
+                "anchor_node_ieee_addr": "t.EUI64",
+                "x": "t.int16s",
+                "y": "t.int16s",
+                "z": "t.int16s"
+            }
+        },
+        "Client": {
+            "dev_config_response": {
+                "id": 0,
+                "direction_header": 1,
+                "status": "foundation.Status",
+                "power": "t.int16s",
+                "path_loss_exponent": "t.uint16_t",
+                "calculation_period": "t.uint16_t",
+                "num_rssi_measurements": "t.uint8_t",
+                "reporting_period": "t.uint16_t"
+            },
+            "location_data_response": {
+                "id": 1,
+                "direction_header": 1,
+                "status": "foundation.Status",
+                "location_type": "t.uint8_t",
+                "coordinate1": "t.int16s",
+                "coordinate2": "t.int16s",
+                "coordinate3": "t.int16s",
+                "power": "t.uint16_t",
+                "path_loss_exponent": "t.uint8_t",
+                "location_method": "t.uint8_t",
+                "quality_measure": "t.uint8_t",
+                "location_age": "t.uint16_t"
+            },
+            "location_data_notification": {
+                "id": 2,
+                "direction_header": 0
+            },
+            "compact_location_data_notification": {
+                "id": 3,
+                "direction_header": 0
+            },
+            "rssi_ping": {
+                "id": 4,
+                "direction_header": 0,
+                "location_type": "t.uint8_t"
+            },
+            "rssi_req": {
+                "id": 5,
+                "direction_header": 0
+            },
+            "report_rssi_measurements": {
+                "id": 6,
+                "direction_header": 0,
+                "measuring_device": "t.EUI64",
+                "neighbors": {
+                    "t.LVList": {
+                        "neighbor": "t.EUI64",
+                        "x": "t.int16s",
+                        "y": "t.int16s",
+                        "z": "t.int16s",
+                        "rssi": "t.int8s",
+                        "num_measurements": "t.uint8_t"
+                    }
+                }
+            },
+            "request_own_location": {
+                "id": 7,
+                "direction_header": 0,
+                "ieee_of_blind_node": "t.EUI64"
+            }
+        }
+    },
+    "commissioning": {
+        "Server": {
+            "restart_device": {
+                "id": 0,
+                "direction_header": 0,
+                "options": "t.bitmap8",
+                "delay": "t.uint8_t",
+                "jitter": "t.uint8_t"
+            },
+            "save_startup_parameters": {
+                "id": 1,
+                "direction_header": 0,
+                "options": "t.bitmap8",
+                "index": "t.uint8_t"
+            },
+            "restore_startup_parameters": {
+                "id": 2,
+                "direction_header": 0,
+                "options": "t.bitmap8",
+                "index": "t.uint8_t"
+            },
+            "reset_startup_parameters": {
+                "id": 3,
+                "direction_header": 0,
+                "options": "t.bitmap8",
+                "index": "t.uint8_t"
+            }
+        },
+        "Client": {
+            "restart_device_response": {
+                "id": 0,
+                "direction_header": 1,
+                "status": "foundation.Status"
+            },
+            "save_startup_params_response": {
+                "id": 1,
+                "direction_header": 1,
+                "status": "foundation.Status"
+            },
+            "restore_startup_params_response": {
+                "id": 2,
+                "direction_header": 1,
+                "status": "foundation.Status"
+            },
+            "reset_startup_params_response": {
+                "id": 3,
+                "direction_header": 1,
+                "status": "foundation.Status"
+            }
+        }
+    },
+    "ota": {
+        "Server": {
+            "query_next_image": {
+                "id": 1,
+                "direction_header": 0,
+                "field_control": {
+                    "t.bitmap8": [
+                        1
+                    ]
+                },
+                "manufacturer_code": "t.uint16_t",
+                "image_type": "t.uint16_t",
+                "current_file_version": "t.uint32_t",
+                "hardware_version": "t.uint16_t"
+            },
+            "image_block": {
+                "id": 3,
+                "direction_header": 0,
+                "field_control": {
+                    "t.bitmap8": [
+                        1,
+                        2
+                    ]
+                },
+                "manufacturer_code": "t.uint16_t",
+                "image_type": "t.uint16_t",
+                "file_version": "t.uint32_t",
+                "file_offset": "t.uint32_t",
+                "maximum_data_size": "t.uint8_t",
+                "request_node_addr": "t.EUI64",
+                "minimum_block_period": "t.uint16_t"
+            },
+            "image_page": {
+                "id": 4,
+                "direction_header": 0,
+                "field_control": {
+                    "t.bitmap8": [
+                        1
+                    ]
+                },
+                "manufacturer_code": "t.uint16_t",
+                "image_type": "t.uint16_t",
+                "file_version": "t.uint32_t",
+                "file_offset": "t.uint32_t",
+                "maximum_data_size": "t.uint8_t",
+                "page_size": "t.uint16_t",
+                "response_spacing": "t.uint16_t",
+                "request_node_addr": "t.EUI64"
+            },
+            "upgrade_end": {
+                "id": 6,
+                "direction_header": 0,
+                "status": "foundation.Status",
+                "manufacturer_code": "t.uint16_t",
+                "image_type": "t.uint16_t",
+                "file_version": "t.uint32_t"
+            },
+            "query_specific_file": {
+                "id": 8,
+                "direction_header": 0,
+                "request_node_addr": "t.EUI64",
+                "manufacturer_code": "t.uint16_t",
+                "image_type": "t.uint16_t",
+                "file_version": "t.uint32_t",
+                "current_zigbee_stack_version": "t.uint16_t"
+            }
+        },
+        "Client": {
+            "image_notify": {
+                "id": 0,
+                "direction_header": 0,
+                "payload_type": {
+                    "t.enum8": [
+                        0,
+                        1,
+                        2,
+                        3
+                    ]
+                },
+                "query_jitter": "t.uint8_t",
+                "manufacturer_code": "t.uint16_t",
+                "image_type": "t.uint16_t",
+                "new_file_version": "t.uint32_t"
+            },
+            "query_next_image_response": {
+                "id": 2,
+                "direction_header": 1,
+                "status": "foundation.Status",
+                "manufacturer_code": "t.uint16_t",
+                "image_type": "t.uint16_t",
+                "file_version": "t.uint32_t",
+                "image_size": "t.uint32_t"
+            },
+            "image_block_response": {
+                "id": 5,
+                "direction_header": 1,
+                "manufacturer_code": "t.uint16_t",
+                "image_type": "t.uint16_t",
+                "file_version": "t.uint32_t",
+                "file_offset": "t.uint32_t",
+                "image_data": "t.LVBytes",
+                "current_time": "t.UTCTime",
+                "request_time": "t.UTCTime",
+                "minimum_block_period": "t.uint16_t"
+            },
+            "upgrade_end_response": {
+                "id": 7,
+                "direction_header": 1,
+                "manufacturer_code": "t.uint16_t",
+                "image_type": "t.uint16_t",
+                "file_version": "t.uint32_t",
+                "current_time": "t.UTCTime",
+                "upgrade_time": "t.UTCTime"
+            },
+            "query_specific_file_response": {
+                "id": 9,
+                "direction_header": 1,
+                "status": "foundation.Status",
+                "manufacturer_code": "t.uint16_t",
+                "image_type": "t.uint16_t",
+                "file_version": "t.uint32_t",
+                "image_size": "t.uint32_t"
+            }
+        }
+    },
+    "power_profile": {
+        "Server": {
+            "power_profile_request": {
+                "id": 0,
+                "direction_header": 0,
+                "power_profile_id": "t.uint8_t"
+            },
+            "power_profile_state_request": {
+                "id": 1,
+                "direction_header": 0
+            },
+            "get_power_profile_price_response": {
+                "id": 2,
+                "direction_header": 1,
+                "power_profile_id": "t.uint8_t",
+                "currency": "t.uint16_t",
+                "price": "t.uint32_t",
+                "price_trailing_digit": "t.uint8_t"
+            },
+            "get_overall_schedule_price_response": {
+                "id": 3,
+                "direction_header": 1,
+                "currency": "t.uint16_t",
+                "price": "t.uint32_t",
+                "price_trailing_digit": "t.uint8_t"
+            },
+            "energy_phases_schedule_notification": {
+                "id": 4,
+                "direction_header": 0,
+                "power_profile_id": "t.uint8_t",
+                "scheduled_phases": {
+                    "t.LVList": {
+                        "phase_id": "t.uint8_t",
+                        "scheduled_time": "t.uint16_t"
+                    }
+                }
+            },
+            "energy_phases_schedule_response": {
+                "id": 5,
+                "direction_header": 1,
+                "power_profile_id": "t.uint8_t",
+                "scheduled_phases": {
+                    "t.LVList": {
+                        "phase_id": "t.uint8_t",
+                        "scheduled_time": "t.uint16_t"
+                    }
+                }
+            },
+            "power_profile_schedule_constraints_request": {
+                "id": 6,
+                "direction_header": 0,
+                "power_profile_id": "t.uint8_t"
+            },
+            "energy_phases_schedule_state_request": {
+                "id": 7,
+                "direction_header": 0,
+                "power_profile_id": "t.uint8_t"
+            },
+            "get_power_profile_price_extended_response": {
+                "id": 8,
+                "direction_header": 1,
+                "power_profile_id": "t.uint8_t",
+                "currency": "t.uint16_t",
+                "price": "t.uint32_t",
+                "price_trailing_digit": "t.uint8_t"
+            }
+        },
+        "Client": {
+            "power_profile_notification": {
+                "id": 0,
+                "direction_header": 0,
+                "total_profile_num": "t.uint8_t",
+                "power_profile_id": "t.uint8_t",
+                "transfer_phases": {
+                    "t.LVList": {
+                        "energy_phase_id": "t.uint8_t",
+                        "macro_phase_id": "t.uint8_t",
+                        "expected_duration": "t.uint16_t",
+                        "peak_power": "t.uint16_t",
+                        "energy": "t.uint16_t"
+                    }
+                }
+            },
+            "power_profile_response": {
+                "id": 1,
+                "direction_header": 1,
+                "total_profile_num": "t.uint8_t",
+                "power_profile_id": "t.uint8_t",
+                "transfer_phases": {
+                    "t.LVList": {
+                        "energy_phase_id": "t.uint8_t",
+                        "macro_phase_id": "t.uint8_t",
+                        "expected_duration": "t.uint16_t",
+                        "peak_power": "t.uint16_t",
+                        "energy": "t.uint16_t"
+                    }
+                }
+            },
+            "power_profile_state_response": {
+                "id": 2,
+                "direction_header": 1,
+                "power_profiles": {
+                    "t.LVList": {
+                        "power_profile_id": "t.uint8_t",
+                        "energy_phase_id": "t.uint8_t",
+                        "power_profile_remote_control": "t.Bool",
+                        "power_profile_state": "t.uint8_t"
+                    }
+                }
+            },
+            "get_power_profile_price": {
+                "id": 3,
+                "direction_header": 0,
+                "power_profile_id": "t.uint8_t"
+            },
+            "power_profile_state_notification": {
+                "id": 4,
+                "direction_header": 0,
+                "power_profiles": {
+                    "t.LVList": {
+                        "power_profile_id": "t.uint8_t",
+                        "energy_phase_id": "t.uint8_t",
+                        "power_profile_remote_control": "t.Bool",
+                        "power_profile_state": "t.uint8_t"
+                    }
+                }
+            },
+            "get_overall_schedule_price": {
+                "id": 5,
+                "direction_header": 0
+            },
+            "energy_phases_schedule_request": {
+                "id": 6,
+                "direction_header": 0,
+                "power_profile_id": "t.uint8_t"
+            },
+            "energy_phases_schedule_state_response": {
+                "id": 7,
+                "direction_header": 1,
+                "power_profile_id": "t.uint8_t",
+                "num_scheduled_energy_phases": "t.uint8_t"
+            },
+            "energy_phases_schedule_state_notification": {
+                "id": 8,
+                "direction_header": 0,
+                "power_profile_id": "t.uint8_t",
+                "num_scheduled_energy_phases": "t.uint8_t"
+            },
+            "power_profile_schedule_constraints_notification": {
+                "id": 9,
+                "direction_header": 0,
+                "power_profile_id": "t.uint8_t",
+                "start_after": "t.uint16_t",
+                "stop_before": "t.uint16_t"
+            },
+            "power_profile_schedule_constraints_response": {
+                "id": 10,
+                "direction_header": 1,
+                "power_profile_id": "t.uint8_t",
+                "start_after": "t.uint16_t",
+                "stop_before": "t.uint16_t"
+            },
+            "get_power_profile_price_extended": {
+                "id": 11,
+                "direction_header": 0,
+                "options": "t.bitmap8",
+                "power_profile_id": "t.uint8_t",
+                "power_profile_start_time": "t.uint16_t"
+            }
+        }
+    },
+    "poll_control": {
+        "Server": {
+            "checkin_response": {
+                "id": 0,
+                "direction_header": 1,
+                "start_fast_polling": "t.Bool",
+                "fast_poll_timeout": "t.uint16_t"
+            },
+            "fast_poll_stop": {
+                "id": 1,
+                "direction_header": 0
+            },
+            "set_long_poll_interval": {
+                "id": 2,
+                "direction_header": 0,
+                "new_long_poll_interval": "t.uint32_t"
+            },
+            "set_short_poll_interval": {
+                "id": 3,
+                "direction_header": 0,
+                "new_short_poll_interval": "t.uint16_t"
+            }
+        },
+        "Client": {
+            "checkin": {
+                "id": 0,
+                "direction_header": 0
+            }
+        }
+    },
+    "ias_zone": {
+        "Server": {
+            "enroll_response": {
+                "id": 0,
+                "direction_header": 1,
+                "enroll_response_code": {
+                    "t.enum8": [
+                        0,
+                        1,
+                        2,
+                        3
+                    ]
+                },
+                "zone_id": "t.uint8_t"
+            },
+            "init_normal_op_mode": {
+                "id": 1,
+                "direction_header": 0
+            },
+            "init_test_mode": {
+                "id": 2,
+                "direction_header": 0,
+                "test_mode_duration": "t.uint8_t",
+                "current_zone_sensitivity_level": "t.uint8_t"
+            }
+        },
+        "Client": {
+            "status_change_notification": {
+                "id": 0,
+                "direction_header": 0,
+                "zone_status": {
+                    "t.bitmap16": [
+                        1,
+                        2,
+                        4,
+                        8,
+                        16,
+                        32,
+                        64,
+                        128,
+                        256,
+                        512
+                    ]
+                },
+                "extended_status": "t.bitmap8",
+                "zone_id": "t.uint8_t",
+                "delay": "t.uint16_t"
+            },
+            "enroll": {
+                "id": 1,
+                "direction_header": 0,
+                "zone_type": {
+                    "t.enum16": [
+                        0,
+                        13,
+                        21,
+                        40,
+                        42,
+                        43,
+                        44,
+                        45,
+                        271,
+                        277,
+                        541,
+                        549,
+                        550,
+                        553,
+                        65535
+                    ]
+                },
+                "manufacturer_code": "t.uint16_t"
+            }
+        }
+    },
+    "ias_ace": {
+        "Server": {
+            "arm": {
+                "id": 0,
+                "direction_header": 0,
+                "arm_mode": {
+                    "t.enum8": [
+                        0,
+                        1,
+                        2,
+                        3
+                    ]
+                },
+                "arm_disarm_code": "t.CharacterString",
+                "zone_id": "t.uint8_t"
+            },
+            "bypass": {
+                "id": 1,
+                "direction_header": 0,
+                "zones_ids": {
+                    "t.LVList": "t.uint8_t"
+                },
+                "arm_disarm_code": "t.CharacterString"
+            },
+            "emergency": {
+                "id": 2,
+                "direction_header": 0
+            },
+            "fire": {
+                "id": 3,
+                "direction_header": 0
+            },
+            "panic": {
+                "id": 4,
+                "direction_header": 0
+            },
+            "get_zone_id_map": {
+                "id": 5,
+                "direction_header": 0
+            },
+            "get_zone_info": {
+                "id": 6,
+                "direction_header": 0,
+                "zone_id": "t.uint8_t"
+            },
+            "get_panel_status": {
+                "id": 7,
+                "direction_header": 0
+            },
+            "get_bypassed_zone_list": {
+                "id": 8,
+                "direction_header": 0
+            },
+            "get_zone_status": {
+                "id": 9,
+                "direction_header": 0,
+                "starting_zone_id": "t.uint8_t",
+                "max_num_zone_ids": "t.uint8_t",
+                "zone_status_mask_flag": "t.Bool",
+                "zone_status_mask": {
+                    "t.bitmap16": [
+                        1,
+                        2,
+                        4,
+                        8,
+                        16,
+                        32,
+                        64,
+                        128,
+                        256,
+                        512
+                    ]
+                }
+            }
+        },
+        "Client": {
+            "arm_response": {
+                "id": 0,
+                "direction_header": 1,
+                "arm_notification": {
+                    "t.enum8": [
+                        0,
+                        1,
+                        2,
+                        3,
+                        4,
+                        5,
+                        6
+                    ]
+                }
+            },
+            "get_zone_id_map_response": {
+                "id": 1,
+                "direction_header": 1,
+                "zone_id_map_sections": {
+                    "t.List": "bitmap16"
+                }
+            },
+            "get_zone_info_response": {
+                "id": 2,
+                "direction_header": 1,
+                "zone_id": "t.uint8_t",
+                "zone_type": {
+                    "t.enum16": [
+                        0,
+                        13,
+                        21,
+                        40,
+                        42,
+                        43,
+                        44,
+                        45,
+                        271,
+                        277,
+                        541,
+                        549,
+                        550,
+                        553,
+                        65535
+                    ]
+                },
+                "ieee": "t.EUI64",
+                "zone_label": "t.CharacterString"
+            },
+            "zone_status_changed": {
+                "id": 3,
+                "direction_header": 0,
+                "zone_id": "t.uint8_t",
+                "zone_status": {
+                    "t.bitmap16": [
+                        1,
+                        2,
+                        4,
+                        8,
+                        16,
+                        32,
+                        64,
+                        128,
+                        256,
+                        512
+                    ]
+                },
+                "audible_notification": {
+                    "t.enum8": [
+                        0,
+                        1
+                    ]
+                },
+                "zone_label": "t.CharacterString"
+            },
+            "panel_status_changed": {
+                "id": 4,
+                "direction_header": 0,
+                "panel_status": {
+                    "t.enum8": [
+                        0,
+                        1,
+                        2,
+                        3,
+                        4,
+                        5,
+                        6,
+                        7,
+                        8,
+                        9,
+                        10
+                    ]
+                },
+                "seconds_remaining": "t.uint8_t",
+                "audible_notification": {
+                    "t.enum8": [
+                        0,
+                        1
+                    ]
+                },
+                "alarm_status": {
+                    "t.enum8": [
+                        0,
+                        1,
+                        2,
+                        3,
+                        4,
+                        5,
+                        6
+                    ]
+                }
+            },
+            "panel_status_response": {
+                "id": 5,
+                "direction_header": 1,
+                "panel_status": {
+                    "t.enum8": [
+                        0,
+                        1,
+                        2,
+                        3,
+                        4,
+                        5,
+                        6,
+                        7,
+                        8,
+                        9,
+                        10
+                    ]
+                },
+                "seconds_remaining": "t.uint8_t",
+                "audible_notification": {
+                    "t.enum8": [
+                        0,
+                        1
+                    ]
+                },
+                "alarm_status": {
+                    "t.enum8": [
+                        0,
+                        1,
+                        2,
+                        3,
+                        4,
+                        5,
+                        6
+                    ]
+                }
+            },
+            "set_bypassed_zone_list": {
+                "id": 6,
+                "direction_header": 0,
+                "zone_ids": {
+                    "t.LVList": "t.uint8_t"
+                }
+            },
+            "bypass_response": {
+                "id": 7,
+                "direction_header": 1,
+                "bypass_results": {
+                    "t.LVList": {
+                        "t.enum8": [
+                            0,
+                            1,
+                            2,
+                            3,
+                            4,
+                            5
+                        ]
+                    }
+                }
+            },
+            "get_zone_status_response": {
+                "id": 8,
+                "direction_header": 1,
+                "zone_status_complete": "t.Bool",
+                "zone_statuses": {
+                    "t.LVList": {
+                        "zone_id": "t.uint8_t"
+                    }
+                }
+            }
+        }
+    },
+    "ias_wd": {
+        "Server": {
+            "start_warning": {
+                "id": 0,
+                "direction_header": 0,
+                "warning": {
+                    "Strobe": {
+                        "t.enum8": [
+                            0,
+                            1
+                        ]
+                    },
+                    "SirenLevel": {
+                        "t.enum8": [
+                            0,
+                            1,
+                            2,
+                            3
+                        ]
+                    },
+                    "WarningMode": {
+                        "t.enum8": [
+                            0,
+                            1,
+                            2,
+                            3,
+                            4,
+                            5,
+                            6
+                        ]
+                    }
+                },
+                "warning_duration": "t.uint16_t",
+                "strobe_duty_cycle": "t.uint8_t",
+                "stobe_level": {
+                    "t.enum8": [
+                        0,
+                        1,
+                        2,
+                        3
+                    ]
+                }
+            },
+            "squawk": {
+                "id": 1,
+                "direction_header": 0,
+                "squawk": {
+                    "Strobe": {
+                        "t.enum8": [
+                            0,
+                            1
+                        ]
+                    },
+                    "SquawkLevel": {
+                        "t.enum8": [
+                            0,
+                            1,
+                            2,
+                            3
+                        ]
+                    },
+                    "SquawkMode": {
+                        "t.enum8": [
+                            0,
+                            1
+                        ]
+                    }
+                }
+            }
+        }
+    },
+    "light_color": {
+        "Server": {
+            "move_to_hue": {
+                "id": 0,
+                "direction_header": 0,
+                "hue": "t.uint8_t",
+                "direction": {
+                    "t.enum8": [
+                        0,
+                        1,
+                        2,
+                        3
+                    ]
+                },
+                "transition_time": "t.uint16_t",
+                "options_mask": "t.bitmap8",
+                "options_override": "t.bitmap8"
+            },
+            "move_hue": {
+                "id": 1,
+                "direction_header": 0,
+                "move_mode": {
+                    "t.enum8": [
+                        0,
+                        1,
+                        3
+                    ]
+                },
+                "rate": "t.uint8_t",
+                "options_mask": "t.bitmap8",
+                "options_override": "t.bitmap8"
+            },
+            "step_hue": {
+                "id": 2,
+                "direction_header": 0,
+                "step_mode": {
+                    "t.enum8": [
+                        1,
+                        3
+                    ]
+                },
+                "step_size": "t.uint8_t",
+                "transition_time": "t.uint8_t",
+                "options_mask": "t.bitmap8",
+                "options_override": "t.bitmap8"
+            },
+            "move_to_saturation": {
+                "id": 3,
+                "direction_header": 0,
+                "saturation": "t.uint8_t",
+                "transition_time": "t.uint16_t",
+                "options_mask": "t.bitmap8",
+                "options_override": "t.bitmap8"
+            },
+            "move_saturation": {
+                "id": 4,
+                "direction_header": 0,
+                "move_mode": {
+                    "t.enum8": [
+                        0,
+                        1,
+                        3
+                    ]
+                },
+                "rate": "t.uint8_t",
+                "options_mask": "t.bitmap8",
+                "options_override": "t.bitmap8"
+            },
+            "step_saturation": {
+                "id": 5,
+                "direction_header": 0,
+                "step_mode": {
+                    "t.enum8": [
+                        1,
+                        3
+                    ]
+                },
+                "step_size": "t.uint8_t",
+                "transition_time": "t.uint8_t",
+                "options_mask": "t.bitmap8",
+                "options_override": "t.bitmap8"
+            },
+            "move_to_hue_and_saturation": {
+                "id": 6,
+                "direction_header": 0,
+                "hue": "t.uint8_t",
+                "saturation": "t.uint8_t",
+                "transition_time": "t.uint16_t",
+                "options_mask": "t.bitmap8",
+                "options_override": "t.bitmap8"
+            },
+            "move_to_color": {
+                "id": 7,
+                "direction_header": 0,
+                "color_x": "t.uint16_t",
+                "color_y": "t.uint16_t",
+                "transition_time": "t.uint16_t",
+                "options_mask": "t.bitmap8",
+                "options_override": "t.bitmap8"
+            },
+            "move_color": {
+                "id": 8,
+                "direction_header": 0,
+                "rate_x": "t.uint16_t",
+                "rate_y": "t.uint16_t",
+                "options_mask": "t.bitmap8",
+                "options_override": "t.bitmap8"
+            },
+            "step_color": {
+                "id": 9,
+                "direction_header": 0,
+                "step_x": "t.uint16_t",
+                "step_y": "t.uint16_t",
+                "duration": "t.uint16_t",
+                "options_mask": "t.bitmap8",
+                "options_override": "t.bitmap8"
+            },
+            "move_to_color_temp": {
+                "id": 10,
+                "direction_header": 0,
+                "color_temp_mireds": "t.uint16_t",
+                "transition_time": "t.uint16_t",
+                "options_mask": "t.bitmap8",
+                "options_override": "t.bitmap8"
+            },
+            "enhanced_move_to_hue": {
+                "id": 64,
+                "direction_header": 0,
+                "enhanced_hue": "t.uint16_t",
+                "direction": {
+                    "t.enum8": [
+                        0,
+                        1,
+                        2,
+                        3
+                    ]
+                },
+                "transition_time": "t.uint16_t",
+                "options_mask": "t.bitmap8",
+                "options_override": "t.bitmap8"
+            },
+            "enhanced_move_hue": {
+                "id": 65,
+                "direction_header": 0,
+                "move_mode": {
+                    "t.enum8": [
+                        0,
+                        1,
+                        3
+                    ]
+                },
+                "rate": "t.uint16_t",
+                "options_mask": "t.bitmap8",
+                "options_override": "t.bitmap8"
+            },
+            "enhanced_step_hue": {
+                "id": 66,
+                "direction_header": 0,
+                "step_mode": {
+                    "t.enum8": [
+                        1,
+                        3
+                    ]
+                },
+                "step_size": "t.uint16_t",
+                "transition_time": "t.uint16_t",
+                "options_mask": "t.bitmap8",
+                "options_override": "t.bitmap8"
+            },
+            "enhanced_move_to_hue_and_saturation": {
+                "id": 67,
+                "direction_header": 0,
+                "enhanced_hue": "t.uint16_t",
+                "saturation": "t.uint8_t",
+                "transition_time": "t.uint16_t",
+                "options_mask": "t.bitmap8",
+                "options_override": "t.bitmap8"
+            },
+            "color_loop_set": {
+                "id": 68,
+                "direction_header": 0,
+                "update_flags": {
+                    "t.bitmap8": [
+                        1,
+                        2,
+                        4,
+                        8
+                    ]
+                },
+                "action": {
+                    "t.enum8": [
+                        0,
+                        1,
+                        2
+                    ]
+                },
+                "direction": {
+                    "t.enum8": [
+                        0,
+                        1
+                    ]
+                },
+                "time": "t.uint16_t",
+                "start_hue": "t.uint16_t",
+                "options_mask": "t.bitmap8",
+                "options_override": "t.bitmap8"
+            },
+            "stop_move_step": {
+                "id": 71,
+                "direction_header": 0,
+                "options_mask": "t.bitmap8",
+                "options_override": "t.bitmap8"
+            },
+            "move_color_temp": {
+                "id": 75,
+                "direction_header": 0,
+                "move_mode": {
+                    "t.enum8": [
+                        0,
+                        1,
+                        3
+                    ]
+                },
+                "rate": "t.uint16_t",
+                "color_temp_min_mireds": "t.uint16_t",
+                "color_temp_max_mireds": "t.uint16_t",
+                "options_mask": "t.bitmap8",
+                "options_override": "t.bitmap8"
+            },
+            "step_color_temp": {
+                "id": 76,
+                "direction_header": 0,
+                "step_mode": {
+                    "t.enum8": [
+                        1,
+                        3
+                    ]
+                },
+                "step_size": "t.uint16_t",
+                "transition_time": "t.uint16_t",
+                "color_temp_min_mireds": "t.uint16_t",
+                "color_temp_max_mireds": "t.uint16_t",
+                "options_mask": "t.bitmap8",
+                "options_override": "t.bitmap8"
+            }
+        }
+    },
+    "lightlink": {
+        "Server": {
+            "scan": {
+                "id": 0,
+                "direction_header": 0,
+                "inter_pan_transaction_id": "t.uint32_t",
+                "zigbee_information": {
+                    "logical_type": {
+                        "t.enum2": [
+                            0,
+                            1,
+                            2
+                        ]
+                    },
+                    "rx_on_when_idle": "t.uint1_t",
+                    "reserved": "t.uint5_t"
+                },
+                "touchlink_information": {
+                    "factory_new": "t.uint1_t",
+                    "address_assignment": "t.uint1_t",
+                    "reserved1": "t.uint2_t",
+                    "touchlink_initiator": "t.uint1_t",
+                    "undefined": "t.uint1_t",
+                    "reserved2": "t.uint1_t",
+                    "profile_interop": "t.uint1_t"
+                }
+            },
+            "device_info": {
+                "id": 2,
+                "direction_header": 0,
+                "inter_pan_transaction_id": "t.uint32_t",
+                "start_index": "t.uint8_t"
+            },
+            "identify": {
+                "id": 6,
+                "direction_header": 0,
+                "inter_pan_transaction_id": "t.uint32_t",
+                "identify_duration": "t.uint16_t"
+            },
+            "reset_to_factory_new": {
+                "id": 7,
+                "direction_header": 0,
+                "inter_pan_transaction_id": "t.uint32_t"
+            },
+            "network_start": {
+                "id": 16,
+                "direction_header": 0,
+                "inter_pan_transaction_id": "t.uint32_t",
+                "epid": "t.EUI64",
+                "key_index": "t.uint8_t",
+                "encrypted_network_key": "t.KeyData",
+                "logical_channel": "t.uint8_t",
+                "pan_id": "t.PanId",
+                "nwk_addr": "t.NWK",
+                "group_identifiers_begin": "t.Group",
+                "group_identifiers_end": "t.Group",
+                "free_network_addr_range_begin": "t.NWK",
+                "free_network_addr_range_end": "t.NWK",
+                "free_group_id_range_begin": "t.Group",
+                "free_group_id_range_end": "t.Group",
+                "initiator_ieee": "t.EUI64",
+                "initiator_nwk": "t.NWK"
+            },
+            "network_join_router": {
+                "id": 18,
+                "direction_header": 0,
+                "inter_pan_transaction_id": "t.uint32_t",
+                "epid": "t.EUI64",
+                "key_index": "t.uint8_t",
+                "encrypted_network_key": "t.KeyData",
+                "nwk_update_id": "t.uint8_t",
+                "logical_channel": "t.uint8_t",
+                "pan_id": "t.PanId",
+                "nwk_addr": "t.NWK",
+                "group_identifiers_begin": "t.Group",
+                "group_identifiers_end": "t.Group",
+                "free_network_addr_range_begin": "t.NWK",
+                "free_network_addr_range_end": "t.NWK",
+                "free_group_id_range_begin": "t.Group",
+                "free_group_id_range_end": "t.Group"
+            },
+            "network_join_end_device": {
+                "id": 20,
+                "direction_header": 0,
+                "inter_pan_transaction_id": "t.uint32_t",
+                "epid": "t.EUI64",
+                "key_index": "t.uint8_t",
+                "encrypted_network_key": "t.KeyData",
+                "nwk_update_id": "t.uint8_t",
+                "logical_channel": "t.uint8_t",
+                "pan_id": "t.PanId",
+                "nwk_addr": "t.NWK",
+                "group_identifiers_begin": "t.Group",
+                "group_identifiers_end": "t.Group",
+                "free_network_addr_range_begin": "t.NWK",
+                "free_network_addr_range_end": "t.NWK",
+                "free_group_id_range_begin": "t.Group",
+                "free_group_id_range_end": "t.Group"
+            },
+            "network_update": {
+                "id": 22,
+                "direction_header": 0,
+                "inter_pan_transaction_id": "t.uint32_t",
+                "epid": "t.EUI64",
+                "nwk_update_id": "t.uint8_t",
+                "logical_channel": "t.uint8_t",
+                "pan_id": "t.PanId",
+                "nwk_addr": "t.NWK"
+            },
+            "get_group_identifiers": {
+                "id": 65,
+                "direction_header": 0,
+                "start_index": "t.uint8_t"
+            },
+            "get_endpoint_list": {
+                "id": 66,
+                "direction_header": 0,
+                "start_index": "t.uint8_t"
+            }
+        },
+        "Client": {
+            "scan_rsp": {
+                "id": 1,
+                "direction_header": 1,
+                "inter_pan_transaction_id": "t.uint32_t",
+                "rssi_correction": "t.uint8_t",
+                "zigbee_info": {
+                    "logical_type": {
+                        "t.enum2": [
+                            0,
+                            1,
+                            2
+                        ]
+                    },
+                    "rx_on_when_idle": "t.uint1_t",
+                    "reserved": "t.uint5_t"
+                },
+                "touchlink_info": {
+                    "factory_new": "t.uint1_t",
+                    "address_assignment": "t.uint1_t",
+                    "reserved1": "t.uint2_t",
+                    "touchlink_initiator": "t.uint1_t",
+                    "touchlink_priority_request": "t.uint1_t",
+                    "reserved2": "t.uint1_t",
+                    "profile_interop": "t.uint1_t"
+                },
+                "key_bitmask": "t.uint16_t",
+                "response_id": "t.uint32_t",
+                "epid": "t.EUI64",
+                "nwk_update_id": "t.uint8_t",
+                "logical_channel": "t.uint8_t",
+                "pan_id": "t.PanId",
+                "nwk_addr": "t.NWK",
+                "num_sub_devices": "t.uint8_t",
+                "total_group_ids": "t.uint8_t",
+                "endpoint_id": "t.uint8_t",
+                "profile_id": "t.uint16_t",
+                "device_id": "t.uint16_t",
+                "version": "t.uint8_t",
+                "group_id_count": "t.uint8_t"
+            },
+            "device_info_rsp": {
+                "id": 3,
+                "direction_header": 1,
+                "inter_pan_transaction_id": "t.uint32_t",
+                "num_sub_devices": "t.uint8_t",
+                "start_index": "t.uint8_t",
+                "device_info_records": {
+                    "t.LVList": {
+                        "ieee": "t.EUI64",
+                        "endpoint_id": "t.uint8_t",
+                        "profile_id": "t.uint8_t",
+                        "device_id": "t.uint16_t",
+                        "version": "t.uint8_t",
+                        "group_id_count": "t.uint8_t",
+                        "sort": "t.uint8_t"
+                    }
+                }
+            },
+            "network_start_rsp": {
+                "id": 17,
+                "direction_header": 1,
+                "inter_pan_transaction_id": "t.uint32_t",
+                "status": {
+                    "t.enum8": [
+                        0,
+                        1
+                    ]
+                },
+                "epid": "t.EUI64",
+                "nwk_update_id": "t.uint8_t",
+                "logical_channel": "t.uint8_t",
+                "pan_id": "t.PanId"
+            },
+            "network_join_router_rsp": {
+                "id": 19,
+                "direction_header": 1,
+                "inter_pan_transaction_id": "t.uint32_t",
+                "status": {
+                    "t.enum8": [
+                        0,
+                        1
+                    ]
+                }
+            },
+            "network_join_end_device_rsp": {
+                "id": 21,
+                "direction_header": 1,
+                "inter_pan_transaction_id": "t.uint32_t",
+                "status": {
+                    "t.enum8": [
+                        0,
+                        1
+                    ]
+                }
+            },
+            "endpoint_info": {
+                "id": 64,
+                "direction_header": 1,
+                "ieee_addr": "t.EUI64",
+                "nwk_addr": "t.NWK",
+                "endpoint_id": "t.uint8_t",
+                "profile_id": "t.uint16_t",
+                "device_id": "t.uint16_t",
+                "version": "t.uint8_t"
+            },
+            "get_group_identifiers_rsp": {
+                "id": 65,
+                "direction_header": 1,
+                "total": "t.uint8_t",
+                "start_index": "t.uint8_t",
+                "group_info_records": {
+                    "t.LVList": {
+                        "group_id": "t.Group",
+                        "group_type": "t.uint8_t"
+                    }
+                }
+            },
+            "get_endpoint_list_rsp": {
+                "id": 66,
+                "direction_header": 1,
+                "total": "t.uint8_t",
+                "start_index": "t.uint8_t",
+                "endpoint_info_records": {
+                    "t.LVList": {
+                        "nwk_addr": "t.NWK",
+                        "endpoint_id": "t.uint8_t",
+                        "profile_id": "t.uint16_t",
+                        "device_id": "t.uint16_t",
+                        "version": "t.uint8_t"
+                    }
+                }
+            }
+        }
+    }
+}

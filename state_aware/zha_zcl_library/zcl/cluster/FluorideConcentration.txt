@@ -1,0 +1,6 @@
+class FluorideConcentration(_ConcentrationMixin, Cluster):
+    cluster_id: Final[t.uint16_t] = (
+        0x041C  # XXX: spec repeats 0x041B but this seems like a mistake
+    )
+    name: Final = "Fluoride Concentration"
+    ep_attribute: Final = "fluoride_concentration"

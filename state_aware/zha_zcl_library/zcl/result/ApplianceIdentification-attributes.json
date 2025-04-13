@@ -1,0 +1,18 @@
+{
+    "Attributes": [
+        "basic_identification",
+        "company_name",
+        "company_id",
+        "brand_name",
+        "brand_id",
+        "model",
+        "part_number",
+        "product_revision",
+        "software_revision",
+        "product_type_name",
+        "product_type_id",
+        "ceced_specification_version",
+        "cluster_revision",
+        "reporting_status"
+    ]
+}

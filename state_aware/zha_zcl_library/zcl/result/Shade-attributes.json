@@ -1,0 +1,9 @@
+{
+    "Attributes": [
+        "physical_closed_limit",
+        "motor_step_size",
+        "status",
+        "closed_limit",
+        "mode"
+    ]
+}

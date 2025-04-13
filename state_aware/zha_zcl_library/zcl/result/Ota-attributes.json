@@ -1,0 +1,19 @@
+{
+    "Attributes": [
+        "upgrade_server_id",
+        "file_offset",
+        "current_file_version",
+        "current_zigbee_stack_version",
+        "downloaded_file_version",
+        "downloaded_zigbee_stack_version",
+        "image_upgrade_status",
+        "manufacturer_id",
+        "image_type_id",
+        "minimum_block_req_delay",
+        "image_stamp",
+        "upgrade_activation_policy",
+        "upgrade_timeout_policy",
+        "cluster_revision",
+        "reporting_status"
+    ]
+}

@@ -1,0 +1,14 @@
+{
+    "Attributes": [
+        "change_of_state_count",
+        "change_of_state_time",
+        "device_type",
+        "elapsed_active_time",
+        "object_id",
+        "object_name",
+        "object_type",
+        "time_of_at_reset",
+        "time_of_sc_reset",
+        "profile_name"
+    ]
+}

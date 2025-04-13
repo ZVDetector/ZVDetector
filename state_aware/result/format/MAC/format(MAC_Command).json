@@ -1,0 +1,35 @@
+{
+    "association_request": {
+        "capability_information": "uint8"
+    },
+    "association_response": {
+        "short_address": "uint16",
+        "association_status": "uint8"
+    },
+    "disassociation_notification": {
+        "disassociation_reason": "uint8",
+        "device_address": "uint64 | uint16"
+    },
+    "data_request": {},
+    "panidconflict_notification": {
+        "panid": "uint16"
+    },
+    "orphan_notification": {
+        "orphan_address": "uint64"
+    },
+    "beacon_request": {
+        "superframe_specification": "uint16",
+        "gtsfields": "byte[3]",
+        "pending_address_fields": "byte[]"
+    },
+    "coordinator_realignment": {
+        "panid": "uint16",
+        "coordinator_short_address": "uint16",
+        "channel": "uint8",
+        "device_short_address": "uint16",
+        "superframe_specification": "uint16"
+    },
+    "gtsrequest": {
+        "gtscharacteristics": "uint8"
+    }
+}

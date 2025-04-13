@@ -1,0 +1,27 @@
+{
+    "Attributes": [
+        "zcl_version",
+        "app_version",
+        "stack_version",
+        "hw_version",
+        "manufacturer",
+        "model",
+        "date_code",
+        "power_source",
+        "generic_device_class",
+        "generic_device_type",
+        "product_code",
+        "product_url",
+        "manufacturer_version_details",
+        "serial_number",
+        "product_label",
+        "location_desc",
+        "physical_env",
+        "device_enabled",
+        "alarm_mask",
+        "disable_local_config",
+        "sw_build_id",
+        "cluster_revision",
+        "reporting_status"
+    ]
+}

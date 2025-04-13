@@ -1,0 +1,5123 @@
+{
+    "pump": {
+        "Attribute": {
+            "max_pressure": {
+                "id": 0,
+                "access": "r",
+                "type": "t.int16s"
+            },
+            "max_speed": {
+                "id": 1,
+                "access": "r",
+                "type": "t.uint16_t"
+            },
+            "max_flow": {
+                "id": 2,
+                "access": "r",
+                "type": "t.uint16_t"
+            },
+            "min_const_pressure": {
+                "id": 3,
+                "access": "r",
+                "type": "t.int16s"
+            },
+            "max_const_pressure": {
+                "id": 4,
+                "access": "r",
+                "type": "t.int16s"
+            },
+            "min_comp_pressure": {
+                "id": 5,
+                "access": "r",
+                "type": "t.int16s"
+            },
+            "max_comp_pressure": {
+                "id": 6,
+                "access": "r",
+                "type": "t.int16s"
+            },
+            "min_const_speed": {
+                "id": 7,
+                "access": "r",
+                "type": "t.uint16_t"
+            },
+            "max_const_speed": {
+                "id": 8,
+                "access": "r",
+                "type": "t.uint16_t"
+            },
+            "min_const_flow": {
+                "id": 9,
+                "access": "r",
+                "type": "t.uint16_t"
+            },
+            "max_const_flow": {
+                "id": 10,
+                "access": "r",
+                "type": "t.uint16_t"
+            },
+            "min_const_temp": {
+                "id": 11,
+                "access": "r",
+                "type": "t.int16s"
+            },
+            "max_const_temp": {
+                "id": 12,
+                "access": "r",
+                "type": "t.int16s"
+            },
+            "pump_status": {
+                "id": 16,
+                "access": "rp",
+                "type": "PumpStatus"
+            },
+            "effective_operation_mode": {
+                "id": 17,
+                "access": "r",
+                "type": "OperationMode"
+            },
+            "effective_control_mode": {
+                "id": 18,
+                "access": "r",
+                "type": "ControlMode"
+            },
+            "capacity": {
+                "id": 19,
+                "access": "rp",
+                "type": "t.int16s"
+            },
+            "speed": {
+                "id": 20,
+                "access": "r",
+                "type": "t.uint16_t"
+            },
+            "lifetime_running_hours": {
+                "id": 21,
+                "access": "rw",
+                "type": "t.uint24_t"
+            },
+            "power": {
+                "id": 22,
+                "access": "rw",
+                "type": "t.uint24_t"
+            },
+            "lifetime_energy_consumed": {
+                "id": 23,
+                "access": "r",
+                "type": "t.uint32_t"
+            },
+            "operation_mode": {
+                "id": 32,
+                "access": "rw",
+                "type": "OperationMode"
+            },
+            "control_mode": {
+                "id": 33,
+                "access": "rw",
+                "type": "ControlMode"
+            },
+            "alarm_mask": {
+                "id": 34,
+                "access": "r",
+                "type": "PumpAlarmMask"
+            }
+        }
+    },
+    "thermostat": {
+        "Attribute": {
+            "local_temperature": {
+                "id": 0,
+                "access": "rp",
+                "type": "t.int16s"
+            },
+            "outdoor_temperature": {
+                "id": 1,
+                "access": "r",
+                "type": "t.int16s"
+            },
+            "occupancy": {
+                "id": 2,
+                "access": "r",
+                "type": "Occupancy"
+            },
+            "abs_min_heat_setpoint_limit": {
+                "id": 3,
+                "access": "r",
+                "type": "t.int16s"
+            },
+            "abs_max_heat_setpoint_limit": {
+                "id": 4,
+                "access": "r",
+                "type": "t.int16s"
+            },
+            "abs_min_cool_setpoint_limit": {
+                "id": 5,
+                "access": "r",
+                "type": "t.int16s"
+            },
+            "abs_max_cool_setpoint_limit": {
+                "id": 6,
+                "access": "r",
+                "type": "t.int16s"
+            },
+            "pi_cooling_demand": {
+                "id": 7,
+                "access": "rp",
+                "type": "t.uint8_t"
+            },
+            "pi_heating_demand": {
+                "id": 8,
+                "access": "rp",
+                "type": "t.uint8_t"
+            },
+            "system_type_config": {
+                "id": 9,
+                "access": "r*w",
+                "type": "SystemType"
+            },
+            "local_temperature_calibration": {
+                "id": 16,
+                "access": "rw",
+                "type": "t.int8s"
+            },
+            "occupied_cooling_setpoint": {
+                "id": 17,
+                "access": "rws",
+                "type": "t.int16s"
+            },
+            "occupied_heating_setpoint": {
+                "id": 18,
+                "access": "rws",
+                "type": "t.int16s"
+            },
+            "unoccupied_cooling_setpoint": {
+                "id": 19,
+                "access": "rw",
+                "type": "t.int16s"
+            },
+            "unoccupied_heating_setpoint": {
+                "id": 20,
+                "access": "rw",
+                "type": "t.int16s"
+            },
+            "min_heat_setpoint_limit": {
+                "id": 21,
+                "access": "rw",
+                "type": "t.int16s"
+            },
+            "max_heat_setpoint_limit": {
+                "id": 22,
+                "access": "rw",
+                "type": "t.int16s"
+            },
+            "min_cool_setpoint_limit": {
+                "id": 23,
+                "access": "rw",
+                "type": "t.int16s"
+            },
+            "max_cool_setpoint_limit": {
+                "id": 24,
+                "access": "rw",
+                "type": "t.int16s"
+            },
+            "min_setpoint_dead_band": {
+                "id": 25,
+                "access": "r*w",
+                "type": "t.int8s"
+            },
+            "remote_sensing": {
+                "id": 26,
+                "access": "rw",
+                "type": "RemoteSensing"
+            },
+            "ctrl_sequence_of_oper": {
+                "id": 27,
+                "access": "rw",
+                "type": "ControlSequenceOfOperation"
+            },
+            "system_mode": {
+                "id": 28,
+                "access": "rws",
+                "type": "SystemMode"
+            },
+            "alarm_mask": {
+                "id": 29,
+                "access": "r",
+                "type": "AlarmMask"
+            },
+            "running_mode": {
+                "id": 30,
+                "access": "r",
+                "type": "RunningMode"
+            },
+            "start_of_week": {
+                "id": 32,
+                "access": "r",
+                "type": "StartOfWeek"
+            },
+            "number_of_weekly_transitions": {
+                "id": 33,
+                "access": "r",
+                "type": "t.uint8_t"
+            },
+            "number_of_daily_transitions": {
+                "id": 34,
+                "access": "r",
+                "type": "t.uint8_t"
+            },
+            "temp_setpoint_hold": {
+                "id": 35,
+                "access": "rw",
+                "type": "TemperatureSetpointHold"
+            },
+            "temp_setpoint_hold_duration": {
+                "id": 36,
+                "access": "rw",
+                "type": "t.uint16_t"
+            },
+            "programing_oper_mode": {
+                "id": 37,
+                "access": "rwp",
+                "type": "ProgrammingOperationMode"
+            },
+            "running_state": {
+                "id": 41,
+                "access": "r",
+                "type": "RunningState"
+            },
+            "setpoint_change_source": {
+                "id": 48,
+                "access": "r",
+                "type": "SetpointChangeSource"
+            },
+            "setpoint_change_amount": {
+                "id": 49,
+                "access": "r",
+                "type": "t.int16s"
+            },
+            "setpoint_change_source_timestamp": {
+                "id": 50,
+                "access": "r",
+                "type": "t.UTCTime"
+            },
+            "occupied_setback": {
+                "id": 52,
+                "access": "rw",
+                "type": "t.uint8_t"
+            },
+            "occupied_setback_min": {
+                "id": 53,
+                "access": "r",
+                "type": "t.uint8_t"
+            },
+            "occupied_setback_max": {
+                "id": 54,
+                "access": "r",
+                "type": "t.uint8_t"
+            },
+            "unoccupied_setback": {
+                "id": 55,
+                "access": "rw",
+                "type": "t.uint8_t"
+            },
+            "unoccupied_setback_min": {
+                "id": 56,
+                "access": "r",
+                "type": "t.uint8_t"
+            },
+            "unoccupied_setback_max": {
+                "id": 57,
+                "access": "r",
+                "type": "t.uint8_t"
+            },
+            "emergency_heat_delta": {
+                "id": 58,
+                "access": "rw",
+                "type": "t.uint8_t"
+            },
+            "ac_type": {
+                "id": 64,
+                "access": "rw",
+                "type": "ACType"
+            },
+            "ac_capacity": {
+                "id": 65,
+                "access": "rw",
+                "type": "t.uint16_t"
+            },
+            "ac_refrigerant_type": {
+                "id": 66,
+                "access": "rw",
+                "type": "ACRefrigerantType"
+            },
+            "ac_compressor_type": {
+                "id": 67,
+                "access": "rw",
+                "type": "ACCompressorType"
+            },
+            "ac_error_code": {
+                "id": 68,
+                "access": "rw",
+                "type": "ACErrorCode"
+            },
+            "ac_louver_position": {
+                "id": 69,
+                "access": "rw",
+                "type": "ACLouverPosition"
+            },
+            "ac_coil_temperature": {
+                "id": 70,
+                "access": "r",
+                "type": "t.int16s"
+            },
+            "ac_capacity_format": {
+                "id": 71,
+                "access": "rw",
+                "type": "ACCapacityFormat"
+            }
+        }
+    },
+    "fan": {
+        "Attribute": {
+            "fan_mode": {
+                "id": 0,
+                "access": "",
+                "type": "FanMode"
+            },
+            "fan_mode_sequence": {
+                "id": 1,
+                "access": "",
+                "type": "FanModeSequence"
+            }
+        }
+    },
+    "dehumidification": {
+        "Attribute": {
+            "relative_humidity": {
+                "id": 0,
+                "access": "r",
+                "type": "t.uint8_t"
+            },
+            "dehumidification_cooling": {
+                "id": 1,
+                "access": "rp",
+                "type": "t.uint8_t"
+            },
+            "rh_dehumidification_setpoint": {
+                "id": 16,
+                "access": "rw",
+                "type": "t.uint8_t"
+            },
+            "relative_humidity_mode": {
+                "id": 17,
+                "access": "rw",
+                "type": "RelativeHumidityMode"
+            },
+            "dehumidification_lockout": {
+                "id": 18,
+                "access": "rw",
+                "type": "DehumidificationLockout"
+            },
+            "dehumidification_hysteresis": {
+                "id": 19,
+                "access": "rw",
+                "type": "t.uint8_t"
+            },
+            "dehumidification_max_cool": {
+                "id": 20,
+                "access": "rw",
+                "type": "t.uint8_t"
+            },
+            "relative_humidity_display": {
+                "id": 21,
+                "access": "rw",
+                "type": "RelativeHumidityDisplay"
+            }
+        }
+    },
+    "thermostat_ui": {
+        "Attribute": {
+            "temperature_display_mode": {
+                "id": 0,
+                "access": "rw",
+                "type": "TemperatureDisplayMode"
+            },
+            "keypad_lockout": {
+                "id": 1,
+                "access": "rw",
+                "type": "KeypadLockout"
+            },
+            "schedule_programming_visibility": {
+                "id": 2,
+                "access": "rw",
+                "type": "ScheduleProgrammingVisibility"
+            }
+        }
+    },
+    "smartenergy_metering": {
+        "Attribute": {
+            "current_summ_delivered": {
+                "id": 0,
+                "access": "r",
+                "type": "t.uint48_t"
+            },
+            "current_summ_received": {
+                "id": 1,
+                "access": "r",
+                "type": "t.uint48_t"
+            },
+            "current_max_demand_delivered": {
+                "id": 2,
+                "access": "r",
+                "type": "t.uint48_t"
+            },
+            "current_max_demand_received": {
+                "id": 3,
+                "access": "r",
+                "type": "t.uint48_t"
+            },
+            "dft_summ": {
+                "id": 4,
+                "access": "r",
+                "type": "t.uint48_t"
+            },
+            "daily_freeze_time": {
+                "id": 5,
+                "access": "r",
+                "type": "t.uint16_t"
+            },
+            "power_factor": {
+                "id": 6,
+                "access": "r",
+                "type": "t.int8s"
+            },
+            "reading_snapshot_time": {
+                "id": 7,
+                "access": "r",
+                "type": "t.UTCTime"
+            },
+            "current_max_demand_delivered_time": {
+                "id": 8,
+                "access": "r",
+                "type": "t.UTCTime"
+            },
+            "current_max_demand_received_time": {
+                "id": 9,
+                "access": "r",
+                "type": "t.UTCTime"
+            },
+            "default_update_period": {
+                "id": 10,
+                "access": "r",
+                "type": "t.uint8_t"
+            },
+            "fast_poll_update_period": {
+                "id": 11,
+                "access": "r",
+                "type": "t.uint8_t"
+            },
+            "current_block_period_consump_delivered": {
+                "id": 12,
+                "access": "r",
+                "type": "t.uint48_t"
+            },
+            "daily_consump_target": {
+                "id": 13,
+                "access": "r",
+                "type": "t.uint24_t"
+            },
+            "current_block": {
+                "id": 14,
+                "access": "r",
+                "type": "t.enum8"
+            },
+            "profile_interval_period": {
+                "id": 15,
+                "access": "r",
+                "type": "t.enum8"
+            },
+            "preset_reading_time": {
+                "id": 17,
+                "access": "r",
+                "type": "t.uint16_t"
+            },
+            "volume_per_report": {
+                "id": 18,
+                "access": "r",
+                "type": "t.uint16_t"
+            },
+            "flow_restriction": {
+                "id": 19,
+                "access": "r",
+                "type": "t.uint8_t"
+            },
+            "supply_status": {
+                "id": 20,
+                "access": "r",
+                "type": "t.enum8"
+            },
+            "current_in_energy_carrier_summ": {
+                "id": 21,
+                "access": "r",
+                "type": "t.uint48_t"
+            },
+            "current_out_energy_carrier_summ": {
+                "id": 22,
+                "access": "r",
+                "type": "t.uint48_t"
+            },
+            "inlet_temperature": {
+                "id": 23,
+                "access": "r",
+                "type": "t.int24s"
+            },
+            "outlet_temperature": {
+                "id": 24,
+                "access": "r",
+                "type": "t.int24s"
+            },
+            "control_temperature": {
+                "id": 25,
+                "access": "r",
+                "type": "t.int24s"
+            },
+            "current_in_energy_carrier_demand": {
+                "id": 26,
+                "access": "r",
+                "type": "t.int24s"
+            },
+            "current_out_energy_carrier_demand": {
+                "id": 27,
+                "access": "r",
+                "type": "t.int24s"
+            },
+            "current_block_period_consump_received": {
+                "id": 29,
+                "access": "r",
+                "type": "t.uint48_t"
+            },
+            "current_block_received": {
+                "id": 30,
+                "access": "r",
+                "type": "t.uint48_t"
+            },
+            "dft_summation_received": {
+                "id": 31,
+                "access": "r",
+                "type": "t.uint48_t"
+            },
+            "active_register_tier_delivered": {
+                "id": 32,
+                "access": "r",
+                "type": "RegisteredTier"
+            },
+            "active_register_tier_received": {
+                "id": 33,
+                "access": "r",
+                "type": "RegisteredTier"
+            },
+            "last_block_switch_time": {
+                "id": 34,
+                "access": "r",
+                "type": "t.UTCTime"
+            },
+            "current_tier1_summ_delivered": {
+                "id": 256,
+                "access": "r",
+                "type": "t.uint48_t"
+            },
+            "current_tier1_summ_received": {
+                "id": 257,
+                "access": "r",
+                "type": "t.uint48_t"
+            },
+            "current_tier2_summ_delivered": {
+                "id": 258,
+                "access": "r",
+                "type": "t.uint48_t"
+            },
+            "current_tier2_summ_received": {
+                "id": 259,
+                "access": "r",
+                "type": "t.uint48_t"
+            },
+            "current_tier3_summ_delivered": {
+                "id": 260,
+                "access": "r",
+                "type": "t.uint48_t"
+            },
+            "current_tier3_summ_received": {
+                "id": 261,
+                "access": "r",
+                "type": "t.uint48_t"
+            },
+            "current_tier4_summ_delivered": {
+                "id": 262,
+                "access": "r",
+                "type": "t.uint48_t"
+            },
+            "current_tier4_summ_received": {
+                "id": 263,
+                "access": "r",
+                "type": "t.uint48_t"
+            },
+            "current_tier5_summ_delivered": {
+                "id": 264,
+                "access": "r",
+                "type": "t.uint48_t"
+            },
+            "current_tier5_summ_received": {
+                "id": 265,
+                "access": "r",
+                "type": "t.uint48_t"
+            },
+            "current_tier6_summ_delivered": {
+                "id": 266,
+                "access": "r",
+                "type": "t.uint48_t"
+            },
+            "current_tier6_summ_received": {
+                "id": 267,
+                "access": "r",
+                "type": "t.uint48_t"
+            },
+            "current_tier7_summ_delivered": {
+                "id": 268,
+                "access": "r",
+                "type": "t.uint48_t"
+            },
+            "current_tier7_summ_received": {
+                "id": 269,
+                "access": "r",
+                "type": "t.uint48_t"
+            },
+            "current_tier8_summ_delivered": {
+                "id": 270,
+                "access": "r",
+                "type": "t.uint48_t"
+            },
+            "current_tier8_summ_received": {
+                "id": 271,
+                "access": "r",
+                "type": "t.uint48_t"
+            },
+            "current_tier9_summ_delivered": {
+                "id": 272,
+                "access": "r",
+                "type": "t.uint48_t"
+            },
+            "current_tier9_summ_received": {
+                "id": 273,
+                "access": "r",
+                "type": "t.uint48_t"
+            },
+            "current_tier10_summ_delivered": {
+                "id": 274,
+                "access": "r",
+                "type": "t.uint48_t"
+            },
+            "current_tier10_summ_received": {
+                "id": 275,
+                "access": "r",
+                "type": "t.uint48_t"
+            },
+            "current_tier11_summ_delivered": {
+                "id": 276,
+                "access": "r",
+                "type": "t.uint48_t"
+            },
+            "current_tier11_summ_received": {
+                "id": 277,
+                "access": "r",
+                "type": "t.uint48_t"
+            },
+            "current_tier12_summ_delivered": {
+                "id": 278,
+                "access": "r",
+                "type": "t.uint48_t"
+            },
+            "current_tier12_summ_received": {
+                "id": 279,
+                "access": "r",
+                "type": "t.uint48_t"
+            },
+            "current_tier13_summ_delivered": {
+                "id": 280,
+                "access": "r",
+                "type": "t.uint48_t"
+            },
+            "current_tier13_summ_received": {
+                "id": 281,
+                "access": "r",
+                "type": "t.uint48_t"
+            },
+            "current_tier14_summ_delivered": {
+                "id": 282,
+                "access": "r",
+                "type": "t.uint48_t"
+            },
+            "current_tier14_summ_received": {
+                "id": 283,
+                "access": "r",
+                "type": "t.uint48_t"
+            },
+            "current_tier15_summ_delivered": {
+                "id": 284,
+                "access": "r",
+                "type": "t.uint48_t"
+            },
+            "current_tier15_summ_received": {
+                "id": 285,
+                "access": "r",
+                "type": "t.uint48_t"
+            },
+            "status": {
+                "id": 512,
+                "access": "r",
+                "type": "t.bitmap8"
+            },
+            "remaining_battery_life": {
+                "id": 513,
+                "access": "r",
+                "type": "t.uint8_t"
+            },
+            "hours_in_operation": {
+                "id": 514,
+                "access": "r",
+                "type": "t.uint24_t"
+            },
+            "hours_in_fault": {
+                "id": 515,
+                "access": "r",
+                "type": "t.uint24_t"
+            },
+            "extended_status": {
+                "id": 516,
+                "access": "r",
+                "type": "t.bitmap64"
+            },
+            "remaining_battery_life_days": {
+                "id": 517,
+                "access": "r",
+                "type": "t.uint16_t"
+            },
+            "current_meter_id": {
+                "id": 518,
+                "access": "r",
+                "type": "t.LVBytes"
+            },
+            "iambient_consumption_indicator": {
+                "id": 519,
+                "access": "r",
+                "type": "t.enum8"
+            },
+            "unit_of_measure": {
+                "id": 768,
+                "access": "r",
+                "type": "t.enum8"
+            },
+            "multiplier": {
+                "id": 769,
+                "access": "r",
+                "type": "t.uint24_t"
+            },
+            "divisor": {
+                "id": 770,
+                "access": "r",
+                "type": "t.uint24_t"
+            },
+            "summation_formatting": {
+                "id": 771,
+                "access": "r",
+                "type": "t.bitmap8"
+            },
+            "demand_formatting": {
+                "id": 772,
+                "access": "r",
+                "type": "t.bitmap8"
+            },
+            "historical_consump_formatting": {
+                "id": 773,
+                "access": "r",
+                "type": "t.bitmap8"
+            },
+            "metering_device_type": {
+                "id": 774,
+                "access": "r",
+                "type": "t.bitmap8"
+            },
+            "site_id": {
+                "id": 775,
+                "access": "r",
+                "type": "t.LimitedLVBytes(32)"
+            },
+            "meter_serial_number": {
+                "id": 776,
+                "access": "r",
+                "type": "t.LimitedLVBytes(24)"
+            },
+            "energy_carrier_unit_of_meas": {
+                "id": 777,
+                "access": "r",
+                "type": "t.enum8"
+            },
+            "energy_carrier_summ_formatting": {
+                "id": 778,
+                "access": "r",
+                "type": "t.bitmap8"
+            },
+            "energy_carrier_demand_formatting": {
+                "id": 779,
+                "access": "r",
+                "type": "t.bitmap8"
+            },
+            "temperature_unit_of_measure": {
+                "id": 780,
+                "access": "r",
+                "type": "t.enum8"
+            },
+            "temperature_formatting": {
+                "id": 781,
+                "access": "r",
+                "type": "t.bitmap8"
+            },
+            "module_serial_number": {
+                "id": 782,
+                "access": "r",
+                "type": "t.LimitedLVBytes(24)"
+            },
+            "operating_tariff_label_delivered": {
+                "id": 783,
+                "access": "r",
+                "type": "t.LimitedLVBytes(24)"
+            },
+            "operating_tariff_label_received": {
+                "id": 784,
+                "access": "r",
+                "type": "t.LimitedLVBytes(24)"
+            },
+            "customer_id_number": {
+                "id": 785,
+                "access": "r",
+                "type": "t.LimitedLVBytes(24)"
+            },
+            "alternative_unit_of_measure": {
+                "id": 786,
+                "access": "r",
+                "type": "t.enum8"
+            },
+            "alternative_demand_formatting": {
+                "id": 787,
+                "access": "r",
+                "type": "t.bitmap8"
+            },
+            "alternative_consumption_formatting": {
+                "id": 788,
+                "access": "r",
+                "type": "t.bitmap8"
+            },
+            "instantaneous_demand": {
+                "id": 1024,
+                "access": "r",
+                "type": "t.int24s"
+            },
+            "currentday_consump_delivered": {
+                "id": 1025,
+                "access": "r",
+                "type": "t.uint24_t"
+            },
+            "currentday_consump_received": {
+                "id": 1026,
+                "access": "r",
+                "type": "t.uint24_t"
+            },
+            "previousday_consump_delivered": {
+                "id": 1027,
+                "access": "r",
+                "type": "t.uint24_t"
+            },
+            "previousday_consump_received": {
+                "id": 1028,
+                "access": "r",
+                "type": "t.uint24_t"
+            },
+            "cur_part_profile_int_start_time_delivered": {
+                "id": 1029,
+                "access": "r",
+                "type": "t.uint32_t"
+            },
+            "cur_part_profile_int_start_time_received": {
+                "id": 1030,
+                "access": "r",
+                "type": "t.uint32_t"
+            },
+            "cur_part_profile_int_value_delivered": {
+                "id": 1031,
+                "access": "r",
+                "type": "t.uint24_t"
+            },
+            "cur_part_profile_int_value_received": {
+                "id": 1032,
+                "access": "r",
+                "type": "t.uint24_t"
+            },
+            "current_day_max_pressure": {
+                "id": 1033,
+                "access": "r",
+                "type": "t.uint48_t"
+            },
+            "current_day_min_pressure": {
+                "id": 1034,
+                "access": "r",
+                "type": "t.uint48_t"
+            },
+            "previous_day_max_pressure": {
+                "id": 1035,
+                "access": "r",
+                "type": "t.uint48_t"
+            },
+            "previous_day_min_pressure": {
+                "id": 1036,
+                "access": "r",
+                "type": "t.uint48_t"
+            },
+            "current_day_max_demand": {
+                "id": 1037,
+                "access": "r",
+                "type": "t.int24s"
+            },
+            "previous_day_max_demand": {
+                "id": 1038,
+                "access": "r",
+                "type": "t.int24s"
+            },
+            "current_month_max_demand": {
+                "id": 1039,
+                "access": "r",
+                "type": "t.int24s"
+            },
+            "current_year_max_demand": {
+                "id": 1040,
+                "access": "r",
+                "type": "t.int24s"
+            },
+            "currentday_max_energy_carr_demand": {
+                "id": 1041,
+                "access": "r",
+                "type": "t.int24s"
+            },
+            "previousday_max_energy_carr_demand": {
+                "id": 1042,
+                "access": "r",
+                "type": "t.int24s"
+            },
+            "cur_month_max_energy_carr_demand": {
+                "id": 1043,
+                "access": "r",
+                "type": "t.int24s"
+            },
+            "cur_month_min_energy_carr_demand": {
+                "id": 1044,
+                "access": "r",
+                "type": "t.int24s"
+            },
+            "cur_year_max_energy_carr_demand": {
+                "id": 1045,
+                "access": "r",
+                "type": "t.int24s"
+            },
+            "cur_year_min_energy_carr_demand": {
+                "id": 1046,
+                "access": "r",
+                "type": "t.int24s"
+            },
+            "max_number_of_periods_delivered": {
+                "id": 1280,
+                "access": "r",
+                "type": "t.uint8_t"
+            },
+            "current_demand_delivered": {
+                "id": 1536,
+                "access": "r",
+                "type": "t.uint24_t"
+            },
+            "demand_limit": {
+                "id": 1537,
+                "access": "r",
+                "type": "t.uint24_t"
+            },
+            "demand_integration_period": {
+                "id": 1538,
+                "access": "r",
+                "type": "t.uint8_t"
+            },
+            "number_of_demand_subintervals": {
+                "id": 1539,
+                "access": "r",
+                "type": "t.uint8_t"
+            },
+            "demand_limit_arm_duration": {
+                "id": 1540,
+                "access": "r",
+                "type": "t.uint16_t"
+            },
+            "generic_alarm_mask": {
+                "id": 2048,
+                "access": "r",
+                "type": "t.bitmap16"
+            },
+            "electricity_alarm_mask": {
+                "id": 2049,
+                "access": "r",
+                "type": "t.bitmap32"
+            },
+            "gen_flow_pressure_alarm_mask": {
+                "id": 2050,
+                "access": "r",
+                "type": "t.bitmap16"
+            },
+            "water_specific_alarm_mask": {
+                "id": 2051,
+                "access": "r",
+                "type": "t.bitmap16"
+            },
+            "heat_cool_specific_alarm_mask": {
+                "id": 2052,
+                "access": "r",
+                "type": "t.bitmap16"
+            },
+            "gas_specific_alarm_mask": {
+                "id": 2053,
+                "access": "r",
+                "type": "t.bitmap16"
+            },
+            "extended_generic_alarm_mask": {
+                "id": 2054,
+                "access": "r",
+                "type": "t.bitmap48"
+            },
+            "manufacture_alarm_mask": {
+                "id": 2055,
+                "access": "r",
+                "type": "t.bitmap16"
+            },
+            "bill_to_date": {
+                "id": 2560,
+                "access": "r",
+                "type": "t.uint32_t"
+            },
+            "bill_to_date_time_stamp": {
+                "id": 2561,
+                "access": "r",
+                "type": "t.uint32_t"
+            },
+            "projected_bill": {
+                "id": 2562,
+                "access": "r",
+                "type": "t.uint32_t"
+            },
+            "projected_bill_time_stamp": {
+                "id": 2563,
+                "access": "r",
+                "type": "t.uint32_t"
+            }
+        }
+    },
+    "generic_tunnel": {
+        "Attribute": {}
+    },
+    "bacnet_regular_analog_input": {
+        "Attribute": {}
+    },
+    "bacnet_extended_analog_input": {
+        "Attribute": {}
+    },
+    "bacnet_regular_analog_output": {
+        "Attribute": {}
+    },
+    "bacnet_extended_analog_output": {
+        "Attribute": {}
+    },
+    "bacnet_regular_analog_value": {
+        "Attribute": {}
+    },
+    "bacnet_extended_analog_value": {
+        "Attribute": {}
+    },
+    "bacnet_regular_binary_input": {
+        "Attribute": {}
+    },
+    "bacnet_extended_binary_input": {
+        "Attribute": {}
+    },
+    "bacnet_regular_binary_output": {
+        "Attribute": {}
+    },
+    "bacnet_extended_binary_output": {
+        "Attribute": {}
+    },
+    "bacnet_regular_binary_value": {
+        "Attribute": {}
+    },
+    "bacnet_extended_binary_value": {
+        "Attribute": {}
+    },
+    "bacnet_regular_multistate_input": {
+        "Attribute": {}
+    },
+    "bacnet_extended_multistate_input": {
+        "Attribute": {}
+    },
+    "bacnet_regular_multistate_output": {
+        "Attribute": {}
+    },
+    "bacnet_extended_multistate_output": {
+        "Attribute": {}
+    },
+    "bacnet_regular_multistate_value": {
+        "Attribute": {}
+    },
+    "bacnet_extended_multistate_value": {
+        "Attribute": {}
+    },
+    "appliance_id": {
+        "Attribute": {
+            "basic_identification": {
+                "id": 0,
+                "access": "r",
+                "type": "t.uint56_t"
+            },
+            "company_name": {
+                "id": 16,
+                "access": "r",
+                "type": "t.LimitedCharString(16)"
+            },
+            "company_id": {
+                "id": 17,
+                "access": "r",
+                "type": "t.uint16_t"
+            },
+            "brand_name": {
+                "id": 18,
+                "access": "r",
+                "type": "t.LimitedCharString(16)"
+            },
+            "brand_id": {
+                "id": 19,
+                "access": "r",
+                "type": "t.uint16_t"
+            },
+            "model": {
+                "id": 20,
+                "access": "r",
+                "type": "t.LimitedLVBytes(16)"
+            },
+            "part_number": {
+                "id": 21,
+                "access": "r",
+                "type": "t.LimitedLVBytes(16)"
+            },
+            "product_revision": {
+                "id": 22,
+                "access": "r",
+                "type": "t.LimitedLVBytes(6)"
+            },
+            "software_revision": {
+                "id": 23,
+                "access": "r",
+                "type": "t.LimitedLVBytes(6)"
+            },
+            "product_type_name": {
+                "id": 24,
+                "access": "r",
+                "type": "t.LVBytesSize2"
+            },
+            "product_type_id": {
+                "id": 25,
+                "access": "r",
+                "type": "t.uint16_t"
+            },
+            "ceced_specification_version": {
+                "id": 26,
+                "access": "r",
+                "type": "t.uint8_t"
+            },
+            "cluster_revision": {
+                "class": "foundation.ZCL_CLUSTER_REVISION_ATTR"
+            },
+            "reporting_status": {
+                "class": "foundation.ZCL_REPORTING_STATUS_ATTR"
+            }
+        }
+    },
+    "meter_id": {
+        "Attribute": {
+            "company_name": {
+                "id": 0,
+                "access": "r",
+                "type": "t.LimitedCharString(16)"
+            },
+            "meter_type_id": {
+                "id": 1,
+                "access": "r",
+                "type": "t.uint16_t"
+            },
+            "data_quality_id": {
+                "id": 4,
+                "access": "r",
+                "type": "t.uint16_t"
+            },
+            "customer_name": {
+                "id": 5,
+                "access": "rw",
+                "type": "t.LimitedCharString(16)"
+            },
+            "model": {
+                "id": 6,
+                "access": "r",
+                "type": "t.LimitedLVBytes(16)"
+            },
+            "part_number": {
+                "id": 7,
+                "access": "r",
+                "type": "t.LimitedLVBytes(16)"
+            },
+            "product_revision": {
+                "id": 8,
+                "access": "r",
+                "type": "t.LimitedLVBytes(6)"
+            },
+            "software_revision": {
+                "id": 10,
+                "access": "r",
+                "type": "t.LimitedLVBytes(6)"
+            },
+            "utility_name": {
+                "id": 11,
+                "access": "r",
+                "type": "t.LimitedCharString(16)"
+            },
+            "pod": {
+                "id": 12,
+                "access": "r",
+                "type": "t.LimitedCharString(16)"
+            },
+            "available_power": {
+                "id": 13,
+                "access": "r",
+                "type": "t.int24s"
+            },
+            "power_threshold": {
+                "id": 14,
+                "access": "r",
+                "type": "t.int24s"
+            },
+            "cluster_revision": {
+                "class": "foundation.ZCL_CLUSTER_REVISION_ATTR"
+            },
+            "reporting_status": {
+                "class": "foundation.ZCL_REPORTING_STATUS_ATTR"
+            }
+        }
+    },
+    "appliance_event": {
+        "Attribute": {
+            "cluster_revision": {
+                "class": "foundation.ZCL_CLUSTER_REVISION_ATTR"
+            },
+            "reporting_status": {
+                "class": "foundation.ZCL_REPORTING_STATUS_ATTR"
+            }
+        }
+    },
+    "appliance_stats": {
+        "Attribute": {
+            "log_max_size": {
+                "id": 0,
+                "access": "r",
+                "type": "t.uint32_t"
+            },
+            "log_queue_max_size": {
+                "id": 1,
+                "access": "r",
+                "type": "t.uint8_t"
+            },
+            "cluster_revision": {
+                "class": "foundation.ZCL_CLUSTER_REVISION_ATTR"
+            },
+            "reporting_status": {
+                "class": "foundation.ZCL_REPORTING_STATUS_ATTR"
+            }
+        }
+    },
+    "electrical_measurement": {
+        "Attribute": {
+            "measurement_type": {
+                "id": 0,
+                "access": "r",
+                "type": "MeasurementType"
+            },
+            "dc_voltage": {
+                "id": 256,
+                "access": "rp",
+                "type": "t.int16s"
+            },
+            "dc_voltage_min": {
+                "id": 257,
+                "access": "r",
+                "type": "t.int16s"
+            },
+            "dc_voltage_max": {
+                "id": 258,
+                "access": "r",
+                "type": "t.int16s"
+            },
+            "dc_current": {
+                "id": 259,
+                "access": "rp",
+                "type": "t.int16s"
+            },
+            "dc_current_min": {
+                "id": 260,
+                "access": "r",
+                "type": "t.int16s"
+            },
+            "dc_current_max": {
+                "id": 261,
+                "access": "r",
+                "type": "t.int16s"
+            },
+            "dc_power": {
+                "id": 262,
+                "access": "rp",
+                "type": "t.int16s"
+            },
+            "dc_power_min": {
+                "id": 263,
+                "access": "r",
+                "type": "t.int16s"
+            },
+            "dc_power_max": {
+                "id": 264,
+                "access": "r",
+                "type": "t.int16s"
+            },
+            "dc_voltage_multiplier": {
+                "id": 512,
+                "access": "rp",
+                "type": "t.uint16_t"
+            },
+            "dc_voltage_divisor": {
+                "id": 513,
+                "access": "rp",
+                "type": "t.uint16_t"
+            },
+            "dc_current_multiplier": {
+                "id": 514,
+                "access": "rp",
+                "type": "t.uint16_t"
+            },
+            "dc_current_divisor": {
+                "id": 515,
+                "access": "rp",
+                "type": "t.uint16_t"
+            },
+            "dc_power_multiplier": {
+                "id": 516,
+                "access": "rp",
+                "type": "t.uint16_t"
+            },
+            "dc_power_divisor": {
+                "id": 517,
+                "access": "rp",
+                "type": "t.uint16_t"
+            },
+            "ac_frequency": {
+                "id": 768,
+                "access": "rp",
+                "type": "t.uint16_t"
+            },
+            "ac_frequency_min": {
+                "id": 769,
+                "access": "r",
+                "type": "t.uint16_t"
+            },
+            "ac_frequency_max": {
+                "id": 770,
+                "access": "r",
+                "type": "t.uint16_t"
+            },
+            "neutral_current": {
+                "id": 771,
+                "access": "rp",
+                "type": "t.uint16_t"
+            },
+            "total_active_power": {
+                "id": 772,
+                "access": "rp",
+                "type": "t.int32s"
+            },
+            "total_reactive_power": {
+                "id": 773,
+                "access": "rp",
+                "type": "t.int32s"
+            },
+            "total_apparent_power": {
+                "id": 774,
+                "access": "rp",
+                "type": "t.uint32_t"
+            },
+            "meas1st_harmonic_current": {
+                "id": 775,
+                "access": "rp",
+                "type": "t.int16s"
+            },
+            "meas3rd_harmonic_current": {
+                "id": 776,
+                "access": "rp",
+                "type": "t.int16s"
+            },
+            "meas5th_harmonic_current": {
+                "id": 777,
+                "access": "rp",
+                "type": "t.int16s"
+            },
+            "meas7th_harmonic_current": {
+                "id": 778,
+                "access": "rp",
+                "type": "t.int16s"
+            },
+            "meas9th_harmonic_current": {
+                "id": 779,
+                "access": "rp",
+                "type": "t.int16s"
+            },
+            "meas11th_harmonic_current": {
+                "id": 780,
+                "access": "rp",
+                "type": "t.int16s"
+            },
+            "meas_phase1st_harmonic_current": {
+                "id": 781,
+                "access": "rp",
+                "type": "t.int16s"
+            },
+            "meas_phase3rd_harmonic_current": {
+                "id": 782,
+                "access": "rp",
+                "type": "t.int16s"
+            },
+            "meas_phase5th_harmonic_current": {
+                "id": 783,
+                "access": "rp",
+                "type": "t.int16s"
+            },
+            "meas_phase7th_harmonic_current": {
+                "id": 784,
+                "access": "rp",
+                "type": "t.int16s"
+            },
+            "meas_phase9th_harmonic_current": {
+                "id": 785,
+                "access": "rp",
+                "type": "t.int16s"
+            },
+            "meas_phase11th_harmonic_current": {
+                "id": 786,
+                "access": "rp",
+                "type": "t.int16s"
+            },
+            "ac_frequency_multiplier": {
+                "id": 1024,
+                "access": "rp",
+                "type": "t.uint16_t"
+            },
+            "ac_frequency_divisor": {
+                "id": 1025,
+                "access": "rp",
+                "type": "t.uint16_t"
+            },
+            "power_multiplier": {
+                "id": 1026,
+                "access": "rp",
+                "type": "t.uint32_t"
+            },
+            "power_divisor": {
+                "id": 1027,
+                "access": "rp",
+                "type": "t.uint32_t"
+            },
+            "harmonic_current_multiplier": {
+                "id": 1028,
+                "access": "rp",
+                "type": "t.int8s"
+            },
+            "phase_harmonic_current_multiplier": {
+                "id": 1029,
+                "access": "rp",
+                "type": "t.int8s"
+            },
+            "instantaneous_voltage": {
+                "id": 1280,
+                "access": "rp",
+                "type": "t.int16s"
+            },
+            "instantaneous_line_current": {
+                "id": 1281,
+                "access": "rp",
+                "type": "t.uint16_t"
+            },
+            "instantaneous_active_current": {
+                "id": 1282,
+                "access": "rp",
+                "type": "t.int16s"
+            },
+            "instantaneous_reactive_current": {
+                "id": 1283,
+                "access": "rp",
+                "type": "t.int16s"
+            },
+            "instantaneous_power": {
+                "id": 1284,
+                "access": "rp",
+                "type": "t.int16s"
+            },
+            "rms_voltage": {
+                "id": 1285,
+                "access": "rp",
+                "type": "t.uint16_t"
+            },
+            "rms_voltage_min": {
+                "id": 1286,
+                "access": "r",
+                "type": "t.uint16_t"
+            },
+            "rms_voltage_max": {
+                "id": 1287,
+                "access": "r",
+                "type": "t.uint16_t"
+            },
+            "rms_current": {
+                "id": 1288,
+                "access": "rp",
+                "type": "t.uint16_t"
+            },
+            "rms_current_min": {
+                "id": 1289,
+                "access": "r",
+                "type": "t.uint16_t"
+            },
+            "rms_current_max": {
+                "id": 1290,
+                "access": "r",
+                "type": "t.uint16_t"
+            },
+            "active_power": {
+                "id": 1291,
+                "access": "rp",
+                "type": "t.int16s"
+            },
+            "active_power_min": {
+                "id": 1292,
+                "access": "r",
+                "type": "t.int16s"
+            },
+            "active_power_max": {
+                "id": 1293,
+                "access": "r",
+                "type": "t.int16s"
+            },
+            "reactive_power": {
+                "id": 1294,
+                "access": "rp",
+                "type": "t.int16s"
+            },
+            "apparent_power": {
+                "id": 1295,
+                "access": "rp",
+                "type": "t.uint16_t"
+            },
+            "power_factor": {
+                "id": 1296,
+                "access": "r",
+                "type": "t.int8s"
+            },
+            "average_rms_voltage_meas_period": {
+                "id": 1297,
+                "access": "rw",
+                "type": "t.uint16_t"
+            },
+            "average_rms_over_voltage_counter": {
+                "id": 1298,
+                "access": "rw",
+                "type": "t.uint16_t"
+            },
+            "average_rms_under_voltage_counter": {
+                "id": 1299,
+                "access": "rw",
+                "type": "t.uint16_t"
+            },
+            "rms_extreme_over_voltage_period": {
+                "id": 1300,
+                "access": "rw",
+                "type": "t.uint16_t"
+            },
+            "rms_extreme_under_voltage_period": {
+                "id": 1301,
+                "access": "rw",
+                "type": "t.uint16_t"
+            },
+            "rms_voltage_sag_period": {
+                "id": 1302,
+                "access": "rw",
+                "type": "t.uint16_t"
+            },
+            "rms_voltage_swell_period": {
+                "id": 1303,
+                "access": "rw",
+                "type": "t.uint16_t"
+            },
+            "ac_voltage_multiplier": {
+                "id": 1536,
+                "access": "rp",
+                "type": "t.uint16_t"
+            },
+            "ac_voltage_divisor": {
+                "id": 1537,
+                "access": "rp",
+                "type": "t.uint16_t"
+            },
+            "ac_current_multiplier": {
+                "id": 1538,
+                "access": "rp",
+                "type": "t.uint16_t"
+            },
+            "ac_current_divisor": {
+                "id": 1539,
+                "access": "rp",
+                "type": "t.uint16_t"
+            },
+            "ac_power_multiplier": {
+                "id": 1540,
+                "access": "rp",
+                "type": "t.uint16_t"
+            },
+            "ac_power_divisor": {
+                "id": 1541,
+                "access": "rp",
+                "type": "t.uint16_t"
+            },
+            "dc_overload_alarms_mask": {
+                "id": 1792,
+                "access": "rp",
+                "type": "DCOverloadAlarmMark"
+            },
+            "dc_voltage_overload": {
+                "id": 1793,
+                "access": "rp",
+                "type": "t.int16s"
+            },
+            "dc_current_overload": {
+                "id": 1794,
+                "access": "rp",
+                "type": "t.int16s"
+            },
+            "ac_alarms_mask": {
+                "id": 2048,
+                "access": "rw",
+                "type": "ACAlarmsMask"
+            },
+            "ac_voltage_overload": {
+                "id": 2049,
+                "access": "r",
+                "type": "t.int16s"
+            },
+            "ac_current_overload": {
+                "id": 2050,
+                "access": "r",
+                "type": "t.int16s"
+            },
+            "ac_active_power_overload": {
+                "id": 2051,
+                "access": "r",
+                "type": "t.int16s"
+            },
+            "ac_reactive_power_overload": {
+                "id": 2052,
+                "access": "r",
+                "type": "t.int16s"
+            },
+            "average_rms_over_voltage": {
+                "id": 2053,
+                "access": "r",
+                "type": "t.int16s"
+            },
+            "average_rms_under_voltage": {
+                "id": 2054,
+                "access": "r",
+                "type": "t.int16s"
+            },
+            "rms_extreme_over_voltage": {
+                "id": 2055,
+                "access": "rw",
+                "type": "t.int16s"
+            },
+            "rms_extreme_under_voltage": {
+                "id": 2056,
+                "access": "rw",
+                "type": "t.int16s"
+            },
+            "rms_voltage_sag": {
+                "id": 2057,
+                "access": "rw",
+                "type": "t.int16s"
+            },
+            "rms_voltage_swell": {
+                "id": 2058,
+                "access": "rw",
+                "type": "t.int16s"
+            },
+            "line_current_ph_b": {
+                "id": 2305,
+                "access": "rp",
+                "type": "t.uint16_t"
+            },
+            "active_current_ph_b": {
+                "id": 2306,
+                "access": "rp",
+                "type": "t.int16s"
+            },
+            "reactive_current_ph_b": {
+                "id": 2307,
+                "access": "rp",
+                "type": "t.int16s"
+            },
+            "rms_voltage_ph_b": {
+                "id": 2309,
+                "access": "rp",
+                "type": "t.uint16_t"
+            },
+            "rms_voltage_min_ph_b": {
+                "id": 2310,
+                "access": "r",
+                "type": "t.uint16_t"
+            },
+            "rms_voltage_max_ph_b": {
+                "id": 2311,
+                "access": "r",
+                "type": "t.uint16_t"
+            },
+            "rms_current_ph_b": {
+                "id": 2312,
+                "access": "rp",
+                "type": "t.uint16_t"
+            },
+            "rms_current_min_ph_b": {
+                "id": 2313,
+                "access": "r",
+                "type": "t.uint16_t"
+            },
+            "rms_current_max_ph_b": {
+                "id": 2314,
+                "access": "r",
+                "type": "t.uint16_t"
+            },
+            "active_power_ph_b": {
+                "id": 2315,
+                "access": "rp",
+                "type": "t.int16s"
+            },
+            "active_power_min_ph_b": {
+                "id": 2316,
+                "access": "r",
+                "type": "t.int16s"
+            },
+            "active_power_max_ph_b": {
+                "id": 2317,
+                "access": "r",
+                "type": "t.int16s"
+            },
+            "reactive_power_ph_b": {
+                "id": 2318,
+                "access": "rp",
+                "type": "t.int16s"
+            },
+            "apparent_power_ph_b": {
+                "id": 2319,
+                "access": "rp",
+                "type": "t.uint16_t"
+            },
+            "power_factor_ph_b": {
+                "id": 2320,
+                "access": "r",
+                "type": "t.int8s"
+            },
+            "average_rms_voltage_measure_period_ph_b": {
+                "id": 2321,
+                "access": "rw",
+                "type": "t.uint16_t"
+            },
+            "average_rms_over_voltage_counter_ph_b": {
+                "id": 2322,
+                "access": "rw",
+                "type": "t.uint16_t"
+            },
+            "average_under_voltage_counter_ph_b": {
+                "id": 2323,
+                "access": "rw",
+                "type": "t.uint16_t"
+            },
+            "rms_extreme_over_voltage_period_ph_b": {
+                "id": 2324,
+                "access": "rw",
+                "type": "t.uint16_t"
+            },
+            "rms_extreme_under_voltage_period_ph_b": {
+                "id": 2325,
+                "access": "rw",
+                "type": "t.uint16_t"
+            },
+            "rms_voltage_sag_period_ph_b": {
+                "id": 2326,
+                "access": "rw",
+                "type": "t.uint16_t"
+            },
+            "rms_voltage_swell_period_ph_b": {
+                "id": 2327,
+                "access": "rw",
+                "type": "t.uint16_t"
+            },
+            "line_current_ph_c": {
+                "id": 2561,
+                "access": "rp",
+                "type": "t.uint16_t"
+            },
+            "active_current_ph_c": {
+                "id": 2562,
+                "access": "rp",
+                "type": "t.int16s"
+            },
+            "reactive_current_ph_c": {
+                "id": 2563,
+                "access": "rp",
+                "type": "t.int16s"
+            },
+            "rms_voltage_ph_c": {
+                "id": 2565,
+                "access": "rp",
+                "type": "t.uint16_t"
+            },
+            "rms_voltage_min_ph_c": {
+                "id": 2566,
+                "access": "r",
+                "type": "t.uint16_t"
+            },
+            "rms_voltage_max_ph_c": {
+                "id": 2567,
+                "access": "r",
+                "type": "t.uint16_t"
+            },
+            "rms_current_ph_c": {
+                "id": 2568,
+                "access": "rp",
+                "type": "t.uint16_t"
+            },
+            "rms_current_min_ph_c": {
+                "id": 2569,
+                "access": "r",
+                "type": "t.uint16_t"
+            },
+            "rms_current_max_ph_c": {
+                "id": 2570,
+                "access": "r",
+                "type": "t.uint16_t"
+            },
+            "active_power_ph_c": {
+                "id": 2571,
+                "access": "rp",
+                "type": "t.int16s"
+            },
+            "active_power_min_ph_c": {
+                "id": 2572,
+                "access": "r",
+                "type": "t.int16s"
+            },
+            "active_power_max_ph_c": {
+                "id": 2573,
+                "access": "r",
+                "type": "t.int16s"
+            },
+            "reactive_power_ph_c": {
+                "id": 2574,
+                "access": "rp",
+                "type": "t.int16s"
+            },
+            "apparent_power_ph_c": {
+                "id": 2575,
+                "access": "rp",
+                "type": "t.uint16_t"
+            },
+            "power_factor_ph_c": {
+                "id": 2576,
+                "access": "r",
+                "type": "t.int8s"
+            },
+            "average_rms_voltage_meas_period_ph_c": {
+                "id": 2577,
+                "access": "rw",
+                "type": "t.uint16_t"
+            },
+            "average_rms_over_voltage_counter_ph_c": {
+                "id": 2578,
+                "access": "rw",
+                "type": "t.uint16_t"
+            },
+            "average_under_voltage_counter_ph_c": {
+                "id": 2579,
+                "access": "rw",
+                "type": "t.uint16_t"
+            },
+            "rms_extreme_over_voltage_period_ph_c": {
+                "id": 2580,
+                "access": "rw",
+                "type": "t.uint16_t"
+            },
+            "rms_extreme_under_voltage_period_ph_c": {
+                "id": 2581,
+                "access": "rw",
+                "type": "t.uint16_t"
+            },
+            "rms_voltage_sag_period_ph_c": {
+                "id": 2582,
+                "access": "rw",
+                "type": "t.uint16_t"
+            },
+            "rms_voltage_swell_period_ph_c": {
+                "id": 2583,
+                "access": "rw",
+                "type": "t.uint16_t"
+            },
+            "cluster_revision": {
+                "class": "foundation.ZCL_CLUSTER_REVISION_ATTR"
+            },
+            "reporting_status": {
+                "class": "foundation.ZCL_REPORTING_STATUS_ATTR"
+            }
+        }
+    },
+    "diagnostic": {
+        "Attribute": {
+            "number_of_resets": {
+                "id": 0,
+                "access": "r",
+                "type": "t.uint16_t"
+            },
+            "persistent_memory_writes": {
+                "id": 1,
+                "access": "r",
+                "type": "t.uint16_t"
+            },
+            "mac_rx_bcast": {
+                "id": 256,
+                "access": "r",
+                "type": "t.uint32_t"
+            },
+            "mac_tx_bcast": {
+                "id": 257,
+                "access": "r",
+                "type": "t.uint32_t"
+            },
+            "mac_rx_ucast": {
+                "id": 258,
+                "access": "r",
+                "type": "t.uint32_t"
+            },
+            "mac_tx_ucast": {
+                "id": 259,
+                "access": "r",
+                "type": "t.uint32_t"
+            },
+            "mac_tx_ucast_retry": {
+                "id": 260,
+                "access": "r",
+                "type": "t.uint16_t"
+            },
+            "mac_tx_ucast_fail": {
+                "id": 261,
+                "access": "r",
+                "type": "t.uint16_t"
+            },
+            "aps_rx_bcast": {
+                "id": 262,
+                "access": "r",
+                "type": "t.uint16_t"
+            },
+            "aps_tx_bcast": {
+                "id": 263,
+                "access": "r",
+                "type": "t.uint16_t"
+            },
+            "aps_rx_ucast": {
+                "id": 264,
+                "access": "r",
+                "type": "t.uint16_t"
+            },
+            "aps_tx_ucast_success": {
+                "id": 265,
+                "access": "r",
+                "type": "t.uint16_t"
+            },
+            "aps_tx_ucast_retry": {
+                "id": 266,
+                "access": "r",
+                "type": "t.uint16_t"
+            },
+            "aps_tx_ucast_fail": {
+                "id": 267,
+                "access": "r",
+                "type": "t.uint16_t"
+            },
+            "route_disc_initiated": {
+                "id": 268,
+                "access": "r",
+                "type": "t.uint16_t"
+            },
+            "neighbor_added": {
+                "id": 269,
+                "access": "r",
+                "type": "t.uint16_t"
+            },
+            "neighbor_removed": {
+                "id": 270,
+                "access": "r",
+                "type": "t.uint16_t"
+            },
+            "neighbor_stale": {
+                "id": 271,
+                "access": "r",
+                "type": "t.uint16_t"
+            },
+            "join_indication": {
+                "id": 272,
+                "access": "r",
+                "type": "t.uint16_t"
+            },
+            "child_moved": {
+                "id": 273,
+                "access": "r",
+                "type": "t.uint16_t"
+            },
+            "nwk_fc_failure": {
+                "id": 274,
+                "access": "r",
+                "type": "t.uint16_t"
+            },
+            "aps_fc_failure": {
+                "id": 275,
+                "access": "r",
+                "type": "t.uint16_t"
+            },
+            "aps_unauthorized_key": {
+                "id": 276,
+                "access": "r",
+                "type": "t.uint16_t"
+            },
+            "nwk_decrypt_failures": {
+                "id": 277,
+                "access": "r",
+                "type": "t.uint16_t"
+            },
+            "aps_decrypt_failures": {
+                "id": 278,
+                "access": "r",
+                "type": "t.uint16_t"
+            },
+            "packet_buffer_allocate_failures": {
+                "id": 279,
+                "access": "r",
+                "type": "t.uint16_t"
+            },
+            "relayed_ucast": {
+                "id": 280,
+                "access": "r",
+                "type": "t.uint16_t"
+            },
+            "phy_to_mac_queue_limit_reached": {
+                "id": 281,
+                "access": "r",
+                "type": "t.uint16_t"
+            },
+            "packet_validate_drop_count": {
+                "id": 282,
+                "access": "r",
+                "type": "t.uint16_t"
+            },
+            "average_mac_retry_per_aps_message_sent": {
+                "id": 283,
+                "access": "r",
+                "type": "t.uint16_t"
+            },
+            "last_message_lqi": {
+                "id": 284,
+                "access": "r",
+                "type": "t.uint8_t"
+            },
+            "last_message_rssi": {
+                "id": 285,
+                "access": "r",
+                "type": "t.int8s"
+            },
+            "cluster_revision": {
+                "class": "foundation.ZCL_CLUSTER_REVISION_ATTR"
+            },
+            "reporting_status": {
+                "class": "foundation.ZCL_REPORTING_STATUS_ATTR"
+            }
+        }
+    },
+    "shade": {
+        "Attribute": {
+            "physical_closed_limit": {
+                "id": 0,
+                "access": "r",
+                "type": "t.uint16_t"
+            },
+            "motor_step_size": {
+                "id": 1,
+                "access": "r",
+                "type": "t.uint8_t"
+            },
+            "status": {
+                "id": 2,
+                "access": "rw",
+                "type": "ShadeStatus"
+            },
+            "closed_limit": {
+                "id": 16,
+                "access": "rw",
+                "type": "t.uint16_t"
+            },
+            "mode": {
+                "id": 18,
+                "access": "rw",
+                "type": "ShadeMode"
+            }
+        }
+    },
+    "door_lock": {
+        "Attribute": {
+            "lock_state": {
+                "id": 0,
+                "access": "rp",
+                "type": "LockState"
+            },
+            "lock_type": {
+                "id": 1,
+                "access": "r",
+                "type": "LockType"
+            },
+            "actuator_enabled": {
+                "id": 2,
+                "access": "r",
+                "type": "t.Bool"
+            },
+            "door_state": {
+                "id": 3,
+                "access": "rp",
+                "type": "DoorState"
+            },
+            "door_open_events": {
+                "id": 4,
+                "access": "rw",
+                "type": "t.uint32_t"
+            },
+            "door_closed_events": {
+                "id": 5,
+                "access": "rw",
+                "type": "t.uint32_t"
+            },
+            "open_period": {
+                "id": 6,
+                "access": "rw",
+                "type": "t.uint16_t"
+            },
+            "num_of_lock_records_supported": {
+                "id": 16,
+                "access": "r",
+                "type": "t.uint16_t"
+            },
+            "num_of_total_users_supported": {
+                "id": 17,
+                "access": "r",
+                "type": "t.uint16_t"
+            },
+            "num_of_pin_users_supported": {
+                "id": 18,
+                "access": "r",
+                "type": "t.uint16_t"
+            },
+            "num_of_rfid_users_supported": {
+                "id": 19,
+                "access": "r",
+                "type": "t.uint16_t"
+            },
+            "num_of_week_day_schedules_supported_per_user": {
+                "id": 20,
+                "access": "r",
+                "type": "t.uint8_t"
+            },
+            "num_of_year_day_schedules_supported_per_user": {
+                "id": 21,
+                "access": "r",
+                "type": "t.uint8_t"
+            },
+            "num_of_holiday_scheduleds_supported": {
+                "id": 22,
+                "access": "r",
+                "type": "t.uint8_t"
+            },
+            "max_pin_len": {
+                "id": 23,
+                "access": "r",
+                "type": "t.uint8_t"
+            },
+            "min_pin_len": {
+                "id": 24,
+                "access": "r",
+                "type": "t.uint8_t"
+            },
+            "max_rfid_len": {
+                "id": 25,
+                "access": "r",
+                "type": "t.uint8_t"
+            },
+            "min_rfid_len": {
+                "id": 26,
+                "access": "r",
+                "type": "t.uint8_t"
+            },
+            "enable_logging": {
+                "id": 32,
+                "access": "r*wp",
+                "type": "t.Bool"
+            },
+            "language": {
+                "id": 33,
+                "access": "r*wp",
+                "type": "t.LimitedCharString(3)"
+            },
+            "led_settings": {
+                "id": 34,
+                "access": "r*wp",
+                "type": "t.uint8_t"
+            },
+            "auto_relock_time": {
+                "id": 35,
+                "access": "r*wp",
+                "type": "t.uint32_t"
+            },
+            "sound_volume": {
+                "id": 36,
+                "access": "r*wp",
+                "type": "t.uint8_t"
+            },
+            "operating_mode": {
+                "id": 37,
+                "access": "r*wp",
+                "type": "OperatingMode"
+            },
+            "supported_operating_modes": {
+                "id": 38,
+                "access": "r",
+                "type": "SupportedOperatingModes"
+            },
+            "default_configuration_register": {
+                "id": 39,
+                "access": "rp",
+                "type": "DefaultConfigurationRegister"
+            },
+            "enable_local_programming": {
+                "id": 40,
+                "access": "r*wp",
+                "type": "t.Bool"
+            },
+            "enable_one_touch_locking": {
+                "id": 41,
+                "access": "rwp",
+                "type": "t.Bool"
+            },
+            "enable_inside_status_led": {
+                "id": 42,
+                "access": "rwp",
+                "type": "t.Bool"
+            },
+            "enable_privacy_mode_button": {
+                "id": 43,
+                "access": "rwp",
+                "type": "t.Bool"
+            },
+            "wrong_code_entry_limit": {
+                "id": 48,
+                "access": "r*wp",
+                "type": "t.uint8_t"
+            },
+            "user_code_temporary_disable_time": {
+                "id": 49,
+                "access": "r*wp",
+                "type": "t.uint8_t"
+            },
+            "send_pin_ota": {
+                "id": 50,
+                "access": "r*wp",
+                "type": "t.Bool"
+            },
+            "require_pin_for_rf_operation": {
+                "id": 51,
+                "access": "r*wp",
+                "type": "t.Bool"
+            },
+            "zigbee_security_level": {
+                "id": 52,
+                "access": "rp",
+                "type": "ZigbeeSecurityLevel"
+            },
+            "alarm_mask": {
+                "id": 64,
+                "access": "rwp",
+                "type": "AlarmMask"
+            },
+            "keypad_operation_event_mask": {
+                "id": 65,
+                "access": "rwp",
+                "type": "KeypadOperationEventMask"
+            },
+            "rf_operation_event_mask": {
+                "id": 66,
+                "access": "rwp",
+                "type": "RFOperationEventMask"
+            },
+            "manual_operation_event_mask": {
+                "id": 67,
+                "access": "rwp",
+                "type": "ManualOperatitonEventMask"
+            },
+            "rfid_operation_event_mask": {
+                "id": 68,
+                "access": "rwp",
+                "type": "RFIDOperationEventMask"
+            },
+            "keypad_programming_event_mask": {
+                "id": 69,
+                "access": "rwp",
+                "type": "KeypadProgrammingEventMask"
+            },
+            "rf_programming_event_mask": {
+                "id": 70,
+                "access": "rwp",
+                "type": "RFProgrammingEventMask"
+            },
+            "rfid_programming_event_mask": {
+                "id": 71,
+                "access": "rwp",
+                "type": "RFIDProgrammingEventMask"
+            }
+        }
+    },
+    "window_covering": {
+        "Attribute": {
+            "window_covering_type": {
+                "id": 0,
+                "access": "r",
+                "type": "WindowCoveringType"
+            },
+            "physical_closed_limit_lift": {
+                "id": 1,
+                "access": "r",
+                "type": "t.uint16_t"
+            },
+            "physical_closed_limit_tilt": {
+                "id": 2,
+                "access": "r",
+                "type": "t.uint16_t"
+            },
+            "current_position_lift": {
+                "id": 3,
+                "access": "r",
+                "type": "t.uint16_t"
+            },
+            "current_position_tilt": {
+                "id": 4,
+                "access": "r",
+                "type": "t.uint16_t"
+            },
+            "number_of_actuations_lift": {
+                "id": 5,
+                "access": "r",
+                "type": "t.uint16_t"
+            },
+            "number_of_actuations_tilt": {
+                "id": 6,
+                "access": "r",
+                "type": "t.uint16_t"
+            },
+            "config_status": {
+                "id": 7,
+                "access": "r",
+                "type": "ConfigStatus"
+            },
+            "current_position_lift_percentage": {
+                "id": 8,
+                "access": "rps",
+                "type": "t.uint8_t"
+            },
+            "current_position_tilt_percentage": {
+                "id": 9,
+                "access": "rps",
+                "type": "t.uint8_t"
+            },
+            "installed_open_limit_lift": {
+                "id": 16,
+                "access": "r",
+                "type": "t.uint16_t"
+            },
+            "installed_closed_limit_lift": {
+                "id": 17,
+                "access": "r",
+                "type": "t.uint16_t"
+            },
+            "installed_open_limit_tilt": {
+                "id": 18,
+                "access": "r",
+                "type": "t.uint16_t"
+            },
+            "installed_closed_limit_tilt": {
+                "id": 19,
+                "access": "r",
+                "type": "t.uint16_t"
+            },
+            "velocity_lift": {
+                "id": 20,
+                "access": "rw",
+                "type": "t.uint16_t"
+            },
+            "acceleration_time_lift": {
+                "id": 21,
+                "access": "rw",
+                "type": "t.uint16_t"
+            },
+            "deceleration_time_lift": {
+                "id": 22,
+                "access": "rw",
+                "type": "t.uint16_t"
+            },
+            "window_covering_mode": {
+                "id": 23,
+                "access": "rw",
+                "type": "WindowCoveringMode"
+            },
+            "intermediate_setpoints_lift": {
+                "id": 24,
+                "access": "rw",
+                "type": "t.LVBytes"
+            },
+            "intermediate_setpoints_tilt": {
+                "id": 25,
+                "access": "rw",
+                "type": "t.LVBytes"
+            }
+        }
+    },
+    "basic": {
+        "Attribute": {
+            "zcl_version": {
+                "id": 0,
+                "access": "r",
+                "type": "t.uint8_t"
+            },
+            "app_version": {
+                "id": 1,
+                "access": "r",
+                "type": "t.uint8_t"
+            },
+            "stack_version": {
+                "id": 2,
+                "access": "r",
+                "type": "t.uint8_t"
+            },
+            "hw_version": {
+                "id": 3,
+                "access": "r",
+                "type": "t.uint8_t"
+            },
+            "manufacturer": {
+                "id": 4,
+                "access": "r",
+                "type": "t.LimitedCharString(32)"
+            },
+            "model": {
+                "id": 5,
+                "access": "r",
+                "type": "t.LimitedCharString(32)"
+            },
+            "date_code": {
+                "id": 6,
+                "access": "r",
+                "type": "t.LimitedCharString(16)"
+            },
+            "power_source": {
+                "id": 7,
+                "access": "r",
+                "type": "PowerSource"
+            },
+            "generic_device_class": {
+                "id": 8,
+                "access": "r",
+                "type": "GenericDeviceClass"
+            },
+            "generic_device_type": {
+                "id": 9,
+                "access": "r",
+                "type": "GenericLightingDeviceType"
+            },
+            "product_code": {
+                "id": 10,
+                "access": "r",
+                "type": "t.LVBytes"
+            },
+            "product_url": {
+                "id": 11,
+                "access": "r",
+                "type": "t.CharacterString"
+            },
+            "manufacturer_version_details": {
+                "id": 12,
+                "access": "r",
+                "type": "t.CharacterString"
+            },
+            "serial_number": {
+                "id": 13,
+                "access": "r",
+                "type": "t.CharacterString"
+            },
+            "product_label": {
+                "id": 14,
+                "access": "r",
+                "type": "t.CharacterString"
+            },
+            "location_desc": {
+                "id": 16,
+                "access": "rw",
+                "type": "t.LimitedCharString(16)"
+            },
+            "physical_env": {
+                "id": 17,
+                "access": "rw",
+                "type": "PhysicalEnvironment"
+            },
+            "device_enabled": {
+                "id": 18,
+                "access": "rw",
+                "type": "t.Bool"
+            },
+            "alarm_mask": {
+                "id": 19,
+                "access": "rw",
+                "type": "AlarmMask"
+            },
+            "disable_local_config": {
+                "id": 20,
+                "access": "rw",
+                "type": "DisableLocalConfig"
+            },
+            "sw_build_id": {
+                "id": 16384,
+                "access": "r",
+                "type": "t.CharacterString"
+            },
+            "cluster_revision": {
+                "class": "foundation.ZCL_CLUSTER_REVISION_ATTR"
+            },
+            "reporting_status": {
+                "class": "foundation.ZCL_REPORTING_STATUS_ATTR"
+            }
+        }
+    },
+    "power": {
+        "Attribute": {
+            "mains_voltage": {
+                "id": 0,
+                "access": "r",
+                "type": "t.uint16_t"
+            },
+            "mains_frequency": {
+                "id": 1,
+                "access": "r",
+                "type": "t.uint8_t"
+            },
+            "mains_alarm_mask": {
+                "id": 16,
+                "access": "rw",
+                "type": "MainsAlarmMask"
+            },
+            "mains_volt_min_thres": {
+                "id": 17,
+                "access": "rw",
+                "type": "t.uint16_t"
+            },
+            "mains_volt_max_thres": {
+                "id": 18,
+                "access": "rw",
+                "type": "t.uint16_t"
+            },
+            "mains_voltage_dwell_trip_point": {
+                "id": 19,
+                "access": "rw",
+                "type": "t.uint16_t"
+            },
+            "battery_voltage": {
+                "id": 32,
+                "access": "r",
+                "type": "t.uint8_t"
+            },
+            "battery_percentage_remaining": {
+                "id": 33,
+                "access": "rp",
+                "type": "t.uint8_t"
+            },
+            "battery_manufacturer": {
+                "id": 48,
+                "access": "rw",
+                "type": "t.LimitedCharString(16)"
+            },
+            "battery_size": {
+                "id": 49,
+                "access": "rw",
+                "type": "BatterySize"
+            },
+            "battery_a_hr_rating": {
+                "id": 50,
+                "access": "rw",
+                "type": "t.uint16_t"
+            },
+            "battery_quantity": {
+                "id": 51,
+                "access": "rw",
+                "type": "t.uint8_t"
+            },
+            "battery_rated_voltage": {
+                "id": 52,
+                "access": "rw",
+                "type": "t.uint8_t"
+            },
+            "battery_alarm_mask": {
+                "id": 53,
+                "access": "rw",
+                "type": "t.bitmap8"
+            },
+            "battery_volt_min_thres": {
+                "id": 54,
+                "access": "rw",
+                "type": "t.uint8_t"
+            },
+            "battery_volt_thres1": {
+                "id": 55,
+                "access": "r*w",
+                "type": "t.uint16_t"
+            },
+            "battery_volt_thres2": {
+                "id": 56,
+                "access": "r*w",
+                "type": "t.uint16_t"
+            },
+            "battery_volt_thres3": {
+                "id": 57,
+                "access": "r*w",
+                "type": "t.uint16_t"
+            },
+            "battery_percent_min_thres": {
+                "id": 58,
+                "access": "r*w",
+                "type": "t.uint8_t"
+            },
+            "battery_percent_thres1": {
+                "id": 59,
+                "access": "r*w",
+                "type": "t.uint8_t"
+            },
+            "battery_percent_thres2": {
+                "id": 60,
+                "access": "r*w",
+                "type": "t.uint8_t"
+            },
+            "battery_percent_thres3": {
+                "id": 61,
+                "access": "r*w",
+                "type": "t.uint8_t"
+            },
+            "battery_alarm_state": {
+                "id": 62,
+                "access": "rp",
+                "type": "t.bitmap32"
+            },
+            "battery_2_voltage": {
+                "id": 64,
+                "access": "r",
+                "type": "t.uint8_t"
+            },
+            "battery_2_percentage_remaining": {
+                "id": 65,
+                "access": "rp",
+                "type": "t.uint8_t"
+            },
+            "battery_2_manufacturer": {
+                "id": 80,
+                "access": "rw",
+                "type": "t.CharacterString"
+            },
+            "battery_2_size": {
+                "id": 81,
+                "access": "rw",
+                "type": "BatterySize"
+            },
+            "battery_2_a_hr_rating": {
+                "id": 82,
+                "access": "rw",
+                "type": "t.uint16_t"
+            },
+            "battery_2_quantity": {
+                "id": 83,
+                "access": "rw",
+                "type": "t.uint8_t"
+            },
+            "battery_2_rated_voltage": {
+                "id": 84,
+                "access": "rw",
+                "type": "t.uint8_t"
+            },
+            "battery_2_alarm_mask": {
+                "id": 85,
+                "access": "rw",
+                "type": "t.bitmap8"
+            },
+            "battery_2_volt_min_thres": {
+                "id": 86,
+                "access": "rw",
+                "type": "t.uint8_t"
+            },
+            "battery_2_volt_thres1": {
+                "id": 87,
+                "access": "r*w",
+                "type": "t.uint16_t"
+            },
+            "battery_2_volt_thres2": {
+                "id": 88,
+                "access": "r*w",
+                "type": "t.uint16_t"
+            },
+            "battery_2_volt_thres3": {
+                "id": 89,
+                "access": "r*w",
+                "type": "t.uint16_t"
+            },
+            "battery_2_percent_min_thres": {
+                "id": 90,
+                "access": "r*w",
+                "type": "t.uint8_t"
+            },
+            "battery_2_percent_thres1": {
+                "id": 91,
+                "access": "r*w",
+                "type": "t.uint8_t"
+            },
+            "battery_2_percent_thres2": {
+                "id": 92,
+                "access": "r*w",
+                "type": "t.uint8_t"
+            },
+            "battery_2_percent_thres3": {
+                "id": 93,
+                "access": "r*w",
+                "type": "t.uint8_t"
+            },
+            "battery_2_alarm_state": {
+                "id": 94,
+                "access": "rp",
+                "type": "t.bitmap32"
+            },
+            "battery_3_voltage": {
+                "id": 96,
+                "access": "r",
+                "type": "t.uint8_t"
+            },
+            "battery_3_percentage_remaining": {
+                "id": 97,
+                "access": "rp",
+                "type": "t.uint8_t"
+            },
+            "battery_3_manufacturer": {
+                "id": 112,
+                "access": "rw",
+                "type": "t.CharacterString"
+            },
+            "battery_3_size": {
+                "id": 113,
+                "access": "rw",
+                "type": "BatterySize"
+            },
+            "battery_3_a_hr_rating": {
+                "id": 114,
+                "access": "rw",
+                "type": "t.uint16_t"
+            },
+            "battery_3_quantity": {
+                "id": 115,
+                "access": "rw",
+                "type": "t.uint8_t"
+            },
+            "battery_3_rated_voltage": {
+                "id": 116,
+                "access": "rw",
+                "type": "t.uint8_t"
+            },
+            "battery_3_alarm_mask": {
+                "id": 117,
+                "access": "rw",
+                "type": "t.bitmap8"
+            },
+            "battery_3_volt_min_thres": {
+                "id": 118,
+                "access": "rw",
+                "type": "t.uint8_t"
+            },
+            "battery_3_volt_thres1": {
+                "id": 119,
+                "access": "r*w",
+                "type": "t.uint16_t"
+            },
+            "battery_3_volt_thres2": {
+                "id": 120,
+                "access": "r*w",
+                "type": "t.uint16_t"
+            },
+            "battery_3_volt_thres3": {
+                "id": 121,
+                "access": "r*w",
+                "type": "t.uint16_t"
+            },
+            "battery_3_percent_min_thres": {
+                "id": 122,
+                "access": "r*w",
+                "type": "t.uint8_t"
+            },
+            "battery_3_percent_thres1": {
+                "id": 123,
+                "access": "r*w",
+                "type": "t.uint8_t"
+            },
+            "battery_3_percent_thres2": {
+                "id": 124,
+                "access": "r*w",
+                "type": "t.uint8_t"
+            },
+            "battery_3_percent_thres3": {
+                "id": 125,
+                "access": "r*w",
+                "type": "t.uint8_t"
+            },
+            "battery_3_alarm_state": {
+                "id": 126,
+                "access": "rp",
+                "type": "t.bitmap32"
+            },
+            "cluster_revision": {
+                "class": "foundation.ZCL_CLUSTER_REVISION_ATTR"
+            },
+            "reporting_status": {
+                "class": "foundation.ZCL_REPORTING_STATUS_ATTR"
+            }
+        }
+    },
+    "device_temperature": {
+        "Attribute": {
+            "current_temperature": {
+                "id": 0,
+                "access": "r",
+                "type": "t.int16s"
+            },
+            "min_temp_experienced": {
+                "id": 1,
+                "access": "r",
+                "type": "t.int16s"
+            },
+            "max_temp_experienced": {
+                "id": 2,
+                "access": "r",
+                "type": "t.int16s"
+            },
+            "over_temp_total_dwell": {
+                "id": 3,
+                "access": "r",
+                "type": "t.uint16_t"
+            },
+            "dev_temp_alarm_mask": {
+                "id": 16,
+                "access": "rw",
+                "type": "DeviceTempAlarmMask"
+            },
+            "low_temp_thres": {
+                "id": 17,
+                "access": "rw",
+                "type": "t.int16s"
+            },
+            "high_temp_thres": {
+                "id": 18,
+                "access": "rw",
+                "type": "t.int16s"
+            },
+            "low_temp_dwell_trip_point": {
+                "id": 19,
+                "access": "rw",
+                "type": "t.uint24_t"
+            },
+            "high_temp_dwell_trip_point": {
+                "id": 20,
+                "access": "rw",
+                "type": "t.uint24_t"
+            },
+            "cluster_revision": {
+                "class": "foundation.ZCL_CLUSTER_REVISION_ATTR"
+            },
+            "reporting_status": {
+                "class": "foundation.ZCL_REPORTING_STATUS_ATTR"
+            }
+        }
+    },
+    "identify": {
+        "Attribute": {
+            "identify_time": {
+                "id": 0,
+                "access": "rw",
+                "type": "t.uint16_t"
+            },
+            "cluster_revision": {
+                "class": "foundation.ZCL_CLUSTER_REVISION_ATTR"
+            },
+            "reporting_status": {
+                "class": "foundation.ZCL_REPORTING_STATUS_ATTR"
+            }
+        }
+    },
+    "groups": {
+        "Attribute": {
+            "name_support": {
+                "id": 0,
+                "access": "r",
+                "type": "NameSupport"
+            },
+            "cluster_revision": {
+                "class": "foundation.ZCL_CLUSTER_REVISION_ATTR"
+            },
+            "reporting_status": {
+                "class": "foundation.ZCL_REPORTING_STATUS_ATTR"
+            }
+        }
+    },
+    "scenes": {
+        "Attribute": {
+            "count": {
+                "id": 0,
+                "access": "r",
+                "type": "t.uint8_t"
+            },
+            "current_scene": {
+                "id": 1,
+                "access": "r",
+                "type": "t.uint8_t"
+            },
+            "current_group": {
+                "id": 2,
+                "access": "r",
+                "type": "t.uint16_t"
+            },
+            "scene_valid": {
+                "id": 3,
+                "access": "r",
+                "type": "t.Bool"
+            },
+            "name_support": {
+                "id": 4,
+                "access": "r",
+                "type": "NameSupport"
+            },
+            "last_configured_by": {
+                "id": 5,
+                "access": "r",
+                "type": "t.EUI64"
+            },
+            "cluster_revision": {
+                "class": "foundation.ZCL_CLUSTER_REVISION_ATTR"
+            },
+            "reporting_status": {
+                "class": "foundation.ZCL_REPORTING_STATUS_ATTR"
+            }
+        }
+    },
+    "on_off": {
+        "Attribute": {
+            "on_off": {
+                "id": 0,
+                "access": "rps",
+                "type": "t.Bool"
+            },
+            "global_scene_control": {
+                "id": 16384,
+                "access": "r",
+                "type": "t.Bool"
+            },
+            "on_time": {
+                "id": 16385,
+                "access": "rw",
+                "type": "t.uint16_t"
+            },
+            "off_wait_time": {
+                "id": 16386,
+                "access": "rw",
+                "type": "t.uint16_t"
+            },
+            "start_up_on_off": {
+                "id": 16387,
+                "access": "rw",
+                "type": "StartUpOnOff"
+            },
+            "cluster_revision": {
+                "class": "foundation.ZCL_CLUSTER_REVISION_ATTR"
+            },
+            "reporting_status": {
+                "class": "foundation.ZCL_REPORTING_STATUS_ATTR"
+            }
+        }
+    },
+    "on_off_config": {
+        "Attribute": {
+            "switch_type": {
+                "id": 0,
+                "access": "r",
+                "type": "SwitchType"
+            },
+            "switch_actions": {
+                "id": 16,
+                "access": "rw",
+                "type": "SwitchActions"
+            },
+            "cluster_revision": {
+                "class": "foundation.ZCL_CLUSTER_REVISION_ATTR"
+            },
+            "reporting_status": {
+                "class": "foundation.ZCL_REPORTING_STATUS_ATTR"
+            }
+        }
+    },
+    "level": {
+        "Attribute": {
+            "current_level": {
+                "id": 0,
+                "access": "rps",
+                "type": "t.uint8_t"
+            },
+            "remaining_time": {
+                "id": 1,
+                "access": "r",
+                "type": "t.uint16_t"
+            },
+            "min_level": {
+                "id": 2,
+                "access": "r",
+                "type": "t.uint8_t"
+            },
+            "max_level": {
+                "id": 3,
+                "access": "r",
+                "type": "t.uint8_t"
+            },
+            "current_frequency": {
+                "id": 4,
+                "access": "rps",
+                "type": "t.uint16_t"
+            },
+            "min_frequency": {
+                "id": 5,
+                "access": "r",
+                "type": "t.uint16_t"
+            },
+            "max_frequency": {
+                "id": 6,
+                "access": "r",
+                "type": "t.uint16_t"
+            },
+            "options": {
+                "id": 15,
+                "access": "rw",
+                "type": "t.bitmap8"
+            },
+            "on_off_transition_time": {
+                "id": 16,
+                "access": "rw",
+                "type": "t.uint16_t"
+            },
+            "on_level": {
+                "id": 17,
+                "access": "rw",
+                "type": "t.uint8_t"
+            },
+            "on_transition_time": {
+                "id": 18,
+                "access": "rw",
+                "type": "t.uint16_t"
+            },
+            "off_transition_time": {
+                "id": 19,
+                "access": "rw",
+                "type": "t.uint16_t"
+            },
+            "default_move_rate": {
+                "id": 20,
+                "access": "rw",
+                "type": "t.uint8_t"
+            },
+            "start_up_current_level": {
+                "id": 16384,
+                "access": "rw",
+                "type": "t.uint8_t"
+            },
+            "cluster_revision": {
+                "class": "foundation.ZCL_CLUSTER_REVISION_ATTR"
+            },
+            "reporting_status": {
+                "class": "foundation.ZCL_REPORTING_STATUS_ATTR"
+            }
+        }
+    },
+    "alarms": {
+        "Attribute": {
+            "alarm_count": {
+                "id": 0,
+                "access": "r",
+                "type": "t.uint16_t"
+            },
+            "cluster_revision": {
+                "class": "foundation.ZCL_CLUSTER_REVISION_ATTR"
+            },
+            "reporting_status": {
+                "class": "foundation.ZCL_REPORTING_STATUS_ATTR"
+            }
+        }
+    },
+    "time": {
+        "Attribute": {
+            "time": {
+                "id": 0,
+                "access": "r*w",
+                "type": "t.UTCTime"
+            },
+            "time_status": {
+                "id": 1,
+                "access": "r*w",
+                "type": "t.bitmap8"
+            },
+            "time_zone": {
+                "id": 2,
+                "access": "rw",
+                "type": "t.int32s"
+            },
+            "dst_start": {
+                "id": 3,
+                "access": "rw",
+                "type": "t.uint32_t"
+            },
+            "dst_end": {
+                "id": 4,
+                "access": "rw",
+                "type": "t.uint32_t"
+            },
+            "dst_shift": {
+                "id": 5,
+                "access": "rw",
+                "type": "t.int32s"
+            },
+            "standard_time": {
+                "id": 6,
+                "access": "r",
+                "type": "t.StandardTime"
+            },
+            "local_time": {
+                "id": 7,
+                "access": "r",
+                "type": "t.LocalTime"
+            },
+            "last_set_time": {
+                "id": 8,
+                "access": "r",
+                "type": "t.UTCTime"
+            },
+            "valid_until_time": {
+                "id": 9,
+                "access": "rw",
+                "type": "t.UTCTime"
+            },
+            "cluster_revision": {
+                "class": "foundation.ZCL_CLUSTER_REVISION_ATTR"
+            },
+            "reporting_status": {
+                "class": "foundation.ZCL_REPORTING_STATUS_ATTR"
+            }
+        }
+    },
+    "rssi_location": {
+        "Attribute": {
+            "type": {
+                "id": 0,
+                "access": "rw",
+                "type": "t.uint8_t"
+            },
+            "method": {
+                "id": 1,
+                "access": "rw",
+                "type": "LocationMethod"
+            },
+            "age": {
+                "id": 2,
+                "access": "r",
+                "type": "t.uint16_t"
+            },
+            "quality_measure": {
+                "id": 3,
+                "access": "r",
+                "type": "t.uint8_t"
+            },
+            "num_of_devices": {
+                "id": 4,
+                "access": "r",
+                "type": "t.uint8_t"
+            },
+            "coordinate1": {
+                "id": 16,
+                "access": "rw",
+                "type": "t.int16s"
+            },
+            "coordinate2": {
+                "id": 17,
+                "access": "rw",
+                "type": "t.int16s"
+            },
+            "coordinate3": {
+                "id": 18,
+                "access": "rw",
+                "type": "t.int16s"
+            },
+            "power": {
+                "id": 19,
+                "access": "rw",
+                "type": "t.int16s"
+            },
+            "path_loss_exponent": {
+                "id": 20,
+                "access": "rw",
+                "type": "t.uint16_t"
+            },
+            "reporting_period": {
+                "id": 21,
+                "access": "rw",
+                "type": "t.uint16_t"
+            },
+            "calculation_period": {
+                "id": 22,
+                "access": "rw",
+                "type": "t.uint16_t"
+            },
+            "number_rssi_measurements": {
+                "id": 23,
+                "access": "rw",
+                "type": "t.uint8_t"
+            },
+            "cluster_revision": {
+                "class": "foundation.ZCL_CLUSTER_REVISION_ATTR"
+            },
+            "reporting_status": {
+                "class": "foundation.ZCL_REPORTING_STATUS_ATTR"
+            }
+        }
+    },
+    "analog_input": {
+        "Attribute": {
+            "description": {
+                "id": 28,
+                "access": "r*w",
+                "type": "t.CharacterString"
+            },
+            "max_present_value": {
+                "id": 65,
+                "access": "r*w",
+                "type": "t.Single"
+            },
+            "min_present_value": {
+                "id": 69,
+                "access": "r*w",
+                "type": "t.Single"
+            },
+            "out_of_service": {
+                "id": 81,
+                "access": "r*w",
+                "type": "t.Bool"
+            },
+            "present_value": {
+                "id": 85,
+                "access": "rwp",
+                "type": "t.Single"
+            },
+            "reliability": {
+                "id": 103,
+                "access": "r*w",
+                "type": "Reliability"
+            },
+            "resolution": {
+                "id": 106,
+                "access": "r*w",
+                "type": "t.Single"
+            },
+            "status_flags": {
+                "id": 111,
+                "access": "rp",
+                "type": "t.bitmap8"
+            },
+            "engineering_units": {
+                "id": 117,
+                "access": "r*w",
+                "type": "t.enum16"
+            },
+            "application_type": {
+                "id": 256,
+                "access": "r",
+                "type": "t.uint32_t"
+            },
+            "cluster_revision": {
+                "class": "foundation.ZCL_CLUSTER_REVISION_ATTR"
+            },
+            "reporting_status": {
+                "class": "foundation.ZCL_REPORTING_STATUS_ATTR"
+            }
+        }
+    },
+    "analog_output": {
+        "Attribute": {
+            "description": {
+                "id": 28,
+                "access": "r*w",
+                "type": "t.CharacterString"
+            },
+            "max_present_value": {
+                "id": 65,
+                "access": "r*w",
+                "type": "t.Single"
+            },
+            "min_present_value": {
+                "id": 69,
+                "access": "r*w",
+                "type": "t.Single"
+            },
+            "out_of_service": {
+                "id": 81,
+                "access": "r*w",
+                "type": "t.Bool"
+            },
+            "present_value": {
+                "id": 85,
+                "access": "rwp",
+                "type": "t.Single"
+            },
+            "reliability": {
+                "id": 103,
+                "access": "r*w",
+                "type": "t.enum8"
+            },
+            "relinquish_default": {
+                "id": 104,
+                "access": "r*w",
+                "type": "t.Single"
+            },
+            "resolution": {
+                "id": 106,
+                "access": "r*w",
+                "type": "t.Single"
+            },
+            "status_flags": {
+                "id": 111,
+                "access": "rp",
+                "type": "t.bitmap8"
+            },
+            "engineering_units": {
+                "id": 117,
+                "access": "r*w",
+                "type": "t.enum16"
+            },
+            "application_type": {
+                "id": 256,
+                "access": "r",
+                "type": "t.uint32_t"
+            },
+            "cluster_revision": {
+                "class": "foundation.ZCL_CLUSTER_REVISION_ATTR"
+            },
+            "reporting_status": {
+                "class": "foundation.ZCL_REPORTING_STATUS_ATTR"
+            }
+        }
+    },
+    "analog_value": {
+        "Attribute": {
+            "description": {
+                "id": 28,
+                "access": "r*w",
+                "type": "t.CharacterString"
+            },
+            "out_of_service": {
+                "id": 81,
+                "access": "r*w",
+                "type": "t.Bool"
+            },
+            "present_value": {
+                "id": 85,
+                "access": "rw",
+                "type": "t.Single"
+            },
+            "reliability": {
+                "id": 103,
+                "access": "r*w",
+                "type": "t.enum8"
+            },
+            "relinquish_default": {
+                "id": 104,
+                "access": "r*w",
+                "type": "t.Single"
+            },
+            "status_flags": {
+                "id": 111,
+                "access": "r",
+                "type": "t.bitmap8"
+            },
+            "engineering_units": {
+                "id": 117,
+                "access": "r*w",
+                "type": "t.enum16"
+            },
+            "application_type": {
+                "id": 256,
+                "access": "r",
+                "type": "t.uint32_t"
+            },
+            "cluster_revision": {
+                "class": "foundation.ZCL_CLUSTER_REVISION_ATTR"
+            },
+            "reporting_status": {
+                "class": "foundation.ZCL_REPORTING_STATUS_ATTR"
+            }
+        }
+    },
+    "binary_input": {
+        "Attribute": {
+            "active_text": {
+                "id": 4,
+                "access": "r*w",
+                "type": "t.CharacterString"
+            },
+            "description": {
+                "id": 28,
+                "access": "r*w",
+                "type": "t.CharacterString"
+            },
+            "inactive_text": {
+                "id": 46,
+                "access": "r*w",
+                "type": "t.CharacterString"
+            },
+            "out_of_service": {
+                "id": 81,
+                "access": "r*w",
+                "type": "t.Bool"
+            },
+            "polarity": {
+                "id": 84,
+                "access": "r",
+                "type": "t.enum8"
+            },
+            "present_value": {
+                "id": 85,
+                "access": "r*w",
+                "type": "t.Bool"
+            },
+            "reliability": {
+                "id": 103,
+                "access": "r*w",
+                "type": "t.enum8"
+            },
+            "status_flags": {
+                "id": 111,
+                "access": "r",
+                "type": "t.bitmap8"
+            },
+            "application_type": {
+                "id": 256,
+                "access": "r",
+                "type": "t.uint32_t"
+            },
+            "cluster_revision": {
+                "class": "foundation.ZCL_CLUSTER_REVISION_ATTR"
+            },
+            "reporting_status": {
+                "class": "foundation.ZCL_REPORTING_STATUS_ATTR"
+            }
+        }
+    },
+    "binary_output": {
+        "Attribute": {
+            "active_text": {
+                "id": 4,
+                "access": "r*w",
+                "type": "t.CharacterString"
+            },
+            "description": {
+                "id": 28,
+                "access": "r*w",
+                "type": "t.CharacterString"
+            },
+            "inactive_text": {
+                "id": 46,
+                "access": "r*w",
+                "type": "t.CharacterString"
+            },
+            "minimum_off_time": {
+                "id": 66,
+                "access": "r*w",
+                "type": "t.uint32_t"
+            },
+            "minimum_on_time": {
+                "id": 67,
+                "access": "r*w",
+                "type": "t.uint32_t"
+            },
+            "out_of_service": {
+                "id": 81,
+                "access": "r*w",
+                "type": "t.Bool"
+            },
+            "polarity": {
+                "id": 84,
+                "access": "r",
+                "type": "t.enum8"
+            },
+            "present_value": {
+                "id": 85,
+                "access": "r*w",
+                "type": "t.Bool"
+            },
+            "reliability": {
+                "id": 103,
+                "access": "r*w",
+                "type": "t.enum8"
+            },
+            "relinquish_default": {
+                "id": 104,
+                "access": "r*w",
+                "type": "t.Bool"
+            },
+            "resolution": {
+                "id": 106,
+                "access": "r",
+                "type": "t.Single"
+            },
+            "#Doesnotseemtobeinbinary_outputstatus_flags": {
+                "id": 111,
+                "access": "r",
+                "type": "t.bitmap8"
+            },
+            "engineering_units": {
+                "id": 117,
+                "access": "r",
+                "type": "t.enum16"
+            },
+            "#Doesnotseemtobeinbinary_outputapplication_type": {
+                "id": 256,
+                "access": "r",
+                "type": "t.uint32_t"
+            },
+            "cluster_revision": {
+                "class": "foundation.ZCL_CLUSTER_REVISION_ATTR"
+            },
+            "reporting_status": {
+                "class": "foundation.ZCL_REPORTING_STATUS_ATTR"
+            }
+        }
+    },
+    "binary_value": {
+        "Attribute": {
+            "active_text": {
+                "id": 4,
+                "access": "r*w",
+                "type": "t.CharacterString"
+            },
+            "description": {
+                "id": 28,
+                "access": "r*w",
+                "type": "t.CharacterString"
+            },
+            "inactive_text": {
+                "id": 46,
+                "access": "r*w",
+                "type": "t.CharacterString"
+            },
+            "minimum_off_time": {
+                "id": 66,
+                "access": "r*w",
+                "type": "t.uint32_t"
+            },
+            "minimum_on_time": {
+                "id": 67,
+                "access": "r*w",
+                "type": "t.uint32_t"
+            },
+            "out_of_service": {
+                "id": 81,
+                "access": "r*w",
+                "type": "t.Bool"
+            },
+            "present_value": {
+                "id": 85,
+                "access": "r*w",
+                "type": "t.Single"
+            },
+            "reliability": {
+                "id": 103,
+                "access": "r*w",
+                "type": "t.enum8"
+            },
+            "relinquish_default": {
+                "id": 104,
+                "access": "r*w",
+                "type": "t.Single"
+            },
+            "status_flags": {
+                "id": 111,
+                "access": "r",
+                "type": "t.bitmap8"
+            },
+            "application_type": {
+                "id": 256,
+                "access": "r",
+                "type": "t.uint32_t"
+            },
+            "cluster_revision": {
+                "class": "foundation.ZCL_CLUSTER_REVISION_ATTR"
+            },
+            "reporting_status": {
+                "class": "foundation.ZCL_REPORTING_STATUS_ATTR"
+            }
+        }
+    },
+    "multistate_input": {
+        "Attribute": {
+            "state_text": {
+                "id": 14,
+                "access": "r*w",
+                "type": "t.List[t.CharacterString]"
+            },
+            "description": {
+                "id": 28,
+                "access": "r*w",
+                "type": "t.CharacterString"
+            },
+            "number_of_states": {
+                "id": 74,
+                "access": "r*w",
+                "type": "t.uint16_t"
+            },
+            "out_of_service": {
+                "id": 81,
+                "access": "r*w",
+                "type": "t.Bool"
+            },
+            "present_value": {
+                "id": 85,
+                "access": "r*w",
+                "type": "t.Single"
+            },
+            "reliability": {
+                "id": 103,
+                "access": "r*w",
+                "type": "t.enum8"
+            },
+            "status_flags": {
+                "id": 111,
+                "access": "r",
+                "type": "t.bitmap8"
+            },
+            "application_type": {
+                "id": 256,
+                "access": "r",
+                "type": "t.uint32_t"
+            },
+            "cluster_revision": {
+                "class": "foundation.ZCL_CLUSTER_REVISION_ATTR"
+            },
+            "reporting_status": {
+                "class": "foundation.ZCL_REPORTING_STATUS_ATTR"
+            }
+        }
+    },
+    "multistate_output": {
+        "Attribute": {
+            "state_text": {
+                "id": 14,
+                "access": "r*w",
+                "type": "t.List[t.CharacterString]"
+            },
+            "description": {
+                "id": 28,
+                "access": "r*w",
+                "type": "t.CharacterString"
+            },
+            "number_of_states": {
+                "id": 74,
+                "access": "r*w",
+                "type": "t.uint16_t"
+            },
+            "out_of_service": {
+                "id": 81,
+                "access": "r*w",
+                "type": "t.Bool"
+            },
+            "present_value": {
+                "id": 85,
+                "access": "r*w",
+                "type": "t.Single"
+            },
+            "reliability": {
+                "id": 103,
+                "access": "r*w",
+                "type": "t.enum8"
+            },
+            "relinquish_default": {
+                "id": 104,
+                "access": "r*w",
+                "type": "t.Single"
+            },
+            "status_flags": {
+                "id": 111,
+                "access": "r",
+                "type": "t.bitmap8"
+            },
+            "application_type": {
+                "id": 256,
+                "access": "r",
+                "type": "t.uint32_t"
+            },
+            "cluster_revision": {
+                "class": "foundation.ZCL_CLUSTER_REVISION_ATTR"
+            },
+            "reporting_status": {
+                "class": "foundation.ZCL_REPORTING_STATUS_ATTR"
+            }
+        }
+    },
+    "multistate_value": {
+        "Attribute": {
+            "state_text": {
+                "id": 14,
+                "access": "r*w",
+                "type": "t.List[t.CharacterString]"
+            },
+            "description": {
+                "id": 28,
+                "access": "r*w",
+                "type": "t.CharacterString"
+            },
+            "number_of_states": {
+                "id": 74,
+                "access": "r*w",
+                "type": "t.uint16_t"
+            },
+            "out_of_service": {
+                "id": 81,
+                "access": "r*w",
+                "type": "t.Bool"
+            },
+            "present_value": {
+                "id": 85,
+                "access": "r*w",
+                "type": "t.Single"
+            },
+            "reliability": {
+                "id": 103,
+                "access": "r*w",
+                "type": "t.enum8"
+            },
+            "relinquish_default": {
+                "id": 104,
+                "access": "r*w",
+                "type": "t.Single"
+            },
+            "status_flags": {
+                "id": 111,
+                "access": "r",
+                "type": "t.bitmap8"
+            },
+            "application_type": {
+                "id": 256,
+                "access": "r",
+                "type": "t.uint32_t"
+            },
+            "cluster_revision": {
+                "class": "foundation.ZCL_CLUSTER_REVISION_ATTR"
+            },
+            "reporting_status": {
+                "class": "foundation.ZCL_REPORTING_STATUS_ATTR"
+            }
+        }
+    },
+    "commissioning": {
+        "Attribute": {
+            "short_address": {
+                "id": 0,
+                "access": "rw",
+                "type": "t.uint16_t"
+            },
+            "extended_pan_id": {
+                "id": 1,
+                "access": "rw",
+                "type": "t.EUI64"
+            },
+            "pan_id": {
+                "id": 2,
+                "access": "rw",
+                "type": "t.uint16_t"
+            },
+            "channel_mask": {
+                "id": 3,
+                "access": "rw",
+                "type": "t.Channels"
+            },
+            "protocol_version": {
+                "id": 4,
+                "access": "rw",
+                "type": "t.uint8_t"
+            },
+            "stack_profile": {
+                "id": 5,
+                "access": "rw",
+                "type": "t.uint8_t"
+            },
+            "startup_control": {
+                "id": 6,
+                "access": "rw",
+                "type": "StartupControl"
+            },
+            "trust_center_address": {
+                "id": 16,
+                "access": "rw",
+                "type": "t.EUI64"
+            },
+            "trust_center_master_key": {
+                "id": 17,
+                "access": "rw",
+                "type": "t.KeyData"
+            },
+            "network_key": {
+                "id": 18,
+                "access": "rw",
+                "type": "t.KeyData"
+            },
+            "use_insecure_join": {
+                "id": 19,
+                "access": "rw",
+                "type": "t.Bool"
+            },
+            "preconfigured_link_key": {
+                "id": 20,
+                "access": "rw",
+                "type": "t.KeyData"
+            },
+            "network_key_seq_num": {
+                "id": 21,
+                "access": "rw",
+                "type": "t.uint8_t"
+            },
+            "network_key_type": {
+                "id": 22,
+                "access": "rw",
+                "type": "NetworkKeyType"
+            },
+            "network_manager_address": {
+                "id": 23,
+                "access": "rw",
+                "type": "t.uint16_t"
+            },
+            "scan_attempts": {
+                "id": 32,
+                "access": "rw",
+                "type": "t.uint8_t"
+            },
+            "time_between_scans": {
+                "id": 33,
+                "access": "rw",
+                "type": "t.uint16_t"
+            },
+            "rejoin_interval": {
+                "id": 34,
+                "access": "rw",
+                "type": "t.uint16_t"
+            },
+            "max_rejoin_interval": {
+                "id": 35,
+                "access": "rw",
+                "type": "t.uint16_t"
+            },
+            "indirect_poll_rate": {
+                "id": 48,
+                "access": "rw",
+                "type": "t.uint16_t"
+            },
+            "parent_retry_threshold": {
+                "id": 49,
+                "access": "r",
+                "type": "t.uint8_t"
+            },
+            "concentrator_flag": {
+                "id": 64,
+                "access": "rw",
+                "type": "t.Bool"
+            },
+            "concentrator_radius": {
+                "id": 65,
+                "access": "rw",
+                "type": "t.uint8_t"
+            },
+            "concentrator_discovery_time": {
+                "id": 66,
+                "access": "rw",
+                "type": "t.uint8_t"
+            },
+            "cluster_revision": {
+                "class": "foundation.ZCL_CLUSTER_REVISION_ATTR"
+            },
+            "reporting_status": {
+                "class": "foundation.ZCL_REPORTING_STATUS_ATTR"
+            }
+        }
+    },
+    "partition": {
+        "Attribute": {
+            "maximum_incoming_transfer_size": {
+                "id": 0,
+                "access": "r",
+                "type": "t.uint16_t"
+            },
+            "maximum_outgoing_transfer_size": {
+                "id": 1,
+                "access": "r",
+                "type": "t.uint16_t"
+            },
+            "partitioned_frame_size": {
+                "id": 2,
+                "access": "rw",
+                "type": "t.uint8_t"
+            },
+            "large_frame_size": {
+                "id": 3,
+                "access": "rw",
+                "type": "t.uint16_t"
+            },
+            "number_of_ack_frame": {
+                "id": 4,
+                "access": "rw",
+                "type": "t.uint8_t"
+            },
+            "nack_timeout": {
+                "id": 5,
+                "access": "r",
+                "type": "t.uint16_t"
+            },
+            "interframe_delay": {
+                "id": 6,
+                "access": "rw",
+                "type": "t.uint8_t"
+            },
+            "number_of_send_retries": {
+                "id": 7,
+                "access": "r",
+                "type": "t.uint8_t"
+            },
+            "sender_timeout": {
+                "id": 8,
+                "access": "r",
+                "type": "t.uint16_t"
+            },
+            "receiver_timeout": {
+                "id": 9,
+                "access": "r",
+                "type": "t.uint16_t"
+            },
+            "cluster_revision": {
+                "class": "foundation.ZCL_CLUSTER_REVISION_ATTR"
+            },
+            "reporting_status": {
+                "class": "foundation.ZCL_REPORTING_STATUS_ATTR"
+            }
+        }
+    },
+    "ota": {
+        "Attribute": {
+            "upgrade_server_id": {
+                "id": 0,
+                "access": "r",
+                "type": "t.EUI64"
+            },
+            "file_offset": {
+                "id": 1,
+                "access": "r",
+                "type": "t.uint32_t"
+            },
+            "current_file_version": {
+                "id": 2,
+                "access": "r",
+                "type": "t.uint32_t"
+            },
+            "current_zigbee_stack_version": {
+                "id": 3,
+                "access": "r",
+                "type": "t.uint16_t"
+            },
+            "downloaded_file_version": {
+                "id": 4,
+                "access": "r",
+                "type": "t.uint32_t"
+            },
+            "downloaded_zigbee_stack_version": {
+                "id": 5,
+                "access": "r",
+                "type": "t.uint16_t"
+            },
+            "image_upgrade_status": {
+                "id": 6,
+                "access": "r",
+                "type": "ImageUpgradeStatus"
+            },
+            "manufacturer_id": {
+                "id": 7,
+                "access": "r",
+                "type": "t.uint16_t"
+            },
+            "image_type_id": {
+                "id": 8,
+                "access": "r",
+                "type": "t.uint16_t"
+            },
+            "minimum_block_req_delay": {
+                "id": 9,
+                "access": "r",
+                "type": "t.uint16_t"
+            },
+            "image_stamp": {
+                "id": 10,
+                "access": "r",
+                "type": "t.uint32_t"
+            },
+            "upgrade_activation_policy": {
+                "id": 11,
+                "access": "r",
+                "type": "UpgradeActivationPolicy"
+            },
+            "upgrade_timeout_policy": {
+                "id": 12,
+                "access": "r",
+                "type": "UpgradeTimeoutPolicy"
+            },
+            "cluster_revision": {
+                "class": "foundation.ZCL_CLUSTER_REVISION_ATTR"
+            },
+            "reporting_status": {
+                "class": "foundation.ZCL_REPORTING_STATUS_ATTR"
+            }
+        }
+    },
+    "power_profile": {
+        "Attribute": {
+            "total_profile_num": {
+                "id": 0,
+                "access": "r",
+                "type": "t.uint8_t"
+            },
+            "multiple_scheduling": {
+                "id": 1,
+                "access": "r",
+                "type": "t.Bool"
+            },
+            "energy_formatting": {
+                "id": 2,
+                "access": "r",
+                "type": "t.bitmap8"
+            },
+            "energy_remote": {
+                "id": 3,
+                "access": "r",
+                "type": "t.Bool"
+            },
+            "schedule_mode": {
+                "id": 4,
+                "access": "rwp",
+                "type": "t.bitmap8"
+            },
+            "cluster_revision": {
+                "class": "foundation.ZCL_CLUSTER_REVISION_ATTR"
+            },
+            "reporting_status": {
+                "class": "foundation.ZCL_REPORTING_STATUS_ATTR"
+            }
+        }
+    },
+    "appliance_control": {
+        "Attribute": {
+            "start_time": {
+                "id": 0,
+                "access": "rp",
+                "type": "t.uint16_t"
+            },
+            "finish_time": {
+                "id": 1,
+                "access": "rp",
+                "type": "t.uint16_t"
+            },
+            "remaining_time": {
+                "id": 2,
+                "access": "rp",
+                "type": "t.uint16_t"
+            },
+            "cluster_revision": {
+                "class": "foundation.ZCL_CLUSTER_REVISION_ATTR"
+            },
+            "reporting_status": {
+                "class": "foundation.ZCL_REPORTING_STATUS_ATTR"
+            }
+        }
+    },
+    "poll_control": {
+        "Attribute": {
+            "checkin_interval": {
+                "id": 0,
+                "access": "rw",
+                "type": "t.uint32_t"
+            },
+            "long_poll_interval": {
+                "id": 1,
+                "access": "r",
+                "type": "t.uint32_t"
+            },
+            "short_poll_interval": {
+                "id": 2,
+                "access": "r",
+                "type": "t.uint16_t"
+            },
+            "fast_poll_timeout": {
+                "id": 3,
+                "access": "rw",
+                "type": "t.uint16_t"
+            },
+            "checkin_interval_min": {
+                "id": 4,
+                "access": "r",
+                "type": "t.uint32_t"
+            },
+            "long_poll_interval_min": {
+                "id": 5,
+                "access": "r",
+                "type": "t.uint32_t"
+            },
+            "fast_poll_timeout_max": {
+                "id": 6,
+                "access": "r",
+                "type": "t.uint16_t"
+            },
+            "cluster_revision": {
+                "class": "foundation.ZCL_CLUSTER_REVISION_ATTR"
+            },
+            "reporting_status": {
+                "class": "foundation.ZCL_REPORTING_STATUS_ATTR"
+            }
+        }
+    },
+    "keep_alive": {
+        "Attribute": {
+            "tc_keep_alive_base": {
+                "id": 0,
+                "access": "r",
+                "type": "t.uint8_t"
+            },
+            "tc_keep_alive_jitter": {
+                "id": 1,
+                "access": "r",
+                "type": "t.uint16_t"
+            }
+        }
+    },
+    "ias_zone": {
+        "Attribute": {
+            "zone_state": {
+                "id": 0,
+                "access": "r",
+                "type": "ZoneState"
+            },
+            "zone_type": {
+                "id": 1,
+                "access": "r",
+                "type": "ZoneType"
+            },
+            "zone_status": {
+                "id": 2,
+                "access": "r",
+                "type": "ZoneStatus"
+            },
+            "cie_addr": {
+                "id": 16,
+                "access": "rw",
+                "type": "t.EUI64"
+            },
+            "zone_id": {
+                "id": 17,
+                "access": "r",
+                "type": "t.uint8_t"
+            },
+            "num_zone_sensitivity_levels_supported": {
+                "id": 18,
+                "access": "r",
+                "type": "t.uint8_t"
+            },
+            "current_zone_sensitivity_level": {
+                "id": 19,
+                "access": "rw",
+                "type": "t.uint8_t"
+            }
+        }
+    },
+    "ias_ace": {
+        "Attribute": {
+            "cluster_revision": {
+                "class": "foundation.ZCL_CLUSTER_REVISION_ATTR"
+            },
+            "reporting_status": {
+                "class": "foundation.ZCL_REPORTING_STATUS_ATTR"
+            }
+        }
+    },
+    "ias_wd": {
+        "Attribute": {
+            "max_duration": {
+                "id": 0,
+                "access": "rw",
+                "type": "t.uint16_t"
+            },
+            "cluster_revision": {
+                "class": "foundation.ZCL_CLUSTER_REVISION_ATTR"
+            },
+            "reporting_status": {
+                "class": "foundation.ZCL_REPORTING_STATUS_ATTR"
+            }
+        }
+    },
+    "illuminance": {
+        "Attribute": {
+            "measured_value": {
+                "id": 0,
+                "access": "rp",
+                "type": "t.uint16_t"
+            },
+            "min_measured_value": {
+                "id": 1,
+                "access": "r",
+                "type": "t.uint16_t"
+            },
+            "max_measured_value": {
+                "id": 2,
+                "access": "r",
+                "type": "t.uint16_t"
+            },
+            "tolerance": {
+                "id": 3,
+                "access": "r",
+                "type": "t.uint16_t"
+            },
+            "light_sensor_type": {
+                "id": 4,
+                "access": "r",
+                "type": "LightSensorType"
+            },
+            "cluster_revision": {
+                "class": "foundation.ZCL_CLUSTER_REVISION_ATTR"
+            },
+            "reporting_status": {
+                "class": "foundation.ZCL_REPORTING_STATUS_ATTR"
+            }
+        }
+    },
+    "illuminance_level": {
+        "Attribute": {
+            "level_status": {
+                "id": 0,
+                "access": "r",
+                "type": "LevelStatus"
+            },
+            "light_sensor_type": {
+                "id": 1,
+                "access": "r",
+                "type": "LightSensorType"
+            },
+            "illuminance_target_level": {
+                "id": 16,
+                "access": "rw",
+                "type": "t.uint16_t"
+            },
+            "cluster_revision": {
+                "class": "foundation.ZCL_CLUSTER_REVISION_ATTR"
+            },
+            "reporting_status": {
+                "class": "foundation.ZCL_REPORTING_STATUS_ATTR"
+            }
+        }
+    },
+    "temperature": {
+        "Attribute": {
+            "measured_value": {
+                "id": 0,
+                "access": "rp",
+                "type": "t.int16s"
+            },
+            "min_measured_value": {
+                "id": 1,
+                "access": "r",
+                "type": "t.int16s"
+            },
+            "max_measured_value": {
+                "id": 2,
+                "access": "r",
+                "type": "t.int16s"
+            },
+            "tolerance": {
+                "id": 3,
+                "access": "r",
+                "type": "t.uint16_t"
+            },
+            "cluster_revision": {
+                "class": "foundation.ZCL_CLUSTER_REVISION_ATTR"
+            },
+            "reporting_status": {
+                "class": "foundation.ZCL_REPORTING_STATUS_ATTR"
+            }
+        }
+    },
+    "pressure": {
+        "Attribute": {
+            "measured_value": {
+                "id": 0,
+                "access": "rp",
+                "type": "t.int16s"
+            },
+            "min_measured_value": {
+                "id": 1,
+                "access": "r",
+                "type": "t.int16s"
+            },
+            "max_measured_value": {
+                "id": 2,
+                "access": "r",
+                "type": "t.int16s"
+            },
+            "tolerance": {
+                "id": 3,
+                "access": "r",
+                "type": "t.uint16_t"
+            },
+            "scaled_value": {
+                "id": 16,
+                "access": "r",
+                "type": "t.int16s"
+            },
+            "min_scaled_value": {
+                "id": 17,
+                "access": "r",
+                "type": "t.int16s"
+            },
+            "max_scaled_value": {
+                "id": 18,
+                "access": "r",
+                "type": "t.int16s"
+            },
+            "scaled_tolerance": {
+                "id": 19,
+                "access": "r",
+                "type": "t.uint16_t"
+            },
+            "scale": {
+                "id": 20,
+                "access": "r",
+                "type": "t.int8s"
+            },
+            "cluster_revision": {
+                "class": "foundation.ZCL_CLUSTER_REVISION_ATTR"
+            },
+            "reporting_status": {
+                "class": "foundation.ZCL_REPORTING_STATUS_ATTR"
+            }
+        }
+    },
+    "flow": {
+        "Attribute": {
+            "measured_value": {
+                "id": 0,
+                "access": "rp",
+                "type": "t.uint16_t"
+            },
+            "min_measured_value": {
+                "id": 1,
+                "access": "r",
+                "type": "t.uint16_t"
+            },
+            "max_measured_value": {
+                "id": 2,
+                "access": "r",
+                "type": "t.uint16_t"
+            },
+            "tolerance": {
+                "id": 3,
+                "access": "r",
+                "type": "t.uint16_t"
+            },
+            "cluster_revision": {
+                "class": "foundation.ZCL_CLUSTER_REVISION_ATTR"
+            },
+            "reporting_status": {
+                "class": "foundation.ZCL_REPORTING_STATUS_ATTR"
+            }
+        }
+    },
+    "humidity": {
+        "Attribute": {
+            "measured_value": {
+                "id": 0,
+                "access": "rp",
+                "type": "t.uint16_t"
+            },
+            "min_measured_value": {
+                "id": 1,
+                "access": "r",
+                "type": "t.uint16_t"
+            },
+            "max_measured_value": {
+                "id": 2,
+                "access": "r",
+                "type": "t.uint16_t"
+            },
+            "tolerance": {
+                "id": 3,
+                "access": "r",
+                "type": "t.uint16_t"
+            },
+            "cluster_revision": {
+                "class": "foundation.ZCL_CLUSTER_REVISION_ATTR"
+            },
+            "reporting_status": {
+                "class": "foundation.ZCL_REPORTING_STATUS_ATTR"
+            }
+        }
+    },
+    "occupancy": {
+        "Attribute": {
+            "occupancy": {
+                "id": 0,
+                "access": "rp",
+                "type": "Occupancy"
+            },
+            "occupancy_sensor_type_bitmap": {
+                "id": 1,
+                "access": "r",
+                "type": "t.bitmap8"
+            },
+            "pir_o_to_u_delay": {
+                "id": 16,
+                "access": "rw",
+                "type": "t.uint16_t"
+            },
+            "pir_u_to_o_delay": {
+                "id": 17,
+                "access": "rw",
+                "type": "t.uint16_t"
+            },
+            "pir_u_to_o_threshold": {
+                "id": 18,
+                "access": "rw",
+                "type": "t.uint8_t"
+            },
+            "ultrasonic_o_to_u_delay": {
+                "id": 32,
+                "access": "rw",
+                "type": "t.uint16_t"
+            },
+            "ultrasonic_u_to_o_delay": {
+                "id": 33,
+                "access": "rw",
+                "type": "t.uint16_t"
+            },
+            "ultrasonic_u_to_o_threshold": {
+                "id": 34,
+                "access": "rw",
+                "type": "t.uint8_t"
+            },
+            "physical_contact_o_to_u_delay": {
+                "id": 48,
+                "access": "rw",
+                "type": "t.uint16_t"
+            },
+            "physical_contact_u_to_o_delay": {
+                "id": 49,
+                "access": "rw",
+                "type": "t.uint16_t"
+            },
+            "physical_contact_u_to_o_threshold": {
+                "id": 50,
+                "access": "rw",
+                "type": "t.uint8_t"
+            },
+            "cluster_revision": {
+                "class": "foundation.ZCL_CLUSTER_REVISION_ATTR"
+            },
+            "reporting_status": {
+                "class": "foundation.ZCL_REPORTING_STATUS_ATTR"
+            }
+        }
+    },
+    "leaf_wetness": {
+        "Attribute": {
+            "measured_value": {
+                "id": 0,
+                "access": "rp",
+                "type": "t.uint16_t"
+            },
+            "min_measured_value": {
+                "id": 1,
+                "access": "r",
+                "type": "t.uint16_t"
+            },
+            "max_measured_value": {
+                "id": 2,
+                "access": "r",
+                "type": "t.uint16_t"
+            },
+            "tolerance": {
+                "id": 3,
+                "access": "r",
+                "type": "t.uint16_t"
+            },
+            "cluster_revision": {
+                "class": "foundation.ZCL_CLUSTER_REVISION_ATTR"
+            },
+            "reporting_status": {
+                "class": "foundation.ZCL_REPORTING_STATUS_ATTR"
+            }
+        }
+    },
+    "soil_moisture": {
+        "Attribute": {
+            "measured_value": {
+                "id": 0,
+                "access": "rp",
+                "type": "t.uint16_t"
+            },
+            "min_measured_value": {
+                "id": 1,
+                "access": "r",
+                "type": "t.uint16_t"
+            },
+            "max_measured_value": {
+                "id": 2,
+                "access": "r",
+                "type": "t.uint16_t"
+            },
+            "tolerance": {
+                "id": 3,
+                "access": "r",
+                "type": "t.uint16_t"
+            },
+            "cluster_revision": {
+                "class": "foundation.ZCL_CLUSTER_REVISION_ATTR"
+            },
+            "reporting_status": {
+                "class": "foundation.ZCL_REPORTING_STATUS_ATTR"
+            }
+        }
+    },
+    "ph": {
+        "Attribute": {
+            "measured_value": {
+                "id": 0,
+                "access": "rp",
+                "type": "t.uint16_t"
+            },
+            "min_measured_value": {
+                "id": 1,
+                "access": "r",
+                "type": "t.uint16_t"
+            },
+            "max_measured_value": {
+                "id": 2,
+                "access": "r",
+                "type": "t.uint16_t"
+            },
+            "tolerance": {
+                "id": 3,
+                "access": "r",
+                "type": "t.uint16_t"
+            },
+            "cluster_revision": {
+                "class": "foundation.ZCL_CLUSTER_REVISION_ATTR"
+            },
+            "reporting_status": {
+                "class": "foundation.ZCL_REPORTING_STATUS_ATTR"
+            }
+        }
+    },
+    "electrical_conductivity": {
+        "Attribute": {
+            "measured_value": {
+                "id": 0,
+                "access": "rp",
+                "type": "t.uint16_t"
+            },
+            "min_measured_value": {
+                "id": 1,
+                "access": "r",
+                "type": "t.uint16_t"
+            },
+            "max_measured_value": {
+                "id": 2,
+                "access": "r",
+                "type": "t.uint16_t"
+            },
+            "tolerance": {
+                "id": 3,
+                "access": "r",
+                "type": "t.uint16_t"
+            },
+            "cluster_revision": {
+                "class": "foundation.ZCL_CLUSTER_REVISION_ATTR"
+            },
+            "reporting_status": {
+                "class": "foundation.ZCL_REPORTING_STATUS_ATTR"
+            }
+        }
+    },
+    "wind_speed": {
+        "Attribute": {
+            "measured_value": {
+                "id": 0,
+                "access": "rp",
+                "type": "t.uint16_t"
+            },
+            "min_measured_value": {
+                "id": 1,
+                "access": "r",
+                "type": "t.uint16_t"
+            },
+            "max_measured_value": {
+                "id": 2,
+                "access": "r",
+                "type": "t.Single"
+            },
+            "tolerance": {
+                "id": 3,
+                "access": "r",
+                "type": "t.Single"
+            },
+            "cluster_revision:Final=foundation.ZCL_CLUSTER_REVISION_ATTRreporting_status:Final=foundation.ZCL_REPORTING_STATUS_ATTRclass_ConcentrationMixin:classAttributeDefs(BaseAttributeDefs):measured_value": {
+                "id": 0,
+                "access": "rp",
+                "type": "t.Single"
+            },
+            "#fractionof1(one)min_measured_value": {
+                "id": 1,
+                "access": "r",
+                "type": "t.Single"
+            },
+            "cluster_revision": {
+                "class": "foundation.ZCL_CLUSTER_REVISION_ATTR"
+            },
+            "reporting_status": {
+                "class": "foundation.ZCL_REPORTING_STATUS_ATTR"
+            }
+        }
+    },
+    "light_color": {
+        "Attribute": {
+            "current_hue": {
+                "id": 0,
+                "access": "rp",
+                "type": "t.uint8_t"
+            },
+            "current_saturation": {
+                "id": 1,
+                "access": "rps",
+                "type": "t.uint8_t"
+            },
+            "remaining_time": {
+                "id": 2,
+                "access": "r",
+                "type": "t.uint16_t"
+            },
+            "current_x": {
+                "id": 3,
+                "access": "rps",
+                "type": "t.uint16_t"
+            },
+            "current_y": {
+                "id": 4,
+                "access": "rps",
+                "type": "t.uint16_t"
+            },
+            "drift_compensation": {
+                "id": 5,
+                "access": "r",
+                "type": "DriftCompensation"
+            },
+            "compensation_text": {
+                "id": 6,
+                "access": "r",
+                "type": "t.CharacterString"
+            },
+            "color_temperature": {
+                "id": 7,
+                "access": "rps",
+                "type": "t.uint16_t"
+            },
+            "color_mode": {
+                "id": 8,
+                "access": "r",
+                "type": "ColorMode"
+            },
+            "options": {
+                "id": 15,
+                "access": "rw",
+                "type": "Options"
+            },
+            "num_primaries": {
+                "id": 16,
+                "access": "r",
+                "type": "t.uint8_t"
+            },
+            "primary1_x": {
+                "id": 17,
+                "access": "r",
+                "type": "t.uint16_t"
+            },
+            "primary1_y": {
+                "id": 18,
+                "access": "r",
+                "type": "t.uint16_t"
+            },
+            "primary1_intensity": {
+                "id": 19,
+                "access": "r",
+                "type": "t.uint8_t"
+            },
+            "primary2_x": {
+                "id": 21,
+                "access": "r",
+                "type": "t.uint16_t"
+            },
+            "primary2_y": {
+                "id": 22,
+                "access": "r",
+                "type": "t.uint16_t"
+            },
+            "primary2_intensity": {
+                "id": 23,
+                "access": "r",
+                "type": "t.uint8_t"
+            },
+            "primary3_x": {
+                "id": 25,
+                "access": "r",
+                "type": "t.uint16_t"
+            },
+            "primary3_y": {
+                "id": 26,
+                "access": "r",
+                "type": "t.uint16_t"
+            },
+            "primary3_intensity": {
+                "id": 27,
+                "access": "r",
+                "type": "t.uint8_t"
+            },
+            "primary4_x": {
+                "id": 32,
+                "access": "r",
+                "type": "t.uint16_t"
+            },
+            "primary4_y": {
+                "id": 33,
+                "access": "r",
+                "type": "t.uint16_t"
+            },
+            "primary4_intensity": {
+                "id": 34,
+                "access": "r",
+                "type": "t.uint8_t"
+            },
+            "primary5_x": {
+                "id": 36,
+                "access": "r",
+                "type": "t.uint16_t"
+            },
+            "primary5_y": {
+                "id": 37,
+                "access": "r",
+                "type": "t.uint16_t"
+            },
+            "primary5_intensity": {
+                "id": 38,
+                "access": "r",
+                "type": "t.uint8_t"
+            },
+            "primary6_x": {
+                "id": 40,
+                "access": "r",
+                "type": "t.uint16_t"
+            },
+            "primary6_y": {
+                "id": 41,
+                "access": "r",
+                "type": "t.uint16_t"
+            },
+            "primary6_intensity": {
+                "id": 42,
+                "access": "r",
+                "type": "t.uint8_t"
+            },
+            "white_point_x": {
+                "id": 48,
+                "access": "r",
+                "type": "t.uint16_t"
+            },
+            "white_point_y": {
+                "id": 49,
+                "access": "r",
+                "type": "t.uint16_t"
+            },
+            "color_point_r_x": {
+                "id": 50,
+                "access": "r",
+                "type": "t.uint16_t"
+            },
+            "color_point_r_y": {
+                "id": 51,
+                "access": "r",
+                "type": "t.uint16_t"
+            },
+            "color_point_r_intensity": {
+                "id": 52,
+                "access": "r",
+                "type": "t.uint8_t"
+            },
+            "color_point_g_x": {
+                "id": 54,
+                "access": "r",
+                "type": "t.uint16_t"
+            },
+            "color_point_g_y": {
+                "id": 55,
+                "access": "r",
+                "type": "t.uint16_t"
+            },
+            "color_point_g_intensity": {
+                "id": 56,
+                "access": "r",
+                "type": "t.uint8_t"
+            },
+            "color_point_b_x": {
+                "id": 58,
+                "access": "r",
+                "type": "t.uint16_t"
+            },
+            "color_point_b_y": {
+                "id": 59,
+                "access": "r",
+                "type": "t.uint16_t"
+            },
+            "color_point_b_intensity": {
+                "id": 60,
+                "access": "r",
+                "type": "t.uint8_t"
+            },
+            "enhanced_current_hue": {
+                "id": 16384,
+                "access": "rs",
+                "type": "t.uint16_t"
+            },
+            "enhanced_color_mode": {
+                "id": 16385,
+                "access": "r",
+                "type": "EnhancedColorMode"
+            },
+            "color_loop_active": {
+                "id": 16386,
+                "access": "rs",
+                "type": "t.uint8_t"
+            },
+            "color_loop_direction": {
+                "id": 16387,
+                "access": "rs",
+                "type": "t.uint8_t"
+            },
+            "color_loop_time": {
+                "id": 16388,
+                "access": "rs",
+                "type": "t.uint16_t"
+            },
+            "color_loop_start_enhanced_hue": {
+                "id": 16389,
+                "access": "r",
+                "type": "t.uint16_t"
+            },
+            "color_loop_stored_enhanced_hue": {
+                "id": 16390,
+                "access": "r",
+                "type": "t.uint16_t"
+            },
+            "color_capabilities": {
+                "id": 16394,
+                "access": "r",
+                "type": "ColorCapabilities"
+            },
+            "color_temp_physical_min": {
+                "id": 16395,
+                "access": "r",
+                "type": "t.uint16_t"
+            },
+            "color_temp_physical_max": {
+                "id": 16396,
+                "access": "r",
+                "type": "t.uint16_t"
+            },
+            "couple_color_temp_to_level_min": {
+                "id": 16397,
+                "access": "r",
+                "type": "t.uint16_t"
+            },
+            "start_up_color_temperature": {
+                "id": 16400,
+                "access": "rw",
+                "type": "t.uint16_t"
+            },
+            "cluster_revision": {
+                "class": "foundation.ZCL_CLUSTER_REVISION_ATTR"
+            },
+            "reporting_status": {
+                "class": "foundation.ZCL_REPORTING_STATUS_ATTR"
+            }
+        }
+    },
+    "light_ballast": {
+        "Attribute": {
+            "physical_min_level": {
+                "id": 0,
+                "access": "r",
+                "type": "t.uint8_t"
+            },
+            "physical_max_level": {
+                "id": 1,
+                "access": "r",
+                "type": "t.uint8_t"
+            },
+            "ballast_status": {
+                "id": 2,
+                "access": "r",
+                "type": "BallastStatus"
+            },
+            "min_level": {
+                "id": 16,
+                "access": "rw",
+                "type": "t.uint8_t"
+            },
+            "max_level": {
+                "id": 17,
+                "access": "rw",
+                "type": "t.uint8_t"
+            },
+            "power_on_level": {
+                "id": 18,
+                "access": "rw",
+                "type": "t.uint8_t"
+            },
+            "power_on_fade_time": {
+                "id": 19,
+                "access": "rw",
+                "type": "t.uint16_t"
+            },
+            "intrinsic_ballast_factor": {
+                "id": 20,
+                "access": "rw",
+                "type": "t.uint8_t"
+            },
+            "ballast_factor_adjustment": {
+                "id": 21,
+                "access": "rw",
+                "type": "t.uint8_t"
+            },
+            "lamp_quantity": {
+                "id": 32,
+                "access": "r",
+                "type": "t.uint8_t"
+            },
+            "lamp_type": {
+                "id": 48,
+                "access": "rw",
+                "type": "t.LimitedCharString(16)"
+            },
+            "lamp_manufacturer": {
+                "id": 49,
+                "access": "rw",
+                "type": "t.LimitedCharString(16)"
+            },
+            "lamp_rated_hours": {
+                "id": 50,
+                "access": "rw",
+                "type": "t.uint24_t"
+            },
+            "lamp_burn_hours": {
+                "id": 51,
+                "access": "rw",
+                "type": "t.uint24_t"
+            },
+            "lamp_alarm_mode": {
+                "id": 52,
+                "access": "rw",
+                "type": "LampAlarmMode"
+            },
+            "lamp_burn_hours_trip_point": {
+                "id": 53,
+                "access": "rw",
+                "type": "t.uint24_t"
+            },
+            "cluster_revision": {
+                "class": "foundation.ZCL_CLUSTER_REVISION_ATTR"
+            },
+            "reporting_status": {
+                "class": "foundation.ZCL_REPORTING_STATUS_ATTR"
+            }
+        }
+    }
+}

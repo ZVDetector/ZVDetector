@@ -1,0 +1,11 @@
+{
+  "Color": {
+    "cluster_id": "0x0300",
+    "message": ["MoveToHue", "MoveHue", "StepHue", "MoveToSaturation", "MoveSaturation", "StepSaturation", "MoveToHueAndSaturation", "MoveToColour", "MoveColour", "StepColour", "EnhancedMoveToHue", "EnhancedMoveHue", "EnhancedStepHue", "EnhancedMoveToHueAndSaturation", "ColourLoopSet", "StopMoveStep", "MoveToColourTemperature", "MoveColourTemperature", "StepColourTemperature"]
+  },
+  "Ballast": {
+    "cluster_id": "0x0301",
+    "message": []
+  }
+
+}

@@ -1,0 +1,140 @@
+class IasAce(Cluster):
+    """IAS Ancillary Control Equipment cluster."""
+
+    AlarmStatus: Final = AlarmStatus
+    ArmMode: Final = ArmMode
+    ArmNotification: Final = ArmNotification
+    AudibleNotification: Final = AudibleNotification
+    BypassResponse: Final = BypassResponse
+    PanelStatus: Final = PanelStatus
+    ZoneType: Final = IasZone.ZoneType
+    ZoneStatus: Final = IasZone.ZoneStatus
+    ZoneStatusRsp: Final = ZoneStatusRsp
+
+    cluster_id: Final[t.uint16_t] = 0x0501
+    name: Final = "IAS Ancillary Control Equipment"
+    ep_attribute: Final = "ias_ace"
+
+    class AttributeDefs(BaseAttributeDefs):
+        cluster_revision: Final = foundation.ZCL_CLUSTER_REVISION_ATTR
+        reporting_status: Final = foundation.ZCL_REPORTING_STATUS_ATTR
+
+    class ServerCommandDefs(BaseCommandDefs):
+        arm: Final = ZCLCommandDef(
+            id=0x00,
+            schema={
+                "arm_mode": ArmMode,
+                "arm_disarm_code": t.CharacterString,
+                "zone_id": t.uint8_t,
+            },
+            direction=Direction.Client_to_Server,
+        )
+        bypass: Final = ZCLCommandDef(
+            id=0x01,
+            schema={
+                "zones_ids": t.LVList[t.uint8_t],
+                "arm_disarm_code": t.CharacterString,
+            },
+            direction=Direction.Client_to_Server,
+        )
+        emergency: Final = ZCLCommandDef(
+            id=0x02, schema={}, direction=Direction.Client_to_Server
+        )
+        fire: Final = ZCLCommandDef(
+            id=0x03, schema={}, direction=Direction.Client_to_Server
+        )
+        panic: Final = ZCLCommandDef(
+            id=0x04, schema={}, direction=Direction.Client_to_Server
+        )
+        get_zone_id_map: Final = ZCLCommandDef(
+            id=0x05, schema={}, direction=Direction.Client_to_Server
+        )
+        get_zone_info: Final = ZCLCommandDef(
+            id=0x06, schema={"zone_id": t.uint8_t}, direction=Direction.Client_to_Server
+        )
+        get_panel_status: Final = ZCLCommandDef(
+            id=0x07, schema={}, direction=Direction.Client_to_Server
+        )
+        get_bypassed_zone_list: Final = ZCLCommandDef(
+            id=0x08, schema={}, direction=Direction.Client_to_Server
+        )
+        get_zone_status: Final = ZCLCommandDef(
+            id=0x09,
+            schema={
+                "starting_zone_id": t.uint8_t,
+                "max_num_zone_ids": t.uint8_t,
+                "zone_status_mask_flag": t.Bool,
+                "zone_status_mask": ZoneStatus,
+            },
+            direction=Direction.Client_to_Server,
+        )
+
+    class ClientCommandDefs(BaseCommandDefs):
+        arm_response: Final = ZCLCommandDef(
+            id=0x00,
+            schema={"arm_notification": ArmNotification},
+            direction=Direction.Server_to_Client,
+        )
+        get_zone_id_map_response: Final = ZCLCommandDef(
+            id=0x01,
+            schema={"zone_id_map_sections": t.List[t.bitmap16]},
+            direction=Direction.Server_to_Client,
+        )
+        get_zone_info_response: Final = ZCLCommandDef(
+            id=0x02,
+            schema={
+                "zone_id": t.uint8_t,
+                "zone_type": ZoneType,
+                "ieee": t.EUI64,
+                "zone_label": t.CharacterString,
+            },
+            direction=Direction.Server_to_Client,
+        )
+        zone_status_changed: Final = ZCLCommandDef(
+            id=0x03,
+            schema={
+                "zone_id": t.uint8_t,
+                "zone_status": ZoneStatus,
+                "audible_notification": AudibleNotification,
+                "zone_label": t.CharacterString,
+            },
+            direction=Direction.Client_to_Server,
+        )
+        panel_status_changed: Final = ZCLCommandDef(
+            id=0x04,
+            schema={
+                "panel_status": PanelStatus,
+                "seconds_remaining": t.uint8_t,
+                "audible_notification": AudibleNotification,
+                "alarm_status": AlarmStatus,
+            },
+            direction=Direction.Client_to_Server,
+        )
+        panel_status_response: Final = ZCLCommandDef(
+            id=0x05,
+            schema={
+                "panel_status": PanelStatus,
+                "seconds_remaining": t.uint8_t,
+                "audible_notification": AudibleNotification,
+                "alarm_status": AlarmStatus,
+            },
+            direction=Direction.Server_to_Client,
+        )
+        set_bypassed_zone_list: Final = ZCLCommandDef(
+            id=0x06,
+            schema={"zone_ids": t.LVList[t.uint8_t]},
+            direction=Direction.Client_to_Server,
+        )
+        bypass_response: Final = ZCLCommandDef(
+            id=0x07,
+            schema={"bypass_results": t.LVList[BypassResponse]},
+            direction=Direction.Server_to_Client,
+        )
+        get_zone_status_response: Final = ZCLCommandDef(
+            id=0x08,
+            schema={
+                "zone_status_complete": t.Bool,
+                "zone_statuses": t.LVList[ZoneStatusRsp],
+            },
+            direction=Direction.Server_to_Client,
+        )

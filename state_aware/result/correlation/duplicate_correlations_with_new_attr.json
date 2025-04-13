@@ -1,0 +1,233 @@
+{
+    "hidden_corr250": {
+        "messages": [
+            "transport_key",
+            "verify_key"
+        ],
+        "layers": [
+            "APS",
+            "APS"
+        ],
+        "attribute": "key_descriptor"
+    },
+    "hidden_corr251": {
+        "messages": [
+            "transport_key",
+            "confirm_key"
+        ],
+        "layers": [
+            "APS",
+            "APS"
+        ],
+        "attribute": "key_descriptor"
+    },
+    "hidden_corr607": {
+        "messages": [
+            "user_desc_set",
+            "user_desc_rsp"
+        ],
+        "layers": [
+            "ZDP",
+            "ZDP"
+        ],
+        "attribute": "user_description"
+    },
+    "hidden_corr677": {
+        "messages": [
+            "active_ep_store_req",
+            "active_ep_rsp"
+        ],
+        "layers": [
+            "ZDP",
+            "ZDP"
+        ],
+        "attribute": "active_eplist"
+    },
+    "hidden_corr679": {
+        "messages": [
+            "active_ep_store_req",
+            "extended_active_ep_rsp"
+        ],
+        "layers": [
+            "ZDP",
+            "ZDP"
+        ],
+        "attribute": "active_eplist"
+    },
+    "hidden_corr681": {
+        "messages": [
+            "simple_desc_store_req",
+            "simple_desc_rsp"
+        ],
+        "layers": [
+            "ZDP",
+            "ZDP"
+        ],
+        "attribute": "simple_descriptor"
+    },
+    "hidden_corr814": {
+        "messages": [
+            "bind_req",
+            "unbind_req"
+        ],
+        "layers": [
+            "ZDP",
+            "ZDP"
+        ],
+        "attribute": "src_address, src_endp, cluster_id, dst_addr_mode, dst_address, dst_endp"
+    },
+    "hidden_corr815": {
+        "messages": [
+            "bind_req",
+            "store_bkup_bind_entry_req"
+        ],
+        "layers": [
+            "ZDP",
+            "ZDP"
+        ],
+        "attribute": "src_address, src_endpoint, cluster_id, dst_addr_mode, dst_address, dst_endp"
+    },
+    "hidden_corr816": {
+        "messages": [
+            "bind_req",
+            "remove_bkup_bind_entry_req"
+        ],
+        "layers": [
+            "ZDP",
+            "ZDP"
+        ],
+        "attribute": "src_address, src_endpoint, cluster_id, dst_addr_mode, dst_address, dst_endp"
+    },
+    "hidden_corr823": {
+        "messages": [
+            "unbind_req",
+            "store_bkup_bind_entry_req"
+        ],
+        "layers": [
+            "ZDP",
+            "ZDP"
+        ],
+        "attribute": "src_address, src_endpoint, cluster_id, dst_addr_mode, dst_address, dst_endp"
+    },
+    "hidden_corr824": {
+        "messages": [
+            "unbind_req",
+            "remove_bkup_bind_entry_req"
+        ],
+        "layers": [
+            "ZDP",
+            "ZDP"
+        ],
+        "attribute": "src_address, src_endpoint, cluster_id, dst_addr_mode, dst_address, dst_endp"
+    },
+    "hidden_corr852": {
+        "messages": [
+            "store_bkup_bind_entry_req",
+            "remove_bkup_bind_entry_req"
+        ],
+        "layers": [
+            "ZDP",
+            "ZDP"
+        ],
+        "attribute": "src_address, src_endpoint, cluster_id, dst_addr_mode, dst_address, dst_endp"
+    },
+    "hidden_corr868": {
+        "messages": [
+            "backup_bind_table_req",
+            "bind_register_rsp"
+        ],
+        "layers": [
+            "ZDP",
+            "ZDP"
+        ],
+        "attribute": "binding_table_list"
+    },
+    "hidden_corr870": {
+        "messages": [
+            "backup_bind_table_req",
+            "recover_bind_table_rsp"
+        ],
+        "layers": [
+            "ZDP",
+            "ZDP"
+        ],
+        "attribute": "binding_table_list"
+    },
+    "hidden_corr892": {
+        "messages": [
+            "backup_source_bind_req",
+            "recover_source_bind_rsp"
+        ],
+        "layers": [
+            "ZDP",
+            "ZDP"
+        ],
+        "attribute": "source_table_entries"
+    },
+    "hidden_corr911": {
+        "messages": [
+            "mgmt_nwk_disc_req",
+            "mgmt_nwk_update_req"
+        ],
+        "layers": [
+            "ZDP",
+            "ZDP"
+        ],
+        "attribute": "scan_channels, scan_duration"
+    },
+    "hidden_corr1040": {
+        "messages": [
+            "nwk_addr_rsp",
+            "ieee_addr_rsp"
+        ],
+        "layers": [
+            "ZDP",
+            "ZDP"
+        ],
+        "attribute": "nwkaddr_remote_dev"
+    },
+    "hidden_corr1125": {
+        "messages": [
+            "active_ep_store_req",
+            "active_ep_rsp"
+        ],
+        "layers": [
+            "ZDP",
+            "ZDP"
+        ],
+        "attribute": "active_eplist"
+    },
+    "hidden_corr1135": {
+        "messages": [
+            "active_ep_rsp",
+            "extended_active_ep_rsp"
+        ],
+        "layers": [
+            "ZDP",
+            "ZDP"
+        ],
+        "attribute": "active_eplist"
+    },
+    "hidden_corr1674": {
+        "messages": [
+            "bind_register_rsp",
+            "recover_bind_table_rsp"
+        ],
+        "layers": [
+            "ZDP",
+            "ZDP"
+        ],
+        "attribute": "binding_table_entries"
+    },
+    "hidden_corr1675": {
+        "messages": [
+            "bind_register_rsp",
+            "mgmt_bind_rsp"
+        ],
+        "layers": [
+            "ZDP",
+            "ZDP"
+        ],
+        "attribute": "binding_table_entries"
+    }
+}

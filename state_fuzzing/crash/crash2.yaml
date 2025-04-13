@@ -1,0 +1,34 @@
+Timestamp:
+  - "20240525_11:37:19:068"
+Device:
+  - "Tuya Multi-Gang Switch"
+IEEE:
+  - "a4:c1:38:2d:59:06:25:e1"
+Nwk_Address:
+  - "0x1C92"
+State:
+  - "Any"
+Message_Relationship:
+  - "Single"
+Fuzzing_Messages:
+  - {
+    "discover_commands_generated_rsp": {
+      "id": 20,
+      "direction_header": 1,
+      "schema": {
+        "discovery_complete": "t.Bool",
+        "command_ids": {
+          "t.List": "t.uint8_t"
+        }
+      }
+    }
+  }
+Layers:
+  - ["ZCL"]
+Mutation_Strategy:
+  - F-1-2
+  - {
+    "discover_commands_generated_rsp": "Remove field discovery_complete"
+  }
+Log:
+  - "[Device 2] Exploit: DiscoverCommandGeneratedResponse | Mutation: No 'discovery_complete' field | Result: Device Crashed | "

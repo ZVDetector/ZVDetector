@@ -1,0 +1,23 @@
+{
+    "mac_beacon_frame": {
+        "mac header": {
+            "frame control": "uint16",
+            "sequence number": "uint8",
+            "addressing fields": {
+                "destination pan identifier": "uint16 (optional)",
+                "destination address": "uint16 or uint64 (optional)",
+                "source pan identifier": "uint16 (optional)",
+                "source address": "uint16 or uint64 (optional)"
+            }
+        },
+        "mac payload": {
+            "superframe specification": "uint16",
+            "gts fields": "variable",
+            "pending address fields": "variable",
+            "beacon payload": "variable"
+        },
+        "mfr": {
+            "fcs": "uint16"
+        }
+    }
+}

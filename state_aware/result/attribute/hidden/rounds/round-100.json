@@ -1,0 +1,484 @@
+{
+    "attr0": {
+        "message": "association_request",
+        "attributes": []
+    },
+    "attr1": {
+        "message": "association_response",
+        "attributes": [
+            "short_address",
+            "association_status"
+        ]
+    },
+    "attr2": {
+        "message": "disassociation_notification",
+        "attributes": []
+    },
+    "attr3": {
+        "message": "data_request",
+        "attributes": []
+    },
+    "attr4": {
+        "message": "panidconflict_notification",
+        "attributes": []
+    },
+    "attr5": {
+        "message": "orphan_notification",
+        "attributes": []
+    },
+    "attr6": {
+        "message": "beacon_request",
+        "attributes": []
+    },
+    "attr7": {
+        "message": "coordinator_realignment",
+        "attributes": []
+    },
+    "attr8": {
+        "message": "gtsrequest",
+        "attributes": []
+    },
+    "attr9": {
+        "message": "route_request",
+        "attributes": []
+    },
+    "attr10": {
+        "message": "route_reply",
+        "attributes": []
+    },
+    "attr11": {
+        "message": "network_status",
+        "attributes": []
+    },
+    "attr12": {
+        "message": "leave",
+        "attributes": []
+    },
+    "attr13": {
+        "message": "route_record",
+        "attributes": [
+            "relay_count",
+            "relay_list"
+        ]
+    },
+    "attr14": {
+        "message": "rejoin_request",
+        "attributes": []
+    },
+    "attr15": {
+        "message": "rejoin_response",
+        "attributes": [
+            "network_address",
+            "rejoin_status"
+        ]
+    },
+    "attr16": {
+        "message": "link_status",
+        "attributes": []
+    },
+    "attr17": {
+        "message": "network_report",
+        "attributes": []
+    },
+    "attr18": {
+        "message": "network_update",
+        "attributes": []
+    },
+    "attr19": {
+        "message": "end_device_timeout_request",
+        "attributes": []
+    },
+    "attr20": {
+        "message": "end_device_timeout_response",
+        "attributes": []
+    },
+    "attr21": {
+        "message": "transport_key",
+        "attributes": []
+    },
+    "attr22": {
+        "message": "update_device",
+        "attributes": [
+            "device_address",
+            "device_short_address",
+            "status"
+        ]
+    },
+    "attr23": {
+        "message": "remove_device",
+        "attributes": []
+    },
+    "attr24": {
+        "message": "request_key",
+        "attributes": []
+    },
+    "attr25": {
+        "message": "switch_key",
+        "attributes": []
+    },
+    "attr26": {
+        "message": "tunnel",
+        "attributes": []
+    },
+    "attr27": {
+        "message": "verify_key",
+        "attributes": []
+    },
+    "attr28": {
+        "message": "confirm_key",
+        "attributes": []
+    },
+    "attr29": {
+        "message": "relay_message_downstream",
+        "attributes": []
+    },
+    "attr30": {
+        "message": "relay_message_upstream",
+        "attributes": []
+    },
+    "attr31": {
+        "message": "nwk_addr_req",
+        "attributes": []
+    },
+    "attr32": {
+        "message": "ieee_addr_req",
+        "attributes": []
+    },
+    "attr33": {
+        "message": "node_desc_req",
+        "attributes": []
+    },
+    "attr34": {
+        "message": "power_desc_req",
+        "attributes": []
+    },
+    "attr35": {
+        "message": "simple_desc_req",
+        "attributes": []
+    },
+    "attr36": {
+        "message": "active_ep_req",
+        "attributes": []
+    },
+    "attr37": {
+        "message": "match_desc_req",
+        "attributes": []
+    },
+    "attr38": {
+        "message": "complex_desc_req",
+        "attributes": []
+    },
+    "attr39": {
+        "message": "user_desc_req",
+        "attributes": []
+    },
+    "attr40": {
+        "message": "discovery_cache_req",
+        "attributes": []
+    },
+    "attr41": {
+        "message": "device_annce",
+        "attributes": [
+            "nwkaddr",
+            "ieeeaddr",
+            "capability"
+        ]
+    },
+    "attr42": {
+        "message": "parent_annce",
+        "attributes": []
+    },
+    "attr43": {
+        "message": "user_desc_set",
+        "attributes": []
+    },
+    "attr44": {
+        "message": "system_server_discovery_req",
+        "attributes": []
+    },
+    "attr45": {
+        "message": "discovery_store_req",
+        "attributes": [
+            "nwkaddr",
+            "ieeeaddr",
+            "node_desc_size",
+            "power_desc_size",
+            "active_epsize",
+            "simple_desc_count",
+            "simple_desc_size_list"
+        ]
+    },
+    "attr46": {
+        "message": "node_desc_store_req",
+        "attributes": []
+    },
+    "attr47": {
+        "message": "power_desc_store_req",
+        "attributes": []
+    },
+    "attr48": {
+        "message": "active_ep_store_req",
+        "attributes": [
+            "active_epcount",
+            "active_eplist"
+        ]
+    },
+    "attr49": {
+        "message": "simple_desc_store_req",
+        "attributes": []
+    },
+    "attr50": {
+        "message": "remove_node_cache_req",
+        "attributes": []
+    },
+    "attr51": {
+        "message": "find_node_cache_req",
+        "attributes": []
+    },
+    "attr52": {
+        "message": "extended_simple_desc_req",
+        "attributes": []
+    },
+    "attr53": {
+        "message": "extended_active_ep_req",
+        "attributes": []
+    },
+    "attr54": {
+        "message": "end_device_bind_req",
+        "attributes": [
+            "binding_target",
+            "src_ieeeaddress",
+            "src_endpoint",
+            "profile_id",
+            "num_in_clusters",
+            "in_cluster_list",
+            "num_out_clusters",
+            "out_cluster_list"
+        ]
+    },
+    "attr55": {
+        "message": "bind_req",
+        "attributes": []
+    },
+    "attr56": {
+        "message": "unbind_req",
+        "attributes": []
+    },
+    "attr57": {
+        "message": "bind_register_req",
+        "attributes": []
+    },
+    "attr58": {
+        "message": "replace_device_req",
+        "attributes": []
+    },
+    "attr59": {
+        "message": "store_bkup_bind_entry_req",
+        "attributes": []
+    },
+    "attr60": {
+        "message": "remove_bkup_bind_entry_req",
+        "attributes": []
+    },
+    "attr61": {
+        "message": "backup_bind_table_req",
+        "attributes": [
+            "binding_table_entries",
+            "start_index",
+            "binding_table_list_count",
+            "binding_table_list"
+        ]
+    },
+    "attr62": {
+        "message": "recover_bind_table_req",
+        "attributes": []
+    },
+    "attr63": {
+        "message": "backup_source_bind_req",
+        "attributes": [
+            "source_table_entries",
+            "start_index",
+            "source_table_list_count",
+            "source_table_list"
+        ]
+    },
+    "attr64": {
+        "message": "recover_source_bind_req",
+        "attributes": []
+    },
+    "attr65": {
+        "message": "mgmt_nwk_disc_req",
+        "attributes": []
+    },
+    "attr66": {
+        "message": "mgmt_lqi_req",
+        "attributes": []
+    },
+    "attr67": {
+        "message": "mgmt_rtg_req",
+        "attributes": []
+    },
+    "attr68": {
+        "message": "mgmt_bind_req",
+        "attributes": []
+    },
+    "attr69": {
+        "message": "mgmt_leave_req",
+        "attributes": []
+    },
+    "attr70": {
+        "message": "mgmt_direct_join_req",
+        "attributes": []
+    },
+    "attr71": {
+        "message": "mgmt_permit_joining_req",
+        "attributes": []
+    },
+    "attr72": {
+        "message": "mgmt_cache_req",
+        "attributes": []
+    },
+    "attr73": {
+        "message": "mgmt_nwk_update_req",
+        "attributes": [
+            "scan_channels",
+            "scan_duration",
+            "scan_count",
+            "nwk_update_id",
+            "nwk_manager_addr"
+        ]
+    },
+    "attr74": {
+        "message": "nwk_addr_rsp",
+        "attributes": [
+            "nwkaddr_remote_dev",
+            "num_assoc_dev",
+            "nwkaddr_assoc_dev_list"
+        ]
+    },
+    "attr75": {
+        "message": "ieee_addr_rsp",
+        "attributes": [
+            "num_assoc_dev",
+            "nwkaddr_assoc_dev_list"
+        ]
+    },
+    "attr76": {
+        "message": "node_desc_rsp",
+        "attributes": []
+    },
+    "attr77": {
+        "message": "power_desc_rsp",
+        "attributes": []
+    },
+    "attr78": {
+        "message": "simple_desc_rsp",
+        "attributes": []
+    },
+    "attr79": {
+        "message": "active_ep_rsp",
+        "attributes": [
+            "active_epcount",
+            "active_eplist"
+        ]
+    },
+    "attr80": {
+        "message": "match_desc_rsp",
+        "attributes": [
+            "status",
+            "nwkaddr_of_interest",
+            "match_length",
+            "match_list"
+        ]
+    },
+    "attr81": {
+        "message": "complex_desc_rsp",
+        "attributes": []
+    },
+    "attr82": {
+        "message": "user_desc_rsp",
+        "attributes": []
+    },
+    "attr83": {
+        "message": "system_server_discovery_rsp",
+        "attributes": []
+    },
+    "attr84": {
+        "message": "user_desc_conf",
+        "attributes": []
+    },
+    "attr85": {
+        "message": "discovery_cache_rsp",
+        "attributes": []
+    },
+    "attr86": {
+        "message": "discovery_store_rsp",
+        "attributes": []
+    },
+    "attr87": {
+        "message": "node_desc_store_rsp",
+        "attributes": []
+    },
+    "attr88": {
+        "message": "power_desc_store_rsp",
+        "attributes": []
+    },
+    "attr89": {
+        "message": "active_ep_store_rsp",
+        "attributes": []
+    },
+    "attr90": {
+        "message": "simple_desc_store_rsp",
+        "attributes": []
+    },
+    "attr91": {
+        "message": "remove_node_cache_rsp",
+        "attributes": []
+    },
+    "attr92": {
+        "message": "find_node_cache_rsp",
+        "attributes": []
+    },
+    "attr93": {
+        "message": "extended_simple_desc_rsp",
+        "attributes": [
+            "app_input_cluster_count",
+            "app_output_cluster_count",
+            "app_cluster_list"
+        ]
+    },
+    "attr94": {
+        "message": "extended_active_ep_rsp",
+        "attributes": [
+            "active_epcount",
+            "active_eplist"
+        ]
+    },
+    "attr95": {
+        "message": "parent_annce_rsp",
+        "attributes": [
+            "number_of_children",
+            "child_info"
+        ]
+    },
+    "attr96": {
+        "message": "end_device_bind_rsp",
+        "attributes": []
+    },
+    "attr97": {
+        "message": "bind_rsp",
+        "attributes": []
+    },
+    "attr98": {
+        "message": "unbind_rsp",
+        "attributes": []
+    },
+    "attr99": {
+        "message": "bind_register_rsp",
+        "attributes": [
+            "binding_table_entries",
+            "binding_table_list_count",
+            "binding_table_list"
+        ]
+    }
+}

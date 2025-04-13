@@ -1,0 +1,79 @@
+{
+    "TransportKeyCommand": {
+        "APSCommandIdentifier": "uint8",
+        "StandardKeyType": "uint8",
+        "KeyDescriptor": {
+            "TrustCenterLinkKeyDescriptorField": {
+                "Key": "uint128",
+                "DestinationAddress": "uint64",
+                "SourceAddress": "uint64",
+                "TLVs": "byte[]"
+            },
+            "NetworkKeyDescriptorField": {
+                "Key": "uint128",
+                "SequenceNumber": "uint8",
+                "DestinationAddress": "uint64",
+                "SourceAddress": "uint64"
+            },
+            "ApplicationLinkKeyDescriptorField": {
+                "Key": "uint128",
+                "PartnerAddress": "uint64",
+                "InitiatorFlag": "uint8",
+                "TLVs": "byte[]"
+            }
+        }
+    },
+    "UpdateDeviceCommand": {
+        "APSCommandIdentifier": "uint8",
+        "DeviceAddress": "uint64",
+        "DeviceShortAddress": "uint16",
+        "Status": "uint8"
+    },
+    "RemoveDeviceCommand": {
+        "APSCommandIdentifier": "uint8",
+        "TargetAddress": "uint64"
+    },
+    "RequestKeyCommand": {
+        "APSCommandIdentifier": "uint8",
+        "RequestKeyType": "uint8",
+        "PartnerAddress": "uint64 | None"
+    },
+    "SwitchKeyCommand": {
+        "APSCommandIdentifier": "uint8",
+        "SequenceNumber": "uint8"
+    },
+    "TunnelCommand": {
+        "APSCommandIdentifier": "uint8",
+        "DestinationAddress": "uint64",
+        "TunneledAPSHeader": "uint16",
+        "TunneledAuxiliaryFrame": "byte[13]",
+        "TunneledCommand": "byte[]",
+        "TunneledAPSMIC": "uint32"
+    },
+    "VerifyKeyCommand": {
+        "APSCommandIdentifier": "uint8",
+        "StandardKeyType": "uint8",
+        "SourceAddress": "uint64",
+        "InitiatorVerifyKeyHashValue": "uint128"
+    },
+    "ConfirmKeyCommand": {
+        "APSCommandIdentifier": "uint8",
+        "Status": "uint8",
+        "StandardKeyType": "uint8",
+        "DestinationAddress": "uint64"
+    },
+    "RelayMessageDownstreamCommand": {
+        "APSCommandIdentifier": "uint8",
+        "TLVs": {
+            "DestinationEUI64": "uint64",
+            "MessageToBeRelayed": "byte[]"
+        }
+    },
+    "RelayMessageUpstreamCommand": {
+        "APSCommandIdentifier": "uint8",
+        "TLVs": {
+            "SourceEUI64": "uint64",
+            "MessageToBeRelayed": "byte[]"
+        }
+    }
+}

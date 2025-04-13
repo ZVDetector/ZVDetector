@@ -1,0 +1,58 @@
+| Byte | Content              | Description               |
+|------|----------------------|---------------------------|
+| 0    | Command Class (0x20) | Basic Command Class       |
+| 1    | Command ID (0x01)    | Basic Set Command         |
+| 2    | Value                | 0x00-0xFF (Current Value) |
+
+| Byte | Content              | Description           |
+|------|----------------------|-----------------------|
+| 0    | Command Class (0x20) | Basic Command Class   |
+| 1    | Command ID (0x02)    | Basic Get Command     |
+
+| Byte | Content              | Description               |
+|------|----------------------|---------------------------|
+| 0    | Command Class (0x20) | Basic Command Class       |
+| 1    | Command ID (0x03)    | Basic Report Command      |
+| 2    | Value                | 0x00-0xFF (Current Value) |
+
+| Byte | Content              | Description                 |
+|------|----------------------|-----------------------------|
+| 0    | Command Class (0x25) | Switch Binary Command Class |
+| 1    | Command ID (0x01)    | Switch Binary Set Command   |
+| 2    | Value                | 0x00 (Off)/ 0xFF (On)       |
+
+| Byte | Content              | Description                    |
+|------|----------------------|--------------------------------|
+| 0    | Command Class (0x25) | Switch Binary Command Class    |
+| 1    | Command ID (0x02)    | Switch Binary Get Command      |
+
+| Byte | Content              | Description                     |
+|------|----------------------|---------------------------------|
+| 0    | Command Class (0x25) | Switch Binary Command Class     |
+| 1    | Command ID (0x03)    | Switch Binary Report Command    |
+| 2    | Value                | 0x00 (Off)/ 0xFF (On)/ Reserved |
+
+| Byte | Content              | Description                        |
+|------|----------------------|------------------------------------|
+| 0    | Command Class (0x26) | Switch Multilevel Command Class    |
+| 1    | Command ID (0x01)    | Switch Multilevel Set Command      |
+| 2    | Value                | 0x00-0x63 (Light Level)/ 0xFF (On) |
+
+| Byte | Content              | Description                        |
+|------|----------------------|------------------------------------|
+| 0    | Command Class (0x26) | Switch Multilevel Command Class    |
+| 1    | Command ID (0x02)    | Switch Multilevel Get Command      |
+
+| Byte | Content              | Description                         |
+|------|----------------------|-------------------------------------|
+| 0    | Command Class (0x26) | Switch Multilevel Command Class     |
+| 1    | Command ID (0x03)    | Switch Multilevel Report Command    |
+| 2    | Value                | 0x00-0x63 (Light Level) / 0xFF (On) |
+
+| Byte | Content              | Description                            |
+|------|----------------------|----------------------------------------|
+| 0    | Command Class (0x71) | Notification Command Class             |
+| 1    | Command ID (0x05)    | Notification Report Command            |
+| 2    | Notification Type    | Event Type (0x00-0xFF)                 |
+| 3    | Event Status         | Event State (Depend on Device Type)    |
+| 4    | Event Parameters     | Event Variables (Depend on Event Type) |

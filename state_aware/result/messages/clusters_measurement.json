@@ -1,0 +1,34 @@
+{
+  "Illuminance Measurement": {
+    "cluster_id": "0x0040",
+    "message": []
+  },
+  "Illuminance Level Sensing": {
+    "cluster_id": "0x0041",
+    "message": []
+  },
+  "TemperatureMeasurement": {
+    "cluster_id": "0x0042",
+    "message": []
+  },
+  "Pressure Measurement": {
+    "cluster_id": "0x0043",
+    "message": []
+  },
+  "Flow Measurement": {
+    "cluster_id": "0x0404",
+    "message": []
+  },
+  "Relative Humidity Measurement": {
+    "cluster_id": "0x0405",
+    "message": []
+  },
+  "Occupancy Sensing": {
+    "cluster_id": "0x0406",
+    "message": []
+  },
+  "Electrical Measurement": {
+    "cluster_id": "0x0B04",
+    "message": []
+  }
+}

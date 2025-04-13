@@ -1,0 +1,84 @@
+class Basic(Cluster):
+    """Attributes for determining basic information about a
+    device, setting user device information such as location,
+    and enabling a device.
+    """
+
+    PowerSource: Final = PowerSource
+    PhysicalEnvironment: Final = PhysicalEnvironment
+    AlarmMask: Final = AlarmMask
+    DisableLocalConfig: Final = DisableLocalConfig
+    GenericDeviceClass: Final = GenericDeviceClass
+    GenericLightingDeviceType: Final = GenericLightingDeviceType
+
+    cluster_id: Final[t.uint16_t] = 0x0000
+    ep_attribute: Final = "basic"
+
+    class AttributeDefs(BaseAttributeDefs):
+        # Basic Device Information
+        zcl_version: Final = ZCLAttributeDef(
+            id=0x0000, type=t.uint8_t, access="r", mandatory=True
+        )
+        app_version: Final = ZCLAttributeDef(id=0x0001, type=t.uint8_t, access="r")
+        stack_version: Final = ZCLAttributeDef(id=0x0002, type=t.uint8_t, access="r")
+        hw_version: Final = ZCLAttributeDef(id=0x0003, type=t.uint8_t, access="r")
+        manufacturer: Final = ZCLAttributeDef(
+            id=0x0004, type=t.LimitedCharString(32), access="r"
+        )
+        model: Final = ZCLAttributeDef(
+            id=0x0005, type=t.LimitedCharString(32), access="r"
+        )
+        date_code: Final = ZCLAttributeDef(
+            id=0x0006, type=t.LimitedCharString(16), access="r"
+        )
+        power_source: Final = ZCLAttributeDef(
+            id=0x0007, type=PowerSource, access="r", mandatory=True
+        )
+        generic_device_class: Final = ZCLAttributeDef(
+            id=0x0008, type=GenericDeviceClass, access="r"
+        )
+        # Lighting is the only non-reserved device type
+        generic_device_type: Final = ZCLAttributeDef(
+            id=0x0009, type=GenericLightingDeviceType, access="r"
+        )
+        product_code: Final = ZCLAttributeDef(id=0x000A, type=t.LVBytes, access="r")
+        product_url: Final = ZCLAttributeDef(
+            id=0x000B, type=t.CharacterString, access="r"
+        )
+        manufacturer_version_details: Final = ZCLAttributeDef(
+            id=0x000C, type=t.CharacterString, access="r"
+        )
+        serial_number: Final = ZCLAttributeDef(
+            id=0x000D, type=t.CharacterString, access="r"
+        )
+        product_label: Final = ZCLAttributeDef(
+            id=0x000E, type=t.CharacterString, access="r"
+        )
+        # Basic Device Settings
+        location_desc: Final = ZCLAttributeDef(
+            id=0x0010, type=t.LimitedCharString(16), access="rw"
+        )
+        physical_env: Final = ZCLAttributeDef(
+            id=0x0011, type=PhysicalEnvironment, access="rw"
+        )
+        device_enabled: Final = ZCLAttributeDef(id=0x0012, type=t.Bool, access="rw")
+        alarm_mask: Final = ZCLAttributeDef(id=0x0013, type=AlarmMask, access="rw")
+        disable_local_config: Final = ZCLAttributeDef(
+            id=0x0014, type=DisableLocalConfig, access="rw"
+        )
+        sw_build_id: Final = ZCLAttributeDef(
+            id=0x4000, type=t.CharacterString, access="r"
+        )
+        cluster_revision: Final = foundation.ZCL_CLUSTER_REVISION_ATTR
+        reporting_status: Final = foundation.ZCL_REPORTING_STATUS_ATTR
+
+    class ServerCommandDefs(BaseCommandDefs):
+        reset_fact_default: Final = ZCLCommandDef(
+            id=0x00, schema={}, direction=Direction.Client_to_Server
+        )
+
+    def handle_read_attribute_zcl_version(self) -> t.uint8_t:
+        return t.uint8_t(8)
+
+    def handle_read_attribute_power_source(self) -> PowerSource:
+        return PowerSource.DC_Source

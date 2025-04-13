@@ -1,0 +1,82 @@
+Timestamp:
+  - "20240708_14:12:51:239"
+Device:
+  - "Tuya Smart Bulb"
+IEEE:
+  - "a4:c1:38:ba:81:3f:fc:88"
+Nwk_Address:
+  - "0x4BAB"
+State:
+  - "Any"
+Message_Relationship:
+  - "Dependency"
+Fuzzing_Messages:
+  - {
+    "write_attributes": {
+      "id": 2,
+      "direction_header": 0,
+      "schema": {
+        "attributes": {
+          "t.LVList": {
+            "attrid": "t.uint16_t",
+            "value": {
+              "t.LVList": {
+                "type": "t.uint8_t",
+                "value": "t.any"
+              }
+            }
+          }
+        }
+      }
+    },
+    "write_attributes_rsp": {
+      "id": 4,
+      "direction_header": 1,
+      "schema": {
+        "status_records": {
+          "t.List": "foundation.Status"
+        }
+      }
+    }
+  }
+Mutation_Strategy:
+  - T-1-1
+  - "write_attributes"
+  - {
+      "attr_id": 18,
+      "value": {
+        "t.LVList": {
+          "type": 16,
+          "value": -1
+        }
+      }
+  }
+  - {
+    "attr_id": 18,
+    "value": {
+      "t.LVList": {
+        "type": 16,
+        "value": -255
+      }
+    }
+  }
+  - {
+    "attr_id": 18,
+    "value": {
+      "t.LVList": {
+        "type": 16,
+        "value": -256
+      }
+    }
+  }
+  - {
+    "attr_id": 18,
+    "value": {
+      "t.LVList": {
+        "type": 16,
+        "value": -65535
+      }
+    }
+  }
+Log:
+  - "[Device 4] Exploit: WriteAttributes | Mutation: Negative 'device_enabled' | Result: Abnormal State | "

@@ -1,0 +1,11 @@
+{
+    "Attributes": [
+        "cov_increment",
+        "device_type",
+        "object_id",
+        "object_name",
+        "object_type",
+        "update_interval",
+        "profile_name"
+    ]
+}

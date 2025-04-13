@@ -1,0 +1,17 @@
+{
+    "input": {
+        "Unknown": [],
+        "basic": 0,
+        "identify": 3,
+        "groups": 4,
+        "scenes": 5,
+        "on_off": 6,
+        "level": 8,
+        "smartenergy_metering": 1794,
+        "diagnostic": 2821
+    },
+    "output": {
+        "Unknown": [],
+        "ota": 25
+    }
+}

@@ -1,0 +1,13 @@
+{
+    "aps_ack_frame_header": {
+        "frame control": "uint8",
+        "aps counter": "uint8",
+        "extended header": "variable (optional, present if Extended Header Present flag is set)",
+        "destination endpoint": "uint8 (present unless Ack Format is set)",
+        "source endpoint": "uint8 (present unless Ack Format is set)",
+        "cluster identifier": "uint16 (present unless Ack Format is set)",
+        "profile identifier": "uint16 (present unless Ack Format is set)",
+        "block number": "uint8 (optional, present if fragmentation is in use)",
+        "ack bitfield": "uint8 (optional, present if fragmentation is in use)"
+    }
+}

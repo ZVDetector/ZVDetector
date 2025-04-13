@@ -1,0 +1,59 @@
+{
+    "RouteRequestCommand": {
+        "CommandOptions": "uint8",
+        "RouteRequestIdentifier": "uint8",
+        "DestinationAddress": "uint16",
+        "PathCost": "uint8",
+        "DestinationIEEEAddress": "uint64 (optional)"
+    },
+    "RouteReplyCommand": {
+        "CommandOptions": "uint8",
+        "RouteRequestIdentifier": "uint8",
+        "OriginatorAddress": "uint16",
+        "ResponderAddress": "uint16",
+        "PathCost": "uint8",
+        "OriginatorIEEEAddress": "uint64 (optional)",
+        "ResponderIEEEAddress": "uint64 (optional)"
+    },
+    "NetworkStatusCommand": {
+        "StatusCode": "uint8",
+        "DestinationAddress": "uint16"
+    },
+    "LeaveCommand": {
+        "CommandOptions": "uint8"
+    },
+    "RouteRecordCommand": {
+        "RelayCount": "uint8",
+        "RelayList": "variable"
+    },
+    "RejoinRequestCommand": {
+        "CapabilityInformation": "uint8"
+    },
+    "RejoinResponseCommand": {
+        "NetworkAddress": "uint16",
+        "RejoinStatus": "uint8"
+    },
+    "LinkStatusCommand": {
+        "CommandOptions": "uint8",
+        "LinkStatusList": "variable"
+    },
+    "NetworkReportCommand": {
+        "CommandOptions": "uint8",
+        "EPID": "uint64",
+        "ReportInformation": "variable"
+    },
+    "NetworkUpdateCommand": {
+        "CommandOptions": "uint8",
+        "EPID": "uint64",
+        "UpdateId": "uint8",
+        "UpdateInformation": "variable"
+    },
+    "EndDeviceTimeoutRequestCommand": {
+        "RequestTimeoutEnumeration": "uint8",
+        "EndDeviceConfiguration": "uint8"
+    },
+    "EndDeviceTimeoutResponseCommand": {
+        "Status": "uint8",
+        "ParentInformation": "uint8"
+    }
+}

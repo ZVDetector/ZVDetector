@@ -1,0 +1,166 @@
+{
+    "thermostat": {
+        "set_weekly_schedule": [
+            {
+                "values": "t.List"
+            }
+        ],
+        "get_weekly_schedule_response": [
+            {
+                "values": "t.List"
+            }
+        ]
+    },
+    "bacnet_tunnel": {
+        "transfer_npdu": [
+            {
+                "npdu": "t.LVBytes"
+            }
+        ]
+    },
+    "groups": {
+        "get_membership": [
+            {
+                "groups": "t.LVList"
+            }
+        ],
+        "get_membership_response": [
+            {
+                "groups": "t.LVList"
+            }
+        ]
+    },
+    "scenes": {
+        "get_scene_membership_response": [
+            {
+                "scenes": "t.LVList"
+            }
+        ]
+    },
+    "rssi_location": {
+        "report_rssi_measurements": [
+            {
+                "neighbors": "t.LVList+ StructClass"
+            }
+        ]
+    },
+    "ota": {
+        "query_next_image": [
+            {
+                "schema": "StructClass"
+            }
+        ],
+        "image_block": [
+            {
+                "schema": "StructClass"
+            }
+        ],
+        "image_page": [
+            {
+                "schema": "StructClass"
+            }
+        ],
+        "image_notify": [
+            {
+                "schema": "StructClass"
+            }
+        ],
+        "image_block_response": [
+            {
+                "schema": "StructClass"
+            }
+        ]
+    },
+    "power_profile": {
+        "energy_phases_schedule_notification": [
+            {
+                "scheduled_phases": "t.LVList+ StructClass"
+            }
+        ],
+        "energy_phases_schedule_response": [
+            {
+                "scheduled_phases": "t.LVList+ StructClass"
+            }
+        ],
+        "power_profile_notification": [
+            {
+                "transfer_phases": "t.LVList+ StructClass"
+            }
+        ],
+        "power_profile_response": [
+            {
+                "transfer_phases": "t.LVList+ StructClass"
+            }
+        ],
+        "power_profile_state_response": [
+            {
+                "power_profiles": "t.LVList+ StructClass"
+            }
+        ],
+        "power_profile_state_notification": [
+            {
+                "power_profiles": "t.LVList+ StructClass"
+            }
+        ]
+    },
+    "ias_ace": {
+        "bypass": [
+            {
+                "zones_ids": "t.LVList"
+            }
+        ],
+        "get_zone_id_map_response": [
+            {
+                "zone_id_map_sections": "t.List"
+            }
+        ],
+        "set_bypassed_zone_list": [
+            {
+                "zone_ids": "t.LVList"
+            }
+        ],
+        "bypass_response": [
+            {
+                "bypass_results": "t.LVList"
+            }
+        ],
+        "get_zone_status_response": [
+            {
+                "zone_statuses": "t.LVList+ StructClass"
+            }
+        ]
+    },
+    "lightlink": {
+        "scan": [
+            {
+                "zigbee_information": "StructClass"
+            },
+            {
+                "touchlink_information": "StructClass"
+            }
+        ],
+        "scan_rsp": [
+            {
+                "zigbee_info": "StructClass"
+            },
+            {
+                "touchlink_info": "StructClass"
+            }
+        ],
+        "device_info_rsp": [
+            {
+                "device_info_records": "t.LVList+ StructClass"
+            }
+        ],
+        "get_group_identifiers_rsp": [
+            {
+                "group_info_records": "t.LVList+ StructClass"
+            }
+        ],
+        "get_endpoint_list_rsp": [
+            {
+                "endpoint_info_records": "t.LVList+ StructClass"
+            }
+        ]
+    }
+}

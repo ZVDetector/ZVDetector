@@ -1,0 +1,4 @@
+class BromateConcentration(_ConcentrationMixin, Cluster):
+    cluster_id: Final[t.uint16_t] = 0x0418
+    name: Final = "Bromate Concentration"
+    ep_attribute: Final = "bromate_concentration"

@@ -1,0 +1,10 @@
+{
+    "endpoint": 242,
+    "profile": 41440,
+    "device_type": 97,
+    "device_version": 0,
+    "input_clusters": [],
+    "output_clusters": [
+        33
+    ]
+}

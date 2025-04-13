@@ -1,0 +1,17 @@
+{
+    "Attributes": [
+        "occupancy",
+        "occupancy_sensor_type_bitmap",
+        "pir_o_to_u_delay",
+        "pir_u_to_o_delay",
+        "pir_u_to_o_threshold",
+        "ultrasonic_o_to_u_delay",
+        "ultrasonic_u_to_o_delay",
+        "ultrasonic_u_to_o_threshold",
+        "physical_contact_o_to_u_delay",
+        "physical_contact_u_to_o_delay",
+        "physical_contact_u_to_o_threshold",
+        "cluster_revision",
+        "reporting_status"
+    ]
+}

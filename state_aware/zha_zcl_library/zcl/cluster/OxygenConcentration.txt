@@ -1,0 +1,4 @@
+class OxygenConcentration(_ConcentrationMixin, Cluster):
+    cluster_id: Final[t.uint16_t] = 0x0414
+    name: Final = "Oxygen (O₂) Concentration"
+    ep_attribute: Final = "oxygen_concentration"

@@ -1,0 +1,11 @@
+{
+    "light_color": 29,
+    "on_off": 14,
+    "level": 2,
+    "tuya_common_private(0xE000)": 12,
+    "tuya_electrician_private(0xE001)": 16,
+    "tuya_ms(0x1888)": 0,
+    "sengled_ms(0xFC10)": 1,
+    "sengled_ms(0xFC11)": 1,
+    "3r_ms": 5
+}

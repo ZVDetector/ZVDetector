@@ -1,0 +1,74 @@
+{
+    "metadata": {
+        "version": 1,
+        "format": "zigpy/open-coordinator-backup",
+        "source": "zigpy-znp@0.12.1",
+        "internal": {
+            "creation_time": "2024-11-15T13:32:33+08:00",
+            "zstack": {
+                "version": 3.3
+            }
+        }
+    },
+    "coordinator_ieee": "00124b0030cbd743",
+    "pan_id": "6bf9",
+    "extended_pan_id": "fbb3d049c3318d3f",
+    "nwk_update_id": 0,
+    "security_level": 5,
+    "channel": 20,
+    "channel_mask": [
+        20
+    ],
+    "network_key": {
+        "key": "194cc10d64d0d398e7b60c07e4bcd2de",
+        "sequence_number": 0,
+        "frame_counter": 20757
+    },
+    "devices": [
+        {
+            "ieee_address": "7cb94c633c650000",
+            "nwk_address": "7df1",
+            "is_child": false,
+            "link_key": {
+                "key": "099fde75a9b6b454c683cda40eddb2c8",
+                "tx_counter": 231,
+                "rx_counter": 0
+            }
+        },
+        {
+            "ieee_address": "a4c1388d4be3c81d",
+            "nwk_address": "0894",
+            "is_child": true,
+            "link_key": {
+                "key": "a9c17cf0c4f23ba9350e60e3155550af",
+                "tx_counter": 44,
+                "rx_counter": 0
+            }
+        },
+        {
+            "ieee_address": "a4c138b8c2f44ee6",
+            "nwk_address": "64d1",
+            "is_child": false,
+            "link_key": {
+                "key": "5d073e38b51007274ed69953b38cc83b",
+                "tx_counter": 231,
+                "rx_counter": 0
+            }
+        },
+        {
+            "ieee_address": "a4c138ba813ffc88",
+            "nwk_address": "697a",
+            "is_child": false,
+            "link_key": {
+                "key": "1091ae8a0e315e1fc136c58c92fe420c",
+                "tx_counter": 88,
+                "rx_counter": 0
+            }
+        }
+    ],
+    "stack_specific": {
+        "zstack": {
+            "tclk_seed": "099fbb49cafa0d28c683a8986d910bb4"
+        }
+    }
+}

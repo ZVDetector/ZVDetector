@@ -1,0 +1,189 @@
+class PowerConfiguration(Cluster):
+    """Attributes for determining more detailed information
+    about a device’s power source(s), and for configuring
+    under/over voltage alarms.
+    """
+
+    MainsAlarmMask: Final = MainsAlarmMask
+    BatterySize: Final = BatterySize
+
+    cluster_id: Final[t.uint16_t] = 0x0001
+    name: Final = "Power Configuration"
+    ep_attribute: Final = "power"
+
+    class AttributeDefs(BaseAttributeDefs):
+        # Mains Information
+        mains_voltage: Final = ZCLAttributeDef(id=0x0000, type=t.uint16_t, access="r")
+        mains_frequency: Final = ZCLAttributeDef(id=0x0001, type=t.uint8_t, access="r")
+        # Mains Settings
+        mains_alarm_mask: Final = ZCLAttributeDef(
+            id=0x0010, type=MainsAlarmMask, access="rw"
+        )
+        mains_volt_min_thres: Final = ZCLAttributeDef(
+            id=0x0011, type=t.uint16_t, access="rw"
+        )
+        mains_volt_max_thres: Final = ZCLAttributeDef(
+            id=0x0012, type=t.uint16_t, access="rw"
+        )
+        mains_voltage_dwell_trip_point: Final = ZCLAttributeDef(
+            id=0x0013, type=t.uint16_t, access="rw"
+        )
+        # Battery Information
+        battery_voltage: Final = ZCLAttributeDef(id=0x0020, type=t.uint8_t, access="r")
+        battery_percentage_remaining: Final = ZCLAttributeDef(
+            id=0x0021, type=t.uint8_t, access="rp"
+        )
+        # Battery Settings
+        battery_manufacturer: Final = ZCLAttributeDef(
+            id=0x0030, type=t.LimitedCharString(16), access="rw"
+        )
+        battery_size: Final = ZCLAttributeDef(id=0x0031, type=BatterySize, access="rw")
+        battery_a_hr_rating: Final = ZCLAttributeDef(
+            id=0x0032, type=t.uint16_t, access="rw"
+        )
+        # measured in units of 10mAHr
+        battery_quantity: Final = ZCLAttributeDef(
+            id=0x0033, type=t.uint8_t, access="rw"
+        )
+        battery_rated_voltage: Final = ZCLAttributeDef(
+            id=0x0034, type=t.uint8_t, access="rw"
+        )
+        # measured in units of 100mV
+        battery_alarm_mask: Final = ZCLAttributeDef(
+            id=0x0035, type=t.bitmap8, access="rw"
+        )
+        battery_volt_min_thres: Final = ZCLAttributeDef(
+            id=0x0036, type=t.uint8_t, access="rw"
+        )
+        battery_volt_thres1: Final = ZCLAttributeDef(
+            id=0x0037, type=t.uint16_t, access="r*w"
+        )
+        battery_volt_thres2: Final = ZCLAttributeDef(
+            id=0x0038, type=t.uint16_t, access="r*w"
+        )
+        battery_volt_thres3: Final = ZCLAttributeDef(
+            id=0x0039, type=t.uint16_t, access="r*w"
+        )
+        battery_percent_min_thres: Final = ZCLAttributeDef(
+            id=0x003A, type=t.uint8_t, access="r*w"
+        )
+        battery_percent_thres1: Final = ZCLAttributeDef(
+            id=0x003B, type=t.uint8_t, access="r*w"
+        )
+        battery_percent_thres2: Final = ZCLAttributeDef(
+            id=0x003C, type=t.uint8_t, access="r*w"
+        )
+        battery_percent_thres3: Final = ZCLAttributeDef(
+            id=0x003D, type=t.uint8_t, access="r*w"
+        )
+        battery_alarm_state: Final = ZCLAttributeDef(
+            id=0x003E, type=t.bitmap32, access="rp"
+        )
+        # Battery 2 Information
+        battery_2_voltage: Final = ZCLAttributeDef(
+            id=0x0040, type=t.uint8_t, access="r"
+        )
+        battery_2_percentage_remaining: Final = ZCLAttributeDef(
+            id=0x0041, type=t.uint8_t, access="rp"
+        )
+        # Battery 2 Settings
+        battery_2_manufacturer: Final = ZCLAttributeDef(
+            id=0x0050, type=t.CharacterString, access="rw"
+        )
+        battery_2_size: Final = ZCLAttributeDef(
+            id=0x0051, type=BatterySize, access="rw"
+        )
+        battery_2_a_hr_rating: Final = ZCLAttributeDef(
+            id=0x0052, type=t.uint16_t, access="rw"
+        )
+        battery_2_quantity: Final = ZCLAttributeDef(
+            id=0x0053, type=t.uint8_t, access="rw"
+        )
+        battery_2_rated_voltage: Final = ZCLAttributeDef(
+            id=0x0054, type=t.uint8_t, access="rw"
+        )
+        battery_2_alarm_mask: Final = ZCLAttributeDef(
+            id=0x0055, type=t.bitmap8, access="rw"
+        )
+        battery_2_volt_min_thres: Final = ZCLAttributeDef(
+            id=0x0056, type=t.uint8_t, access="rw"
+        )
+        battery_2_volt_thres1: Final = ZCLAttributeDef(
+            id=0x0057, type=t.uint16_t, access="r*w"
+        )
+        battery_2_volt_thres2: Final = ZCLAttributeDef(
+            id=0x0058, type=t.uint16_t, access="r*w"
+        )
+        battery_2_volt_thres3: Final = ZCLAttributeDef(
+            id=0x0059, type=t.uint16_t, access="r*w"
+        )
+        battery_2_percent_min_thres: Final = ZCLAttributeDef(
+            id=0x005A, type=t.uint8_t, access="r*w"
+        )
+        battery_2_percent_thres1: Final = ZCLAttributeDef(
+            id=0x005B, type=t.uint8_t, access="r*w"
+        )
+        battery_2_percent_thres2: Final = ZCLAttributeDef(
+            id=0x005C, type=t.uint8_t, access="r*w"
+        )
+        battery_2_percent_thres3: Final = ZCLAttributeDef(
+            id=0x005D, type=t.uint8_t, access="r*w"
+        )
+        battery_2_alarm_state: Final = ZCLAttributeDef(
+            id=0x005E, type=t.bitmap32, access="rp"
+        )
+        # Battery 3 Information
+        battery_3_voltage: Final = ZCLAttributeDef(
+            id=0x0060, type=t.uint8_t, access="r"
+        )
+        battery_3_percentage_remaining: Final = ZCLAttributeDef(
+            id=0x0061, type=t.uint8_t, access="rp"
+        )
+        # Battery 3 Settings
+        battery_3_manufacturer: Final = ZCLAttributeDef(
+            id=0x0070, type=t.CharacterString, access="rw"
+        )
+        battery_3_size: Final = ZCLAttributeDef(
+            id=0x0071, type=BatterySize, access="rw"
+        )
+        battery_3_a_hr_rating: Final = ZCLAttributeDef(
+            id=0x0072, type=t.uint16_t, access="rw"
+        )
+        battery_3_quantity: Final = ZCLAttributeDef(
+            id=0x0073, type=t.uint8_t, access="rw"
+        )
+        battery_3_rated_voltage: Final = ZCLAttributeDef(
+            id=0x0074, type=t.uint8_t, access="rw"
+        )
+        battery_3_alarm_mask: Final = ZCLAttributeDef(
+            id=0x0075, type=t.bitmap8, access="rw"
+        )
+        battery_3_volt_min_thres: Final = ZCLAttributeDef(
+            id=0x0076, type=t.uint8_t, access="rw"
+        )
+        battery_3_volt_thres1: Final = ZCLAttributeDef(
+            id=0x0077, type=t.uint16_t, access="r*w"
+        )
+        battery_3_volt_thres2: Final = ZCLAttributeDef(
+            id=0x0078, type=t.uint16_t, access="r*w"
+        )
+        battery_3_volt_thres3: Final = ZCLAttributeDef(
+            id=0x0079, type=t.uint16_t, access="r*w"
+        )
+        battery_3_percent_min_thres: Final = ZCLAttributeDef(
+            id=0x007A, type=t.uint8_t, access="r*w"
+        )
+        battery_3_percent_thres1: Final = ZCLAttributeDef(
+            id=0x007B, type=t.uint8_t, access="r*w"
+        )
+        battery_3_percent_thres2: Final = ZCLAttributeDef(
+            id=0x007C, type=t.uint8_t, access="r*w"
+        )
+        battery_3_percent_thres3: Final = ZCLAttributeDef(
+            id=0x007D, type=t.uint8_t, access="r*w"
+        )
+        battery_3_alarm_state: Final = ZCLAttributeDef(
+            id=0x007E, type=t.bitmap32, access="rp"
+        )
+        cluster_revision: Final = foundation.ZCL_CLUSTER_REVISION_ATTR
+        reporting_status: Final = foundation.ZCL_REPORTING_STATUS_ATTR

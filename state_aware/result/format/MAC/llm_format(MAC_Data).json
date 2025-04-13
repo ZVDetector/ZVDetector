@@ -1,0 +1,10 @@
+{
+    "DataFrame": {
+        "FrameControl": "uint16",
+        "SequenceNumber": "uint8",
+        "DestinationPANIdentifier": "uint16 (optional, present if Destination Addressing Mode is nonzero)",
+        "DestinationAddress": "uint16 | uint64 (optional, present if Destination Addressing Mode is nonzero)",
+        "SourcePANIdentifier": "uint16 (optional, present if Source Addressing Mode is nonzero and Intra-PAN is 0)",
+        "SourceAddress": "uint16 | uint64 (optional, present if Source Addressing Mode is nonzero)"
+    }
+}

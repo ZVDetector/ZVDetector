@@ -1,0 +1,4 @@
+class CarbonMonoxideConcentration(_ConcentrationMixin, Cluster):
+    cluster_id: Final[t.uint16_t] = 0x040C
+    name: Final = "Carbon Monoxide (CO) Concentration"
+    ep_attribute: Final = "carbon_monoxide_concentration"

@@ -1,0 +1,12 @@
+{
+    "NWKDataFrameHeader": {
+        "Frame Control": "uint16",
+        "Destination Address": "uint16",
+        "Source Address": "uint16",
+        "Radius": "uint8",
+        "Sequence Number": "uint8",
+        "Destination IEEE Address": "uint64 (optional)",
+        "Source IEEE Address": "uint64 (optional)",
+        "Source Route Subframe": "variable (optional)"
+    }
+}

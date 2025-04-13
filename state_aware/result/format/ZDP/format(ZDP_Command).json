@@ -1,0 +1,590 @@
+{
+    "nwk_addr_req": {
+        "ieeeaddr": "uint64",
+        "request_type": "uint8",
+        "start_index": "uint8"
+    },
+    "ieee_addr_req": {
+        "nwkaddr_of_interest": "uint16",
+        "request_type": "uint8",
+        "start_index": "uint8"
+    },
+    "node_desc_req": {
+        "nwkaddr_of_interest": "uint16"
+    },
+    "power_desc_req": {
+        "nwkaddr_of_interest": "uint16"
+    },
+    "simple_desc_req": {
+        "nwkaddr_of_interest": "uint16",
+        "endpoint": "uint8"
+    },
+    "active_ep_req": {
+        "nwkaddr_of_interest": "uint16"
+    },
+    "match_desc_req": {
+        "nwkaddr_of_interest": "uint16",
+        "profile_id": "uint16",
+        "num_in_clusters": "uint8",
+        "in_cluster_list": {
+            "t.list": "uint16"
+        },
+        "num_out_clusters": "uint8",
+        "out_cluster_list": {
+            "t.list": "uint16"
+        }
+    },
+    "complex_desc_req": {
+        "nwkaddr_of_interest": "uint16"
+    },
+    "user_desc_req": {
+        "nwkaddr_of_interest": "uint16"
+    },
+    "discovery_cache_req": {
+        "nwkaddr": "uint16",
+        "ieeeaddr": "uint64"
+    },
+    "device_annce": {
+        "nwkaddr": "uint16",
+        "ieeeaddr": "uint64",
+        "capability": "bitmap8"
+    },
+    "parent_annce": {
+        "extended address": "uint64"
+    },
+    "user_desc_set": {
+        "nwkaddr_of_interest": "uint16",
+        "length": "uint8",
+        "user_description": {
+            "t.list": "char16"
+        }
+    },
+    "system_server_discovery_req": {
+        "server_mask": "bitmap16"
+    },
+    "discovery_store_req": {
+        "nwkaddr": "uint16",
+        "ieeeaddr": "uint64",
+        "node_desc_size": "uint8",
+        "power_desc_size": "uint8",
+        "active_epsize": "uint8",
+        "simple_desc_count": "uint8",
+        "simple_desc_size_list": {
+            "t.list": "uint8"
+        }
+    },
+    "node_desc_store_req": {
+        "nwkaddr": "uint16",
+        "ieeeaddr": "uint64",
+        "node_descriptor": "variable"
+    },
+    "power_desc_store_req": {
+        "nwkaddr": "uint16",
+        "ieeeaddr": "uint64",
+        "power_descriptor": "variable"
+    },
+    "active_ep_store_req": {
+        "nwkaddr": "uint16",
+        "ieeeaddr": "uint64",
+        "active_epcount": "uint8",
+        "active_eplist": {
+            "t.list": "uint8"
+        }
+    },
+    "simple_desc_store_req": {
+        "nwkaddr": "uint16",
+        "ieeeaddr": "uint64",
+        "length": "uint8",
+        "simple_descriptor": "variable"
+    },
+    "remove_node_cache_req": {
+        "nwkaddr": "uint16",
+        "ieeeaddr": "uint64"
+    },
+    "find_node_cache_req": {
+        "nwkaddr": "uint16",
+        "ieeeaddr": "uint64"
+    },
+    "extended_simple_desc_req": {
+        "nwkaddr_of_interest": "uint16",
+        "endpoint": "uint8",
+        "start_index": "uint8"
+    },
+    "extended_active_ep_req": {
+        "nwkaddr_of_interest": "uint16",
+        "start_index": "uint8"
+    },
+    "end_device_bind_req": {
+        "binding_target": "uint16",
+        "src_ieeeaddress": "uint64",
+        "src_endpoint": "uint8",
+        "profile_id": "uint16",
+        "num_in_clusters": "uint8",
+        "in_cluster_list": {
+            "t.list": "uint16"
+        },
+        "num_out_clusters": "uint8",
+        "out_cluster_list": {
+            "t.list": "uint16"
+        }
+    },
+    "bind_req": {
+        "src_address": "uint64",
+        "src_endp": "uint8",
+        "cluster_id": "uint16",
+        "dst_addr_mode": "uint8",
+        "dst_address": "uint16",
+        "dst_endp": "uint8"
+    },
+    "unbind_req": {
+        "src_address": "uint64",
+        "src_endp": "uint8",
+        "cluster_id": "uint16",
+        "dst_addr_mode": "uint8",
+        "dst_address": "uint16",
+        "dst_endp": "uint8"
+    },
+    "bind_register_req": {
+        "node_address": "uint64"
+    },
+    "replace_device_req": {
+        "old_address": "uint64",
+        "old_endpoint": "uint8",
+        "new_address": "uint64",
+        "new_endpoint": "uint8"
+    },
+    "store_bkup_bind_entry_req": {
+        "src_address": "uint64",
+        "src_endpoint": "uint8",
+        "cluster_id": "uint16",
+        "dst_addr_mode": "uint8",
+        "dst_address": "uint16",
+        "dst_endp": "uint8"
+    },
+    "remove_bkup_bind_entry_req": {
+        "src_address": "uint64",
+        "src_endpoint": "uint8",
+        "cluster_id": "uint16",
+        "dst_addr_mode": "uint8",
+        "dst_address": "uint16",
+        "dst_endp": "uint8"
+    },
+    "backup_bind_table_req": {
+        "binding_table_entries": "uint16",
+        "start_index": "uint16",
+        "binding_table_list_count": "uint16",
+        "binding_table_list": {
+            "t.LVList": {
+                "src_address": "uint64",
+                "src_endpoint": "uint8",
+                "cluster_id": "uint16",
+                "dst_addr_mode": "uint8",
+                "dst_address": "uint64 or uint16",
+                "dst_endpoint": "uint8 (if applicable)"
+            }
+        }
+    },
+    "recover_bind_table_req": {
+        "start_index": "uint16"
+    },
+    "backup_source_bind_req": {
+        "source_table_entries": "uint16",
+        "start_index": "uint16",
+        "source_table_list_count": "uint16",
+        "source_table_list": {
+            "t.List": "uint64"
+        }
+    },
+    "recover_source_bind_req": {
+        "start_index": "uint16"
+    },
+    "mgmt_nwk_disc_req": {
+        "scan_channels": "uint32",
+        "scan_duration": "uint8",
+        "start_index": "uint8"
+    },
+    "mgmt_lqi_req": {
+        "start_index": "uint8"
+    },
+    "mgmt_rtg_req": {
+        "start_index": "uint8"
+    },
+    "mgmt_bind_req": {
+        "start_index": "uint8"
+    },
+    "mgmt_leave_req": {
+        "device_address": "uint64",
+        "remove_children": "uint8",
+        "rejoin": "uint8"
+    },
+    "mgmt_direct_join_req": {
+        "device_address": "uint64",
+        "capability_information": "uint8"
+    },
+    "mgmt_permit_joining_req": {
+        "permit_duration": "uint8",
+        "tc_significance": "uint8"
+    },
+    "mgmt_cache_req": {
+        "start_index": "uint8"
+    },
+    "mgmt_nwk_update_req": {
+        "scan_channels": "uint32",
+        "scan_duration": "uint8",
+        "scan_count": "uint8",
+        "nwk_update_id": "uint8",
+        "nwk_manager_addr": "uint16"
+    },
+    "nwk_addr_rsp": {
+        "status": "uint8",
+        "ieeeaddr_remote_dev": "uint64",
+        "nwkaddr_remote_dev": "uint16",
+        "num_assoc_dev": "uint8",
+        "start_index": "uint8",
+        "nwkaddr_assoc_dev_list": {
+            "t.List": "uint16"
+        }
+    },
+    "ieee_addr_rsp": {
+        "status": "uint8",
+        "ieeeaddr_remote_dev": "uint64",
+        "nwkaddr_remote_dev": "uint16",
+        "num_assoc_dev": "uint8",
+        "start_index": "uint8",
+        "nwkaddr_assoc_dev_list": {
+            "t.List": "uint16"
+        }
+    },
+    "node_desc_rsp": {
+        "status": "uint8",
+        "nwkaddr_of_interest": "uint16",
+        "node_descriptor": {
+            "t.LVList": {
+                "logical_type": "uint8",
+                "manufacturer_code": "uint16",
+                "max_buffer_size": "uint8",
+                "max_in_transfer_size": "uint16",
+                "max_out_transfer_size": "uint16",
+                "descriptor_capabilities": "uint8",
+                "reserved": "uint8",
+                "network_address": "uint16",
+                "profile_id": "uint16"
+            }
+        }
+    },
+    "power_desc_rsp": {
+        "status": "uint8",
+        "nwkaddr_of_interest": "uint16",
+        "power_descriptor": {
+            "t.LVList": {
+                "power_mode": "uint8",
+                "voltage_min": "uint8",
+                "voltage_max": "uint8",
+                "current_min": "uint8",
+                "current_max": "uint8",
+                "reserved": "uint8"
+            }
+        }
+    },
+    "simple_desc_rsp": {
+        "status": "uint8",
+        "nwkaddr_of_interest": "uint16",
+        "length": "uint8",
+        "simple_descriptor": {
+            "t.LVList": {
+                "endpoint": "uint8",
+                "profile_id": "uint16",
+                "device_id": "uint16",
+                "device_version": "uint8",
+                "input_clusters": {
+                    "t.List": "uint16"
+                },
+                "output_clusters": {
+                    "t.List": "uint16"
+                }
+            }
+        }
+    },
+    "active_ep_rsp": {
+        "status": "uint8",
+        "nwkaddr_of_interest": "uint16",
+        "active_epcount": "uint8",
+        "active_eplist": {
+            "t.List": "uint8"
+        }
+    },
+    "match_desc_rsp": {
+        "status": "uint8",
+        "nwkaddr_of_interest": "uint16",
+        "match_length": "uint8",
+        "match_list": {
+            "t.List": "uint8"
+        }
+    },
+    "complex_desc_rsp": {
+        "status": "uint8",
+        "nwkaddr_of_interest": "uint16",
+        "length": "uint8",
+        "complex_descriptor": {
+            "t.List": "uint8"
+        }
+    },
+    "user_desc_rsp": {
+        "status": "uint8",
+        "nwkaddr_of_interest": "uint16",
+        "length": "uint8",
+        "user_descriptor": {
+            "t.List": "uint8"
+        }
+    },
+    "system_server_discovery_rsp": {
+        "status": "uint8",
+        "server_mask": "bitmap16"
+    },
+    "user_desc_conf": {
+        "status": "uint8",
+        "nwkaddr_of_interest": "uint16"
+    },
+    "discovery_cache_rsp": {
+        "status": "uint8"
+    },
+    "discovery_store_rsp": {
+        "status": "uint8"
+    },
+    "node_desc_store_rsp": {
+        "status": "uint8"
+    },
+    "power_desc_store_rsp": {
+        "status": "uint8"
+    },
+    "active_ep_store_rsp": {
+        "status": "uint8"
+    },
+    "simple_desc_store_rsp": {
+        "status": "uint8"
+    },
+    "remove_node_cache_rsp": {
+        "status": "uint8"
+    },
+    "find_node_cache_rsp": {
+        "cache_nwkaddr": "uint16",
+        "nwkaddr": "uint16",
+        "ieeeaddr": "uint64"
+    },
+    "extended_simple_desc_rsp": {
+        "status": "uint8",
+        "nwkaddr_of_interest": "uint16",
+        "endpoint": "uint8",
+        "app_input_cluster_count": "uint8",
+        "app_output_cluster_count": "uint8",
+        "start_index": "uint8",
+        "app_cluster_list": {
+            "t.List": "uint16"
+        }
+    },
+    "extended_active_ep_rsp": {
+        "status": "uint8",
+        "nwkaddr_of_interest": "uint16",
+        "active_epcount": "uint8",
+        "start_index": "uint8",
+        "active_eplist": {
+            "t.List": "uint8"
+        }
+    },
+    "parent_annce_rsp": {
+        "status": "uint8",
+        "number_of_children": "uint8",
+        "child_info": {
+            "t.LVList": {
+                "extended_address": "uint64",
+                "network_address": "uint16",
+                "device_type": "uint8",
+                "rx_on_when_idle": "uint8",
+                "relationship": "uint8",
+                "permit_joining": "uint8"
+            }
+        }
+    },
+    "end_device_bind_rsp": {
+        "status": "uint8"
+    },
+    "bind_rsp": {
+        "status": "uint8"
+    },
+    "unbind_rsp": {
+        "status": "uint8"
+    },
+    "bind_register_rsp": {
+        "status": "uint8",
+        "binding_table_entries": "uint16",
+        "binding_table_list_count": "uint16",
+        "binding_table_list": {
+            "t.LVList": {
+                "src_address": "uint64",
+                "src_endpoint": "uint8",
+                "cluster_id": "uint16",
+                "dst_addr_mode": "uint8",
+                "dst_address": "uint64 or uint16",
+                "dst_endpoint": "uint8 (if applicable)"
+            }
+        }
+    },
+    "replace_device_rsp": {
+        "status": "uint8"
+    },
+    "store_bkup_bind_entry_rsp": {
+        "status": "uint8"
+    },
+    "remove_bkup_bind_entry_rsp": {
+        "status": "uint8"
+    },
+    "backup_bind_table_rsp": {
+        "status": "uint8",
+        "entry_count": "uint16"
+    },
+    "recover_bind_table_rsp": {
+        "status": "uint8",
+        "binding_table_entries": "uint16",
+        "start_index": "uint16",
+        "binding_table_list_count": "uint16",
+        "binding_table_list": {
+            "t.LVList": {
+                "src_address": "uint64",
+                "src_endpoint": "uint8",
+                "cluster_id": "uint16",
+                "dst_addr_mode": "uint8",
+                "dst_address": "uint16 or uint64",
+                "dst_endpoint": "uint8 (if applicable)"
+            }
+        }
+    },
+    "backup_source_bind_rsp": {
+        "status": "uint8"
+    },
+    "recover_source_bind_rsp": {
+        "status": "uint8",
+        "source_table_entries": "uint16",
+        "start_index": "uint16",
+        "source_table_list_count": "uint16",
+        "source_table_list": {
+            "t.LVList": {
+                "ieeeaddress": "uint64"
+            }
+        }
+    },
+    "mgmt_nwk_disc_rsp": {
+        "status": "uint8",
+        "network_count": "uint8",
+        "start_index": "uint8",
+        "network_list_count": "uint8",
+        "network_list": {
+            "t.LVList": {
+                "extended_panid": "uint64",
+                "logical_channel": "uint8",
+                "stack_profile": "uint8",
+                "zig_bee_version": "uint8",
+                "beacon_order": "uint8",
+                "superframe_order": "uint8",
+                "permit_joining": "uint8",
+                "router_capacity": "bool",
+                "end_device_capacity": "bool",
+                "network_address": "uint16"
+            }
+        }
+    },
+    "mgmt_lqi_rsp": {
+        "status": "uint8",
+        "neighbor_table_entries": "uint8",
+        "start_index": "uint8",
+        "neighbor_table_list_count": "uint8",
+        "neighbor_table_list": {
+            "t.LVList": {
+                "extended_panid": "uint64",
+                "extended_address": "uint64",
+                "network_address": "uint16",
+                "device_type": "uint8",
+                "rx_on_when_idle": "uint8",
+                "relationship": "uint8",
+                "permit_joining": "uint8",
+                "depth": "uint8",
+                "lqi": "uint8"
+            }
+        }
+    },
+    "mgmt_rtg_rsp": {
+        "status": "uint8",
+        "routing_table_entries": "uint8",
+        "start_index": "uint8",
+        "routing_table_list_count": "uint8",
+        "routing_table_list": {
+            "t.LVList": {
+                "destination_address": "uint16",
+                "status": "uint8",
+                "memory_constrained": "bool",
+                "many_to_one": "bool",
+                "route_record_required": "bool",
+                "reserved": "uint8",
+                "next_hop_address": "uint16"
+            }
+        }
+    },
+    "mgmt_bind_rsp": {
+        "status": "uint8",
+        "binding_table_entries": "uint8",
+        "start_index": "uint8",
+        "binding_table_list_count": "uint8",
+        "binding_table_list": {
+            "t.LVList": {
+                "src_addr": "uint64",
+                "src_endpoint": "uint8",
+                "cluster_id": "uint16",
+                "dst_addr_mode": "uint8",
+                "dst_addr": "uint64_or_uint16",
+                "dst_endpoint": "uint8 (if DstAddrMode == 0x03)"
+            }
+        }
+    },
+    "mgmt_leave_rsp": {
+        "status": "uint8"
+    },
+    "mgmt_direct_join_rsp": {
+        "status": "uint8"
+    },
+    "mgmt_permit_joining_rsp": {
+        "status": "uint8"
+    },
+    "mgmt_cache_rsp": {
+        "status": "uint8",
+        "discovery_cache_entries": "uint8",
+        "start_index": "uint8",
+        "discovery_cache_list_count": "uint8",
+        "discovery_cache_list": {
+            "t.LVList": {
+                "extended_address": "uint64",
+                "network_address": "uint16",
+                "endpoint": "uint8",
+                "profile_id": "uint16",
+                "device_id": "uint16",
+                "device_version": "uint8",
+                "input_cluster_count": "uint8",
+                "input_cluster_list": {
+                    "t.List": "uint16"
+                },
+                "output_cluster_count": "uint8",
+                "output_cluster_list": {
+                    "t.List": "uint16"
+                }
+            }
+        }
+    },
+    "mgmt_nwk_update_notify": {
+        "status": "uint8",
+        "scanned_channels": "bitmap32",
+        "total_transmissions": "uint16",
+        "transmission_failures": "uint16",
+        "scanned_channels_list_count": "uint8",
+        "energy_values": {
+            "t.List": "uint8"
+        }
+    }
+}

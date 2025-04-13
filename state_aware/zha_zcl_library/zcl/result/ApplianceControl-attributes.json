@@ -1,0 +1,9 @@
+{
+    "Attributes": [
+        "start_time",
+        "finish_time",
+        "remaining_time",
+        "cluster_revision",
+        "reporting_status"
+    ]
+}

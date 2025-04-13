@@ -1,0 +1,16 @@
+class _ConcentrationMixin:
+    """Mixin for the common attributes of the concentration measurement clusters"""
+
+    class AttributeDefs(BaseAttributeDefs):
+        measured_value: Final = ZCLAttributeDef(
+            id=0x0000, type=t.Single, access="rp", mandatory=True
+        )  # fraction of 1 (one)
+        min_measured_value: Final = ZCLAttributeDef(
+            id=0x0001, type=t.Single, access="r", mandatory=True
+        )
+        max_measured_value: Final = ZCLAttributeDef(
+            id=0x0002, type=t.Single, access="r", mandatory=True
+        )
+        tolerance: Final = ZCLAttributeDef(id=0x0003, type=t.Single, access="r")
+        cluster_revision: Final = foundation.ZCL_CLUSTER_REVISION_ATTR
+        reporting_status: Final = foundation.ZCL_REPORTING_STATUS_ATTR

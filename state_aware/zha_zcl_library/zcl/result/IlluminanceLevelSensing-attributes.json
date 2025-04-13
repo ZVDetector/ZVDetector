@@ -1,0 +1,9 @@
+{
+    "Attributes": [
+        "level_status",
+        "light_sensor_type",
+        "illuminance_target_level",
+        "cluster_revision",
+        "reporting_status"
+    ]
+}

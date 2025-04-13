@@ -1,0 +1,16 @@
+{
+    "Attributes": [
+        "maximum_incoming_transfer_size",
+        "maximum_outgoing_transfer_size",
+        "partitioned_frame_size",
+        "large_frame_size",
+        "number_of_ack_frame",
+        "nack_timeout",
+        "interframe_delay",
+        "number_of_send_retries",
+        "sender_timeout",
+        "receiver_timeout",
+        "cluster_revision",
+        "reporting_status"
+    ]
+}

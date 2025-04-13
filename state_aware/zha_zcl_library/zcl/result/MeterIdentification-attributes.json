@@ -1,0 +1,18 @@
+{
+    "Attributes": [
+        "company_name",
+        "meter_type_id",
+        "data_quality_id",
+        "customer_name",
+        "model",
+        "part_number",
+        "product_revision",
+        "software_revision",
+        "utility_name",
+        "pod",
+        "available_power",
+        "power_threshold",
+        "cluster_revision",
+        "reporting_status"
+    ]
+}

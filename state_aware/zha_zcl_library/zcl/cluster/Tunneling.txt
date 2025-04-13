@@ -1,0 +1,3 @@
+class Tunneling(Cluster):
+    cluster_id: Final[t.uint16_t] = 0x0704
+    ep_attribute: Final = "smartenergy_tunneling"

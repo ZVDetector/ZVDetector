@@ -1,0 +1,14 @@
+{
+    "Attributes": [
+        "moving_state",
+        "safety_status",
+        "capabilities",
+        "open_events",
+        "close_events",
+        "command_open_events",
+        "command_close_events",
+        "open_period",
+        "close_period",
+        "barrier_position"
+    ]
+}

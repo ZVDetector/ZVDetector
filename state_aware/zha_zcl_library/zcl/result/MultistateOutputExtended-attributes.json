@@ -1,0 +1,10 @@
+{
+    "Attributes": [
+        "acked_transitions",
+        "notification_class",
+        "event_enable",
+        "event_state",
+        "notify_type",
+        "time_delay"
+    ]
+}

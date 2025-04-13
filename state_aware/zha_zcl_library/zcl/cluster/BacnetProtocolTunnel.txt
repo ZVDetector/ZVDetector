@@ -1,0 +1,8 @@
+class BacnetProtocolTunnel(Cluster):
+    cluster_id: Final[t.uint16_t] = 0x0601
+    ep_attribute: Final = "bacnet_tunnel"
+
+    class ServerCommandDefs(BaseCommandDefs):
+        transfer_npdu: Final = ZCLCommandDef(
+            id=0x00, schema={"npdu": t.LVBytes}, direction=Direction.Client_to_Server
+        )

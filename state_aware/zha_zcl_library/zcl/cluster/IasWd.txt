@@ -1,0 +1,36 @@
+class IasWd(Cluster):
+    """The IAS WD cluster provides an interface to the functionality of any Warning
+    Device equipment of the IAS system. Using this cluster, a Zigbee enabled CIE device
+    can access a Zigbee enabled IAS WD device and issue alarm warning indications
+    (siren, strobe lighting, etc.) when a system alarm condition is detected
+    """
+
+    StrobeLevel: Final = StrobeLevel
+    Warning: Final = WarningType
+    Squawk: Final = Squawk
+
+    cluster_id: Final[t.uint16_t] = 0x0502
+    name: Final = "IAS Warning Device"
+    ep_attribute: Final = "ias_wd"
+
+    class AttributeDefs(BaseAttributeDefs):
+        max_duration: Final = ZCLAttributeDef(
+            id=0x0000, type=t.uint16_t, access="rw", mandatory=True
+        )
+        cluster_revision: Final = foundation.ZCL_CLUSTER_REVISION_ATTR
+        reporting_status: Final = foundation.ZCL_REPORTING_STATUS_ATTR
+
+    class ServerCommandDefs(BaseCommandDefs):
+        start_warning: Final = ZCLCommandDef(
+            id=0x00,
+            schema={
+                "warning": WarningType,
+                "warning_duration": t.uint16_t,
+                "strobe_duty_cycle": t.uint8_t,
+                "stobe_level": StrobeLevel,
+            },
+            direction=Direction.Client_to_Server,
+        )
+        squawk: Final = ZCLCommandDef(
+            id=0x01, schema={"squawk": Squawk}, direction=Direction.Client_to_Server
+        )
