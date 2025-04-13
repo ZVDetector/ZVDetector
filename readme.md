@@ -13,6 +13,6 @@ Sengled Zigbee Smart Switch(ID=5): CVE-2023-29779
 
 Sengled Zigbee Smart Bulb(ID=6): CVE-2022-47100, CVE-2024-48528
 
-Sengled Zigbee Smart Bulb(ID=7): CVE-2022-47100, CVE-2024-51385
+Sengled Zigbee Smart Strip(ID=7): CVE-2022-47100, CVE-2024-51385
 
 ![image](https://github.com/ZVDetector/ZVDetector/blob/master/vulnerability.png)
