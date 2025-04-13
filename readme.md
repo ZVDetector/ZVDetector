@@ -5,6 +5,8 @@
 
 # Found Vulnerabilities
 
+![image](https://github.com/ZVDetector/ZVDetector/blob/master/testbed.png)
+
 Tuya Zigbee Smart Plug(ID=3) - TS011F: CVE-2024-51383
 
 Tuya Zigbee Smart Bulb(ID=4) TS0505B: CVE-2024-48527, CVE-2024-51384
