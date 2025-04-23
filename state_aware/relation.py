@@ -99,7 +99,7 @@ class Correlation:
     def __init__(self):
         self.CORR_SAVE_DIR = os.path.join(os.getcwd(), "result/correlation")
         self.FORMAT_DIR = os.path.join(os.getcwd(), "result/format")
-        self.LLM = LLMGenerator(key="sk-0e0ebce461784008aa931af7b5fc0622", model="deepseek")
+        self.LLM = LLMGenerator(key="<Replace With Your API Keys>", model="deepseek")
 
     def acquire_all_messages(self, layer: str):
         all_messages = []
