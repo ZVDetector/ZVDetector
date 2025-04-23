@@ -18,7 +18,7 @@ class Attributes:
         self.BASIC_ATTR_DIR = os.path.join(os.getcwd(), "result/attribute/basic")
         self.HIDDEN_ATTR_DIR = os.path.join(os.getcwd(), "result/attribute/hidden")
         self.ATTR_PERMISSION_DIR = os.path.join(os.getcwd(), "result/attribute/permission")
-        self.LLM = LLMGenerator(key="sk-0e0ebce461784008aa931af7b5fc0622", model="deepseek")
+        self.LLM = LLMGenerator(key="<Repalce with your API Key>", model="deepseek")
 
     def common_cluster_basic(self):
         common_cluster_attributes = []
