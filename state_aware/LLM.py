@@ -222,7 +222,7 @@ class LLMGenerator:
 
 
 if __name__ == "__main__":
-    ds_key = "sk-0e0ebce461784008aa931af7b5fc0622"
+    ds_key = "<Repalce With Your Deepseek API Key>"
     lg = LLMGenerator(ds_key, "deepseek")
 
     # 1. Summary all descriptions
