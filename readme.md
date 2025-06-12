@@ -36,7 +36,7 @@ Install From Source
 git clone https://github.com/ZVDetector/ZVDetector.git
 ```
 
-Python Environment 3.8.3 and Requirements
+Python Version 3.8.3 and Requirements
 
 ```pip install -r requirements.txt```
 
@@ -75,7 +75,7 @@ http://www.ti.com/tool/TIMAC
 
 The channel on which the fuzzer runs will be explained in the subsequent execution.
 
-![image](https://github.com/ZVDetector/ZVDetector/blob/master/figure/tc4.PNG)
+![image](https://github.com/ZVDetector/ZVDetector/blob/master/figure/tc4.png)
 
 4. Save packets to /state_aware/result/traffic as the ground truth of message formats.
 
@@ -92,22 +92,26 @@ A：Specify the pipe method in TiWsPc to transfer the captured packets to Wiresh
 Q: How to decrypt Zigbee packets?
 
 A: 
-First you can paste common-used factory-programmed Zigbee link key into Wireshark preference -> protocol -> Zigbee -> Pre-configured Keys.
-A common-used key: 5a6967426565416c6c69616e63653039
-Others can be obatined from online blogs.
+First you need paste common-used factory-programmed Zigbee link key into Wireshark preference -> protocol -> Zigbee -> Pre-configured Keys.
 
-![image](https://github.com/ZVDetector/ZVDetector/blob/master/figure/tc5.PNG)
+A common-used key: 5a6967426565416c6c69616e63653039. Others can be obatined from online blogs. 
 
-You need to obtain the traffic from the pairing(commissioning) phase.
-Locate the Transport Key message and copy the key value from its fields.
+![image](https://github.com/ZVDetector/ZVDetector/blob/master/figure/tc5.png)
+
+Thus you can see the plaintext content of the messages during the pairing phase, but the communication phase is still encrypted.
+
+Then you need to obtain the traffic from the pairing(commissioning) phase. Locate the Transport Key message and copy the key value from its fields.
 
 ![image](https://github.com/ZVDetector/ZVDetector/blob/master/figure/traffic.jpg)
 
-Paste the key value into wireshark preferences setup.
+Paste the key value into wireshark preferences setup same as the first step.
 
 
-# Quick Deployment
+## Quick Deployment
 Docker will be available soon.
+
+# Compile Methods
+
 
 # Protocol Extension
 We have already applied it to some ZWave tasks. See Z-Wave Folder.
