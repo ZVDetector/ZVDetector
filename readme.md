@@ -21,20 +21,27 @@ Sengled Zigbee Smart Strip(ID=7): CVE-2022-47100, CVE-2024-*****
 
 ![image](https://github.com/ZVDetector/ZVDetector/blob/master/testbed.png)
 
+## Step 1: Fuzzer Configuration
+
 For the fuzzer, you can also directly deploy on MACOS since Unix-like 
 
 ```ls -l /dev/ttyUSB*``` (Ubuntu)
 
 ```ls -l /dev/tty.usbserial*``` (MACOS)
 
-# Install From Source
+USB port shows like: ```crw-rw-rw-  1 root  wheel  0x9000002 Jun 12 10:47 /dev/tty.usbserial-14110```
+
+Install From Source
 ```
 git clone https://github.com/ZVDetector/ZVDetector.git
 ```
 
-Docker will be available soon.
+Python Environment 3.8.3 and Requirements
 
-# Build Home Assistant (Docker)
+```pip install -r requirements.txt```
+
+
+## Step 2: HA Configuration
 
 1. Install Ubuntu 20.04 virtual machine
 
@@ -56,3 +63,32 @@ If the module is not loaded, you can execute the following command
 cd home_assistant
 docker-compose up -d
 ```
+
+## Step 3: Traffic Capture Settings
+
+1. Dowload TiWsPc Tools
+http://www.ti.com/tool/TIMAC
+
+2. Click ‘Device Configuration’ to select and configure the CC2531 USB Dongle hardware.
+
+3. The only parameter that needs to be configured is the channel in ‘Configuration’, which must match the channel used by the fuzzer to send packets.
+
+The channel on which the fuzzer runs will be explained in the subsequent execution.
+
+4. Save packets to /state_aware/result/traffic as the ground truth of message formats.
+
+Q：Can the captured packets be displayed in real time?
+
+A：Specify the pipe method in TiWsPc to transfer the captured packets to Wireshark. 
+
+Q: How to decrypt Zigbee packets?
+
+A: 
+
+# Quick Deployment
+Docker will be available soon.
+
+# Protocol Extension
+We have already applied it to some ZWave tasks. See Z-Wave Folder.
+
+We also encourage developers to collaborate to extend to other IoT protocols.
