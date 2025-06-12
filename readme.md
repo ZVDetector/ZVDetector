@@ -2,21 +2,6 @@
 
 ![image](https://github.com/ZVDetector/ZVDetector/blob/master/figure/arch.png)
 
-
-# Found Vulnerabilities
-
-Tuya Zigbee Smart Plug(ID=3) - TS011F: CVE-2024-*****
-
-Tuya Zigbee Smart Bulb(ID=4) TS0505B: CVE-2024-*****, CVE-2024-*****
-
-Sengled Zigbee Smart Switch(ID=5): CVE-2023-*****
-
-Sengled Zigbee Smart Bulb(ID=6): CVE-2022-47100, CVE-2024-*****
-
-Sengled Zigbee Smart Strip(ID=7): CVE-2022-47100, CVE-2024-*****
-
-![image](https://github.com/ZVDetector/ZVDetector/blob/master/figure/vulnerability.png)
-
 # Running Environment
 
 ![image](https://github.com/ZVDetector/ZVDetector/blob/master/figure/testbed.png)
@@ -75,12 +60,15 @@ Choose port ```/dev/ttyUSB0``` for Zigbee instead of  ```/dev/ttyUSB0``` for Z-W
 
 (2) Paring the devices
 
-(3) Send the packets to device and capture the traffic using the following Step 3 method
+(3) Send the packets to device using GUI and capture the traffic using the following Step 3 method
 
 ## Step 3: Traffic Capture Settings
 
-1. Dowload TiWsPc Tools and CC2531 Driver
-http://www.ti.com/tool/TIMAC
+1. Download TiWsPc Tools and CC2531 Driver
+
+TiWsPc Tools: http://www.ti.com/tool/TIMAC
+
+CC2531 Driver Download Path: ```/driver```
 
 2. Plug in CC2531 USB Dongle, click ‘Device Configuration’ to select and configure the CC2531 hardware.
 
@@ -90,7 +78,7 @@ The channel on which the fuzzer runs will be explained in the subsequent executi
 
 ![image](https://github.com/ZVDetector/ZVDetector/blob/master/figure/tc4.png)
 
-4. Save packets to /state_aware/result/traffic as the ground truth of message formats.
+4. Save packets to /state_aware/result/traffic as the ground truth of message formats. (Just for evaluation)
 
 4.1 Display the captured packets in real time.
 
@@ -127,7 +115,7 @@ Docker will be available soon.
 Start Fuzzing
 ```
 cd state_fuzzing
-python fuzzer.py -c 20 -d 15 -l -o network.json /dev/tty.usbserial-14110 
+python fuzzer.py -c 20 -d 15 -l -o network.json <fuzzer USB port>
 ```
 where ```-c``` specify the channel, ```-d``` specify the permit duration in paring phase, ```-l``` specify whether use the last moment state, ```-r``` specify whether reset the network, ```-i``` specify the input network file to flash,   ```-o``` specify the file path to store the network information. Load historical state can prevent reparing the device after rebooting the fuzzer. 
 
@@ -155,6 +143,21 @@ Crash Record at ```/state_fuzzing/crash```
 
 
 # Protocol Extension
+
 We have already applied it to some ZWave tasks. See Z-Wave Folder.
 
 We also encourage developers to collaborate to extend to other IoT protocols.
+
+# Found Vulnerabilities
+
+Tuya Zigbee Smart Plug(ID=3) - TS011F: CVE-2024-*****
+
+Tuya Zigbee Smart Bulb(ID=4) TS0505B: CVE-2024-*****, CVE-2024-*****
+
+Sengled Zigbee Smart Switch(ID=5): CVE-2023-*****
+
+Sengled Zigbee Smart Bulb(ID=6): CVE-2022-47100, CVE-2024-*****
+
+Sengled Zigbee Smart Strip(ID=7): CVE-2022-47100, CVE-2024-*****
+
+![image](https://github.com/ZVDetector/ZVDetector/blob/master/figure/vulnerability.png)
