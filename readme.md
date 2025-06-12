@@ -1,6 +1,6 @@
 # ZVDetector: State-Guided Vulnerability Detection System for Zigbee Devices
 
-![image](https://github.com/ZVDetector/ZVDetector/blob/master/arch.png)
+![image](https://github.com/ZVDetector/ZVDetector/blob/master/figure/arch.png)
 
 
 # Found Vulnerabilities
@@ -15,11 +15,11 @@ Sengled Zigbee Smart Bulb(ID=6): CVE-2022-47100, CVE-2024-*****
 
 Sengled Zigbee Smart Strip(ID=7): CVE-2022-47100, CVE-2024-*****
 
-![image](https://github.com/ZVDetector/ZVDetector/blob/master/vulnerability.png)
+![image](https://github.com/ZVDetector/ZVDetector/blob/master/figure/vulnerability.png)
 
 # Running Environment
 
-![image](https://github.com/ZVDetector/ZVDetector/blob/master/testbed.png)
+![image](https://github.com/ZVDetector/ZVDetector/blob/master/figure/testbed.png)
 
 ## Step 1: Fuzzer Configuration
 
@@ -80,6 +80,12 @@ The channel on which the fuzzer runs will be explained in the subsequent executi
 Q：Can the captured packets be displayed in real time?
 
 A：Specify the pipe method in TiWsPc to transfer the captured packets to Wireshark. 
+
+![image](https://github.com/ZVDetector/ZVDetector/blob/master/figure/tc1.png)
+
+![image](https://github.com/ZVDetector/ZVDetector/blob/master/figure/tc2.png)
+
+![image](https://github.com/ZVDetector/ZVDetector/blob/master/figure/tc3.png)
 
 Q: How to decrypt Zigbee packets?
 
