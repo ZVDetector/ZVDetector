@@ -5,8 +5,6 @@
 
 # Found Vulnerabilities
 
-![image](https://github.com/ZVDetector/ZVDetector/blob/master/testbed.png)
-
 Tuya Zigbee Smart Plug(ID=3) - TS011F: CVE-2024-*****
 
 Tuya Zigbee Smart Bulb(ID=4) TS0505B: CVE-2024-*****, CVE-2024-*****
@@ -22,6 +20,11 @@ Sengled Zigbee Smart Strip(ID=7): CVE-2022-47100, CVE-2024-*****
 # Running Environment
 
 ![image](https://github.com/ZVDetector/ZVDetector/blob/master/testbed.png)
+
+For the fuzzer, you can also directly deploy on MACOS since Unix-like 
+
+```ls -l /dev/ttyUSB*``` (Ubuntu)
+```ls -l /dev/tty.usbserial*``` (MACOS)
 
 # Install From Source
 ```
