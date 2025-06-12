@@ -11,7 +11,7 @@ import importlib.util
 import logging
 import copy
 
-from type import *
+from state_aware.type import *
 import zhaquirks.thirdreality.switch
 import zhaquirks.thirdreality.night_light
 import zhaquirks.sengled.e1e_g7f
