@@ -1,0 +1,481 @@
+{
+    "Management Command Classes": {
+        "Application Capability Command Class": {
+            "Not Supported Command Class Command": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Dynamic": "uint1",
+                "Reserved": "uint7",
+                "Offending Command Class": "uint8",
+                "Offending Command": "uint8"
+            }
+        },
+        "Application Status Command Class": {
+            "Application Busy Command": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Status": "uint8",
+                "Wait Time": "uint8"
+            },
+            "Application Rejected Request Command": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Status": "uint8"
+            }
+        },
+        "Association Command Class": {},
+        "Association Command Configuration Command Class": {
+            "Command Records Supported Get Command": {
+                "Command Class": "uint8",
+                "Command": "uint8"
+            },
+            "Command Records Supported Report": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Max command length": "uint6",
+                "V/C": "uint1",
+                "Conf.Cmd": "uint1",
+                "Free Command records": "uint16",
+                "Max Command records": "uint16"
+            },
+            "Command Configuration Set": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Grouping identifier": "uint8",
+                "Node ID": "uint8",
+                "Command length": "uint8",
+                "Command Class identifier": "uint8",
+                "Command identifier": "uint8",
+                "Command byte": "uint8[]"
+            },
+            "Command Configuration Get": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Grouping identifier": "uint8",
+                "NodeID": "uint8"
+            },
+            "Command Configuration Report": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Grouping identifier": "uint8",
+                "Node ID": "uint8",
+                "First": "uint1",
+                "Reserved": "uint3",
+                "Reports to follow": "uint4",
+                "Command length": "uint8",
+                "Command Class identifier": "uint8",
+                "Command identifier": "uint8",
+                "Command byte": "uint8[]"
+            }
+        },
+        "Association Group Information (AGI) Command Class": {},
+        "Battery Command Class": {
+            "Battery Report Command": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Battery Level": "uint8",
+                "Battery Charging Status": "uint2",
+                "Rechargeable": "uint1",
+                "Back-up Battery": "uint1",
+                "Overheating": "uint1",
+                "Low Fluid": "uint1",
+                "Replace/recharge status bit-mask": "uint2",
+                "Reserved": "uint6",
+                "Low Temperature Status": "uint1",
+                "Disconnected": "uint1"
+            }
+        },
+        "Device Reset Locally Command Class": {
+            "Device Reset Locally Notification": {
+                "Command Class": "uint8",
+                "Command": "uint8"
+            }
+        },
+        "Firmware Update Meta Data Command Class": {
+            "Firmware Meta Data Get Command": {
+                "Command Class": "uint8",
+                "Command": "uint8"
+            },
+            "Firmware Meta Data Report": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Manufacturer ID": "uint16",
+                "Firmware 0 ID": "uint16",
+                "Firmware 0 Checksum": "uint16",
+                "Firmware Upgradable": "uint8",
+                "Number of Firmware Targets": "uint8",
+                "Max Fragment Size": "uint16",
+                "t.List": {
+                    "Firmware ID": "uint16"
+                },
+                "Hardware Version": "uint8",
+                "Reserved": "uint4",
+                "Resume": "uint1",
+                "Non-secure": "uint1",
+                "Activation": "uint1",
+                "CC": "uint1"
+            },
+            "Firmware Update Meta Data Request Get Command": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Manufacturer ID": "uint16",
+                "Firmware ID": "uint16",
+                "Firmware Checksum": "uint16",
+                "Firmware Target": "uint8",
+                "Fragment Size": "uint16",
+                "Reserved": "uint5",
+                "Resume": "uint1",
+                "Non-secure": "uint1",
+                "Activation": "uint1",
+                "Hardware Version": "uint8"
+            },
+            "Firmware Update Meta Data Request Report": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Status": "uint8",
+                "Reserved 1": "uint5",
+                "Resume": "uint1",
+                "Non-secure": "uint1",
+                "Reserved 2": "uint1"
+            },
+            "Firmware Update Meta Data Get Command": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Number of Reports": "uint8",
+                "Reserved": "uint1",
+                "Report number 1": "uint7",
+                "Report number 2": "uint8"
+            },
+            "Firmware Update Meta Data Report": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Last": "uint1",
+                "Report number": "uint8",
+                "Data": "uint8[]",
+                "Checksum": "uint16"
+            },
+            "Firmware Update Meta Data Status Report": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Status": "uint8",
+                "WaitTime": "uint16"
+            },
+            "Firmware Update Activation Set Command": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Manufacturer ID": "uint16",
+                "Firmware ID": "uint16",
+                "Firmware Checksum": "uint16",
+                "Firmware Target": "uint8",
+                "Hardware Version": "uint8"
+            },
+            "Firmware Update Activation Status Report": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Manufacturer ID": "uint16",
+                "Firmware ID": "uint16",
+                "Firmware Checksum": "uint16",
+                "Firmware Target": "uint8",
+                "Firmware Update Status": "uint8",
+                "Hardware Version": "uint8"
+            },
+            "Firmware Update Meta Data Prepare Get Command": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Manufacturer ID": "uint16",
+                "Firmware ID": "uint16",
+                "Firmware Target": "uint8",
+                "Fragment Size": "uint16",
+                "Hardware Version": "uint8"
+            },
+            "Firmware Update Meta Data Prepare Report": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Status": "uint8",
+                "Firmware Checksum": "uint16"
+            }
+        },
+        "Grouping Name Command Class": {
+            "Grouping Name Set Command": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Grouping Identifier": "uint8",
+                "Reserved": "uint5",
+                "Char. Presentation": "uint3",
+                "Grouping Name": "uint8[]"
+            },
+            "Grouping Name Get Command": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Grouping Identifier": "uint8"
+            },
+            "Group Name Report": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Grouping Identifier": "uint8",
+                "Reserved": "uint5",
+                "Char. Presentation": "uint3",
+                "Grouping Name": "uint8[]"
+            }
+        },
+        "Hail Command Class": {
+            "Hail Command": {
+                "Command Class": "uint8",
+                "Command": "uint8"
+            }
+        },
+        "Indicator Command Class": {
+            "Indicator Description Get": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Indicator ID": "uint8"
+            },
+            "Indicator Description Report": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Indicator ID 1": "uint8",
+                "Description Length": "uint8",
+                "Description": "uint8[]"
+            }
+        },
+        "IP Association Command Class": {
+            "IP Association Set Command": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Grouping Identifier": "uint8",
+                "IPv6 Address": "uint128",
+                "End Point": "uint8"
+            },
+            "IP Association Get Command": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Grouping Identifier": "uint8",
+                "Index": "uint8"
+            },
+            "IP Association Report": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Grouping Identifier": "uint8",
+                "Index": "uint8",
+                "Actual Nodes": "uint8",
+                "IPv6 Address": "uint128",
+                "End Point": "uint8"
+            },
+            "IP Association Remove Command": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Grouping Identifier": "uint8",
+                "IPv6 Address": "uint128",
+                "End Point": "uint8"
+            }
+        },
+        "Manufacturer Specific Command Class": {
+            "Device Specific Get Command": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Reserved": "uint5",
+                "Device ID Type": "uint3"
+            },
+            "Device Specific Report": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Reserved": "uint5",
+                "Device ID Type": "uint3",
+                "Device ID Format": "uint3",
+                "Device ID Length": "uint5",
+                "Device ID Data": "uint8[]"
+            }
+        },
+        "Multi Channel Association Command Class": {},
+        "Node Naming and Location Command Class": {
+            "Node Name Set Command": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Reserved": "uint5",
+                "Char. Presentation": "uint3",
+                "Node name char": "uint8[]"
+            },
+            "Node Name Get": {
+                "Command Class": "uint8",
+                "Command": "uint8"
+            },
+            "Node Name Report": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Reserved": "uint5",
+                "Char.Presentation": "uint3",
+                "Node name char": "uint8[]"
+            },
+            "Node Location Set": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Reserved": "uint5",
+                "Char.Presentation": "uint3",
+                "Node location char": "uint8[]"
+            },
+            "Node Location Get Command": {
+                "Command Class": "uint8",
+                "Command": "uint8"
+            },
+            "Node Location Report": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Reserved": "uint5",
+                "Char. Presentation": "uint3",
+                "Node location char": "uint8[]"
+            }
+        },
+        "Remote Association Activation Command Class": {
+            "Remote Association Activate Command": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Grouping identifier": "uint8"
+            }
+        },
+        "Remote Association Configuration Command Class": {
+            "Remote Association Configuration Set Command": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Local Grouping identifier": "uint8",
+                "Remote NodeID": "uint8",
+                "Remote Grouping identifier": "uint8"
+            },
+            "Remote Association Configuration Get Command": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Local Grouping identifier": "uint8"
+            },
+            "Remote Association Configuration Report": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Local Grouping identifier": "uint8",
+                "Remote NodeID": "uint8",
+                "Remote Grouping identifier": "uint8"
+            }
+        },
+        "Time Command Class": {
+            "Time Offset Get Command": {
+                "Command Class": "uint8",
+                "Command": "uint8"
+            },
+            "Time Offset Set Command": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Sign TZO": "uint1",
+                "Hour TZO": "uint7",
+                "Minute TZO": "uint8",
+                "Sign Offset DST": "uint1",
+                "Minute Offset DST": "uint7",
+                "Month Start DST": "uint8",
+                "Day Start DST": "uint8",
+                "Hour Start DST": "uint8",
+                "Month End DST": "uint8",
+                "Day End DST": "uint8",
+                "Hour End DST": "uint8"
+            },
+            "Time Offset Report": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Sign TZO": "uint1",
+                "Hour TZO": "uint7",
+                "Minute TZO": "uint8",
+                "Sign Offset DST": "uint1",
+                "Minute Offset DST": "uint7",
+                "Month Start DST": "uint8",
+                "Day Start DST": "uint8",
+                "Hour Start DST": "uint8",
+                "Month End DST": "uint8",
+                "Day End DST": "uint8",
+                "Hour End DST": "uint8"
+            }
+        },
+        "Version Command Class": {
+            "Version Capabilities Get Command": {
+                "Command Class": "uint8",
+                "Command": "uint8"
+            },
+            "Version Capabilities Report": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Reserved": "uint5",
+                "ZWS": "uint1",
+                "CC": "uint1",
+                "V": "uint1"
+            },
+            "Version Z-Wave Software Get Command": {
+                "Command Class": "uint8",
+                "Command": "uint8"
+            },
+            "Version Z-Wave Software Report": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "SDK version": "uint24",
+                "Z-Wave Application Framework API Version": "uint24",
+                "Z-Wave Application Framework Build Number": "uint16",
+                "Host Interface Version": "uint24",
+                "Host Interface Build Number": "uint16",
+                "Z-Wave Protocol Version": "uint24",
+                "Z-Wave Protocol Build Number": "uint16",
+                "Application Version": "uint24",
+                "Application Build Number": "uint16"
+            }
+        },
+        "Wake Up Command Class": {
+            "Wake Up Interval Capabilities Report": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Minimum Wake Up Interval Seconds": "uint24",
+                "Maximum Wake Up Interval Seconds": "uint24",
+                "Default Wake Up Interval Seconds": "uint24",
+                "Wake Up Interval Step Seconds": "uint24",
+                "Reserved": "uint7",
+                "Wake Up on Demand Support": "uint1"
+            }
+        },
+        "Z/IP Naming and Location Command Class": {
+            "Z/IP Name Set Command": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Name": "uint8[]"
+            },
+            "Z/IP Name Get Command": {
+                "Command Class": "uint8",
+                "Command": "uint8"
+            },
+            "Z/IP Name Report": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Name": "uint8[]"
+            },
+            "Z/IP Location Set Command": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Location": "uint8[]"
+            },
+            "Z/IP Location Get Command": {
+                "Command Class": "uint8",
+                "Command": "uint8"
+            },
+            "Z/IP Location Report": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Location": "uint8[]"
+            }
+        },
+        "Z-Wave Plus Info Command Class": {
+            "Z-Wave Plus Info Get Command": {
+                "Command Class": "uint8",
+                "Command": "uint8"
+            },
+            "Z-Wave Plus Info Report": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Z-Wave Plus Version": "uint8",
+                "Role Type": "uint8",
+                "Node Type": "uint8",
+                "Installer Icon Type": "uint16",
+                "User Icon Type": "uint16"
+            }
+        }
+    }
+}

@@ -1,0 +1,2986 @@
+{
+    "Application Command Classes": {
+        "Alarm Command Class": {
+            "Alarm Set Command": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Z-Wave Alarm Type": "uint8",
+                "Z-Wave Alarm Status": "uint8"
+            },
+            "Alarm Get Command": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Alarm Type": "uint8",
+                "Z-Wave Alarm Type": "uint8"
+            },
+            "Alarm Report": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Alarm Type": "uint8",
+                "Alarm Level": "uint8",
+                "Zensor Net Source Node ID": "uint8",
+                "Z-Wave Alarm Status": "uint8",
+                "Z-Wave Alarm Type": "uint8",
+                "Z-Wave Alarm Event": "uint8",
+                "Number of Event Parameters": "uint8",
+                "Event Parameter": "uint8[]"
+            },
+            "Alarm Type Supported Get Command": {
+                "Command Class": "uint8",
+                "Command": "uint8"
+            },
+            "Alarm Type Supported Report": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "V1 Alarm": "uint1",
+                "Reserved": "uint2",
+                "Number of Bit Masks": "uint5",
+                "Bit Mask": "uint8[]"
+            }
+        },
+        "Alarm Sensor Command Class": {
+            "Alarm Sensor Get Command": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Sensor Type": "uint8"
+            },
+            "Alarm Sensor Report": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Source Node ID": "uint8",
+                "Sensor Type": "uint8",
+                "Sensor State": "uint8",
+                "Seconds": "uint16"
+            },
+            "Alarm Sensor Supported Get Command": {
+                "Command Class": "uint8",
+                "Command": "uint8"
+            },
+            "Alarm Sensor Supported Report": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Number of Bit Masks": "uint8",
+                "Bit Mask": "uint8[]"
+            }
+        },
+        "Alarm Silence Command Class": {
+            "Alarm Silence Set": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Mode": "uint8",
+                "Seconds": "uint16",
+                "Number of Bit Masks": "uint8",
+                "Bit Mask": "uint8[]"
+            }
+        },
+        "All Switch Command Class": {
+            "All Switch Set Command": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Mode": "uint8"
+            },
+            "All Switch Get Command": {
+                "Command Class": "uint8",
+                "Command": "uint8"
+            },
+            "All Switch Report": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Mode": "uint8"
+            },
+            "All Switch On Command": {
+                "Command Class": "uint8",
+                "Command": "uint8"
+            },
+            "All Switch Off Command": {
+                "Command Class": "uint8",
+                "Command": "uint8"
+            }
+        },
+        "Anti-theft Command Class": {
+            "Anti-Theft Set Command": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "State": "uint1",
+                "Number of Magic Code bytes": "uint7",
+                "Magic Code": "uint8[]",
+                "Manufacturer ID": "uint16",
+                "Anti-theft Hint Length": "uint8",
+                "Anti-theft Hint": "uint8[]",
+                "Z-Wave Alliance locking entity ID": "uint16"
+            },
+            "Anti-theft Get Command": {
+                "Command Class": "uint8",
+                "Command": "uint8"
+            },
+            "Anti-Theft Report": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Anti-theft Protection Status": "uint8",
+                "Manufacturer ID": "uint16",
+                "Anti-theft Hint Length": "uint8",
+                "Anti-theft Hint": "uint8[]",
+                "Z-Wave Alliance locking entity ID": "uint16"
+            }
+        },
+        "Anti-theft Unlock Command Class": {
+            "Anti-Theft Unlock State Get Command": {
+                "Command Class": "uint8",
+                "Command": "uint8"
+            },
+            "Anti-Theft Unlock State Report": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Reserved": "uint2",
+                "Anti-theft Hint Length": "uint4",
+                "Restricted": "uint1",
+                "State": "uint1",
+                "Anti-theft Hint": "uint8[]",
+                "Manufacturer ID": "uint16",
+                "Z-Wave Alliance locking entity ID": "uint16"
+            },
+            "Anti-Theft Unlock Set Command": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Reserved": "uint4",
+                "Magic code length": "uint4",
+                "Magic Code": "uint8[]"
+            }
+        },
+        "Authentication Command Class": {
+            "Authentication Capability Get Command": {
+                "Command Class": "uint8",
+                "Command": "uint8"
+            },
+            "Authentication Capability Report": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Supported Data ID Entries": "uint16",
+                "Supported Authentication ID Entries": "uint16",
+                "MAR": "uint1",
+                "MADR": "uint1",
+                "OR": "uint1",
+                "Reserved 1": "uint1",
+                "Supported Authentication Technology Type Bit Mask length": "uint4",
+                "Supported Authentication Technology Type Bit Mask": "uint8[]",
+                "Supported Checksum Type Bit Mask": "uint8",
+                "Reserved 2": "uint3",
+                "Supported Fallback Status Bit Mask length": "uint5",
+                "Supported Fallback Status Bit Mask": "uint8[]"
+            },
+            "Authentication Data Set Command": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Authentication Data ID": "uint16",
+                "Reserved": "uint4",
+                "Authentication Technology Type": "uint4",
+                "Authentication Data length": "uint8",
+                "Authentication Data": "uint8[]"
+            },
+            "Authentication Data Get": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Authentication Data ID": "uint16",
+                "Reserved": "uint7",
+                "Report More": "uint1"
+            },
+            "Authentication Data Report": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Number of Authentication Data ID Blocks": "uint8",
+                "t.List": {
+                    "Authentication Data ID": "uint16",
+                    "Reserved": "uint4",
+                    "Authentication Technology Type": "uint4",
+                    "Authentication Data length": "uint8",
+                    "Authentication Data": "uint8[]"
+                },
+                "Next Authentication Data": "uint16"
+            },
+            "Authentication Technologies Combination Set Command": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Authentication Data ID": "uint16",
+                "Fallback Status": "uint8",
+                "User Identifier": "uint16",
+                "Schedule ID": "uint16",
+                "OR logic": "uint1",
+                "Number of Authentication Data ID": "uint7",
+                "t.List": {
+                    "Authentication Data ID": "uint16"
+                }
+            },
+            "Authentication Technologies Combination Get": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Authentication ID": "uint16",
+                "Reserved": "uint7",
+                "Report More": "uint1"
+            },
+            "Authentication Technologies Combination Report": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Number of Authentication ID blocks": "uint8",
+                "t.List": {
+                    "Authentication ID block length": "uint8",
+                    "Authentication ID": "uint16",
+                    "Fallback Status": "uint8",
+                    "User Identifier": "uint16",
+                    "Schedule ID": "uint16",
+                    "OR logic": "uint1",
+                    "Number of Authentication Data IDs": "uint7",
+                    "t.List": {
+                        "Authentication Data ID": "uint16"
+                    }
+                },
+                "Next Authentication ID": "uint16"
+            },
+            "Authentication Checksum Get Command": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Reserved": "uint1",
+                "Checksum type": "uint3",
+                "Authentication Technology Type": "uint4"
+            },
+            "Authentication Checksum Report": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Reserved": "uint1",
+                "Checksum type": "uint3",
+                "Authentication Technology Type": "uint4",
+                "Checksum": "uint16"
+            }
+        },
+        "Authentication Media Write Command Class": {
+            "Authentication Media Capability Get Command": {
+                "Command Class": "uint8",
+                "Command": "uint8"
+            },
+            "Authentication Media Capability Report": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Reserved": "uint7",
+                "DGS": "uint1"
+            },
+            "Authentication Media Write Start Command": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Sequence number": "uint8",
+                "Timeout": "uint8",
+                "Generate data": "uint1",
+                "Reserved": "uint7",
+                "Data Length": "uint8",
+                "Data": "uint8[]"
+            },
+            "Authentication Media Write Stop Command": {
+                "Command Class": "uint8",
+                "Command": "uint8"
+            },
+            "Authentication Media Write Status Command": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Sequence number": "uint8",
+                "Status": "uint8",
+                "Data Length": "uint8",
+                "Data": "uint8[]"
+            }
+        },
+        "Barrier Operator Command Class": {
+            "Barrier Operator Set Command": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Target Value": "uint8"
+            },
+            "Barrier Operator Get Command": {
+                "Command Class": "uint8",
+                "Command": "uint8"
+            },
+            "Barrier Operator Report": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "State": "uint8"
+            },
+            "Barrier Operator Get Signaling Capabilities Supported Command": {
+                "Command Class": "uint8",
+                "Command": "uint8"
+            },
+            "Barrier Operator Report Signaling Capabilities Supported Command": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Bit Mask": "uint8[]"
+            },
+            "Barrier Operator Event Signal Set Command": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Subsystem Type": "uint8",
+                "Subsystem State": "uint8"
+            },
+            "Barrier Operator Event Signaling Get Command": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Subsystem Type": "uint8"
+            },
+            "Barrier Operator Event Signaling Report": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Subsystem Type": "uint8",
+                "Subsystem State": "uint8"
+            }
+        },
+        "Basic Command Class": {
+            "Basic Report": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Current Value": "uint8",
+                "Target Value": "uint8",
+                "Duration": "uint8"
+            }
+        },
+        "Basic Tariff Information Command Class": {
+            "Basic Tariff Information Get Command": {
+                "Command Class": "uint8",
+                "Command": "uint8"
+            },
+            "Basic Tariff Information Report": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Dual": "uint1",
+                "Reserved 1": "uint3",
+                "Total No. Import Rates": "uint4",
+                "Reserved 2": "uint4",
+                "E1 -Current Rate in Use": "uint4",
+                "E1 - Rate Consumption Register": "uint24",
+                "E1 - Time for Next Rate - Hours": "uint8",
+                "E1 - Time for Next Rate - Minutes": "uint8",
+                "E1 - Time for Next Rate - Seconds": "uint8",
+                "Reserved 3": "uint4",
+                "E2 - Current Rate in Use": "uint4",
+                "E2 - Rate Consumption Register": "uint24"
+            }
+        },
+        "Basic Window Covering Command Class": {
+            "Basic Window Covering Start Level Change Command": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Reserved 1": "uint1",
+                "Open/Close": "uint1",
+                "Reserved 2": "uint6"
+            },
+            "Basic Window Covering Stop Level Change": {
+                "Command Class": "uint8",
+                "Command": "uint8"
+            }
+        },
+        "Binary Sensor Command Class": {
+            "Binary Sensor Get Command": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Sensor Type": "uint3"
+            },
+            "Binary Sensor Report": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Sensor Value": "uint8",
+                "Sensor Type": "uint8"
+            },
+            "Binary Sensor Get Supported Sensor Command": {
+                "Command Class": "uint8",
+                "Command": "uint8"
+            },
+            "Binary Sensor Supported Sensor Report": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Bit Mask": "uint8[]"
+            }
+        },
+        "Binary Switch Command Class": {
+            "Binary Switch Set Command": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Target Value": "uint8",
+                "Duration": "uint8"
+            },
+            "Binary Switch Report": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Current Value": "uint8",
+                "Target Value": "uint8",
+                "Duration": "uint8"
+            }
+        },
+        "Binary Toggle Switch Command Class": {
+            "Binary Toggle Switch Set": {
+                "Command Class": "uint8",
+                "Command": "uint8"
+            },
+            "Binary Toggle Switch Get Command": {
+                "Command Class": "uint8",
+                "Command": "uint8"
+            },
+            "Binary Toggle Switch Report": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Value": "uint8"
+            }
+        },
+        "Central Scene Command Class": {
+            "Central Scene Configuration Set Command": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Slow Refresh": "uint1",
+                "Reserved": "uint7"
+            },
+            "Central Scene Configuration Get Command": {
+                "Command Class": "uint8",
+                "Command": "uint8"
+            },
+            "Central Scene Configuration Report": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Slow Refresh": "uint1",
+                "Reserved": "uint7"
+            },
+            "Central Scene Supported Get Command": {
+                "Command Class": "uint8",
+                "Command": "uint8"
+            },
+            "Central Scene Supported Report": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Supported Scenes": "uint8",
+                "Slow Refresh Support": "uint1",
+                "Reserved": "uint4",
+                "Number of Bit Mask Bytes": "uint2",
+                "Identical": "uint1",
+                "t.List": {
+                    "Supported Key Attributes for Scene": "uint8[]"
+                }
+            },
+            "Central Scene Notification Command": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Sequence Number": "uint8",
+                "Slow Refresh": "uint1",
+                "Reserved": "uint4",
+                "Key Attribute": "uint3",
+                "Scene Number": "uint8"
+            }
+        },
+        "Climate Control Schedule Command Class": {
+            "Schedule Set Command": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Reserved": "uint5",
+                "Weekday": "uint3",
+                "Switchpoint": "uint216"
+            },
+            "Schedule Get Command": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Reserved": "uint5",
+                "Weekday": "uint3"
+            },
+            "Schedule Report Command": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Reserved": "uint5",
+                "Weekday": "uint3",
+                "Switchpoint": "uint216"
+            },
+            "Schedule Changed Get": {
+                "Command Class": "uint8",
+                "Command": "uint8"
+            },
+            "Schedule Changed Report": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "ChangeCounter": "uint8"
+            },
+            "Schedule Override Set Command": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Reserved": "uint6",
+                "Override Type": "uint2",
+                "Override State": "uint8"
+            },
+            "Schedule Override Get Command": {
+                "Command Class": "uint8",
+                "Command": "uint8"
+            },
+            "Schedule Override Report": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Reserved": "uint6",
+                "Override Type": "uint2",
+                "OverrideState": "uint8"
+            }
+        },
+        "Clock Command Class": {
+            "Clock Set Command": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Weekday": "uint3",
+                "Hour": "uint5",
+                "Minute": "uint8"
+            },
+            "Clock Get Command": {
+                "Command Class": "uint8",
+                "Command": "uint8"
+            },
+            "Clock Report": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Weekday": "uint3",
+                "Hour": "uint5",
+                "Minute": "uint8"
+            }
+        },
+        "Color Switch Command Class": {
+            "Color Switch Report": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Color Component ID": "uint8",
+                "Current Value": "uint8",
+                "Target Value": "uint8",
+                "Duration": "uint8"
+            },
+            "Color Switch Start Level Change Command": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Reserved 1": "uint1",
+                "Up / Down": "uint1",
+                "Ignore Start Level": "uint1",
+                "Reserved 2": "uint5",
+                "Color Component ID": "uint8",
+                "Start Level": "uint8",
+                "Duration": "uint8"
+            }
+        },
+        "Configuration Command Class": {
+            "Configuration Set Command": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Parameter Number": "uint8",
+                "Default": "uint1",
+                "Reserved": "uint4",
+                "Size": "uint3",
+                "Configuration Value": "uint8[]"
+            },
+            "Configuration Bulk Set Command": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Parameter Offset": "uint16",
+                "Number of Parameters": "uint8",
+                "Default": "uint1",
+                "Hand-shake": "uint1",
+                "Reserved": "uint3",
+                "Size": "uint3",
+                "t.List": {
+                    "Parameter - Configuration Value": "uint8[]"
+                }
+            },
+            "Configuration Properties Report": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Parameter Number": "uint16",
+                "Altering capabilities": "uint1",
+                "Read-only": "uint1",
+                "Format": "uint3",
+                "Size": "uint3",
+                "Min Value": "uint8[]",
+                "Max Value": "uint8[]",
+                "Default Value": "uint8[]",
+                "Next Parameter Number": "uint16",
+                "Reserved": "uint6",
+                "No Bulk support": "uint1",
+                "Advanced": "uint1"
+            },
+            "Configuration Default Reset Command": {
+                "Command Class": "uint8",
+                "Command": "uint8"
+            }
+        },
+        "Controller Replication Command Class": {
+            "Transfer group command": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Sequence Number": "uint8",
+                "Group ID": "uint8",
+                "Node ID": "uint8"
+            },
+            "Transfer Group Name Command": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Sequence Number": "uint8",
+                "Group ID": "uint8",
+                "Group Name": "uint8[]"
+            },
+            "Transfer scene command": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Sequence Number": "uint8",
+                "Scene ID": "uint8",
+                "Node ID": "uint8",
+                "Level": "uint8"
+            },
+            "Transfer Scene Name Command": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Sequence Number": "uint8",
+                "Scene ID": "uint8",
+                "Scene Name": "uint8[]"
+            }
+        },
+        "Demand Control Plan Configuration Command Class": {
+            "DCP list supported get command": {
+                "Command Class": "uint8",
+                "Command": "uint8"
+            },
+            "DCP list supported report": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "DCP List Size": "uint8",
+                "Free DCP List entries": "uint8"
+            },
+            "DCP list set command": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Timestamp": {
+                    "Year": "uint16",
+                    "Month": "uint8",
+                    "Day": "uint8",
+                    "Hour Local Time": "uint8",
+                    "Minute Local Time": "uint8",
+                    "Second Local Time": "uint8"
+                },
+                "DCP Rate ID": "uint8",
+                "Reserved": "uint6",
+                "Number of DC": "uint2",
+                "t.List": {
+                    "Generic Device Class": "uint8",
+                    "Specific Device Class": "uint8"
+                },
+                "Start": {
+                    "Year": "uint16",
+                    "Month": "uint8",
+                    "Day": "uint8",
+                    "Hour Local Time": "uint8",
+                    "Minute Local Time": "uint8",
+                    "Second Local Time": "uint8"
+                },
+                "Duration": {
+                    "Hour Time": "uint8",
+                    "Minute Time": "uint8",
+                    "Second Time": "uint8"
+                },
+                "Event Priority": "uint8",
+                "Load shedding": "uint8",
+                "Start Association Group": "uint8",
+                "Stop Association Group": "uint8",
+                "Randomization interval": "uint8"
+            }
+        },
+        "Demand Control Plan Monitor Command Class": {
+            "DCP list get command": {
+                "Command Class": "uint8",
+                "Command": "uint8"
+            },
+            "DCP list report": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Reports to Follow": "uint8",
+                "Timestamp": {
+                    "Year": "uint16",
+                    "Month": "uint8",
+                    "Day": "uint8",
+                    "Hour Local Time": "uint8",
+                    "Minute Local Time": "uint8",
+                    "Second Local Time": "uint8"
+                },
+                "DCP ID": "uint8",
+                "Reserved": "uint6",
+                "Number of DC": "uint2",
+                "t.List": {
+                    "Generic Device Class": "uint8",
+                    "Specific Device Class": "uint8"
+                },
+                "Start": {
+                    "Year": "uint16",
+                    "Month": "uint8",
+                    "Day": "uint8",
+                    "Hour Local Time": "uint8",
+                    "Minute Local Time": "uint8",
+                    "Second Local Time": "uint8"
+                },
+                "Duration": {
+                    "Hour Time": "uint8",
+                    "Minute Time": "uint8",
+                    "Second Time": "uint8"
+                },
+                "Event Priority": "uint8",
+                "Load shedding": "uint8",
+                "Start Association Group": "uint8",
+                "Stop Association Group": "uint8",
+                "Randomization interval": "uint8"
+            },
+            "DCP event status get": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Timestamp -Year": "uint16",
+                "Timestamp -Month": "uint8",
+                "Timestamp -Day": "uint8",
+                "Timestamp -Hour Local Time": "uint8",
+                "Timestamp -Minute Local Time": "uint8",
+                "Timestamp -Second Local Time": "uint8"
+            },
+            "DCP event status report": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Timestamp -Year": "uint16",
+                "Timestamp -Month": "uint8",
+                "Timestamp -Day": "uint8",
+                "Timestamp -Hour Local Time": "uint8",
+                "Timestamp -MinuteLocal Time": "uint8",
+                "Timestamp -Second Local Time": "uint8",
+                "Event status": "uint8"
+            }
+        },
+        "Door Lock Command Class": {
+            "Door Lock Operation Set Command": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Door Lock Mode": "uint8"
+            },
+            "Door Lock Operation Get": {
+                "Command Class": "uint8",
+                "Command": "uint8"
+            },
+            "Door Lock Operation Report": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Current Door Lock Mode": "uint8",
+                "Outside Door Handles Mode": "uint4",
+                "Inside Door Handles Mode": "uint4",
+                "Door Condition": "uint8",
+                "Remaining Lock Time Minutes": "uint8",
+                "Remaining Lock Time Seconds": "uint8",
+                "Target Door Lock Mode": "uint8",
+                "Duration": "uint8"
+            },
+            "Door Lock Configuration Set": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Operation Type": "uint8",
+                "Outside Door Handles Enabled": "uint4",
+                "Inside Door Handles Enabled": "uint4",
+                "Lock Timeout Minutes": "uint8",
+                "Lock Timeout Seconds": "uint8",
+                "Auto-relock time": "uint16",
+                "Hold and release time": "uint16",
+                "Reserved": "uint6",
+                "BTB": "uint1",
+                "TA": "uint1"
+            },
+            "Door Lock Configuration Get Command": {
+                "Command Class": "uint8",
+                "Command": "uint8"
+            },
+            "Door Lock Configuration Report": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Operation Type": "uint8",
+                "Outside Door Handles Enabled": "uint4",
+                "Inside Door Handles Enabled": "uint4",
+                "Lock Timeout Minutes": "uint8",
+                "Lock Timeout Seconds": "uint8",
+                "Auto-relock time": "uint16",
+                "Hold and release time": "uint16",
+                "Reserved": "uint6",
+                "BTB": "uint1",
+                "TA": "uint1"
+            },
+            "Door Lock Capabilities Get Command": {
+                "Command Class": "uint8",
+                "Command": "uint8"
+            },
+            "Door Lock Capabilities Report": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Reserved 1": "uint3",
+                "Supported Operation type Bit Mask Length": "uint5",
+                "Supported Operation Type Bit Mask": "uint8[]",
+                "Supported Door Lock Mode List Length": "uint8",
+                "Supported Door Lock Mode": "uint8[]",
+                "Supported Outside Handle Modes Bitmask": "uint4",
+                "Supported Inside Handle Modes Bitmask": "uint4",
+                "Supported door components": "uint8",
+                "Reserved 2": "uint4",
+                "ARS": "uint1",
+                "HRS": "uint1",
+                "TAS": "uint1",
+                "BTBS": "uint1"
+            }
+        },
+        "Door Lock Logging Command Class": {
+            "Door Lock Logging Records Supported Get Command": {
+                "Command Class": "uint8",
+                "Command": "uint8"
+            },
+            "Door Lock Logging Records Supported Report": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Max records stored": "uint8"
+            },
+            "Door Lock Logging Record Get": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Record number": "uint8"
+            },
+            "Door Lock Logging Record Report": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Record number": "uint8",
+                "Timestamp - Year": "uint16",
+                "Timestamp - Month": "uint8",
+                "Timestamp - Day": "uint8",
+                "Record status": "uint3",
+                "Timestamp - Hour Local Time": "uint5",
+                "Timestamp - Minute Local Time": "uint8",
+                "Timestamp - Second Local Time": "uint8",
+                "Event Type": "uint8",
+                "User Identifier": "uint8",
+                "User Code Length": "uint8",
+                "USER_CODE": "uint8[]"
+            }
+        },
+        "Energy Production Command Class": {
+            "Energy Production Get Command": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Parameter Number": "uint8"
+            },
+            "Energy Production Report": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Parameter Number": "uint8",
+                "Precision": "uint3",
+                "Scale": "uint2",
+                "Size": "uint3",
+                "Value": "uint8[]"
+            }
+        },
+        "Entry Control Command Class": {
+            "Entry Control Notification Command": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Sequence Number": "uint8",
+                "Reserved": "uint6",
+                "Data Type": "uint2",
+                "Event Type": "uint8",
+                "Event Data Length": "uint8",
+                "Event Data (Optional)": "uint8[]"
+            },
+            "Entry Control Key Supported Get Command": {
+                "Command Class": "uint8",
+                "Command": "uint8"
+            },
+            "Entry Control Key Supported Report": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Key Supported Bit Mask Length": "uint8",
+                "Key Supported Bit Mask": "uint8[]"
+            },
+            "Entry Control Event Supported Get Command": {
+                "Command Class": "uint8",
+                "Command": "uint8"
+            },
+            "Entry Control Event Supported Report": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Reserved 1": "uint6",
+                "Data Type Supported Bit Mask Length": "uint2",
+                "Data Type Supported Bit Mask": "uint8[]",
+                "Reserved 2": "uint3",
+                "Reserved Event Supported Bit Mask Length": "uint5",
+                "Event Type Supported Bit Mask": "uint8[]",
+                "Key Cached Size supported Minimum": "uint8",
+                "Key Cached Size supported Maximum": "uint8",
+                "Key Cached Timeout supported Minimum": "uint8",
+                "Key Cached Timeout supported Maximum": "uint8"
+            },
+            "Entry Control Configuration Set Command": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Key Cache Size": "uint8",
+                "Key Cache Timeout": "uint8"
+            },
+            "Entry Control Configuration Get": {
+                "Command Class": "uint8",
+                "Command": "uint8"
+            },
+            "Entry Control Configuration Report": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Key Cache Size": "uint8",
+                "Key Cache Timeout": "uint8"
+            }
+        },
+        "Generic Schedule Command Class": {
+            "Generic Schedule Capabilities Get Command": {
+                "Command Class": "uint8",
+                "Command": "uint8"
+            },
+            "Generic Schedule Capabilities Report": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Number of supported Schedule IDs": "uint16",
+                "Reserved 1": "uint1",
+                "Number of supported Time Range IDs": "uint15",
+                "Number of supported Time Ranges per Schedule": "uint8",
+                "Reserved 2": "uint5",
+                "Weekdays": "uint1",
+                "Date": "uint1",
+                "Hour & Minute": "uint1"
+            },
+            "Generic Schedule Time Range Set Command": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Reserved 1": "uint1",
+                "Time Range ID": "uint15",
+                "In use 1": "uint1",
+                "Weekday bitmask": "uint7",
+                "In use 2": "uint1",
+                "Start Year": "uint15",
+                "In use 3": "uint1",
+                "Stop Year": "uint15",
+                "In use 4": "uint1",
+                "Reserved 2": "uint3",
+                "Start Month": "uint4",
+                "In use 5": "uint1",
+                "Reserved 3": "uint3",
+                "Stop Month": "uint4",
+                "In use 6": "uint1",
+                "Reserved 4": "uint2",
+                "Start Day": "uint5",
+                "In use 7": "uint1",
+                "Reserved 5": "uint2",
+                "Stop Day": "uint5",
+                "In use 8": "uint1",
+                "Reserved 6": "uint2",
+                "Start Hour": "uint5",
+                "In use 9": "uint1",
+                "Reserved 7": "uint2",
+                "Stop Hour": "uint5",
+                "In use 10": "uint1",
+                "Reserved 8": "uint1",
+                "Start Minute": "uint6",
+                "In use 11": "uint1",
+                "Reserved 9": "uint1",
+                "Stop Minute": "uint6",
+                "In use 12": "uint1",
+                "Reserved 10": "uint2",
+                "Daily Start Hour": "uint5",
+                "In use 13": "uint1",
+                "Reserved 11": "uint2",
+                "Daily Stop Hour": "uint5",
+                "In use 14": "uint1",
+                "Reserved 12": "uint1",
+                "Daily Start Minute": "uint6",
+                "In use 15": "uint1",
+                "Reserved 13": "uint1",
+                "Daily Stop Minute": "uint6"
+            },
+            "Generic Schedule Time Range Get Command": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Reserved": "uint1",
+                "Time Range ID": "uint15"
+            },
+            "Generic Schedule Time Range Report": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Reserved 1": "uint1",
+                "Time Range ID": "uint15",
+                "In use 1": "uint1",
+                "Weekday bitmask": "uint7",
+                "In use 2": "uint1",
+                "Start Year": "uint15",
+                "In use 3": "uint1",
+                "Stop Year": "uint15",
+                "In use 4": "uint1",
+                "Reserved 2": "uint3",
+                "Start Month": "uint4",
+                "In use 5": "uint1",
+                "Reserved 3": "uint3",
+                "Stop Month": "uint4",
+                "In use 6": "uint1",
+                "Reserved 4": "uint2",
+                "Start Day": "uint5",
+                "In use 7": "uint1",
+                "Reserved 5": "uint2",
+                "Stop Day": "uint5",
+                "In use 8": "uint1",
+                "Reserved 6": "uint2",
+                "Start Hour": "uint5",
+                "In use 9": "uint1",
+                "Reserved 7": "uint2",
+                "Stop Hour": "uint5",
+                "In use 10": "uint1",
+                "Reserved 8": "uint1",
+                "Start Minute": "uint6",
+                "In use 11": "uint1",
+                "Reserved 9": "uint1",
+                "Stop Minute": "uint6",
+                "In use 12": "uint1",
+                "Reserved 10": "uint2",
+                "Daily Start Hour": "uint5",
+                "In use 13": "uint1",
+                "Reserved 11": "uint2",
+                "Daily Stop Hour": "uint5",
+                "In use 14": "uint1",
+                "Reserved 12": "uint1",
+                "Daily Start Minute": "uint6",
+                "In use 15": "uint1",
+                "Reserved 13": "uint1",
+                "Daily Stop Minute": "uint6",
+                "Reserved 14": "uint1",
+                "Next Time Range ID": "uint15"
+            },
+            "Generic Schedule Set Command": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Schedule ID": "uint16",
+                "Number of Time Range IDs": "uint8",
+                "t.List": {
+                    "Include/exclude": "uint1",
+                    "Time Range ID": "uint15"
+                }
+            },
+            "Generic Schedule Get Command": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Schedule ID": "uint16"
+            },
+            "Generic Schedule Report": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Schedule ID": "uint16",
+                "Number of Time Range IDs": "uint8",
+                "t.List": {
+                    "Include/exclude": "uint1",
+                    "Time Range ID": "uint15"
+                },
+                "Next Schedule ID": "uint16"
+            }
+        },
+        "Geographic LocationCommand Class": {
+            "Geographic Location Set Command": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Longitude Degrees": "uint8",
+                "Long. Sign": "uint1",
+                "Longitude Minutes": "uint7",
+                "Latitude Degrees": "uint8",
+                "Lat.Sign": "uint1",
+                "Latitude Minutes": "uint7"
+            },
+            "Geographic Location Get Command": {
+                "Command Class": "uint8",
+                "Command": "uint8"
+            },
+            "Geographic Location Report": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "LongitudeDegrees": "uint8",
+                "Long. Sign": "uint1",
+                "Longitude Minutes": "uint7",
+                "Latitude Degrees": "uint8",
+                "Lat.Sign": "uint1",
+                "Latitude Minutes": "uint7"
+            }
+        },
+        "HRV Status Command Class": {
+            "HRV Status Get Command": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Status Parameter": "uint8"
+            },
+            "HRV Status Report": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "StatusParameter": "uint8",
+                "Precision": "uint3",
+                "Scale": "uint2",
+                "Size": "uint3",
+                "Value": "uint8[]"
+            },
+            "HRV Status Supported Get Command": {
+                "Command Class": "uint8",
+                "Command": "uint8"
+            },
+            "HRV Status Supported Report": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Bit Mask": "uint8[]"
+            }
+        },
+        "HRV Control Command Class": {
+            "HRV Mode Set Command": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Reserved": "uint3",
+                "Mode": "uint5"
+            },
+            "HRV Mode Get Command": {
+                "Command Class": "uint8",
+                "Command": "uint8"
+            },
+            "HRV Mode Report": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Reserved": "uint3",
+                "Mode": "uint5"
+            },
+            "HRV Bypass Set Command": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Bypass": "uint8"
+            },
+            "HRV Bypass Get Command": {
+                "Command Class": "uint8",
+                "Command": "uint8"
+            },
+            "HRV Bypass Report": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Bypass": "uint8"
+            },
+            "HRV Ventilation Rate Set Command": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Ventilation Rate": "uint8"
+            },
+            "HRV Ventilation Rate Get Command": {
+                "Command Class": "uint8",
+                "Command": "uint8"
+            },
+            "HRV Ventilation Rate Report": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Ventilation Rate": "uint8"
+            },
+            "HRV Mode Supported Get Command": {
+                "Command Class": "uint8",
+                "Command": "uint8"
+            },
+            "HRV Mode Supported Report": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Reserved": "uint4",
+                "Manual Control Supported": "uint4",
+                "Bit Mask": "uint8[]"
+            }
+        },
+        "Humidity Control Operating State Class": {
+            "Humidity Control Operating State Get Command": {
+                "CommandClass": "uint8",
+                "Command": "uint8"
+            },
+            "Humidity Control Operating State Report": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Reserved": "uint4",
+                "Operating State": "uint4"
+            }
+        },
+        "Humidity Control Setpoint Command Class": {
+            "Humidity Control Setpoint Set Command": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Reserved": "uint4",
+                "Setpoint Type": "uint4",
+                "Precision": "uint3",
+                "Scale": "uint2",
+                "Size": "uint3",
+                "Value": "uint8[]"
+            },
+            "Humidity Control Setpoint Get Command": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Reserved": "uint4",
+                "Setpoint Type": "uint4"
+            },
+            "Humidity Control Setpoint Report": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Reserved": "uint4",
+                "Setpoint Type": "uint4",
+                "Precision": "uint3",
+                "Scale": "uint2",
+                "Size": "uint3",
+                "Value": "uint8[]"
+            },
+            "Humidity Control Setpoint Supported Get Command": {
+                "Command Class": "uint8",
+                "Command": "uint8"
+            },
+            "Humidity Control Setpoint Supported Report": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Bit Mask": "uint8[]"
+            },
+            "Humidity Control Setpoint Scale Supported Get Command": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Reserved": "uint4",
+                "Setpoint Type": "uint4"
+            },
+            "Humidity Control Setpoint Scale Supported Report": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Reserved": "uint4",
+                "Scale Bit Mask": "uint4"
+            },
+            "Humidity Control Setpoint Capabilities Get Command": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Reserved": "uint4",
+                "Setpoint Type": "uint4"
+            },
+            "Humidity Control Setpoint Capabilities Report": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Reserved": "uint4",
+                "Setpoint Type": "uint4",
+                "Precision 1": "uint3",
+                "Scale 1": "uint2",
+                "Size 1": "uint3",
+                "Minimum Value": "uint8[]",
+                "Precision 2": "uint3",
+                "Scale 2": "uint2",
+                "Size 2": "uint3",
+                "Maximum Value": "uint8[]"
+            }
+        },
+        "IR Repeater Command Class": {
+            "IR Repeater Capabilities Get Command": {
+                "Command Class": "uint8",
+                "Command": "uint8"
+            },
+            "IR Repeater Capabilities Report": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Number of IR Code identifiers for learning": "uint8",
+                "IRR": "uint1",
+                "LCR": "uint1",
+                "RLC": "uint1",
+                "PES": "uint1",
+                "BES": "uint1",
+                "Duty Cycle bitmask": "uint3",
+                "Carrier": "uint8",
+                "Minimum Sub Carrier": "uint8",
+                "Maximum Sub Carrier": "uint8",
+                "Minimum Pulse time unit": "uint12",
+                "Maximum Pulse time unit": "uint12"
+            },
+            "IR Repeater IR Code Learning Start Command": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "IR Code identifier": "uint8",
+                "Timeout": "uint8",
+                "Reserved": "uint4",
+                "Pulse time unit": "uint12"
+            },
+            "IR Repeater IR Code Learning Stop Command": {
+                "Command Class": "uint8",
+                "Command": "uint8"
+            },
+            "IR Repeater IR Code Learning Status Command": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "IR Code identifier": "uint8",
+                "Status": "uint8"
+            },
+            "IR Repeater Learnt IR Code Remove Command": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "IR Code identifier": "uint8"
+            },
+            "IR Repeater Learnt IR Code Get Command": {
+                "Command Class": "uint8",
+                "Command": "uint8"
+            },
+            "IR Repeater Learnt IR Code Report": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Reserved": "uint3",
+                "IR Code identifier status length": "uint5",
+                "IR Code identifier status bitmask": "uint8[]"
+            },
+            "IR Repeater Learnt IR Code Readback Get Command": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "IR Code identifier status length": "uint8",
+                "Reserved": "uint1",
+                "Report Number": "uint15"
+            },
+            "IR Repeater Learnt IR Code Readback Report": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "IR Code identifier": "uint8",
+                "Sub Carrier": "uint8",
+                "Reserved": "uint2",
+                "Duty Cycle": "uint2",
+                "Pulse time unit": "uint12",
+                "Last": "uint1",
+                "t.List": {
+                    "Data block type": "uint2",
+                    "Data block length": "uint6",
+                    "Data block value": "uint8[]"
+                }
+            },
+            "IR Repeater Configuration Set Command": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Period (MSB)": "uint8",
+                "Reserved": "uint4",
+                "Period (LSB)": "uint4",
+                "Data bit 0 encoding length": "uint16",
+                "Data bit 0 encoding": "uint8[]",
+                "Data bit 1 encoding length": "uint16",
+                "Data bit 1 encoding": "uint8[]"
+            },
+            "IR Repeater Configuration Get Command": {
+                "Command Class": "uint8",
+                "Command": "uint8"
+            },
+            "IR Repeater Configuration Report": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Period (MSB)": "uint8",
+                "Reserved": "uint4",
+                "Period (LSB)": "uint4",
+                "Data bit 0 encoding length": "uint16",
+                "Data bit 0 encoding": "uint8[]",
+                "Data bit 1 encoding length": "uint16",
+                "Data bit 1 encoding": "uint8[]"
+            },
+            "IR Repeater Repeat Learnt Code Command": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "IR Code identifier": "uint8"
+            },
+            "IR Repeater Repeat Command": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Sequence number": "uint8",
+                "Sub Carrier": "uint8",
+                "Reserved": "uint2",
+                "Duty Cycle": "uint2",
+                "Pulse time unit": "uint12",
+                "Last": "uint1",
+                "Report Number": "uint15",
+                "t.List": {
+                    "Data block type": "uint2",
+                    "Data block length": "uint6",
+                    "Data block value": "uint8[]"
+                }
+            }
+        },
+        "Irrigation Command Class": {
+            "Irrigation System Info Get Command": {
+                "Command Class": "uint8",
+                "Command": "uint8"
+            },
+            "Irrigation System Info Report": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Reserved 1": "uint7",
+                "Main Valve": "uint1",
+                "Total Number of Valves": "uint8",
+                "Total Number of Valve Tables": "uint8",
+                "Reserved 2": "uint4",
+                "Valve Table Max Size": "uint4"
+            },
+            "Irrigation System Status Get Command": {
+                "Command Class": "uint8",
+                "Command": "uint8"
+            },
+            "Irrigation System Status Report": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "System Voltage": "uint8",
+                "Sensor Status": "uint8",
+                "Flow Precision": "uint3",
+                "Flow Scale": "uint2",
+                "Flow Size": "uint3",
+                "Flow Value": "uint8[]",
+                "Pressure Precision": "uint3",
+                "Pressure Scale": "uint2",
+                "Pressure Size": "uint3",
+                "Pressure Value": "uint8[]",
+                "Shutoff Duration": "uint8",
+                "System Error Status": "uint8",
+                "Reserved": "uint7",
+                "Main Valve": "uint1",
+                "Valve ID": "uint8"
+            },
+            "Irrigation System Config Set Command": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Main Valve Delay": "uint8",
+                "High Pressure Threshold Precision": "uint3",
+                "High Pressure Threshold Scale": "uint2",
+                "High Pressure Threshold Size": "uint3",
+                "High Pressure Threshold Value": "uint8[]",
+                "Low Pressure Threshold Precision": "uint3",
+                "Low Pressure Threshold Scale": "uint2",
+                "Low Pressure Threshold Size": "uint3",
+                "Low Pressure Threshold Value": "uint8[]",
+                "Sensor Polarity": "uint8"
+            },
+            "Irrigation System Config Get Command": {
+                "Command Class": "uint8",
+                "Command": "uint8"
+            },
+            "Irrigation System Config Report": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Main Valve Delay": "uint8",
+                "High Pressure Threshold Precision": "uint3",
+                "High Pressure Threshold Scale": "uint2",
+                "High Pressure Threshold Size": "uint3",
+                "High Pressure Threshold Value": "uint8[]",
+                "Low Pressure Threshold Precision": "uint3",
+                "Low Pressure Threshold Scale": "uint2",
+                "Low Pressure Threshold Size": "uint3",
+                "Low Pressure Threshold Value": "uint8[]",
+                "Sensor Polarity": "uint8"
+            },
+            "Irrigation Valve Info Get": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Reserved": "uint7",
+                "Main Value": "uint1",
+                "Valve ID": "uint8"
+            },
+            "Irrigation Valve Info Report": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Reserved": "uint6",
+                "Connected": "uint1",
+                "Main Valve": "uint1",
+                "Valve ID": "uint8",
+                "Nominal Current": "uint8",
+                "Valve Error Status": "uint8"
+            },
+            "Irrigation Valve Config Set Command": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Reserved": "uint7",
+                "Main Valve": "uint1",
+                "Valve ID": "uint8",
+                "Nominal Current High Threshold": "uint8",
+                "Nominal Current Low Threshold": "uint8",
+                "Maximum Flow Precision": "uint3",
+                "Maximum Flow Scale": "uint2",
+                "Maximum Flow Size": "uint3",
+                "Maximum Flow Value": "uint8[]",
+                "Flow High Threshold Precision": "uint3",
+                "Flow High Threshold Scale": "uint2",
+                "Flow High Threshold Size": "uint3",
+                "Flow High Threshold Value": "uint8[]",
+                "Flow Low Threshold Precision": "uint3",
+                "Flow Low Threshold Scale": "uint2",
+                "Flow Low Threshold Size": "uint3",
+                "Flow Low Threshold Value": "uint8[]",
+                "Sensor Usage": "uint8"
+            },
+            "Irrigation Valve Config Get": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Reserved": "uint7",
+                "Main Valve": "uint1",
+                "Valve ID": "uint8"
+            },
+            "Irrigation Valve Config Report": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Reserved": "uint7",
+                "Main Valve": "uint1",
+                "Valve ID": "uint8",
+                "Nominal Current High Threshold": "uint8",
+                "Nominal Current Low Threshold": "uint8",
+                "Maximum Flow Precision": "uint3",
+                "Maximum Flow Scale": "uint2",
+                "Maximum Flow Size": "uint3",
+                "Maximum Flow Value": "uint8[]",
+                "Flow High Threshold Precision": "uint3",
+                "Flow High Threshold Scale": "uint2",
+                "Flow High Threshold Size": "uint3",
+                "Flow High Threshold Value": "uint8[]",
+                "Flow Low Threshold Precision": "uint3",
+                "Flow Low Threshold Scale": "uint2",
+                "Flow Low Threshold Size": "uint3",
+                "Flow Low Threshold Value": "uint8[]",
+                "Sensor Usage": "uint8"
+            },
+            "Irrigation Valve Run Command": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Reserved": "uint7",
+                "Main Valve": "uint1",
+                "Valve ID": "uint8",
+                "Duration": "uint16"
+            },
+            "Irrigation Valve Table Set Command": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Valve Table ID": "uint8",
+                "t.List": {
+                    "Valve ID": "uint8",
+                    "Duration": "uint16"
+                }
+            },
+            "Irrigation Valve Table Get Command": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Valve Table ID": "uint8"
+            },
+            "Irrigation Valve Table Report": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Valve Table ID": "uint8",
+                "t.List": {
+                    "Valve ID": "uint8",
+                    "Duration": "uint16"
+                }
+            },
+            "Irrigation Valve Table Run Command": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Valve Table ID": "uint8[]"
+            },
+            "Irrigation System Shutoff Command": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Duration": "uint8"
+            }
+        },
+        "Language Command Class": {
+            "Language Set Command": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Language": "uint24",
+                "Country": "uint16"
+            },
+            "Language Get Command": {
+                "Command Class": "uint8",
+                "Command": "uint8"
+            },
+            "Language Report": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Language": "uint24",
+                "Country": "uint16"
+            }
+        },
+        "Lock Command Class": {
+            "Lock Set Command": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Lock State": "uint8"
+            },
+            "Lock Get Command": {
+                "Command Class": "uint8",
+                "Command": "uint8"
+            },
+            "Lock Report": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Lock State": "uint8"
+            }
+        },
+        "Manufacturer Proprietary Command Class": {
+            "Manufacturer Proprietary Command": {
+                "Command Class": "uint8",
+                "Manufacturer ID": "uint16",
+                "Data": "uint8[]"
+            }
+        },
+        "Meter Command Class": {
+            "Meter Reset Command": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Scale (2)": "uint1",
+                "Rate Type": "uint2",
+                "Meter Type": "uint5",
+                "Precision": "uint3",
+                "Scale (1:0)": "uint2",
+                "Size": "uint3",
+                "Meter Value": "uint8[]",
+                "Scale 2": "uint8"
+            }
+        },
+        "Meter Table Configuration Command Class": {
+            "Meter Table Point Adm Number Set Command": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Reserved": "uint3",
+                "Number of Meter Point Adm Number Characters": "uint5",
+                "Meter Point Adm Number Character": "uint8[]"
+            }
+        },
+        "Meter Table Monitor Command Class": {},
+        "Meter Table Push Configuration Command Class": {
+            "Meter Table Push Configuration Set Command": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Reserved": "uint3",
+                "P/S": "uint1",
+                "Operating Status Push Mode": "uint4",
+                "Push Dataset": "uint24",
+                "Interval Months": "uint8",
+                "Interval Days": "uint8",
+                "Interval Hours": "uint8",
+                "Interval Minutes": "uint8",
+                "Push Node ID": "uint8"
+            },
+            "Meter Table Push Configuration Get Command": {
+                "Command Class": "uint8",
+                "Command": "uint8"
+            },
+            "Meter Table Push Configuration Report": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Reserved": "uint3",
+                "P/S": "uint1",
+                "Operating Status Push Mode": "uint4",
+                "Push Dataset": "uint24",
+                "Interval Months": "uint8",
+                "Interval Days": "uint8",
+                "Interval Hours": "uint8",
+                "Interval Minutes": "uint8",
+                "Push Node ID": "uint8"
+            }
+        },
+        "Move to Position Window Covering Command Class": {
+            "Move To Position Set": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Value": "uint8"
+            },
+            "Move To Position Get Command": {
+                "Command Class": "uint8",
+                "Command": "uint8"
+            },
+            "Move To Position Report": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Value": "uint8"
+            }
+        },
+        "Multilevel Sensor Command Class": {
+            "Multilevel Sensor Get Supported Sensor Command": {
+                "Command Class": "uint8",
+                "Command": "uint8"
+            },
+            "Multilevel Sensor Supported Sensor Report": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Bit Mask": "uint8[]"
+            },
+            "Multilevel Sensor Get Supported Scale Command": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Sensor Type": "uint8"
+            },
+            "Multilevel Sensor Supported Scale Report": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Sensor Type": "uint8",
+                "Reserved": "uint4",
+                "Scale Bit Mask": "uint4"
+            },
+            "Multilevel Sensor Get Command": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Sensor Type": "uint8",
+                "Reserved 1": "uint3",
+                "Scale": "uint2",
+                "Reserved 2": "uint3"
+            },
+            "Multilevel Sensor Report": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Sensor Type": "uint8",
+                "Precision": "uint3",
+                "Scale": "uint2",
+                "Size": "uint3",
+                "Sensor Value": "uint8[]"
+            }
+        },
+        "Multilevel Switch Command Class": {
+            "Multilevel Switch Report": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "CurrentValue": "uint8",
+                "TargetValue": "uint8",
+                "Duration": "uint8"
+            }
+        },
+        "Multilevel Toggle Switch Command Class": {
+            "Multilevel Toggle Switch Set Command": {
+                "Command Class": "uint8",
+                "Command": "uint8"
+            },
+            "Multilevel Toggle Switch Get Command": {
+                "Command Class": "uint8",
+                "Command": "uint8"
+            },
+            "Multilevel Toggle Switch Report": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Value": "uint8"
+            },
+            "Multilevel Toggle Switch Start Level Change Command": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Roll Over": "uint1",
+                "Reserved 1": "uint1",
+                "Ignore Start Level": "uint1",
+                "Reserved 2": "uint5",
+                "Start Level": "uint8"
+            },
+            "Multilevel Toggle Switch Stop Level Change Command": {
+                "Command Class": "uint8",
+                "Command": "uint8"
+            }
+        },
+        "Notification Command Class": {
+            "Notification Set Command": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Notification Type": "uint8",
+                "Notification Status": "uint8"
+            },
+            "Notification Get Command": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "V1 Alarm Type": "uint8",
+                "Notification Type": "uint8",
+                "NotificationEvent / State": "uint8"
+            },
+            "Notification Report": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "V1 Alarm Type": "uint8",
+                "V1 Alarm Level": "uint8",
+                "Reserved 1": "uint8",
+                "Notification Status": "uint8",
+                "Notification Type": "uint8",
+                "Notification Event/ State": "uint8",
+                "Sequence": "uint1",
+                "Reserved 2": "uint2",
+                "Event/State Parameters Length": "uint5",
+                "Event/State Parameter (Optional)": "uint8[]",
+                "Sequence Number (Optional)": "uint8"
+            },
+            "Notification Supported Get Command": {
+                "Command Class": "uint8",
+                "Command": "uint8"
+            },
+            "Notification Supported Report": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "V1 Alarm": "uint1",
+                "Reserved": "uint2",
+                "Number of Bit Masks": "uint5",
+                "Bit Mask": "uint8[]"
+            },
+            "Event Supported Get": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Notification Type": "uint8"
+            },
+            "Event Supported Report": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Notification Type": "uint8",
+                "Reserved Number of Bit Masks": "uint8",
+                "Bit Mask": "uint8[]"
+            }
+        },
+        "Prepayment Command Class": {
+            "Prepayment Balance Get Command": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Balance Type": "uint2",
+                "Reserved": "uint6"
+            },
+            "Prepayment Balance Report": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Balance Type": "uint2",
+                "Meter Type": "uint6",
+                "Balance Precision": "uint3",
+                "Scale": "uint5",
+                "Balance Value": "uint32",
+                "Debt Precision": "uint3",
+                "Reserved 1": "uint5",
+                "Debt": "uint32",
+                "Emer. Credit Precision": "uint3",
+                "Reserved 2": "uint5",
+                "Emer. Credit": "uint32",
+                "Currency": "uint24",
+                "Debt Recovery Percentage": "uint8"
+            },
+            "Prepayment Supported Get Command": {
+                "Command Class": "uint8",
+                "Command": "uint8"
+            },
+            "Prepayment Supported Report": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Reserved": "uint4",
+                "Bit Mask Balance TypesSupported": "uint4"
+            }
+        },
+        "Prepayment Encapsulation Command Class": {
+            "Prepayment encapsulation command": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Data": "uint8[]"
+            }
+        },
+        "Proprietary Command Class": {
+            "Proprietary set command": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Data": "uint8[]"
+            },
+            "Proprietary get command": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Data": "uint8[]"
+            },
+            "Proprietary report command": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Data": "uint8[]"
+            }
+        },
+        "Protection Command Class": {
+            "Protection set command": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Reserved 1": "uint4",
+                "Local Protection State": "uint4",
+                "Reserved 2": "uint4",
+                "RF Protection State": "uint4"
+            },
+            "Protection report command": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Reserved 1": "uint4",
+                "Local Protection State": "uint4",
+                "Reserved 2": "uint4",
+                "RF Protection State": "uint4"
+            },
+            "Protection supported get command": {
+                "Command Class": "uint8",
+                "Command": "uint8"
+            },
+            "Protection supported report": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Reserved": "uint6",
+                "Exclusive Control": "uint1",
+                "Timeout": "uint1",
+                "Local Protection State": "uint16",
+                "RF Protection State": "uint16"
+            },
+            "Protection exclusive control set command": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "NodeID": "uint8"
+            },
+            "Protection exclusive control get command": {
+                "Command Class": "uint8",
+                "Command": "uint8"
+            },
+            "Protection exclusive control report": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "NodeID": "uint8"
+            },
+            "Protection timeout set command": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Timeout": "uint8"
+            },
+            "Protection timeout get command": {
+                "Command Class": "uint8",
+                "Command": "uint8"
+            },
+            "Protection timeout report": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Timeout": "uint8"
+            }
+        },
+        "Pulse Meter Command Class": {
+            "Pulse meter get command": {
+                "Command Class": "uint8",
+                "Command": "uint8"
+            },
+            "Pulse meter report": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Pulse Count": "uint32"
+            }
+        },
+        "Rate Table Configuration Command Class": {
+            "Rate table set command": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Rate Parameter Set ID": "uint8",
+                "Reserved": "uint1",
+                "Rate Type": "uint2",
+                "Number of Rate Char.": "uint5",
+                "Rate Character": "uint8[]",
+                "Start Hour Local Time": "uint8",
+                "Start Minute Local Time": "uint8",
+                "Duration Minute": "uint16"
+            },
+            "Rate table remove command": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Reserved": "uint2",
+                "Rate Parameter Set IDs": "uint6",
+                "Rate Parameter Set ID": "uint8[]"
+            }
+        },
+        "Rate Table Monitor Command Class": {
+            "Rate table supported get command": {
+                "Command Class": "uint8",
+                "Command": "uint8"
+            },
+            "Rate table supported report": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Rates Supported": "uint8",
+                "Parameter Set Supported Bit Mask": "uint16"
+            },
+            "Rate table get command": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Rate Parameter Set ID": "uint8"
+            },
+            "Rate table report": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Rate Parameter Set ID": "uint8",
+                "Reserved": "uint1",
+                "Rate Type": "uint2",
+                "Number of Rate Char.": "uint5",
+                "Rate Character": "uint8[]",
+                "Start Hour Local Time": "uint8",
+                "Start Minute Local Time": "uint8",
+                "Duration Minute": "uint16"
+            },
+            "Rate table active rate get command": {
+                "Command Class": "uint8",
+                "Command": "uint8"
+            },
+            "Rate table active rate report": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Rate Parameter Set ID": "uint8"
+            },
+            "Rate table current data get command": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Rate Parameter Set ID": "uint8",
+                "DatasetRequested": "uint24"
+            },
+            "Rate table current data report": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Reports to Follow": "uint8",
+                "Rate Parameter Set ID": "uint8",
+                "Dataset": "uint24",
+                "Year": "uint16",
+                "Month": "uint8",
+                "Day": "uint8",
+                "Hour Local Time": "uint8",
+                "Minute local Time": "uint8",
+                "SecondLocalTime": "uint8",
+                "t.List": {
+                    "Current Precision": "uint3",
+                    "Current Scale": "uint5",
+                    "Current Value": "uint32"
+                }
+            },
+            "Rate table historical data get command": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Maximum Reports": "uint8",
+                "Rate Parameter Set ID": "uint8",
+                "Dataset Requested": "uint24",
+                "Start Year": "uint16",
+                "Start Month": "uint8",
+                "Start Day": "uint8",
+                "StartHour Local Time": "uint8",
+                "StartMinuteLocalTime": "uint8",
+                "StartSecond Local Time": "uint8",
+                "Stop Year": "uint16",
+                "Stop Month": "uint8",
+                "Stop Day": "uint8",
+                "Stop Hour Local Time": "uint8",
+                "Stop Minute Local Time": "uint8",
+                "Stop Second Local Time": "uint8"
+            },
+            "Rate table historical data report": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Reports to Follow": "uint8",
+                "RateParameter SetID": "uint8",
+                "Dataset": "uint24",
+                "Year": "uint16",
+                "Month": "uint8",
+                "Day": "uint8",
+                "Hour Local Time": "uint8",
+                "Minute local Time": "uint8",
+                "Second Local Time": "uint8",
+                "t.List": {
+                    "Historical Precision": "uint3",
+                    "Historical Scale": "uint5",
+                    "Historical Value": "uint32"
+                }
+            }
+        },
+        "Scene Activation Command Class": {
+            "Scene Activation Set Command": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Scene ID": "uint8",
+                "DimmingDuration": "uint8"
+            }
+        },
+        "Scene Actuator Configuration Command Class": {
+            "Scene Actuator Configuration Set Command": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Scene ID": "uint8",
+                "DimmingDuration": "uint8",
+                "Override": "uint1",
+                "Reserved": "uint7",
+                "Level": "uint8"
+            },
+            "Scene Actuator Configuration Get Command": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Scene ID": "uint8"
+            },
+            "Scene Actuator Configuration Report": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Scene ID": "uint8",
+                "Level": "uint8",
+                "Dimming Duration": "uint8"
+            }
+        },
+        "Scene Controller Configuration Command Class": {
+            "Scene Controller Configuration Set Command": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Group ID": "uint8",
+                "Scene ID": "uint8",
+                "Dimming Duration": "uint8"
+            },
+            "Scene Controller Configuration Get": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Group ID": "uint8"
+            },
+            "Scene Controller Configuration Report": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Group ID": "uint8",
+                "Scene ID": "uint8",
+                "DimmingDuration": "uint8"
+            }
+        },
+        "Schedule Command Class": {
+            "Schedule Supported Report": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Number of Supported Schedule IDs": "uint8",
+                "Support Enable/Disable": "uint1",
+                "Fallback Support": "uint1",
+                "Start Time Support": "uint6",
+                "Number of Supported CC": "uint8",
+                "t.List": {
+                    "Supported CC": "uint8",
+                    "Reserved": "uint6",
+                    "Supported Command": "uint2"
+                },
+                "Override Support": "uint1",
+                "Supported Override Types": "uint7",
+                "Schedule ID Block": "uint8",
+                "Number of Supported Schedule Blocks": "uint8"
+            },
+            "Schedule Supported Commands Get Command": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Schedule ID Block": "uint8"
+            },
+            "Schedule Supported Commands Report": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "t.List": {
+                    "Command Class": "uint8 or uint16",
+                    "Supported Command List Length": "uint8",
+                    "Supported Command": "uint8[]"
+                }
+            },
+            "Schedule Set Command": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Schedule ID": "uint8",
+                "Schedule ID Block": "uint8",
+                "Start Year": "uint8",
+                "Recurrence Offset": "uint4",
+                "Start Month": "uint4",
+                "Reserved 1": "uint1",
+                "Recurrence Mode": "uint2",
+                "Start Day of Month": "uint5",
+                "Reserved 2": "uint1",
+                "Start Weekday": "uint7",
+                "Duration Type": "uint3",
+                "Start Hour": "uint5",
+                "Reserved 3": "uint1",
+                "Relative": "uint1",
+                "Start Minute": "uint6",
+                "Duration": "uint16",
+                "Number of Cmd to Follow": "uint8",
+                "t.List": {
+                    "Cmd Length": "uint8",
+                    "Cmd Byte": "uint8[]"
+                }
+            },
+            "Schedule Report": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Schedule ID Block": "uint8",
+                "Reserved 1": "uint8",
+                "Start Year": "uint8",
+                "Active_ID / Recurrence Offset (AID_RO)": "uint4",
+                "Start Month": "uint4",
+                "AID_RO_CTL": "uint3",
+                "Start Day of Month": "uint5",
+                "Reserved 2": "uint1",
+                "Start Weekday": "uint7",
+                "Duration Type": "uint3",
+                "Start Hour": "uint5",
+                "Reserved 3": "uint2",
+                "Start Minute": "uint6",
+                "Duration": "uint16",
+                "Number of Cmd to Follow": "uint8",
+                "t.List": {
+                    "Cmd Length": "uint8",
+                    "Cmd Byte": "uint8[]"
+                }
+            },
+            "Schedule State Report": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Number of Supported Schedule ID": "uint8",
+                "Reports to Follow": "uint7",
+                "Override": "uint1",
+                "t.List": {
+                    "Active_ID": "uint8[]"
+                },
+                "ScheduleIDBlock": "uint8"
+            }
+        },
+        "Schedule Entry Lock Command Class, version 3 ": {
+            "Schedule Entry Type Supported Report": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Number of Slots Week Day": "uint8",
+                "Number of Slots Year Day": "uint8",
+                "Number of Slots Daily Repeating": "uint8"
+            },
+            "Schedule Entry Lock Daily Repeating Set Command": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Set Action": "uint8",
+                "User Identifier": "uint8",
+                "Schedule Slot ID": "uint8",
+                "WeekDay Bitmask": "uint8",
+                "Start Hour": "uint8",
+                "Start Minute": "uint8",
+                "Duration Hour": "uint8",
+                "Duration Minute": "uint8"
+            },
+            "Schedule Entry Lock Daily Repeating Get Command": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "User Identifier": "uint8",
+                "Schedule Set ID": "uint8"
+            },
+            "Schedule Entry Lock Daily Repeating Report": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "User Identifier": "uint8",
+                "Schedule Set ID": "uint8",
+                "WeekDay Bitmask": "uint8",
+                "Start Hour": "uint8",
+                "Start Minute": "uint8",
+                "Duration Hour": "uint8",
+                "Duration Minute": "uint8"
+            }
+        },
+        "Screen Attributes Command Class, version 2 ": {
+            "Screen Attributes Report": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Reserved": "uint2",
+                "Escape Sequence": "uint1",
+                "Number of Lines": "uint5",
+                "Characters per Line": "uint8",
+                "Line Buffer Size": "uint8",
+                "Character Encoding": "uint8",
+                "Screen Timeout": "uint8"
+            }
+        },
+        "Screen Meta Data Command Class": {
+            "Screen Meta Data Report": {
+                "Command Class": "uint8",
+                "Command SCREEN_MD _REPORT": "uint8",
+                "More Data": "uint1",
+                "Extended Setup": "uint1",
+                "Screen Settings": "uint3",
+                "Character Encoding": "uint3",
+                "t.List": {
+                    "Line Settings": "uint3",
+                    "Clear": "uint1",
+                    "Line Number": "uint4",
+                    "Character Position": "uint8",
+                    "Number of Characters": "uint8",
+                    "Character": "uint8[]"
+                }
+            }
+        },
+        "Sensor Configuration Command Class": {
+            "Sensor Trigger Level Set Command": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Default": "uint1",
+                "Current": "uint1",
+                "Reserved": "uint6",
+                "Sensor Type": "uint8",
+                "Precision": "uint3",
+                "Scale": "uint2",
+                "Size": "uint3",
+                "Trigger Value": "uint8[]"
+            },
+            "Sensor Trigger Level Get Command": {
+                "Command Class": "uint8",
+                "Command": "uint8"
+            },
+            "Sensor Trigger Level Report": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Precision": "uint3",
+                "Scale": "uint2",
+                "Size": "uint3",
+                "Trigger Value": "uint8[]"
+            }
+        },
+        "Simple AV Control Command Class": {
+            "Simple AV Control Set": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Sequence Number": "uint8",
+                "Reserved 1": "uint5",
+                "Key Attributes": "uint3",
+                "Reserved 2": "uint8",
+                "Reserved 3": "uint8",
+                "t.List": {
+                    "Command": "uint16"
+                }
+            },
+            "Simple AV Control Get Command": {
+                "Command Class": "uint8",
+                "Command": "uint8"
+            },
+            "Simple AV Control Report": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Number of reports": "uint8"
+            },
+            "Simple AV Control Supported Get Command": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Report No": "uint8"
+            },
+            "Simple AV Control Supported Report": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Report No": "uint8",
+                "Bit Mask": "uint8[]"
+            }
+        },
+        "Sound Switch Command Class": {
+            "Sound Switch Tone Play Set Command": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Tone Identifier": "uint8",
+                "Play Command Tone Volume": "uint8"
+            },
+            "Sound Switch Tone Play Report": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Tone Identifier": "uint8",
+                "Play Command Tone Volume": "uint8"
+            }
+        },
+        "Tariff Table Configuration Command Class": {
+            "Tariff Table Supplier Set Command": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Utility Timestamp Year": "uint16",
+                "Utility Timestamp Month": "uint8",
+                "Utility Timestamp Day": "uint8",
+                "Utility Timestamp Hour Local Time": "uint8",
+                "Utility Timestamp Minute Local Time": "uint8",
+                "Utility Timestamp Second Local Time": "uint8",
+                "Currency": "uint24",
+                "Standing Charge Precision": "uint3",
+                "Standing Charge Period": "uint5",
+                "Standing Charge Value": "uint32",
+                "Reserved": "uint3",
+                "Number of Supplier Characters": "uint5",
+                "Supplier Character": "uint8[]"
+            },
+            "Tariff Table Set Command": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Rate Parameter Set ID": "uint8",
+                "Tariff Precision": "uint3",
+                "Reserved": "uint5",
+                "TariffValue": "uint32"
+            },
+            "Tariff Table Remove Command": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Reserved": "uint2",
+                "Rate Parameter Set IDs": "uint6",
+                "Rate Parameter Set ID": "uint8[]"
+            }
+        },
+        "Tariff Table Monitor Command Class": {
+            "Tariff Table Supplier Get Command": {
+                "Command Class": "uint8",
+                "Command": "uint8"
+            },
+            "Tariff Table Supplier Report": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Utility Timestamp Year": "uint16",
+                "Utility Timestamp Month": "uint8",
+                "Utility Timestamp Day": "uint8",
+                "Utility Timestamp Hour Local Time": "uint8",
+                "Utility Timestamp Minute Local Time": "uint8",
+                "Utility Timestamp Second Local Time": "uint8",
+                "Currency": "uint24",
+                "Standing Charge Precision": "uint3",
+                "Standing Charge Period": "uint5",
+                "Standing Charge Value": "uint32",
+                "Reserved": "uint3",
+                "Number of Supplier Characters": "uint5",
+                "Supplier Character": "uint8[]"
+            },
+            "Tariff Table Get Command": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Rate Parameter Set ID": "uint8"
+            },
+            "Tariff Table Report": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Rate Parameter Set ID": "uint8",
+                "Tariff Precision": "uint3",
+                "Reserved": "uint5",
+                "Tariff Value": "uint32"
+            },
+            "Tariff Table Cost Get": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Rate Parameter Set ID": "uint8",
+                "Start Year": "uint16",
+                "Start Month": "uint8",
+                "Start Day": "uint8",
+                "Start Hour Local Time": "uint8",
+                "Start Minute Local Time": "uint8",
+                "Stop Year": "uint16",
+                "Stop Month": "uint8",
+                "Stop Day": "uint8",
+                "Stop Hour Local Time": "uint8",
+                "Stop Minute Local Time": "uint8"
+            },
+            "Tariff Table Cost Report": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Rate Parameter Set ID": "uint8",
+                "Reserved 1": "uint6",
+                "Rate Type": "uint2",
+                "Start Year": "uint16",
+                "Start Month": "uint8",
+                "Start Day": "uint8",
+                "Start Hour Local Time": "uint8",
+                "Start Minute Local Time": "uint8",
+                "Stop Year": "uint16",
+                "Stop Month": "uint8",
+                "Stop Day": "uint8",
+                "Stop Hour Local Time": "uint8",
+                "Stop Minute Local Time": "uint8",
+                "Currency": "uint24",
+                "Cost Precision": "uint3",
+                "Reserved 2": "uint5",
+                "Cost Value": "uint32"
+            }
+        },
+        "Thermostat Fan Mode Command Class": {
+            "Thermostat Fan Mode Set Command": {
+                "Command Class": "uint8",
+                "Command": "uint8"
+            },
+            "Thermostat Fan Mode Get Command": {
+                "Command Class": "uint8",
+                "Command": "uint8"
+            },
+            "Thermostat Fan Mode Report": {
+                "Command Class": "uint8",
+                "Command": "uint8"
+            },
+            "Thermostat Fan Mode Supported Get Command": {
+                "Command Class": "uint8",
+                "Command": "uint8"
+            },
+            "Thermostat Fan Mode Supported Report": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Bit Mask": "uint8[]"
+            }
+        },
+        "Thermostat Fan State Command Class ": {
+            "Thermostat Fan State Get Command": {
+                "Command Class": "uint8",
+                "Command": "uint8"
+            },
+            "Thermostat Fan State Report": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Reserved": "uint4",
+                "Fan Operating State": "uint4"
+            }
+        },
+        "Thermostat Mode Command Class": {
+            "Thermostat Mode Set Command": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Number of Manufacturer Data fields": "uint3",
+                "Mode": "uint5",
+                "Manufacturer Data": "uint8[]"
+            },
+            "Thermostat Mode Report": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Number of Manufacturer Data fields": "uint3",
+                "Mode": "uint5",
+                "Manufacturer Data": "uint8[]"
+            }
+        },
+        "Thermostat Operating State Command Class": {
+            "Thermostat Operating State Get": {
+                "Command Class": "uint8",
+                "Command": "uint8"
+            },
+            "Thermostat Operating State Report": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Operating State": "uint8"
+            },
+            "Thermostat Operating State Logging Supported Get": {
+                "Command Class": "uint8",
+                "Command": "uint8"
+            },
+            "Thermostat Operating State Logging Supported Report": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Bit Mask": "uint8[]"
+            },
+            "Thermostat Operating State Logging Get": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Bit Mask": "uint8[]"
+            },
+            "Thermostat Operating State Logging Report": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Reports to Follow": "uint8",
+                "t.List": {
+                    "Reserved": "uint4",
+                    "Operating State Log Type": "uint4",
+                    "Usage Today": "uint16",
+                    "Usage Yesterday": "uint16"
+                }
+            }
+        },
+        "Thermostat Setback Command Class": {
+            "Thermostat Setback Set Command": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Reserved": "uint6",
+                "Setback Type": "uint2",
+                "Setback State": "uint8"
+            },
+            "Thermostat Setback Get Command": {
+                "Command Class": "uint8",
+                "Command": "uint8"
+            },
+            "Thermostat Setback Report": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Reserved": "uint6",
+                "Setback Type": "uint2",
+                "Setback State": "uint8"
+            }
+        },
+        "Thermostat Setpoint Command Class": {
+            "Thermostat Setpoint Set Command": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Reserved": "uint4",
+                "SetpointType": "uint4",
+                "Precision": "uint3",
+                "Scale": "uint2",
+                "Size": "uint3",
+                "Value": "uint8[]"
+            },
+            "Thermostat Setpoint Get Command": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Reserved": "uint4",
+                "SetpointType": "uint4"
+            },
+            "Thermostat Setpoint Report": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Reserved": "uint4",
+                "SetpointType": "uint4",
+                "Precision": "uint3",
+                "Scale": "uint2",
+                "Size": "uint3",
+                "Value": "uint8[]"
+            },
+            "Thermostat Setpoint Supported Get Command": {
+                "Command Class": "uint8",
+                "Command": "uint8"
+            },
+            "Thermostat Setpoint Supported Report": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "BitMask": "uint8[]"
+            },
+            "Thermostat Setpoint Capabilities Get": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Reserved": "uint4",
+                "SetpointType": "uint4"
+            },
+            "Thermostat Setpoint Capabilities Report": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Reserved": "uint4",
+                "Setpoint Type": "uint4",
+                "Min Value Precision": "uint3",
+                "Min Value Scale": "uint2",
+                "Min Value Size": "uint3",
+                "Min Value": "uint8[]",
+                "Max Value Precision": "uint3",
+                "Max Value Scale": "uint2",
+                "Max Value Size": "uint3",
+                "Max Value": "uint8[]"
+            }
+        },
+        "User Code Command Class, version 2 ": {
+            "User Code Set Command": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "User Identifier": "uint8",
+                "User ID Status": "uint8",
+                "User Code": "uint8[]"
+            },
+            "Users Number Report": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Supported Users": "uint8",
+                "Extended Supported Users": "uint16"
+            },
+            "User Code Capabilities Get Command": {
+                "Command Class": "uint8",
+                "Command": "uint8"
+            },
+            "User Code Capabilities Report": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "AC Support": "uint1",
+                "ACD Support": "uint1",
+                "Reserved 1": "uint1",
+                "Supported User ID Status Bit Mask Length": "uint5",
+                "Supported User ID Status Bit Mask": "uint1[]",
+                "UCC Support": "uint1",
+                "MUCR Support": "uint1",
+                "MUCS Support": "uint1",
+                "Supported Keypad Modes Bit Mask Length": "uint5",
+                "Supported Keypad Modes Bit Mask": "uint8[]",
+                "Reserved 2": "uint3",
+                "Supported Keys Bit Mask Length": "uint5",
+                "Supported Keys Bit Mask": "uint8[]"
+            },
+            "User Code Keypad Mode Set Command": {
+                "Command Class": "uint8",
+                "Command": "uint8"
+            },
+            "User Code Keypad Mode Get Command": {
+                "Command Class": "uint8",
+                "Command": "uint8"
+            },
+            "User Code Keypad Mode Report": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Keypad Mode": "uint8"
+            },
+            "Extended User Code Set Command": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Number of User Codes": "uint8",
+                "t.List": {
+                    "User Identifier": "uint16",
+                    "User ID Status": "uint8",
+                    "Reserved": "uint4",
+                    "User Code Length": "uint4",
+                    "User Code": "uint8[]"
+                }
+            },
+            "Extended User Code Get": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "User Identifier": "uint16",
+                "Reserved Report more": "uint8"
+            },
+            "Extended User Code Report": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Number of User Codes": "uint8",
+                "t.List": {
+                    "User Identifier": "uint16",
+                    "User ID Status": "uint8",
+                    "Reserved": "uint4",
+                    "User Code Length": "uint4",
+                    "User Code": "uint8[]"
+                },
+                "Next User Identifier": "uint16"
+            },
+            "Admin Code Set Command": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Reserved": "uint4",
+                "Admin Code Length": "uint4",
+                "Admin Code": "uint8[]"
+            },
+            "Admin Code Get Command": {
+                "Command Class": "uint8",
+                "Command": "uint8"
+            },
+            "Admin Code Report": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Reserved": "uint4",
+                "Admin Code Length": "uint4",
+                "Admin Code": "uint8[]"
+            },
+            "User Code Checksum Get Command": {
+                "Command Class": "uint8",
+                "Command": "uint8"
+            },
+            "User Code Checksum Report": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "User Code Checksum": "uint16"
+            }
+        },
+        "User Credential Command Class": {
+            "User Capabilities Get Command": {
+                "Command Class": "uint8",
+                "Command": "uint8"
+            },
+            "User Capabilities Report": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Number of supported User Unique Identifiers": "uint16",
+                "Supported Credential Rules Bit Mask": "uint8",
+                "Max Length of User Name": "uint8",
+                "User Schedule Support": "uint1",
+                "All Users Checksum Support": "uint1",
+                "User Checksum Support": "uint1",
+                "Reserved": "uint5",
+                "Supported User Types Bit Mask Length": "uint8",
+                "Supported User Types Bit Mask": "uint8[]"
+            },
+            "Credential Capabilities Get Command": {
+                "Command Class": "uint8",
+                "Command": "uint8"
+            },
+            "Credential Capabilities Report": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Credential Checksum Support": "uint1",
+                "Admin Code Support": "uint1",
+                "Admin Code Deactivation Support": "uint1",
+                "Reserved": "uint5",
+                "Number of Supported Credential Types": "uint8",
+                "Credential Type": "uint8[]",
+                "t.List": {
+                    "CL Support": "uint1",
+                    "Reserved": "uint7"
+                },
+                "Number of Supported Credential Slots": "uint16",
+                "Min Length of Credential Data": "uint8[]",
+                "Max Length of Credential Data": "uint8[]",
+                "CL Recommended Timeout": "uint8[]",
+                "CL Number of Steps": "uint8[]",
+                "Maximum Credential Hash Length": "uint8[]"
+            },
+            "User Set Command": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Reserved 1": "uint6",
+                "Operation Type": "uint2",
+                "User Unique Identifier": "uint16",
+                "User Type": "uint8",
+                "Reserved 2": "uint7",
+                "User Active State": "uint1",
+                "Credential Rule": "uint8",
+                "Expiring Timeout Minutes": "uint16",
+                "Reserved 3": "uint5",
+                "User Name Encoding": "uint3",
+                "User Name Length": "uint8",
+                "User Name": "uint8"
+            },
+            "User Get Command": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "User Unique Identifier": "uint16"
+            },
+            "User Report Command": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "User Report Type": "uint8",
+                "Next User Unique Identifier": "uint16",
+                "User Modifier Type": "uint8",
+                "User Modifier Node ID": "uint16",
+                "User Unique Identifier": "uint16",
+                "User Type": "uint8",
+                "Reserved 1": "uint7",
+                "User Active State": "uint1",
+                "Credential Rule": "uint8",
+                "Expiring Timeout Minutes": "uint16",
+                "Reserved 2": "uint5",
+                "User Name Encoding": "uint3",
+                "User Name": "uint8"
+            },
+            "Credential Set Command": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "User Unique Identifier": "uint16",
+                "Credential Type": "uint8",
+                "Credential Slot": "uint16",
+                "Reserved": "uint6",
+                "Operation Type": "uint2",
+                "Credential Length": "uint8",
+                "Credential Data": "uint8"
+            },
+            "Credential Get Command": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "User Unique Identifier": "uint16",
+                "Credential Type": "uint8",
+                "Credential Slot": "uint16"
+            },
+            "Credential Report": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Credential Report Type": "uint8",
+                "User Unique Identifier": "uint16",
+                "Credential Type": "uint8",
+                "Credential Slot": "uint16",
+                "CRB": "uint1",
+                "Reserved": "uint7",
+                "Credential Length": "uint8",
+                "Credential Data": "uint8",
+                "Credential Modifier Type": "uint8",
+                "Credential Modifier Node ID": "uint16",
+                "Next Credential Type": "uint8",
+                "Next Credential Slot": "uint16"
+            },
+            "Credential Learn Start Command": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "User Unique Identifier": "uint16",
+                "Credential Type": "uint8",
+                "Credential Slot": "uint16",
+                "Reserved": "uint6",
+                "Operation Type": "uint2",
+                "Credential LearnTimeout": "uint8"
+            },
+            "Credential Learn Cancel Command": {
+                "Command Class": "uint8",
+                "Command": "uint8"
+            },
+            "Credential Learn Status Report": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "CredentialLearnStatus": "uint8",
+                "User Unique Identifier": "uint16",
+                "Credential Type": "uint8",
+                "Credential Slot": "uint16",
+                "Credential Learn Steps Remaining": "uint8"
+            },
+            "User Unique Identifier Credential Association Set Command": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Source User Unique Identifier": "uint16",
+                "Source Credential Type": "uint8",
+                "Source Credential Slot": "uint16",
+                "Destination User Unique Identifier": "uint16",
+                "Destination Credential Slot": "uint16"
+            },
+            "User Unique Identifier Credential Association Report": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Source User Unique Identifier": "uint16",
+                "Source Credential Type": "uint8",
+                "Source Credential Slot": "uint16",
+                "Destination User Unique Identifier": "uint16",
+                "Destination Credential Slot": "uint16",
+                "User Credential Association Status": "uint8"
+            },
+            "All Users Checksum Get Command": {
+                "Command Class": "uint8",
+                "Command": "uint8"
+            },
+            "All Users Checksum Report": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "All Users Checksum": "uint16"
+            },
+            "User Checksum Get Command": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "UserUniqueIdentifier": "uint16"
+            },
+            "User Checksum Report": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "User Unique Identifier": "uint16",
+                "User Checksum": "uint16"
+            },
+            "Credential Checksum Get Command": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "CredentialType": "uint8"
+            },
+            "Credential Checksum Report": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "CredentialType": "uint8",
+                "CredentialChecksum": "uint16"
+            },
+            "Admin PIN Code Set Command": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Reserved": "uint4",
+                "Admin PlN Code Length": "uint4",
+                "Admin PIN Code": "uint8[]"
+            },
+            "Admin PIN Code Get Command": {
+                "Command Class": "uint8",
+                "Command": "uint8"
+            },
+            "Admin PIN Code Report": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Admin PIN Code Operation Result": "uint4",
+                "Admin PIN Code Length": "uint4",
+                "Admin PIN Code": "uint8[]"
+            }
+        },
+        "Window Covering Command Class": {
+            "Window Covering Supported Get Command": {
+                "Command Class": "uint8",
+                "Command": "uint8"
+            },
+            "Window Covering Supported Report": {
+                "Comand Class": "uint8",
+                "Command": "uint8",
+                "Reserved": "uint4",
+                "Number of Parameter Mask Bytes": "uint4",
+                "Parameter Mask": "uint8[]"
+            },
+            "Window Covering Get Command": {
+                "Comand Class": "uint8",
+                "Command": "uint8",
+                "ParameterID": "uint8"
+            },
+            "Window Covering Report": {
+                "Comand Class": "uint8",
+                "Command": "uint8",
+                "Parameter ID": "uint8",
+                "CurrentValue": "uint8",
+                "TargetValue": "uint8",
+                "Duration": "uint8"
+            },
+            "Window Covering Set Command": {
+                "Comand Class": "uint8",
+                "Command": "uint8",
+                "Reserved": "uint3",
+                "ParameterCount": "uint5",
+                "t.List": {
+                    "ParameterID": "uint8",
+                    "Value": "uint8"
+                },
+                "Duration": "uint8"
+            },
+            "Window Covering Start Level Change": {
+                "Comand Class": "uint8",
+                "Command": "uint8",
+                "Reserved 1": "uint1",
+                "Up/Down": "uint1",
+                "Reserved 2": "uint6",
+                "ParameterID": "uint8",
+                "Duration": "uint8"
+            },
+            "Window Covering Stop Level Change Command": {
+                "Comand Class": "uint8",
+                "Command": "uint8",
+                "ParameterID": "uint8"
+            }
+        }
+    }
+}

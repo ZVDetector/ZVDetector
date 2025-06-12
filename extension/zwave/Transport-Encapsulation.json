@@ -1,0 +1,233 @@
+{
+    "Transport-Encapsulation Command Classes": {
+        "CRC-16 Encapsulation Command Class": {
+            "CRC-16 Encapsulated Command": {
+                "Command Class": "uint8 or uint16",
+                "Command": "uint8",
+                "Data": "uint8[]",
+                "Checksum": "uint16"
+            }
+        },
+        "Multi Channel Command Class": {
+            "Multi Channel End Point Report": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Dynamic": "uint1",
+                "Identical": "uint1",
+                "Reserved 1": "uint6",
+                "Reserved 2": "uint1",
+                "Individual End Points": "uint7",
+                "Reserved 3": "uint1",
+                "Aggregated End Points": "uint7"
+            },
+            "Multi Channel Aggregated Members Get Command": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Reserved": "uint1",
+                "Aggregated End Point": "uint7"
+            },
+            "Multi Channel Aggregated Members Report": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Reserved": "uint1",
+                "Aggregated End Point": "uint7",
+                "Number of Bit Masks": "uint8",
+                "Aggregated MembersBit Mask": "uint8[]"
+            }
+        },
+        "Multi Command Command Class": {
+            "Multi Command Encapsulated Command": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Number of Commands": "uint8",
+                "t.List": {
+                    "Command Length": "uint8",
+                    "Command Class": "uint8 or uint16",
+                    "Command": "uint8",
+                    "Data": "uint8[]"
+                }
+            }
+        },
+        "Security 0 (S0) Command Class": {
+            "Nonce Get Command": {
+                "Command Class": "uint8",
+                "Security Header": "uint8"
+            },
+            "Nonce Report": {
+                "Command Class": "uint8",
+                "Security Header": "uint8",
+                "Nonce": "uint64"
+            },
+            "Security Message Encapsulation": {
+                "Command Class": "uint8",
+                "Security Header": "uint8",
+                "Initialization Vector": "uint64",
+                "Reserved": "uint2",
+                "Second Frame": "uint1",
+                "Sequenced": "uint1",
+                "Sequence Counter": "uint4",
+                "Command Class identifier": "uint8",
+                "Command identifier": "uint8",
+                "Command byte": "uint8[]",
+                "Receiver's nonce Identifier": "uint8",
+                "Message Authentication Code": "uint64"
+            },
+            "Security Scheme Get": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Supported Security Schemes": "uint8"
+            },
+            "Security Scheme Report": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Supported Security Schemes": "uint8"
+            },
+            "Network Key Set Command": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Network Key byte": "uint8[]"
+            },
+            "Network Key Verify Command": {
+                "Command Class": "uint8",
+                "Command": "uint8"
+            },
+            "Security Scheme Inherit Command": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Supported Security Scheme": "uint8"
+            },
+            "Security Commands Supported Get Command": {
+                "Command Class": "uint8",
+                "Command": "uint8"
+            },
+            "Security Commands Supported Report": {
+                "Command Class": "uint8",
+                "Command": "uint8"
+            }
+        },
+        "Security 2 (S2) Command Class": {
+            "Security 2 Nonce Get Command": {
+                "Command Class": "uint8",
+                "Security Header": "uint8",
+                "Sequence Number": "uint8"
+            },
+            "Security 2 Nonce Report": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Sequence Number": "uint8",
+                "Reserved": "uint6",
+                "MOS": "uint1",
+                "SOS": "uint1",
+                "Receiver's Entropy Input (Optional)": "uint8[]"
+            },
+            "Security 2 Message Encapsulation Command": {
+                "Command Class": "uint8",
+                "Security Header": "uint8",
+                "Sequence Number": "uint8",
+                "Reserved": "uint6",
+                "Encrypted Extension": "uint1",
+                "Extension": "uint1",
+                "Extension 1 Length": "uint8",
+                "Extension 1 More to follow": "uint1",
+                "Extension 1 Critical": "uint1",
+                "Extension 1 Type": "uint6",
+                "Extension 1 Byte": "uint8[]",
+                "Extension 2 Length": "uint8",
+                "Extension 2 More to follow": "uint1",
+                "Extension 2 Critical": "uint1",
+                "Extension 2 Type": "uint6",
+                "Extension 2 Byte": "uint8[]",
+                "Encrypted Extension 1 Length": "uint8",
+                "Encrypted Extension 1 More to follow": "uint1",
+                "Encrypted Extension 1 Critical": "uint1",
+                "Encrypted Extension 1 Type": "uint6",
+                "Encrypted Extension 1 Byte": "uint8[]",
+                "Encrypted Extension 2 Length": "uint8",
+                "Encrypted Extension 2 More to follow": "uint1",
+                "Encrypted Extension 2 Critical": "uint1",
+                "Encrypted Extension 2 Type": "uint6",
+                "Encrypted Extension 2 Byte": "uint8[]",
+                "CCM Ciphertext object Byte": "uint8[]"
+            },
+            "Security 2 KEX Get Command": {
+                "Command Class": "uint8",
+                "Command": "uint8"
+            },
+            "Security 2 KEX Report": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Reserved": "uint1",
+                "Request CSA": "uint1",
+                "Echo": "uint1",
+                "Supported KEX Schemes": "uint8",
+                "Supported ECDH Profiles": "uint8",
+                "Requested Keys": "uint8"
+            },
+            "Security 2 KEX Set Command": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Reserved": "uint1",
+                "Request CSA": "uint1",
+                "Echo": "uint1",
+                "Supported KEX Schemes": "uint8",
+                "Supported ECDH Profile": "uint8",
+                "Granted Keys": "uint8"
+            },
+            "Security 2 KEX Fail Command": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "KEX Fail Type": "uint8"
+            },
+            "Security 2 Public Key Report": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Reserved": "uint7",
+                "Including Node": "uint1",
+                "ECDH Public Key": "uint8[]"
+            },
+            "Security 2 Network Key Get Command": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Requested Key": "uint8"
+            },
+            "Security 2 Network Key Report": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Granted Key": "uint8",
+                "Network Key": "uint128"
+            },
+            "Security 2 Network Key Verify Command": {
+                "Command Class": "uint8",
+                "Command": "uint8"
+            },
+            "Security 2 Transfer End Command": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Reserved": "uint6",
+                "Key Verified": "uint1",
+                "Key Request Complete": "uint1"
+            },
+            "Security 2 Commands Supported Get Command": {
+                "Command Class": "uint8",
+                "Command": "uint8"
+            },
+            "Security 2 Commands Supported Report": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Command Class List": "uint8[]"
+            }
+        },
+        "Supervision Command Class": {
+            "Supervision Report": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "More Status Updates": "uint1",
+                "Wake Up Request": "uint1",
+                "Session ID": "uint6",
+                "Status": "uint8",
+                "Duration": "uint8"
+            }
+        },
+        "Transport Service Command Class": {}
+    }
+}

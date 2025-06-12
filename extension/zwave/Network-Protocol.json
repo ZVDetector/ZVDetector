@@ -1,0 +1,508 @@
+{
+    "Network-Protocol Command Classes": {
+        "Inclusion Controller Command Class": {
+            "Inclusion controller initiate command": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Node ID": "uint8",
+                "Step ID": "uint8"
+            },
+            "Inclusion controller complete command": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Step ID": "uint8",
+                "Status": "uint8"
+            }
+        },
+        "IP Configuration Command Class": {
+            "IP configuration set command": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Reserved": "uint6",
+                "Auto IP": "uint1",
+                "Auto DNS": "uint1",
+                "IP Address": "uint32",
+                "Subnet Mask": "uint32",
+                "Gateway": "uint32",
+                "DNS1": "uint32",
+                "DNS2": "uint32"
+            },
+            "IP configuration get command": {
+                "Command Class": "uint8",
+                "Command": "uint8"
+            },
+            "IP configuration report command": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Reserved": "uint6",
+                "Auto IP": "uint1",
+                "Auto DNS": "uint1",
+                "IP Address": "uint32",
+                "Subnet Mask": "uint32",
+                "Gateway": "uint32",
+                "DNS1": "uint32",
+                "DNS2": "uint32",
+                "LeaseTime": "uint32"
+            },
+            "IP configuration DHCP release command": {
+                "Command Class": "uint8",
+                "Command": "uint8"
+            },
+            "IP configuration DHCP renew command": {
+                "Command Class": "uint8",
+                "Command": "uint8"
+            }
+        },
+        "Mailbox Command Class": {},
+        "Network management proxy command class": {
+            "Node list report": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Seq No": "uint8",
+                "Status": "uint8",
+                "Node List Controller ID": "uint8",
+                "Node List Data": "uint232",
+                "Extended Node List Length": "uint16",
+                "Extended Node List": "uint8[]"
+            },
+            "Node info cached get command": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Seq No": "uint8",
+                "Reserved": "uint4",
+                "Max Age": "uint4",
+                "NodeID": "uint8",
+                "Extended NodeID": "uint16"
+            },
+            "Network management multi channel end point get command": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Seq No": "uint8",
+                "NodeID": "uint8",
+                "Extended NodeID": "uint16"
+            },
+            "Network management multi channel end point report": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Seq No": "uint8",
+                "NodeID": "uint8",
+                "Reserved 1": "uint8",
+                "Reserved 2": "uint1",
+                "Individual End Points": "uint7",
+                "Reserved 3": "uint1",
+                "Aggregated End Points": "uint7",
+                "Extended NodeID": "uint16"
+            },
+            "Network management multi channel capability get command": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Seq No": "uint8",
+                "NodeID": "uint8",
+                "Reserved 1": "uint8",
+                "Reserved 2": "uint1",
+                "End Point": "uint7",
+                "Extended NodeID": "uint16"
+            },
+            "Network management multi channel capability report": {
+                "Command Class": "uint8[]",
+                "Command": "uint8",
+                "Seq No": "uint8",
+                "NodeID": "uint8",
+                "Command Class Length": "uint8",
+                "Reserved": "uint1",
+                "End Point": "uint7",
+                "Generic Device Class": "uint8",
+                "Specific Device Class": "uint8",
+                "Extended NodeID": "uint16"
+            },
+            "Network management multi channel aggregated members get command": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Seq No": "uint8",
+                "NodeID": "uint8",
+                "Reserved": "uint1",
+                "Aggregated End Point": "uint7",
+                "Extended NodeID": "uint16"
+            },
+            "Network management multi channel aggregated members report": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Seq No": "uint8",
+                "NodeID": "uint8",
+                "Reserved": "uint1",
+                "Aggregated End Point": "uint7",
+                "Number of Members": "uint8",
+                "t.List": {
+                    "Reserved": "uint1",
+                    "Member Endpoint": "uint7"
+                },
+                "Extended NodeID": "uint16"
+            },
+            "Failed node list report": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Seq No": "uint8",
+                "Failed Node List Data": "uint232",
+                "Extended NodeID": "uint16",
+                "Extended Failed Node List": "uint8[]"
+            }
+        },
+        "Network management basic node command class": {
+            "Learn mode set command": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Reserved": "uint7",
+                "Return interview status": "uint1",
+                "Mode": "uint8"
+            },
+            "Learn mode set status command": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Seq No": "uint8",
+                "Status": "uint8",
+                "Reserved": "uint8",
+                "New Node ID": "uint8",
+                "Granted Keys": "uint8",
+                "KEX Fail Type": "uint8",
+                "DSK": "uint128"
+            },
+            "DSK get command": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Seq No": "uint8",
+                "Reserved": "uint7",
+                "Add Mode": "uint1"
+            },
+            "DSK Report": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "SeqNo": "uint8",
+                "Reserved": "uint7",
+                "Add Mode": "uint1",
+                "DSK": "uint128"
+            }
+        },
+        "Network management inclusion command class": {
+            "Command class dependencies": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Seq No": "uint8",
+                "Status": "uint8",
+                "NodeID": "uint8",
+                "Extended NodeID": "uint16"
+            },
+            "Failed node remove command": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "SeqNo": "uint8",
+                "NodeID": "uint8",
+                "Extended NodeID": "uint16"
+            },
+            "Failed node remove status command": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Seq No": "uint8",
+                "NodeID": "uint8",
+                "Extended NodeID": "uint16"
+            },
+            "Extended node add status command": {
+                "Command Class": "uint8[]",
+                "Command": "uint8",
+                "Seq No": "uint8",
+                "Status": "uint8",
+                "Assigned NodeID": "uint16",
+                "Node Info Length": "uint8",
+                "List": "uint1",
+                "Z-Wave Protocol Specific Part": "uint7",
+                "Opt. Func": "uint1",
+                "Basic Device Class": "uint8",
+                "Generic Device Class": "uint8",
+                "Specific Device Class": "uint8",
+                "Granted Keys": "uint8",
+                "KEX Fail Type": "uint8"
+            }
+        },
+        "Network management primary command class": {
+            "Controller change command": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Seq No": "uint8",
+                "Reserved": "uint8",
+                "Mode": "uint8",
+                "tx Options": "uint8"
+            },
+            "Controller change status command": {
+                "Command Class": "uint8[]",
+                "Command": "uint8",
+                "Seq No": "uint8",
+                "Status": "uint8",
+                "Reserved": "uint8",
+                "New NodeID": "uint8",
+                "Node Info Length": "uint8",
+                "List": "uint1",
+                "Z-Wave Protocol Specific Part": "uint7",
+                "Opt.Func": "uint1",
+                "Basic Device Class": "uint8",
+                "Generic Device Class": "uint8",
+                "Specific Device Class": "uint8"
+            }
+        },
+        "Network management installation and maintenance command class": {
+            "RSSI report command": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Channel 1 RSSI": "uint8",
+                "Channel 2 RSSI": "uint8",
+                "Channel 3 RSSI": "uint8",
+                "Z-Wave Long Range Primary Channel RSSI": "uint8",
+                "Z-Wave Long Range Secondary Channel RSSI": "uint8"
+            },
+            "Z-Wave long range channel configuration set": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Z-Wave Long Range Channel": "uint8"
+            },
+            "Z-Wave long range channel configuration get": {
+                "Command Class": "uint8",
+                "Command": "uint8"
+            },
+            "Z-Wave long range channel configuration report": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Z-Wave Long Range Channel": "uint8"
+            }
+        },
+        "No Operation Command Class": {},
+        "Node Provisioning Command Class": {
+            "Node Provisioning Set Command": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Seq No": "uint8",
+                "Reserved": "uint3",
+                "DSK Length": "uint5",
+                "DSK": "uint8[]",
+                "Meta Data Extension (Optional)": "uint8[]"
+            },
+            "Node Provisioning Delete Command": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Seq No": "uint8",
+                "Reserved": "uint3",
+                "DSK Length": "uint5",
+                "DSK": "uint8[]"
+            },
+            "Node Provisioning Get Command": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Seq No": "uint8",
+                "Reserved": "uint3",
+                "DSK Length": "uint5",
+                "DSK": "uint8[]"
+            },
+            "Node Provisioning Report": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Seq No": "uint8",
+                "Reserved": "uint3",
+                "DSK Length": "uint5",
+                "DSK": "uint8[]",
+                "Meta Data Extension (Optional)": "uint8[]"
+            },
+            "Node Provisioning List Iteration Get": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Seq No": "uint8",
+                "Remaining Counter": "uint8"
+            },
+            "Node Provisioning List Iteration Report": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Seq No": "uint8",
+                "Remaining Count": "uint8",
+                "Reserved": "uint3",
+                "DSK Length N": "uint5",
+                "DSK (Optional)": "uint8[]",
+                "Meta Data Extension (Optional)": "uint8[]"
+            }
+        },
+        "Powerlevel Command Class": {
+            "Powerlevel Set Command": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Power Level": "uint8",
+                "Timeout": "uint8"
+            },
+            "Powerlevel Get Command": {
+                "Command Class": "uint8",
+                "Command": "uint8"
+            },
+            "Powerlevel Report": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Power Level": "uint8",
+                "Timeout": "uint8"
+            },
+            "Powerlevel Test Node Set Command": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Test NodeID": "uint8",
+                "Power Level": "uint8",
+                "Test Frame Count": "uint16"
+            },
+            "Powerlevel Test Node Get Command": {
+                "Command Class": "uint8",
+                "Command": "uint8"
+            },
+            "Powerlevel Test Node Report": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Test NodeID": "uint8",
+                "Status of operation": "uint8",
+                "Test frame acknowledged count": "uint16"
+            }
+        },
+        "Z/IP Command Class": {},
+        "Z/IP 6LoWPAN Command Class": {},
+        "Z/IP Gateway Command Class": {
+            "Gateway Mode Set Command": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Mode": "uint8"
+            },
+            "Gateway Mode Get": {
+                "Command Class": "uint8",
+                "Command": "uint8"
+            },
+            "Gateway Mode Report": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Mode": "uint8"
+            },
+            "Gateway Peer Set Command": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Peer Profile": "uint8",
+                "IPv6 Address": "uint128",
+                "Port": "uint16",
+                "Reserved": "uint2",
+                "Peer Name Length": "uint6",
+                "Peer Name (Optional)": "uint8[]"
+            },
+            "Gateway Peer Get Command": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Peer Profile": "uint8"
+            },
+            "Gateway Peer Report": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Peer Profile": "uint8",
+                "Peer Count": "uint8",
+                "IPv6 Address": "uint128",
+                "Port": "uint16",
+                "Reserved": "uint2",
+                "Peer Name Length": "uint6",
+                "Peer Name (Optional)": "uint8[]"
+            },
+            "Gateway Lock Set": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Reserved": "uint6",
+                "Show": "uint1",
+                "Lock": "uint1"
+            },
+            "Unsolicited Destination Set Command": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Unsolicited IPv6 Destination": "uint128",
+                "Unsolicited Destination Port": "uint16"
+            },
+            "Unsolicited Destination Get Command": {
+                "Command Class": "uint8",
+                "Command": "uint8"
+            },
+            "Unsolicited Destination Report": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Unsolicited IPv6 Destination": "uint128",
+                "Unsolicited Destination Port": "uint16"
+            },
+            "Application Node Info Set Command": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Command Class (Optional)": "uint8[]"
+            },
+            "Application Node Info Get": {
+                "Command Class": "uint8",
+                "Command": "uint8"
+            },
+            "Application Node Info Report": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Command Class *)": "uint8[]"
+            }
+        },
+        "Z/IP ND Command Class": {
+            "Z/IP Node Solicitation Command": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Reserved": "uint8",
+                "NodeID": "uint8",
+                "IPv6 Address": "uint128"
+            },
+            "Z/IP Inverse Node Solicitation Command": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Reserved 1": "uint4",
+                "Local": "uint1",
+                "Reserved 2": "uint3",
+                "NodeID": "uint8"
+            },
+            "Z/IP Node Advertisement Command": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Reserved": "uint5",
+                "Local": "uint1",
+                "Validity": "uint2",
+                "NodeID": "uint8",
+                "IPv6Address": "uint128",
+                "Home ID": "uint32"
+            }
+        },
+        "Z/IP Portal Command Class": {
+            "Gateway Configuration Set": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "LAN IPv6 Address": "uint128",
+                "LAN IPv6 Prefix Length": "uint8",
+                "Portal IPv6 Prefix": "uint128",
+                "Portal IPv6 Prefix Length": "uint8",
+                "Default Gateway IPv6 Address": "uint128",
+                "PAN IPv6 Prefix": "uint128"
+            },
+            "Gateway Configuration Status": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "Status": "uint8"
+            },
+            "Gateway Configuration Get Command": {
+                "Command Class": "uint8",
+                "Command": "uint8"
+            },
+            "Gateway Configuration Report": {
+                "Command Class": "uint8",
+                "Command": "uint8",
+                "LAN IPv6 Address": "uint128",
+                "LAN IPv6 Prefix Length": "uint8",
+                "Portal IPv6 Prefix": "uint128",
+                "Portal IPv6 Prefix Length": "uint8",
+                "Default Gateway IPv6 Address": "uint128",
+                "PAN IPv6 Prefix": "uint128"
+            },
+            "Gateway Unregister Command": {
+                "Command Class": "uint8",
+                "Command": "uint8"
+            }
+        }
+    }
+}
