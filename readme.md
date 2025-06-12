@@ -24,6 +24,7 @@ Sengled Zigbee Smart Strip(ID=7): CVE-2022-47100, CVE-2024-*****
 For the fuzzer, you can also directly deploy on MACOS since Unix-like 
 
 ```ls -l /dev/ttyUSB*``` (Ubuntu)
+
 ```ls -l /dev/tty.usbserial*``` (MACOS)
 
 # Install From Source
@@ -44,6 +45,7 @@ Docker will be available soon.
 If the module is not loaded, you can execute the following command
 
 ``` (For Intel) sudo modprobe kvm_intel ```
+
 ``` (For AMD) sudo modprobe kvm_amd ```
 
 3. Install Docker on Ubuntu
