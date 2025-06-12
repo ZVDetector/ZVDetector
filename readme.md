@@ -36,7 +36,7 @@ Install From Source
 git clone https://github.com/ZVDetector/ZVDetector.git
 ```
 
-Python Version 3.8.3 and Requirements
+Python Version 3.9.18 and Requirements
 
 ```pip install -r requirements.txt```
 
