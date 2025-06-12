@@ -112,7 +112,7 @@ Docker will be available soon.
 
 # Compile Methods
 
-# Start Fuzzing
+## Start Fuzzing
 
 Run ZVDetector just by using the following commands.
 
