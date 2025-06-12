@@ -26,7 +26,7 @@ from util.serial import serialize, ZIGBEE_SIGNED_INT_TYPE, ZIGBEE_UNSIGNED_INT_T
 
 from util.utils import get_latest_file, input_with_timeout, get_all_combinations, match_dict_item, get_struct_time
 from util.conf import ZIGBEE_DEVICE_MAC_MAP
-from state_aware.gateway.gateway import ZHAGateway, parse_args
+from gateway import ZHAGateway, parse_args
 
 logging.basicConfig(level=logging.INFO)
 log = logging.getLogger(__name__)
