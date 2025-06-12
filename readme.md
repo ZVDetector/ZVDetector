@@ -81,15 +81,28 @@ Q：Can the captured packets be displayed in real time?
 
 A：Specify the pipe method in TiWsPc to transfer the captured packets to Wireshark. 
 
-![image](https://github.com/ZVDetector/ZVDetector/blob/master/figure/tc1.png)
+![image](https://github.com/ZVDetector/ZVDetector/blob/master/figure/tc1.PNG)
 
-![image](https://github.com/ZVDetector/ZVDetector/blob/master/figure/tc2.png)
+![image](https://github.com/ZVDetector/ZVDetector/blob/master/figure/tc2.PNG)
 
-![image](https://github.com/ZVDetector/ZVDetector/blob/master/figure/tc3.png)
+![image](https://github.com/ZVDetector/ZVDetector/blob/master/figure/tc3.PNG)
 
 Q: How to decrypt Zigbee packets?
 
 A: 
+First you can paste common-used factory-programmed Zigbee link key into Wireshark preference -> protocol -> Zigbee -> Pre-configured Keys.
+A common-used key: 5a6967426565416c6c69616e63653039
+Others can be obatined from online blogs.
+
+![image](https://github.com/ZVDetector/ZVDetector/blob/master/figure/tc4.PNG)
+
+You need to obtain the traffic from the pairing(commissioning) phase.
+Locate the Transport Key message and copy the key value from its fields.
+
+![image](https://github.com/ZVDetector/ZVDetector/blob/master/figure/traffic.jpg)
+
+Paste the key value into wireshark preferences setup.
+
 
 # Quick Deployment
 Docker will be available soon.
