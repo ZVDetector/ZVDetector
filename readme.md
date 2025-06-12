@@ -112,7 +112,10 @@ Docker will be available soon.
 
 # Compile Methods
 
-Start Fuzzing
+# Start Fuzzing
+
+Run ZVDetector just by using the following commands.
+
 ```
 cd state_fuzzing
 python fuzzer.py -c 20 -d 15 -l -o network.json <fuzzer USB port>
