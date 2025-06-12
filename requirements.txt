@@ -16,3 +16,4 @@ zigpy-xbee
 zigpy-zigate
 zigpy-znp
 bellows
+py2neo
