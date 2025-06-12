@@ -147,7 +147,7 @@ Crash Record at ```/state_fuzzing/crash```
 
 # Protocol Extension
 
-We have already applied it to some ZWave tasks. See ```/zwave``` Folder. 
+We have already applied it to some ZWave tasks. See ```/extension``` Folder. 
 
 We also encourage developers to collaborate to extend to other IoT protocols.
 
