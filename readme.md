@@ -21,7 +21,7 @@ Sengled Zigbee Smart Strip(ID=7): CVE-2022-47100, CVE-2024-*****
 
 # Running Environment
 
-![image](https://github.com/ZVDetector/ZVDetector/blob/master/testbed.jpg)
+![image](https://github.com/ZVDetector/ZVDetector/blob/master/testbed.png)
 
 # Install From Source
 ```
