@@ -56,7 +56,7 @@ https://www.home-assistant.io/integrations/zha/
 
 (1) Plug in Nortek GoControl QuickStick HUSBZB-1
 
-Choose port ```/dev/ttyUSB0``` for Zigbee instead of  ```/dev/ttyUSB0``` for Z-Wave
+Choose port ```/dev/ttyUSB0``` for Zigbee instead of  ```/dev/ttyUSB1``` for Z-Wave
 
 (2) Paring the devices
 
@@ -144,7 +144,7 @@ Crash Record at ```/state_fuzzing/crash```
 
 # Protocol Extension
 
-We have already applied it to some ZWave tasks. See Z-Wave Folder.
+We have already applied it to some ZWave tasks. See ```/zwave``` Folder. 
 
 We also encourage developers to collaborate to extend to other IoT protocols.
 
