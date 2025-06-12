@@ -75,6 +75,8 @@ http://www.ti.com/tool/TIMAC
 
 The channel on which the fuzzer runs will be explained in the subsequent execution.
 
+![image](https://github.com/ZVDetector/ZVDetector/blob/master/figure/tc4.PNG)
+
 4. Save packets to /state_aware/result/traffic as the ground truth of message formats.
 
 Q：Can the captured packets be displayed in real time?
@@ -94,7 +96,7 @@ First you can paste common-used factory-programmed Zigbee link key into Wireshar
 A common-used key: 5a6967426565416c6c69616e63653039
 Others can be obatined from online blogs.
 
-![image](https://github.com/ZVDetector/ZVDetector/blob/master/figure/tc4.PNG)
+![image](https://github.com/ZVDetector/ZVDetector/blob/master/figure/tc5.PNG)
 
 You need to obtain the traffic from the pairing(commissioning) phase.
 Locate the Transport Key message and copy the key value from its fields.
