@@ -63,13 +63,26 @@ If the module is not loaded, you can execute the following command
 cd home_assistant
 docker-compose up -d
 ```
+5. Build Zigbee Home Automation(ZHA) integrations
+
+https://www.home-assistant.io/integrations/zha/
+
+6. Message traffic record
+
+(1) Plug in Nortek GoControl QuickStick HUSBZB-1
+
+Choose port ```/dev/ttyUSB0``` for Zigbee instead of  ```/dev/ttyUSB0``` for Z-Wave
+
+(2) Paring the devices
+
+(3) Send the packets to device and capture the traffic using the following Step 3 method
 
 ## Step 3: Traffic Capture Settings
 
-1. Dowload TiWsPc Tools
+1. Dowload TiWsPc Tools and CC2531 Driver
 http://www.ti.com/tool/TIMAC
 
-2. Click ‘Device Configuration’ to select and configure the CC2531 USB Dongle hardware.
+2. Plug in CC2531 USB Dongle, click ‘Device Configuration’ to select and configure the CC2531 hardware.
 
 3. The only parameter that needs to be configured is the channel in ‘Configuration’, which must match the channel used by the fuzzer to send packets.
 
@@ -79,9 +92,9 @@ The channel on which the fuzzer runs will be explained in the subsequent executi
 
 4. Save packets to /state_aware/result/traffic as the ground truth of message formats.
 
-Q：Can the captured packets be displayed in real time?
+4.1 Display the captured packets in real time.
 
-A：Specify the pipe method in TiWsPc to transfer the captured packets to Wireshark. 
+Specify the pipe method in TiWsPc to transfer the captured packets to Wireshark. 
 
 ![image](https://github.com/ZVDetector/ZVDetector/blob/master/figure/tc1.PNG)
 
@@ -89,10 +102,9 @@ A：Specify the pipe method in TiWsPc to transfer the captured packets to Wiresh
 
 ![image](https://github.com/ZVDetector/ZVDetector/blob/master/figure/tc3.PNG)
 
-Q: How to decrypt Zigbee packets?
+4.2 Decrypt Zigbee packets.
 
-A: 
-First you need paste common-used factory-programmed Zigbee link key into Wireshark preference -> protocol -> Zigbee -> Pre-configured Keys.
+(1) First paste common-used factory-programmed Zigbee link key into Wireshark preference -> protocol -> Zigbee -> Pre-configured Keys.
 
 A common-used key: 5a6967426565416c6c69616e63653039. Others can be obatined from online blogs. 
 
@@ -100,17 +112,46 @@ A common-used key: 5a6967426565416c6c69616e63653039. Others can be obatined from
 
 Thus you can see the plaintext content of the messages during the pairing phase, but the communication phase is still encrypted.
 
-Then you need to obtain the traffic from the pairing(commissioning) phase. Locate the Transport Key message and copy the key value from its fields.
+(2) Obtain the traffic from the pairing(commissioning) phase. Locate the Transport Key message and copy the key value from its fields.
 
 ![image](https://github.com/ZVDetector/ZVDetector/blob/master/figure/traffic.jpg)
 
-Paste the key value into wireshark preferences setup same as the first step.
+(3) Paste the key value into wireshark preferences setup same as the first step.
 
 
 ## Quick Deployment
 Docker will be available soon.
 
 # Compile Methods
+
+Start Fuzzing
+```
+cd state_fuzzing
+python fuzzer.py -c 20 -d 15 -l -o network.json /dev/tty.usbserial-14110 
+```
+where ```-c``` specify the channel, ```-d``` specify the permit duration in paring phase, ```-l``` specify whether use the last moment state, ```-r``` specify whether reset the network, ```-i``` specify the input network file to flash,   ```-o``` specify the file path to store the network information. Load historical state can prevent reparing the device after rebooting the fuzzer. 
+
+(1) Commissioning Phase
+
+Pairing the device with fuzzer during the permit time windows.
+
+Fuzzer will automatically analyze the cluster, node descriptor and simple descriptor of each device. Saved at ```/library```
+
+(2) Communication Phase
+
+Analyze the message formats, dependencies and correlations. 
+
+If these are analyzed before, ZVDetector directly use the results. Saved at ```/state_aware/results```
+
+Generate fuzzing graph in Neo4j graph database.
+
+(3) Combined State Fuzzing
+
+Device State Saved at ```/library```
+
+Log Record at ```fuzz.log```
+
+Crash Record at ```/state_fuzzing/crash```
 
 
 # Protocol Extension
