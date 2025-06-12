@@ -692,9 +692,6 @@ class FuzzGraph:
         self.check_final_message(message_window, node_window, dependent_window, device)
 
     def generate_fuzzing_graph(self):
-        pass
-
-    def construct(self):
         log.info("[V-B1: PROTOCOL STATE AWARENESS] Basic Protocol Graph Construction")
 
         self.pcap2csv()
@@ -721,4 +718,4 @@ class FuzzGraph:
 
 if __name__ == "__main__":
     graph = FuzzGraph()
-    graph.construct()
+    graph.generate_fuzzing_graph()
