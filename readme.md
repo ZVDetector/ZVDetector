@@ -163,7 +163,7 @@ We also encourage developers to collaborate to extend to other IoT protocols.
 
 Tuya Zigbee Smart Plug(ID=3): CVE-2024-*****
 
-Tuya Zigbee Smart Bulb(ID=4): CVE-2024-*****, CVE-2024-*****
+Tuya Zigbee Smart Bulb(ID=4): CVE-2024-****, CVE-2024-*****
 
 Sengled Zigbee Smart Switch(ID=5): CVE-2023-*****
 
