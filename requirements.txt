@@ -1,6 +1,7 @@
 beautifulsoup4
 colorlog
 scikit-learn
+numpy
 matplotlib
 pandas
 poetry
@@ -10,10 +11,9 @@ sentence-transformers
 networkx
 pyyaml
 zha-quirks
-zigpy
 zigpy-deconz
 zigpy-xbee
 zigpy-zigate
-zigpy-znp
 bellows
 py2neo
+torch
