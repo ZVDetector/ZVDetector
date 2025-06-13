@@ -28,7 +28,8 @@ git clone https://github.com/ZVDetector/ZVDetector.git
 Python Version 3.9.18 and Requirements
 
 ```pip install -r requirements.txt```
-
+```pip install git+https://github.com/ZVDetector/zigpy.git```
+```pip install git+https://github.com/ZVDetector/zigpy-znp.git```
 
 ## Step 2: HA Configuration
 
