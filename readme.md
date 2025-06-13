@@ -161,9 +161,9 @@ We also encourage developers to collaborate to extend to other IoT protocols.
 
 # Found Vulnerabilities
 
-Tuya Zigbee Smart Plug(ID=3) - TS011F: CVE-2024-*****
+Tuya Zigbee Smart Plug(ID=3): CVE-2024-*****
 
-Tuya Zigbee Smart Bulb(ID=4) TS0505B: CVE-2024-*****, CVE-2024-*****
+Tuya Zigbee Smart Bulb(ID=4): CVE-2024-*****, CVE-2024-*****
 
 Sengled Zigbee Smart Switch(ID=5): CVE-2023-*****
 
