@@ -17,6 +17,7 @@ For the fuzzer, you can also directly deploy on MACOS since Unix-like
 USB port shows like: ```crw-rw-rw-  1 root  wheel  0x9000002 Jun 12 10:47 /dev/tty.usbserial-14110```
 
 If you choose running fuzzer on the MACOS, better to create conda or virtualenv environment.
+
 ```conda create --name zvdetector python=3.9.18```
 
 Install From Source
