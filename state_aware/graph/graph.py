@@ -145,5 +145,5 @@ class ProtocolGraph:
 
 
 if __name__ == "__main__":
-    graph = ProtocolGraph('http://localhost:7474', "neo4j", "avs01046")
+    graph = ProtocolGraph('http://localhost:7474', "neo4j", "<Your Neo4j Password>")
     count = graph.Count()
