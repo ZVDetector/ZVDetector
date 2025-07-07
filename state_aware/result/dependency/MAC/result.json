@@ -1,0 +1,11 @@
+{
+    "association_request": "association_response",
+    "association_response": "association_request",
+    "disassociation_notification": "none",
+    "data_request": "none",
+    "panidconflict_notification": "none",
+    "orphan_notification": "association_response",
+    "beacon_request": "none",
+    "coordinator_realignment": "none",
+    "gtsrequest": "none"
+}
