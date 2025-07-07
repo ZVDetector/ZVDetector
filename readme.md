@@ -33,6 +33,20 @@ pip install git+https://github.com/ZVDetector/zigpy.git
 pip install git+https://github.com/ZVDetector/zigpy-znp.git
 ```
 
+Configure your neo4j desktop and start it locally. You can run the desktop directly or start it from the command line.
+
+```
+cd Neo4j/bin
+./neo4j start
+```
+
+Configure your username and password and remember them. Replace them  in ```state_aware/graph/process.py```
+```
+NEO4J_URL = "bolt://localhost:7474" or NEO4J_URL = "neo4j://localhost:7687"
+NEO4J_USER = "neo4j"
+NEO4J_PASSWORD = "<Your Password>"
+self.graph = ProtocolGraph(NEO4J_URL, NEO4J_USER, NEO4J_PASSWORD)
+```
 
 ## Step 2: HA Configuration
 
