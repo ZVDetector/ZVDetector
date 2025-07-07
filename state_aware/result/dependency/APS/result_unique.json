@@ -1,0 +1,12 @@
+{
+    "transport_key": "none",
+    "update_device": "none",
+    "remove_device": "none",
+    "request_key": "none",
+    "switch_key": "none",
+    "tunnel": "none",
+    "verify_key": "confirm_key",
+    "confirm_key": "none",
+    "relay_message_downstream": "relay_message_upstream",
+    "relay_message_upstream": "relay_message_downstream"
+}
