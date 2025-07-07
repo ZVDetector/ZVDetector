@@ -1,0 +1,12 @@
+{
+    "route_request": "route_reply",
+    "route_reply": "none",
+    "network_status": "none",
+    "leave": "none",
+    "route_record": "none",
+    "rejoin_request": "rejoin_response",
+    "link_status": "none",
+    "network_report": "none",
+    "network_update": "none",
+    "end_device_timeout_request": "end_device_timeout_response"
+}
