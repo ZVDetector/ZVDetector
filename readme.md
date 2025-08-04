@@ -33,6 +33,16 @@ pip install git+https://github.com/ZVDetector/zigpy.git
 pip install git+https://github.com/ZVDetector/zigpy-znp.git
 ```
 
+The following problems do not need to be solved
+```
+ERROR: pip's dependency resolver does not currently take into account all the packages that are installed. This behaviour is the source of the following dependency conflicts.
+bellows 0.45.3 requires zigpy>=0.79.0, but you have zigpy 0.0.1 which is incompatible.
+zha-quirks 0.0.112 requires zigpy>=0.62.0, but you have zigpy 0.0.1 which is incompatible.
+zigpy-deconz 0.25.1 requires zigpy>=0.80.0, but you have zigpy 0.0.1 which is incompatible.
+zigpy-xbee 0.21.0 requires zigpy>=0.70.0, but you have zigpy 0.0.1 which is incompatible.
+zigpy-zigate 0.13.3 requires zigpy>=0.70.0, but you have zigpy 0.0.1 which is incompatible.
+```
+
 Configure your neo4j desktop and start it locally. You can run the desktop directly or start it from the command line.
 
 ```
