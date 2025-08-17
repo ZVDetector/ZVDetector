@@ -17,3 +17,6 @@ zigpy-zigate
 bellows
 py2neo
 torch
+tiktoken
+openai
+transformers
