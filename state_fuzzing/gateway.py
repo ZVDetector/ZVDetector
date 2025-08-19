@@ -28,7 +28,7 @@ from zigpy_znp.tools.common import setup_parser, ClosableFileType, validate_back
 from util.logger import get_logger
 from util.conf import ZIGBEE_DEVICE_MAC_MAP
 from util.serial import serialize
-from util.utils import find_files_with_prefix, input_with_timeout, get_struct_time, clear_folder
+from util.utils import *
 from bert.model import BERT
 from network.network_backup import backup_network
 from network.network_restore import restore_network
