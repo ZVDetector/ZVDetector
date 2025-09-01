@@ -6,7 +6,7 @@ import pandas as pd
 import numpy as np
 from bs4 import BeautifulSoup
 
-sys.path.append(os.getcwd())
+sys.path.append(os.path.dirname(__file__))
 
 from xiaomi_miot.core.miio2miot_specs import MIIO_TO_MIOT_SPECS
 from xiaomi_miot.core.miot_local_devices import MIOT_LOCAL_MODELS
