@@ -1,0 +1,19 @@
+{
+    "input": {
+        "Unknown": [],
+        "basic": 0,
+        "power": 1,
+        "identify": 3,
+        "poll_control": 32
+    },
+    "output": {
+        "Unknown": [
+            64528
+        ],
+        "identify": 3,
+        "groups": 4,
+        "on_off": 6,
+        "level": 8,
+        "ota": 25
+    }
+}

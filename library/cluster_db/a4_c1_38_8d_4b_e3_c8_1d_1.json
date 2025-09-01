@@ -1,0 +1,21 @@
+{
+    "input": {
+        "Unknown": [
+            57344,
+            6280
+        ],
+        "basic": 0,
+        "identify": 3,
+        "groups": 4,
+        "scenes": 5,
+        "on_off": 6,
+        "time": 10,
+        "smartenergy_metering": 1794,
+        "electrical_measurement": 2820,
+        "lightlink": 4096
+    },
+    "output": {
+        "Unknown": [],
+        "ota": 25
+    }
+}

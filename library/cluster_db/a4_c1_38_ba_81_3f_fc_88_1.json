@@ -1,0 +1,18 @@
+{
+    "input": {
+        "Unknown": [],
+        "basic": 0,
+        "identify": 3,
+        "groups": 4,
+        "scenes": 5,
+        "on_off": 6,
+        "level": 8,
+        "light_color": 768,
+        "lightlink": 4096
+    },
+    "output": {
+        "Unknown": [],
+        "ota": 25,
+        "time": 10
+    }
+}
