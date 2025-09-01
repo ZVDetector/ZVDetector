@@ -1,15 +1,15 @@
 import os
-import re
 import sys
+
+sys.path.append(os.path.dirname(os.getcwd()))
+
+from pathlib import Path
 import json
 import time
 import signal
 import asyncio
 from typing import Tuple, List
 
-sys.path.append(os.path.dirname(os.getcwd()))
-
-import zigpy_znp
 import zigpy.zdo
 import zigpy.zcl
 import zigpy.device
@@ -19,20 +19,20 @@ import zigpy.exceptions
 from zigpy.zcl import foundation, convert_list_schema
 import zigpy.types as t
 import zigpy.zdo.types as zdo_t
-import zigpy_znp.frames
-from zigpy_znp.api import ZNP
-from zigpy_znp.config import CONFIG_SCHEMA
 from zigpy_znp.zigbee.application import ControllerApplication
 from zigpy_znp.tools.common import setup_parser, ClosableFileType, validate_backup_json
 
-from util.logger import get_logger
-from util.conf import ZIGBEE_DEVICE_MAC_MAP
+from util.conf import ZIGBEE_DEVICE_MAC_MAP, ZIGBEE_TESTBED_DEVICES, COORDINATOR_IEEE
 from util.serial import serialize
 from util.utils import *
-from bert.model import BERT
+from util.logger import get_logger
+from state_fuzzing.bert.model import BERT
 from network.network_backup import backup_network
 from network.network_restore import restore_network
 from state_aware.specification import get_cluster_command
+from state_aware.graph.main import FuzzGraph
+from state_aware.relation import Correlation
+from state_aware.format import FormatGenerator
 import logging
 
 logging.basicConfig(level=logging.INFO)
@@ -118,7 +118,7 @@ class ZHAGateway:
                        "state_guide": args.load_state}
 
         self.application_controller = ControllerApplication(self.config)
-        self.coordinator_ieee = t.EUI64.convert("00:12:4b:00:30:cb:d7:43")
+        self.coordinator_ieee = t.EUI64.convert(COORDINATOR_IEEE)
         self.parent_nwk = t.NWK.convert("0000")
         self.max_fuzzing_packet = 10
         self.bert_model = BERT()
@@ -129,6 +129,9 @@ class ZHAGateway:
         self.attribute_db = os.path.join(os.path.dirname(os.getcwd()), "library", "attribute_db")
         self.command_db = os.path.join(os.path.dirname(os.getcwd()), "library", "command_db")
         self.case_db = os.path.join(os.path.dirname(os.getcwd()), "library", "interesting_case")
+        self.format_generator = FormatGenerator()
+        self.corr = Correlation()
+        self.graph = FuzzGraph()
         self.general_packets = 0
         self.zcl_packets = 0
         self.total_packets = 0
@@ -733,6 +736,9 @@ class ZHAGateway:
     async def request_raw(self, endpoint: zigpy.endpoint.Endpoint, cluster_id: int, command_id: int, frame_type: int,
                           payload_bytes: bytes, direction: int, tsn=None, flag: bool = False):
 
+        """
+        Send a ZCL message assembled from the header and payload.
+        """
         cluster_id = t.ClusterId(cluster_id)
 
         if direction == foundation.Direction.Server_to_Client:
@@ -789,6 +795,9 @@ class ZHAGateway:
                 log.error("Can't read cluster: {}".format(cluster_name))
 
     async def validate_crash(self, device_name: str, cluster_name: str):
+        """
+        [JUST FOR DEBUG] POC validation - Device State must be set before running this function
+        """
 
         start_attr_id = [0x0000, 0x0001, 0x0002, 0x0003, 0x0004, 0x0005, 0x0006, 0x0007, 0x0008, 0x0009]
         max_attr_id = 0x30  # 0x30
@@ -835,11 +844,18 @@ class ZHAGateway:
         log.info("*********************************[IV-A] Pairing Phase Analysis *********************************")
 
         try:
-            log.info("Pairing the Zigbee Devices")
+            log.info("[Commissioning Phase] Pairing Zigbee Devices...")
+            load_device = False
+
             while True:
                 await self.send_permit()
                 flag = input_with_timeout("[Quit Pairing?]: ", 7, "")
                 if flag == "yes":
+                    log.info("[Commissioning Phase] Pairing the Zigbee devices complete!")
+                    break
+                if flag == "load":
+                    log.info("[Commissioning Phase] Pairing the Zigbee devices complete!")
+                    load_device = True
                     break
                 if flag == "devices":
                     for ieee in self.application_controller.devices.keys():
@@ -848,11 +864,49 @@ class ZHAGateway:
                         log.info(str(ieee) + "-" + ZIGBEE_DEVICE_MAC_MAP[str(ieee)])
                 await asyncio.sleep(5)
 
-            await self.generate_pairing_graph()
+            log.info("[Communication Phase] Endpoint Information Collection...")
 
-            log.info("[IV-A2] Endpoint Information Collection")
+            if load_device:
+                log.info("[Communication Phase] Loading the Zigbee devices from library configurations...")
+                for dev_name in ZIGBEE_TESTBED_DEVICES:
+                    dev_ieee_raw = self.name2ieee[dev_name]
+                    dev_ieee = dev_ieee_raw.replace(":", "_")
+
+                    log.info(f"[Device Loading] Loading the Zigbee devices: {dev_name}({dev_ieee_raw})")
+
+                    dev_cluster_files = find_files_with_prefix(self.cluster_db, dev_ieee)
+
+                    for dev_cluster_file in dev_cluster_files:
+                        dev_filename = Path(dev_cluster_file).name
+
+                        if dev_filename.startswith(dev_ieee + "_"):
+                            dev_endpoint_id = dev_filename[len(dev_ieee) + 1:]
+                            log.info(f"[Device Loading] Loading the {dev_name} endpoint {dev_endpoint_id}...")
+
+                            with open(dev_cluster_file, "r") as f:
+                                dev_file = json.load(f)
+
+                            endpoint_info = ""
+
+                            for cluster_type, cluster_value in dev_file.items():
+                                endpoint_info += f"{cluster_type}: ["
+                                for cluster_name, cluster_id in cluster_value.items():
+                                    if cluster_name == "Unknown" and cluster_id:
+                                        for index, cid in enumerate(cluster_id):
+                                            endpoint_info += f"{cid}(Manufacturer-Specific {index}), "
+                                    else:
+                                        endpoint_info += f"{cluster_id}({cluster_name}), "
+
+                                endpoint_info += "] \n"
+
+                            log.info(f"[Device Loading] {dev_name} endpoint {dev_endpoint_id}: {endpoint_info} ")
+
+                    log.info(f"[Device Loading] Loading the Zigbee devices: {dev_name}({dev_ieee_raw}) complete!")
 
             for ieee in self.application_controller.devices.keys():
+
+                print(self.application_controller.devices[ieee])
+
                 if ieee == self.coordinator_ieee:
                     continue
 
@@ -867,7 +921,26 @@ class ZHAGateway:
             # IV-A3: Record the supported attributes of each cluster
             await self.support_attribute_collection()
 
-            log.info("[IV-A2] Endpoint Information Collection Done!")
+            log.info("[Communication Phase] Endpoint Information Collection Done!")
+
+            log.info("[Protocol State Awareness] Begin Following Four Steps: (1) Format Extraction (2) Correlation Analysis "
+                     "(3) Dependency Analysis (4) Fuzzing Graph Construction")
+
+            # If dependency is not analyzed, set format_generated=False
+            log.info("[Protocol State Awareness] (1) Format Extraction...")
+
+            await self.format_generator.run(format_generated=True)
+
+            log.info("[Protocol State Awareness] (2) Correlation Analysis...")
+            # If dependency is not analyzed, set discovery_done=False
+            await self.corr.run(discovery_done=True)
+
+            log.info("[Protocol State Awareness] (3) Dependency Analysis + (4) Fuzzing Graph Construction...")
+            # If dependency is not analyzed, set analysis_done=False
+            await self.graph.generate_fuzzing_graph(analysis_done=True, basic_build=False)
+
+            log.info("[Protocol State Awareness] Done!")
+
         except KeyboardInterrupt:
             await self.clean()
 
