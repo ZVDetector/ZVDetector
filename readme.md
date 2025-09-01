@@ -57,7 +57,7 @@ cd Neo4j/bin
 ./neo4j start
 ```
 
-Configure your username and password and remember them. Replace them  in ```state_aware/graph/process.py```
+Configure your username and password and remember them. Replace them  in ```util/conf.py```
 ```
 NEO4J_URL = "bolt://localhost:7474" or NEO4J_URL = "neo4j://localhost:7687"
 NEO4J_USER = "neo4j"
@@ -183,6 +183,11 @@ Log Record at ```fuzz.log```
 
 Crash Record at ```/state_fuzzing/crash```
 
+# Fuzzing Videos
+
+We have recorded the running process of ZVDetector in the link below. You may preview and download it.
+
+https://cloud.tsinghua.edu.cn/d/48abda63af354f68b14c/
 
 # Protocol Extension
 
