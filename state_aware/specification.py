@@ -2,7 +2,7 @@
 import os
 import sys
 
-sys.path.append(os.path.dirname(os.getcwd()))
+sys.path.append(os.path.dirname(os.path.dirname(__file__)))
 
 import re
 import json
@@ -27,10 +27,10 @@ from zigpy.zcl.clusters.general import PowerSource, PhysicalEnvironment, AlarmMa
 logging.basicConfig(level=logging.INFO)
 log = logging.getLogger(__name__)
 
-ZHA_FILE_ORIGIN_PATH = os.path.join(os.getcwd(), "zha_zcl_library", "origin")
-ZHA_FILE_PATH = os.path.join(os.getcwd(), "zha_zcl_library", "process")
-FORMAT_SAVE_DIR = os.path.join(os.getcwd(), "result/format/ZCL")
-ATTR_SAVE_DIR = os.path.join(os.getcwd(), "result/attribute")
+ZHA_FILE_ORIGIN_PATH = os.path.join(os.path.dirname(__file__), "zha_zcl_library", "origin")
+ZHA_FILE_PATH = os.path.join(os.path.dirname(__file__), "zha_zcl_library", "process")
+FORMAT_SAVE_DIR = os.path.join(os.path.dirname(__file__), "result/format/ZCL")
+ATTR_SAVE_DIR = os.path.join(os.path.dirname(__file__), "result/attribute")
 BASE_MODULE = "zigpy.zcl.clusters"
 ATTR_CLASS = ('AttributeDefs', 'BaseAttributeDefs')
 COMMAND_CLASS = [('ServerCommandDefs', 'BaseCommandDefs'), ('ClientCommandDefs', 'BaseCommandDefs')]
