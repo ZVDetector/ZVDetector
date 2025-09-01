@@ -1,14 +1,13 @@
 import os
-import re
 import sys
 
-sys.path.append(os.path.dirname(os.getcwd()))
+sys.path.append(os.path.dirname(os.path.dirname(__file__)))
 
 import json
 import logging
 import tiktoken
 
-from const import *
+from state_aware.const import *
 from openai import OpenAI
 from datasets import load_dataset, Audio
 from transformers import pipeline, set_seed
@@ -19,8 +18,8 @@ log = logging.getLogger(__name__)
 class LLMGenerator:
     def __init__(self, key, model):
         self.model = {}
-        self.format_dir = os.path.join(os.getcwd(), "result/format")
-        self.description_dir = os.path.join(os.getcwd(), "result/description")
+        self.format_dir = os.path.join(os.path.dirname(__file__), "result/format")
+        self.description_dir = os.path.join(os.path.dirname(__file__), "result/description")
         self.secret_key = key  # Replace your token
         self.client = OpenAI(api_key=os.environ.get("OPENAI_API_KEY", self.secret_key))
         self.corr_client = None
@@ -82,7 +81,7 @@ class LLMGenerator:
 
         standard_output = """
                 The answer should be organized in JSON format. Following is an example of ZDP Command SimpleDescriptorRequest payload format.
-                {"SimpleDescriptorRequest":{"Nwk Addr Of Interest": "uint16", "Endpoint": "uint8"}}
+                {"SimpleDescriptorRequest": {"Nwk Addr Of Interest": "uint16", "Endpoint": "uint8"}}
         """
 
         num_tokens = self.num_tokens_from_string(prompt, "text")
@@ -133,15 +132,24 @@ class LLMGenerator:
         messages = [{"role": "system", "content": system_prompt},
                     {"role": "user", "content": user_prompt}]
 
-        response = self.corr_client.chat.completions.create(
-            model="deepseek-chat",
-            messages=messages,
-            response_format={
-                'type': 'json_object'
-            }
-        )
+        attempt_count = 0
 
-        return json.loads(response.choices[0].message.content)
+        while attempt_count < 3:
+            response = self.corr_client.chat.completions.create(
+                model="deepseek-chat",
+                messages=messages,
+                response_format={
+                    'type': 'json_object'
+                }
+            )
+            try:
+                final_response = json.loads(response.choices[0].message.content)
+                return final_response
+            except json.encoder.JSONEncoder:
+                attempt_count += 1
+                continue
+
+        return {}
 
     def LLM_hidden_attributes(self, message_name: str, message_description: dict, layer: str) -> dict:
         system_prompt = """
@@ -172,15 +180,23 @@ class LLMGenerator:
         messages = [{"role": "system", "content": system_prompt},
                     {"role": "user", "content": user_prompt}]
 
-        response = self.corr_client.chat.completions.create(
-            model="deepseek-chat",
-            messages=messages,
-            response_format={
-                'type': 'json_object'
-            }
-        )
+        attempt_count = 0
 
-        return json.loads(response.choices[0].message.content)
+        while attempt_count < 3:
+            response = self.corr_client.chat.completions.create(
+                model="deepseek-chat",
+                messages=messages,
+                response_format={
+                    'type': 'json_object'
+                }
+            )
+            try:
+                final_response = json.loads(response.choices[0].message.content)
+                return final_response
+            except json.decoder.JSONDecodeError:
+                attempt_count += 1
+                continue
+        return {}
 
     def LLM_attribute_permission(self, state_attributes_list: list, message_name: str,
                                  message_description: dict, layer: str) -> dict:
@@ -210,19 +226,27 @@ class LLMGenerator:
         messages = [{"role": "system", "content": system_prompt},
                     {"role": "user", "content": user_prompt}]
 
-        response = self.corr_client.chat.completions.create(
-            model="deepseek-chat",
-            messages=messages,
-            response_format={
-                'type': 'json_object'
-            }
-        )
+        attempt_count = 0
 
-        return json.loads(response.choices[0].message.content)
+        while attempt_count < 3:
+            response = self.corr_client.chat.completions.create(
+                model="deepseek-chat",
+                messages=messages,
+                response_format={
+                    'type': 'json_object'
+                }
+            )
+            try:
+                final_response = json.loads(response.choices[0].message.content)
+                return final_response
+            except json.decoder.JSONDecodeError:
+                attempt_count += 1
+                continue
+        return {}
 
 
 if __name__ == "__main__":
-    ds_key = "<Repalce With Your Deepseek API Key>"
+    ds_key = "sk-0e0ebce461784008aa931af7b5fc0622"
     lg = LLMGenerator(ds_key, "deepseek")
 
     # 1. Summary all descriptions
