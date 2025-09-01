@@ -1,0 +1,11 @@
+{
+    "input": {
+        "Unknown": [],
+        "analog_input": 12
+    },
+    "output": {
+        "Unknown": [],
+        "analog_input": 12,
+        "groups": 4
+    }
+}

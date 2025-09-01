@@ -1,0 +1,19 @@
+{
+    "input": {
+        "Unknown": [],
+        "basic": 0,
+        "groups": 4,
+        "identify": 3,
+        "on_off": 6,
+        "binary_output": 16,
+        "scenes": 5,
+        "time": 10,
+        "power": 1,
+        "device_temperature": 2
+    },
+    "output": {
+        "Unknown": [],
+        "ota": 25,
+        "time": 10
+    }
+}
