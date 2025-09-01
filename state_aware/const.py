@@ -1,7 +1,9 @@
 LAYERS = ["MAC", "NWK", "APS", "ZDP", "ZCL"]
-FRAMES = [["ACK", "Data", "Command"], ["Data", "Command"], ["ACK", "Data", "Command"], ["Command"],
+ZWAVE_LAYERS = ["Application", "Management", "Network-Protocol", "Transport-Encapsulation"]
+
+FRAMES = [["ACK", "Data", "Beacon", "Command"], ["Data", "Command"], ["ACK", "Data", "Command"], ["Command"],
           ["General", "Command"]]
-PARTS = [["header", "header", "payload"], ["header", "payload"], ["header", "header", "payload"], ["payload"],
+PARTS = [["header", "header", "header", "payload"], ["header", "payload"], ["header", "header", "payload"], ["payload"],
          ["payload", "payload"]]
 
 except_fields = ["id", "options", "options_mask", "options_override", "reserved", "undefined",
@@ -16,8 +18,11 @@ except_fields = ["id", "options", "options_mask", "options_override", "reserved"
 
 except_messages = ["ackframe", "data_frame", "nwkdata_frame_header", "aps_ack_frame_header", "aps_data_frame_header"]
 
+EXCEPT_CORR = ["nwkdata_frame_header", "ackframe", "data_frame", "aps_ack_frame_header", "APS_Data_Frame_Header"]
+
+ZWAVE_EXCEPT_CORR = ["Command Class", "Command"]
+
 common_used_cluster = ["Thermostat", "Metering", "GenericTunnel", "BacnetProtocolTunnel", "AnalogInput",
                        "ApplianceEventAlerts", "ApplianceStatistics", "ElectricalMeasurement", "DoorLock",
                        "WindowCovering", "RSSILocation", "IasZone", "IasAce", "IasWd", "LightLink", "Basic", "Identify",
                        "Groups", "Scenes", "OnOff", "LevelControl", "Color", "Ota", "Commissioning", "Alarms", "PowerProfile"]
-
