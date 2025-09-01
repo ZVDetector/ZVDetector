@@ -1,14 +1,16 @@
 import json
 import os
 import sys
+from collections import defaultdict
 
-sys.path.append(os.path.dirname(os.getcwd()))
+sys.path.append(os.path.dirname(os.path.dirname(__file__)))
 
 import re
 import csv
-from merge import merge_groups
-from LLM import *
-from const import *
+from state_aware.merge import merge_groups
+from state_aware.LLM import *
+from state_aware.const import *
+from util.utils import *
 
 
 def remove_parentheses(text):
@@ -97,12 +99,45 @@ def type_containment_correlation(message1: dict, message2: dict):
 
 class Correlation:
     def __init__(self):
-        self.CORR_SAVE_DIR = os.path.join(os.getcwd(), "result/correlation")
-        self.FORMAT_DIR = os.path.join(os.getcwd(), "result/format")
-        self.LLM = LLMGenerator(key="<Replace With Your API Keys>", model="deepseek")
+        self.CORR_SAVE_DIR = os.path.join(os.path.dirname(__file__), "result/correlation")
+        self.FORMAT_DIR = os.path.join(os.path.dirname(__file__), "result/format")
+        self.LLM = LLMGenerator(key="sk-0e0ebce461784008aa931af7b5fc0622", model="deepseek")
+        self.layer_map = {
+            "zigbee": LAYERS,
+            "zwave": ZWAVE_LAYERS
+        }
 
-    def acquire_all_messages(self, layer: str):
+        self.not_consider_corr_msgs = {
+            "zigbee": EXCEPT_CORR,
+            "zwave": ZWAVE_EXCEPT_CORR
+        }
+
+    def zwave_formats_transformation(self, layer: str):
+
+        zwave_layer_formats = {}
+        with open(os.path.join(self.FORMAT_DIR, f"Z-Wave/{layer}.json"), "r") as f:
+            layer_format = json.load(f)
+
+        for layer_type, layer_value in layer_format.items():
+            for sublayer_type, sublayer_value in layer_value.items():
+                for cmd_name, cmd_format in sublayer_value.items():
+                    cmd_key = layer_type + "_" + sublayer_type + "_" + cmd_name
+                    zwave_layer_formats[cmd_key] = cmd_format
+
+        return zwave_layer_formats
+
+    def acquire_layer_messages(self, layer: str, protocol: str = "zigbee"):
         all_messages = []
+        layer_messages = {}
+
+        if protocol == "zwave":
+            zwave_layer_formats = self.zwave_formats_transformation(layer)
+            for message, mvalue in zwave_layer_formats.items():
+                all_messages.append({message: mvalue})
+                layer_messages[message] = mvalue
+
+            return all_messages, layer_messages
+
         with open(os.path.join(self.FORMAT_DIR, f"{layer}/format({layer}_Command).json"), "r") as f:
             result = json.load(f)
 
@@ -114,13 +149,28 @@ class Correlation:
         else:
             for message, mvalue in result.items():
                 all_messages.append({message: mvalue})
-        return all_messages
 
-    def analyze_basic_correlation(self):
+        return all_messages, layer_messages
+
+    def analyze_basic_correlation(self, protocol: str = "zigbee"):
+        """
+        Analyze two correlation types: same_field_correlation and type_containment_correlation
+        """
+
         basic_corr_count = 0
 
-        for layer in LAYERS:
-            messages = self.acquire_all_messages(layer)
+        if protocol not in self.layer_map:
+            log.error(f"[ERROR] {protocol} is not supported!")
+            return None
+
+        all_layers = self.layer_map[protocol]
+
+        all_layer_messages = {}
+
+        for layer in all_layers:
+            messages, layer_messages = self.acquire_layer_messages(layer, protocol)
+            all_layer_messages[layer] = layer_messages
+
             results = {}
             base_key = "correlation"
 
@@ -145,36 +195,57 @@ class Correlation:
                                                                              "fields": result2[1]}
                         all_share_fields.extend(result2[1])
 
-            with open(os.path.join(self.CORR_SAVE_DIR, "basic_correlation({}).json".format(layer)), "w") as f:
+            with open(os.path.join(self.CORR_SAVE_DIR, f"{protocol}/basic_correlation({layer}).json"), "w") as f:
                 json.dump(results, f, indent=4)
 
-            with open(os.path.join(self.CORR_SAVE_DIR, "corr_share_fields({}).txt".format(layer)), "w") as f:
+            with open(os.path.join(self.CORR_SAVE_DIR, f"{protocol}/corr_share_fields({layer}).txt"), "w") as f:
                 all_share_fields = list(set(all_share_fields))
                 for item in all_share_fields:
                     f.write(str(item) + "\n")
 
-            with open(os.path.join(self.CORR_SAVE_DIR, "corr_share_fields({}).json".format(layer)), "w") as f2:
+            with open(os.path.join(self.CORR_SAVE_DIR, f"{protocol}/corr_share_fields({layer}).json"), "w") as f2:
                 json.dump(list(set(all_share_fields)), f2)
+
+        if protocol != "zigbee":
+            with open(os.path.join(self.FORMAT_DIR, f"all_formats({protocol}).json"), "w") as f:
+                json.dump(all_layer_messages, f, indent=4)
 
         return basic_corr_count
 
-    def analyze_hidden_correlation(self):
-        with open(os.path.join(self.FORMAT_DIR, "all_formats(Zigbee).json"), "r") as f:
-            all_messages = json.load(f)
-
+    def analyze_hidden_correlation(self, protocol: str = "zigbee"):
         corr_result = {}
         llm_corr_result = {}
 
         hidden_corr_total = 0
         llm_generated_total = 0
 
+        llm_batch_save_dir = os.path.join(self.CORR_SAVE_DIR, f"{protocol}/llm_batch")
+
+        with open(os.path.join(llm_batch_save_dir, "configuration.json"), "r") as f:
+            conf = json.load(f)
+
+        if "round" in conf.keys():
+            start_round = conf["round"]
+        else:
+            start_round = 0
+
         batch = 20
         rounds = 0
-        for index, layer in enumerate(LAYERS):
+
+        if protocol not in self.layer_map:
+            log.error(f"[ERROR] {protocol} is not supported!")
+            return None
+
+        all_layers = self.layer_map[protocol]
+
+        with open(os.path.join(self.FORMAT_DIR, f"all_formats({protocol}).json"), "r") as f:
+            all_messages = json.load(f)
+
+        for index, layer in enumerate(all_layers):
             base_messages = all_messages[layer]
 
-            for i in range(index, len(LAYERS)):
-                layer2 = LAYERS[i]
+            for i in range(index, len(all_layers)):
+                layer2 = all_layers[i]
                 com_messages = all_messages[layer2]
 
                 for msg_name, msg_format in base_messages.items():
@@ -182,6 +253,10 @@ class Correlation:
                     filtered_items = [item for item in items if item[0] != msg_name]
                     com_messages_batches = [dict(filtered_items[i:i + batch]) for i in
                                             range(0, len(filtered_items), batch)]
+
+                    if rounds < start_round:
+                        rounds += 1
+                        continue
 
                     for batch_index, com_messages_batch in enumerate(com_messages_batches):
                         message_name_list = list(com_messages_batch.keys())
@@ -212,33 +287,38 @@ class Correlation:
                                                                                              "attribute"]}
                             llm_generated_total += 1
 
-                        print(f"[+] Hidden Correlation Analysis: Rounds {rounds} - Batch {batch_index} done!")
+                        log.info(f"[+] Hidden Correlation Analysis: Rounds {rounds} - Batch {batch_index} done!")
 
                         # Each batch save the analyzed result
                         if rounds % 25 == 0:
-                            with open(os.path.join(self.CORR_SAVE_DIR, f"llm_batch/round{rounds}.json"), "w") as f:
+                            with open(os.path.join(llm_batch_save_dir, f"round{rounds}.json"), "w") as f:
                                 json.dump(corr_result, f, indent=4)
 
                     rounds += 1
 
-        with open(os.path.join(self.CORR_SAVE_DIR, "hidden_correlation.json"), "w") as f:
-            json.dump(corr_result, f, indent=4)
+        save_path = os.path.join(llm_batch_save_dir, "hidden_correlation({layer}).json")
 
-        with open(os.path.join(self.CORR_SAVE_DIR, "hidden_correlation(LLM).json"), "w") as f:
-            json.dump(llm_corr_result, f, indent=4)
+        if not os.path.exists(save_path):
+            with open(save_path, "w") as f:
+                json.dump(corr_result, f, indent=4)
+
+        save_path2 = os.path.join(self.CORR_SAVE_DIR, f"{protocol}/hidden_correlation(LLM).json")
+
+        if not os.path.exists(save_path2):
+            with open(save_path2, "w") as f:
+                json.dump(llm_corr_result, f, indent=4)
 
         return hidden_corr_total
 
-    def verify_hidden_correlation(self):
-        with open(os.path.join(self.CORR_SAVE_DIR, "hidden_correlation.json"), "r") as f:
-            hidden_correlations = json.load(f)
-
-        except_corr = ["nwkdata_frame_header", "ackframe", "data_frame", "aps_ack_frame_header",
-                       "APS_Data_Frame_Header"]
+    def verify_hidden_correlation(self, protocol: str = "zigbee"):
 
         except_total = 0
-
         valid_correlation = {}
+
+        except_corr = self.not_consider_corr_msgs[protocol]
+
+        with open(os.path.join(self.CORR_SAVE_DIR, f"{protocol}/hidden_correlation.json"), "r") as f:
+            hidden_correlations = json.load(f)
 
         for corr, corr_value in hidden_correlations.items():
             if len(corr_value["messages"]) != 2:
@@ -263,14 +343,17 @@ class Correlation:
 
             valid_correlation.update({corr: corr_value})
 
-        with open(os.path.join(self.CORR_SAVE_DIR, "hidden_correlation(valid).json"), "w") as f:
-            json.dump(valid_correlation, f, indent=4)
+        save_path = os.path.join(self.CORR_SAVE_DIR, f"{protocol}/hidden_correlation(valid).json")
 
-        print(f"[+] Field Filtered Hidden Correlations: {len(hidden_correlations) - len(valid_correlation)}")
-        print(f"[+] Non ACK & Data Frame Field Valid Hidden Correlations: {len(valid_correlation)}")
+        if not os.path.exists(save_path):
+            with open(save_path, "w") as f:
+                json.dump(valid_correlation, f, indent=4)
+
+        log.info(f"[+] Field Filtered Hidden Correlations: {len(hidden_correlations) - len(valid_correlation)}")
+        log.info(f"[+] Non ACK & Data Frame Field Valid Hidden Correlations: {len(valid_correlation)}")
         return len(valid_correlation)
 
-    def merge_all_correlations(self):
+    def merge_all_correlations(self, protocol: str = "zigbee"):
         """
         Merge basic correlations and hidden correlations
         :return:
@@ -281,9 +364,15 @@ class Correlation:
         basic_correlation_msg_pairs = []
         basic_correlation_fields = []
 
+        if protocol not in self.layer_map:
+            log.error(f"[ERROR] {protocol} is not supported!")
+            return None
+
+        all_layers = self.layer_map[protocol]
+
         # Acquire all basic correlations
-        for layer in LAYERS:
-            with open(os.path.join(self.CORR_SAVE_DIR, "basic_correlation({}).json".format(layer)), "r") as f:
+        for layer in all_layers:
+            with open(os.path.join(self.CORR_SAVE_DIR, f"{protocol}/basic_correlation({layer}).json"), "r") as f:
                 basic_correlation = json.load(f)
 
             for cvalue in basic_correlation.values():
@@ -296,7 +385,7 @@ class Correlation:
             total_count += len(basic_correlation)
 
         # Analyze the hidden correlations
-        with open(os.path.join(self.CORR_SAVE_DIR, "hidden_correlation(valid).json"), "r") as f:
+        with open(os.path.join(self.CORR_SAVE_DIR, f"{protocol}/hidden_correlation(valid).json"), "r") as f:
             hidden_correlations = json.load(f)
 
         # Kind 1: hidden correlations that no duplicate with basic correlations (new discovery)
@@ -338,26 +427,26 @@ class Correlation:
         total_count += len(non_duplicate_hidden_correlations)
         # total_count += len(duplicate_correlations_with_new_attributes)
 
-        with open(os.path.join(self.CORR_SAVE_DIR, "all_correlations.json"), "w") as f:
+        with open(os.path.join(self.CORR_SAVE_DIR, f"{protocol}/all_correlations.json"), "w") as f:
             json.dump(all_correlations, f, indent=4)
 
-        with open(os.path.join(self.CORR_SAVE_DIR, "duplicate_correlations_with_new_attr.json"), "w") as f:
+        with open(os.path.join(self.CORR_SAVE_DIR, f"{protocol}/duplicate_correlations_with_new_attr.json"), "w") as f:
             json.dump(duplicate_correlations_with_new_attributes, f, indent=4)
 
-        print(
+        log.info(
             f"[+] Filtered Duplicate Hidden Correlation Count: {len(hidden_correlations) - len(non_duplicate_hidden_correlations)}")
-        print(
+        log.info(
             f"[+] Duplicate Hidden Correlation With New Attributes Count: {len(duplicate_correlations_with_new_attributes)}")
 
-        print(f"[+] Valid Hidden Correlation With No Duplicate Count: {len(non_duplicate_hidden_correlations)}")
+        log.info(f"[+] Valid Hidden Correlation With No Duplicate Count: {len(non_duplicate_hidden_correlations)}")
 
-        print(f"[+] Valid Hidden Correlation Count: {len(non_duplicate_hidden_correlations)}")
+        log.info(f"[+] Valid Hidden Correlation Count: {len(non_duplicate_hidden_correlations)}")
 
-        print(f"[+] All Correlations Count: {total_count}")
+        log.info(f"[+] All Correlations Count: {total_count}")
 
         return all_correlations
 
-    def analyze_correlation_group(self):
+    def analyze_correlation_group(self, protocol: str = "zigbee"):
         """
         Merge correlation message pairs and constitute a correlation group
         Correlation 1: [A, B]
@@ -384,30 +473,93 @@ class Correlation:
         for index, corr_group in enumerate(correlation_group):
             result[f"group{index}"] = corr_group
 
-        with open(os.path.join(self.CORR_SAVE_DIR, "correlation_group.json"), "w") as f:
+        with open(os.path.join(self.CORR_SAVE_DIR, f"{protocol}/correlation_group.json"), "w") as f:
             json.dump(result, f, indent=4)
 
-        with open(os.path.join(self.CORR_SAVE_DIR, "correlation_group.csv"), "w", newline="") as f:
+        with open(os.path.join(self.CORR_SAVE_DIR, f"{protocol}/correlation_group.csv"), "w", newline="") as f:
             writer = csv.writer(f)
             writer.writerows(correlation_group)
 
         return len(correlation_group)
 
-    def run(self):
-        # Step 1: Analyze all basic correlations
-        basic_count = self.analyze_basic_correlation()
-        print(f"[+] Basic Correlation Count: {basic_count}")
+    def analyze_corr_msg_pairs(self, protocol: str = "zigbee"):
+        all_message_pairs = []
+        with open(os.path.join(self.CORR_SAVE_DIR, f"{protocol}/all_correlations.json"), "r") as f:
+            all_correlations = json.load(f)
 
-        # Step 2: Analyze all hidden correlations
-        # hidden_count = self.analyze_hidden_correlation()
-        # print(f"[+] Hidden Correlation With Duplicate Count: {hidden_count}")
-        self.verify_hidden_correlation()
-        #
-        # # Step 3: Merge all correlations and analyze all correlations groups
-        group_count = self.analyze_correlation_group()
-        print(f"[+] Correlation Group Count: {group_count}")
+        hidden_corr_pattern = re.compile(r"hidden_corr\d+")
+
+        for corr_name, corr_value in all_correlations.items():
+            match = hidden_corr_pattern.search(corr_name)
+            if match is not None:
+                all_message_pairs.append(corr_value["messages"])
+            else:
+                tmp_message_pair = []
+                for message in corr_value["messages"]:
+                    tmp_message_pair.append(list(message.keys())[0])
+                    log.info(f"[Correlation] Correlation Pair: {tmp_message_pair}")
+                all_message_pairs.append(tmp_message_pair)
+
+        save_all_message_pairs = []
+        for message_pair in all_message_pairs:
+            save_all_message_pairs.append(",".join(message_pair))
+
+        write_list_to_file(os.path.join(self.CORR_SAVE_DIR, f"{protocol}/corr_msg_pairs.txt"), save_all_message_pairs)
+
+        correlations = defaultdict(set)
+        for message_pair in save_all_message_pairs:
+            corr_messages = message_pair.split(",")
+
+            if len(corr_messages) != 2:
+                continue
+
+            msg1 = corr_messages[0].strip()
+            msg2 = corr_messages[1].strip()
+
+            correlations[msg1].add(msg2)
+            correlations[msg2].add(msg1)
+
+        msg_all_corr = {
+            message: sorted(list(related_messages))
+            for message, related_messages in correlations.items()
+        }
+
+        with open(os.path.join(self.CORR_SAVE_DIR, f"{protocol}/msg_all_corr.json"), "w") as f:
+            json.dump(msg_all_corr, f, indent=4)
+
+        log.info("[Protocol State Awareness] Correlation Analysis Done!")
+
+    async def run(self, discovery_done=False):
+        """
+        Analyze Message Correlations. Default zigbee, or set protocol to others like zwave.
+        """
+
+        log.info("[Protocol State Awareness] Analyzing Message Correlations...")
+
+        if not discovery_done:
+            # Step 1: Analyze all basic correlations
+            basic_count = self.analyze_basic_correlation()
+            # basic_count = self.analyze_basic_correlation(protocol="zwave")
+            log.info(f"[+] Basic Correlation Count: {basic_count}")
+
+            # Step 2: Analyze all hidden correlations
+            hidden_count = self.analyze_hidden_correlation()
+            # hidden_count = self.analyze_hidden_correlation(protocol="zwave")
+            log.info(f"[+] Hidden Correlation With Duplicate Count: {hidden_count}")
+            self.verify_hidden_correlation()
+
+            # # Step 3: Merge all correlations and analyze all correlations groups
+            # group_count = self.analyze_correlation_group(protocol="zwave")
+            group_count = self.analyze_correlation_group()
+            log.info(f"[+] Correlation Group Count: {group_count}")
+
+            # self.analyze_corr_msg_pairs(protocol="zwave")
+            self.analyze_corr_msg_pairs()
+
+        time.sleep(5)
+        log.info("[Protocol State Awareness] Analyzing Message Correlations Done!")
 
 
 if __name__ == "__main__":
     corr = Correlation()
-    corr.run()
+    corr.run(discovery_done=False)
