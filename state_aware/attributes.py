@@ -2,23 +2,23 @@ import json
 import os
 import sys
 
-sys.path.append(os.path.dirname(os.getcwd()))
+sys.path.append(os.path.dirname(os.path.dirname(__file__)))
 
 import re
 import time
-from LLM import *
-from const import *
+from state_aware.LLM import *
+from state_aware.const import *
 from util.utils import *
 
 
 class Attributes:
     def __init__(self):
-        self.MESSAGE_DIR = os.path.join(os.getcwd(), "result/format")
-        self.ZCL_ATTRIBUTE_DIR = os.path.join(os.getcwd(), "zha_zcl_library/zcl/result")
-        self.BASIC_ATTR_DIR = os.path.join(os.getcwd(), "result/attribute/basic")
-        self.HIDDEN_ATTR_DIR = os.path.join(os.getcwd(), "result/attribute/hidden")
-        self.ATTR_PERMISSION_DIR = os.path.join(os.getcwd(), "result/attribute/permission")
-        self.LLM = LLMGenerator(key="<Repalce with your API Key>", model="deepseek")
+        self.MESSAGE_DIR = os.path.join(os.path.dirname(__file__), "result/format")
+        self.ZCL_ATTRIBUTE_DIR = os.path.join(os.path.dirname(__file__), "zha_zcl_library/zcl/result")
+        self.BASIC_ATTR_DIR = os.path.join(os.path.dirname(__file__), "result/attribute/basic")
+        self.HIDDEN_ATTR_DIR = os.path.join(os.path.dirname(__file__), "result/attribute/hidden")
+        self.ATTR_PERMISSION_DIR = os.path.join(os.path.dirname(__file__), "result/attribute/permission")
+        self.LLM = LLMGenerator(key="sk-0e0ebce461784008aa931af7b5fc0622", model="deepseek")
 
     def common_cluster_basic(self):
         common_cluster_attributes = []
@@ -241,14 +241,14 @@ if __name__ == "__main__":
     attr = Attributes()
 
     # Step 1: Acquire Common-cluster Basic Attributes
-    cla = attr.common_cluster_basic()
+    # cla = attr.common_cluster_basic()
 
     # Step 2: Analyze and Verify Hidden Attributes
-    attr.analyze_hidden_attributes()
+    # attr.analyze_hidden_attributes()
     attr.verify_hidden_attributes()
 
     # Step 3: Analyze Attribute Permissions
-    attr.analyze_attribute_permission()
+    # attr.analyze_attribute_permission()
 
     # Step 4: Analyze Endpoint Support Permission
-    attr.endpoint_support_permission()
+    # attr.endpoint_support_permission()
