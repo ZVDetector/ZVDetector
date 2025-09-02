@@ -22,7 +22,7 @@ import zigpy.zdo.types as zdo_t
 from zigpy_znp.zigbee.application import ControllerApplication
 from zigpy_znp.tools.common import setup_parser, ClosableFileType, validate_backup_json
 
-from util.conf import ZIGBEE_DEVICE_MAC_MAP, ZIGBEE_TESTBED_DEVICES, COORDINATOR_IEEE
+from util.conf import ZIGBEE_DEVICE_MAC_MAP, ZIGBEE_TESTBED_DEVICES, COORDINATOR_IEEE, SUPPORT_MODE
 from util.serial import serialize
 from util.utils import *
 from util.logger import get_logger
@@ -929,15 +929,17 @@ class ZHAGateway:
             # If dependency is not analyzed, set format_generated=False
             log.info("[Protocol State Awareness] (1) Format Extraction...")
 
-            await self.format_generator.run(format_generated=True)
+            await self.format_generator.run(format_generated=SUPPORT_MODE["format_generated"])
 
             log.info("[Protocol State Awareness] (2) Correlation Analysis...")
             # If dependency is not analyzed, set discovery_done=False
-            await self.corr.run(discovery_done=True)
+            await self.corr.run(discovery_done=SUPPORT_MODE["corr_discovery_done"])
 
             log.info("[Protocol State Awareness] (3) Dependency Analysis + (4) Fuzzing Graph Construction...")
             # If dependency is not analyzed, set analysis_done=False;
-            await self.graph.generate_fuzzing_graph(analysis_done=True, basic_build=False, discovery_done=True)
+            await self.graph.generate_fuzzing_graph(analysis_done=SUPPORT_MODE["dependency_analysis_done"],
+                                                    basic_build=SUPPORT_MODE["basic_graph_done"],
+                                                    discovery_done=SUPPORT_MODE["potential_state_discovery_done"])
             progress_bar(5)
 
             log.info("[Protocol State Awareness] Done!")
@@ -959,7 +961,8 @@ class ZHAGateway:
             progress_bar(5)
 
             # Analyzing Hidden State Attributes
-            await self.attr.run(hidden_analyzed=True, permission_analyzed=True)
+            await self.attr.run(hidden_analyzed=SUPPORT_MODE["hidden_attributes_done"],
+                                permission_analyzed=SUPPORT_MODE["attribute_permission_done"])
             progress_bar(5)
 
             log.info("[State Awareness] *** State Aware Complete! ***")
