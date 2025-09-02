@@ -241,10 +241,9 @@ class FormatGenerator:
 
         if not format_generated:
             self.format_generation()
-        time.sleep(5)
 
         self.merge_all_messages()
-        time.sleep(5)
+        progress_bar(5)
 
         log.info(f"[Protocol State Awareness] Generating Zigbee Formats Done!")
 
