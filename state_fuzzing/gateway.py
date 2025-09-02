@@ -29,10 +29,11 @@ from util.logger import get_logger
 from state_fuzzing.bert.model import BERT
 from network.network_backup import backup_network
 from network.network_restore import restore_network
-from state_aware.specification import get_cluster_command
+from state_aware.specification import get_cluster_command, attribute_specification
 from state_aware.graph.main import FuzzGraph
 from state_aware.relation import Correlation
 from state_aware.format import FormatGenerator
+from state_aware.attributes import Attributes
 import logging
 
 logging.basicConfig(level=logging.INFO)
@@ -132,6 +133,7 @@ class ZHAGateway:
         self.format_generator = FormatGenerator()
         self.corr = Correlation()
         self.graph = FuzzGraph()
+        self.attr = Attributes()
         self.general_packets = 0
         self.zcl_packets = 0
         self.total_packets = 0
@@ -897,29 +899,27 @@ class ZHAGateway:
                                     else:
                                         endpoint_info += f"{cluster_id}({cluster_name}), "
 
-                                endpoint_info += "] \n"
+                                endpoint_info += "]"
 
-                            log.info(f"[Device Loading] {dev_name} endpoint {dev_endpoint_id}: {endpoint_info} ")
+                            log.info(f"[Device Loading] {dev_name} endpoint {dev_endpoint_id}: {endpoint_info} \n")
+                            # time.sleep(5)
 
                     log.info(f"[Device Loading] Loading the Zigbee devices: {dev_name}({dev_ieee_raw}) complete!")
 
             for ieee in self.application_controller.devices.keys():
 
-                print(self.application_controller.devices[ieee])
+                # print(self.application_controller.devices[ieee])
 
                 if ieee == self.coordinator_ieee:
                     continue
 
                 if not find_files_with_prefix(self.cluster_db, str(ieee)):
-                    # IV-A2: Record the supported cluster of each device
+                    # Record the supported cluster of each device
                     await self.support_cluster_collection(ieee)
 
                 if not find_files_with_prefix(self.command_db, str(ieee)):
-                    # IV-A3: Record the supported commands of each cluster
+                    # Record the supported commands of each cluster
                     await self.support_command_collection(ieee)
-
-            # IV-A3: Record the supported attributes of each cluster
-            await self.support_attribute_collection()
 
             log.info("[Communication Phase] Endpoint Information Collection Done!")
 
@@ -936,10 +936,33 @@ class ZHAGateway:
             await self.corr.run(discovery_done=True)
 
             log.info("[Protocol State Awareness] (3) Dependency Analysis + (4) Fuzzing Graph Construction...")
-            # If dependency is not analyzed, set analysis_done=False
-            await self.graph.generate_fuzzing_graph(analysis_done=True, basic_build=False)
+            # If dependency is not analyzed, set analysis_done=False;
+            await self.graph.generate_fuzzing_graph(analysis_done=True, basic_build=False, discovery_done=True)
+            progress_bar(5)
 
             log.info("[Protocol State Awareness] Done!")
+
+            log.info("[Device State Awareness] Begin Attribute Collection: (Stage 1) Active Query "
+                     "(Stage 2) Static Analysis (Stage 3) Hidden State Attribute Discovery")
+
+            log.info("[Device State Awareness] Attribute Collection: (Stage 1) Active Query...")
+
+            # IV-A3: Record the supported attributes of each device
+            await self.support_attribute_collection()
+
+            log.info("[Device State Awareness] Attribute Collection: (Stage 1) Active Query Done!")
+
+            log.info("[Device State Awareness] Attribute Collection: (Stage 2) Static Analysis...")
+
+            # Record the supported attributes from analyzing specification
+            await attribute_specification()
+            progress_bar(5)
+
+            # Analyzing Hidden State Attributes
+            await self.attr.run(hidden_analyzed=True, permission_analyzed=True)
+            progress_bar(5)
+
+            log.info("[State Awareness] *** State Aware Complete! ***")
 
         except KeyboardInterrupt:
             await self.clean()
