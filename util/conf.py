@@ -60,3 +60,13 @@ ZIGBEE_NETWORK_KEY = "<Your Zigbee Network Key>"
 
 DEEPSEEK_API_KEY = "<Your DeepSeek API Key>"
 OPENAI_API_KEY = "<Your OpenAI API Key>"
+
+SUPPORT_MODE = {
+    "format_generated": True,
+    "corr_discovery_done": True,
+    "dependency_analysis_done": True,
+    "basic_graph_done": False,
+    "potential_state_discovery_done": True,
+    "hidden_attributes_done": True,
+    "attribute_permission_done": True
+}
