@@ -380,7 +380,7 @@ def acquire_command_schema(cluster_content: str) -> dict:
                                                                                            COMMAND_CLASS[0][1]),
                                               cluster_content, re.DOTALL)
                     if client_result is not None:
-                        client_command_content = client_result1.group(1)
+                        client_command_content = client_result.group(1)
 
     if HAS_Server_Command:
         server_def_match = re.search(def_pattern.format(COMMAND_CLASS[0][0],
@@ -580,7 +580,7 @@ def parse_field_type(type_name: str, filename: str, out_class: str = None):
                 type_bitmap_t_matched2 = re.match(r't\.uint(.*?)_t', bitmap_factory_matched.group(1))
                 if type_bitmap_t_matched is not None:
                     class_type = "t.bitmap{}".format(type_bitmap_t_matched.group(1))
-                elif type_bitmap_matched2 is not None:
+                elif type_bitmap_t_matched2 is not None:
                     class_type = "t.bitmap{}".format(type_bitmap_t_matched2.group(1))
                 else:
                     class_type = "BITMAP_FACTORY"
@@ -737,7 +737,7 @@ def count_attributes():
     log.info("[OUTPUT] Have Attribute Cluster Count: {}".format(len(have_attribute_cluster)))
 
 
-def attribute_specification():
+async def attribute_specification():
     """
     获取所有attribute的规范
     :return:
@@ -828,34 +828,44 @@ def attribute_specification():
                             copy_attribute["Attribute"][attribute].pop("class", None)
                         else:
                             continue
-                            # print(found_matched.group(1))
 
         attr_fine_specification[cluster_name] = copy_attribute
 
-    with open(os.path.join(ATTR_SAVE_DIR, "attribute_raw.json"), "w") as f1:
-        json.dump(attr_raw_specification, f1, indent=4)
+    if not os.path.exists(os.path.join(ATTR_SAVE_DIR, "attribute_raw.json")):
+        with open(os.path.join(ATTR_SAVE_DIR, "attribute_raw.json"), "w") as f1:
+            json.dump(attr_raw_specification, f1, indent=4)
 
-    with open(os.path.join(ATTR_SAVE_DIR, "attribute_fine.json"), "w") as f2:
-        json.dump(attr_fine_specification, f2, indent=4)
+    if not os.path.exists(os.path.join(ATTR_SAVE_DIR, "attribute_fine.json")):
+        with open(os.path.join(ATTR_SAVE_DIR, "attribute_fine.json"), "w") as f2:
+            json.dump(attr_fine_specification, f2, indent=4)
 
-    with open(os.path.join(ATTR_SAVE_DIR, "complex_type_cluster(attr).json"), "w") as f3:
-        json.dump(complex_datatype_count, f3, indent=4)
+    if not os.path.exists(os.path.join(ATTR_SAVE_DIR, "complex_type_cluster(attr).json")):
+        with open(os.path.join(ATTR_SAVE_DIR, "complex_type_cluster(attr).json"), "w") as f3:
+            json.dump(complex_datatype_count, f3, indent=4)
 
-    with open(os.path.join(ATTR_SAVE_DIR, "complex_type_each(attr).json"), "w") as f4:
-        json.dump(complex_attribute_datatype, f4, indent=4)
+    else:
+        with open(os.path.join(ATTR_SAVE_DIR, "complex_type_cluster(attr).json"), "r") as f3:
+            complex_datatype_count = json.load(f3)
+
+    if not os.path.exists(os.path.join(ATTR_SAVE_DIR, "complex_attribute_cluster(attr).json")):
+        with open(os.path.join(ATTR_SAVE_DIR, "complex_type_each(attr).json"), "w") as f4:
+            json.dump(complex_attribute_datatype, f4, indent=4)
+    else:
+        with open(os.path.join(ATTR_SAVE_DIR, "complex_type_each(attr).json"), "r") as f4:
+            complex_attribute_datatype = json.load(f4)
 
     total_complex_datatype = 0
     for count in complex_datatype_count.values():
         total_complex_datatype += count
 
-    log.info("[OUTPUT] Parsed Complex Data Types Distribution(Attributes): {}".format(complex_attribute_datatype))
-    log.info("[OUTPUT] Parsed Complex Data Types Number(Attributes): {}".format(total_complex_datatype))
+    log.info("[Device State Awareness (Stage 2)] Parsed Complex Data Types Distribution(Attributes): {}".format(complex_attribute_datatype))
+    log.info("[Device State Awareness (Stage 2)] Parsed Complex Data Types Number(Attributes): {}".format(total_complex_datatype))
 
     # 5.统计每个cluster的属性数量分布，以及有属性的cluster的属性数量分布
     count_attributes()
 
 
-def message_specification():
+async def message_specification():
     """
     获取所有message的规范
     :return:
