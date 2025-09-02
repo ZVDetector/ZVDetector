@@ -556,7 +556,7 @@ class Correlation:
             # self.analyze_corr_msg_pairs(protocol="zwave")
             self.analyze_corr_msg_pairs()
 
-        time.sleep(5)
+        progress_bar(5)
         log.info("[Protocol State Awareness] Analyzing Message Correlations Done!")
 
 
