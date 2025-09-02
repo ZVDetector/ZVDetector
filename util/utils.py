@@ -190,6 +190,8 @@ def progress_bar(duration):
         bar = '█' * i + '-' * (total_steps - i)
         print(f'\r[{bar}] {percent:.2f}%', end='')
         time.sleep(duration / total_steps)
+
+    print("\n")
     time.sleep(2)
 
 
