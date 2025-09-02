@@ -9,7 +9,6 @@ import time
 from state_aware.LLM import *
 from state_aware.const import *
 from util.utils import *
-from util.conf import DEEPSEEK_API_KEY, OPENAI_API_KEY
 
 
 class Attributes:
@@ -20,8 +19,7 @@ class Attributes:
         self.HIDDEN_ATTR_DIR = os.path.join(os.path.dirname(__file__), "result/attribute/hidden")
         self.ATTR_PERMISSION_DIR = os.path.join(os.path.dirname(__file__), "result/attribute/permission")
         self.ATTR_PERMISSION_DIR2 = os.path.join(os.path.dirname(__file__), "result/permission")
-        self.LLM = LLMGenerator(key=DEEPSEEK_API_KEY, model="deepseek")
-        # self.LLM = LLMGenerator(key=OPENAI_API_KEY, model="deepseek")
+        self.LLM = LLMGenerator(key="sk-0e0ebce461784008aa931af7b5fc0622", model="deepseek")
 
     def common_cluster_basic(self):
         common_cluster_attributes = []
@@ -240,7 +238,7 @@ class Attributes:
 
         return readable, writable, reportable
 
-    def run(self, hidden_analyzed=False, permission_analyzed=False):
+    async def run(self, hidden_analyzed=False, permission_analyzed=False):
         self.common_cluster_basic()
 
         log.info("[Device State Awareness] Attribute Collection: (Stage 2) Static Analysis Done!")
@@ -257,6 +255,8 @@ class Attributes:
         total_count = 0
         for attr_name in hidden_attributes.keys():
             total_count += len(hidden_attributes[attr_name]["attributes"])
+
+        progress_bar(5)
 
         log.info(f"[Device State Awareness] Attribute Collection: (Stage 3) Hidden Attributes Count: {total_count}")
         log.info("[Device State Awareness] Attribute Collection: (Stage 3) Hidden Attributes Analysis Done!")
@@ -299,6 +299,8 @@ class Attributes:
         with open(os.path.join(self.ATTR_PERMISSION_DIR2, "sceneable_attr_count(cluster).json"), "r") as f:
             sc = json.load(f)
         sc_count = sum(list(sc.values()))
+
+        progress_bar(5)
 
         log.info(f"[Device State Awareness] Readable Attributes by LLM: {total_readable_count}")
         log.info(f"[Device State Awareness] Writable Attributes by LLM: {total_writable_count}")
