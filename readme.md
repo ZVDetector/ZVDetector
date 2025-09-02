@@ -220,6 +220,8 @@ We have recorded the running process of ZVDetector in the link below. You may pr
 
 https://cloud.tsinghua.edu.cn/d/48abda63af354f68b14c/
 
+https://chimn6bz7u.feishu.cn/wiki/BBnawnPIFitUhTkRK1Xcb3QUn2g?from=from_copylink
+
 # Protocol Extension
 
 We have already applied it to some ZWave tasks. See ```/extension``` Folder. 
