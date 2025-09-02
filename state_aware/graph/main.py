@@ -11,7 +11,7 @@ import numpy as np
 import pandas as pd
 import warnings
 from state_aware.graph.graph import ProtocolGraph
-from util.conf import ZIGBEE_DEVICE_MAC_MAP, NEO4J_URL, NEO4J_PASSWORD
+from util.conf import ZIGBEE_DEVICE_MAC_MAP, NEO4J_URL, NEO4J_PASSWORD, ZIGBEE_LINK_KEY, ZIGBEE_NETWORK_KEY
 from util.utils import *
 from collections import deque
 from state_aware.ID import *
@@ -63,12 +63,6 @@ CID_FEATURE_NAME = {
     "smartenergy_metering": ["SMCID", "SMCIDTX"]
 }
 
-# request_response_dict = {
-#     "setpoint_raise_lower": "none",
-#     "set_weekly_schedule": "default",
-#     "get_weekly_schedule": "get_weekly_schedule_response"
-# }
-
 
 class FuzzGraph:
     def __init__(self):
@@ -85,7 +79,7 @@ class FuzzGraph:
                                 "ZdpCluster", "ZdpSeqNo", "ZclFrameType", "ZclMS", "ZclRes", "ZclSeqNo", "ZclCID",
                                 "FcsOK"]
 
-        self.print_features = ["Time", "Length"]
+        self.log.info_features = ["Time", "Length"]
         self.sequence_features = ["Time", "WpanSeqNo", "ApsSeqNo", "ZdpSeqNo", "ZclSeqNo", "ApsCounter", "FcsOK"]
         self.device2ieee = {value: key for key, value in ZIGBEE_DEVICE_MAC_MAP.items()}
         self.device2cid = {}
@@ -99,10 +93,10 @@ class FuzzGraph:
         self.dependent_time_threshold = 0.015
         self.correlation_permutations_done_number = 5
         self.correlation_permutations_number = 6
-        self.link_key = "5A6967426565416C6C69616E63653039"
-        self.network_key = "20007a5ce740a1abbb413ba47119dfb9"
+        self.link_key = ZIGBEE_LINK_KEY
+        self.network_key = ZIGBEE_NETWORK_KEY
 
-        self.graph = ProtocolGraph(NEO4J_URL, "neo4j", NEO4J_PASSWORD)
+        self.graph = ProtocolGraph(NEO4J_URL, "neo4j", NEO4J_PASSWORD)  # MACOS
         self.rejoin_message = ["leave", "rejoin_request"]
         self.exploration_ignored_messages = {"APS ACK", "ack", "unsupported"}
         self.commission_message = []
@@ -793,7 +787,7 @@ class FuzzGraph:
 
         # --- Step 2: Iterate through each commissioning sequence ---
         for phase_name, message_sequence in commission_messages.items():
-            print(f"\nProcessing sequence: '{phase_name}'")
+            log.info(f"Processing sequence: '{phase_name}'")
 
             # Start every sequence from the Sp0 node
             current_node = sp0
@@ -879,7 +873,7 @@ class FuzzGraph:
         # --- Step 2: Iterate through each request in the dictionary ---
         for layer, layer_dependency in self.all_dependency.items():
             for request, response in layer_dependency.items():
-                log.info(f"\n [Dependency] Processing Request: {request} -> Response: {response}")
+                log.info(f"[Dependency] Processing Request: {request} -> Response: {response}")
 
                 # --- Create the request edge from Sc0 to a new state Sci ---
                 sci_name = f"S{node_counter}"
@@ -916,7 +910,7 @@ class FuzzGraph:
                     # Relationship: (Sck2) -[:message {message: "ack"}]-> (Sc0)
 
                     self.graph.CreateRelationship(sck2, sc0, "message", {"message": "ack"})
-                    print(
+                    log.info(
                         f"  - [Unsupported Path] Created node {sck2_name} and relationships: ({scj_name}) -[unsupported]-> ({sck2_name}) -[ack]-> (Sc0)")
                     node_counter += 1
 
@@ -941,7 +935,7 @@ class FuzzGraph:
 
                     # Relationship: (Sck1) -[:message {message: "ack"}]-> (Sc0)
                     self.graph.CreateRelationship(sck1, sc0, "message", {"message": "ack"})
-                    print(
+                    log.info(
                         f"  - [Expected Path] Created node {sck1_name} and relationships: ({scj_name}) -[{response}]-> ({sck1_name}) -[ack]-> (Sc0)")
                     node_counter += 1
 
@@ -955,12 +949,12 @@ class FuzzGraph:
                     # Relationship: (Sck2) -[:message {message: "ack"}]-> (Sc0)
 
                     self.graph.CreateRelationship(sck2, sc0, "message", {"message": "ack"})
-                    print(
+                    log.info(
                         f"  - [Unsupported Path] Created node {sck2_name} and relationships: ({scj_name}) -[unsupported]-> ({sck2_name}) -[ack]-> (Sc0)")
                     node_counter += 1
 
         # Commit the transaction
-        log.info("\n[Dependency] Protocol state graph (communication phase) is built successfully!")
+        log.info("[Dependency] Protocol state graph (communication phase) is built successfully!")
 
     def basic_strategy(self):
         """
@@ -1045,7 +1039,10 @@ class FuzzGraph:
         for message_sequence in generated_messages:
             save_generated_messages.append(",".join(message_sequence))
 
-        write_list_to_file(os.path.join(self.fuzzing_dir, "strategy-a.txt"), save_generated_messages)
+        save_path = os.path.join(self.fuzzing_dir, "strategy-a.txt")
+
+        if not os.path.exists(save_path):
+            write_list_to_file(save_path, save_generated_messages)
 
         end_time = time.perf_counter()
         execution_time = end_time - start_time
@@ -1098,7 +1095,10 @@ class FuzzGraph:
         for each_generated_message in all_generated_messages:
             save_generated_messages.append(",".join(each_generated_message))
 
-        write_list_to_file(os.path.join(self.fuzzing_dir, "strategy-b.txt"), save_generated_messages)
+        save_path = os.path.join(self.fuzzing_dir, "strategy-b.txt")
+
+        if not os.path.exists(save_path):
+            write_list_to_file(save_path, save_generated_messages)
 
         end_time = time.perf_counter()
         execution_time = end_time - start_time
@@ -1127,10 +1127,8 @@ class FuzzGraph:
         self.break_dependency_skipping_strategy()
         self.correlation_insertion_strategy()
 
-    async def generate_fuzzing_graph(self, analysis_done: bool = False, basic_build: bool = False):
+    async def generate_fuzzing_graph(self, analysis_done: bool = False, basic_build: bool = False, discovery_done: bool = False):
         log.info("[PROTOCOL STATE AWARENESS] Basic Protocol Graph Construction ")
-
-        log.info("[PROTOCOL STATE AWARENESS] Starting Dependency Analysis...")
 
         if not analysis_done:
             self.pcap2csv()
@@ -1139,20 +1137,17 @@ class FuzzGraph:
                 df = pd.read_csv(csv_path)
                 device_name = os.path.splitext(os.path.basename(str(csv_path)))[0]
 
-                log.info("[***] Commission Phase: Starting Dependency Analysis -> {}".format(device_name))
+                log.info("[***] Starting Commission Analysis -> {}".format(device_name))
                 progress_bar(2)
 
                 self.commission_analysis(df, device_name)
-                log.info("[***] Commission Phase: Dependency Analysis for {} Done".format(device_name))
+                log.info("[***] Commission Analysis for {} Done".format(device_name))
 
-                log.info("[***] Communication Phase: Starting Dependency Analysis -> {}".format(device_name))
+                log.info("[***] Starting Communication Analysis -> {}".format(device_name))
                 progress_bar(3)
 
                 self.communication_analysis(df, device_name)
-                log.info("[***] Communication Phase: Dependency Analysis for {} Done".format(device_name))
-
-        progress_bar(3)
-        log.info("[PROTOCOL STATE AWARENESS] Starting Dependency Analysis Done!")
+                log.info("[***] Communication Analysis for {} Done".format(device_name))
 
         if not basic_build:
             self.dependency_integration()
@@ -1161,7 +1156,10 @@ class FuzzGraph:
 
         log.info("[PROTOCOL STATE AWARENESS] Protocol Graph Exploration Begin ...")
 
-        self.potential_state_discovery()
+        if not discovery_done:
+            self.potential_state_discovery()
+
+        progress_bar(5)
 
         log.info("[PROTOCOL STATE AWARENESS] Protocol Graph Exploration Complete!")
 
