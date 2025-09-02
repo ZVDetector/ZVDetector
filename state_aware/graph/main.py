@@ -79,7 +79,7 @@ class FuzzGraph:
                                 "ZdpCluster", "ZdpSeqNo", "ZclFrameType", "ZclMS", "ZclRes", "ZclSeqNo", "ZclCID",
                                 "FcsOK"]
 
-        self.log.info_features = ["Time", "Length"]
+        self.print_features = ["Time", "Length"]
         self.sequence_features = ["Time", "WpanSeqNo", "ApsSeqNo", "ZdpSeqNo", "ZclSeqNo", "ApsCounter", "FcsOK"]
         self.device2ieee = {value: key for key, value in ZIGBEE_DEVICE_MAC_MAP.items()}
         self.device2cid = {}
