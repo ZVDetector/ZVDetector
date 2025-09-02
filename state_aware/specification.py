@@ -854,7 +854,7 @@ async def attribute_specification():
         with open(os.path.join(ATTR_SAVE_DIR, "complex_type_cluster(attr).json"), "r") as f3:
             complex_datatype_count = json.load(f3)
 
-    if not os.path.exists(os.path.join(ATTR_SAVE_DIR, "complex_type_each(attr).json")):
+    if not os.path.exists(os.path.join(ATTR_SAVE_DIR, "complex_attribute_cluster(attr).json")):
         with open(os.path.join(ATTR_SAVE_DIR, "complex_type_each(attr).json"), "w") as f4:
             json.dump(complex_attribute_datatype, f4, indent=4)
     else:
