@@ -5,6 +5,7 @@ import sys
 sys.path.append(os.path.dirname(os.path.dirname(__file__)))
 
 from util.utils import *
+from util.conf import *
 from state_aware.LLM import *
 from state_aware.const import *
 
@@ -39,7 +40,7 @@ class FormatGenerator:
     def __init__(self):
         self.format_dir = os.path.join(os.path.dirname(__file__), "result/format")
         self.description_dir = os.path.join(os.path.dirname(__file__), "result/description")
-        self.LLM = LLMGenerator("(Your API Key)", "deepseek")
+        self.LLM = LLMGenerator(DEEPSEEK_API_KEY, "deepseek")
 
     def format_generation(self):
         for index, layer in enumerate(LAYERS):
@@ -243,7 +244,6 @@ class FormatGenerator:
             self.format_generation()
 
         self.merge_all_messages()
-        progress_bar(5)
 
         log.info(f"[Protocol State Awareness] Generating Zigbee Formats Done!")
 
