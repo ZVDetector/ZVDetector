@@ -64,6 +64,12 @@ NEO4J_USER = "neo4j"
 NEO4J_PASSWORD = "<Your Password>"
 self.graph = ProtocolGraph(NEO4J_URL, NEO4J_USER, NEO4J_PASSWORD)
 ```
+Configure your deepseek_api_key and openai_api_key in ```util/conf.py```.
+
+```
+DEEPSEEK_API_KEY = "<Your Deepseek API Key>"
+OPENAI_API_KEY = "<Your OPENAI API Key>"
+```
 
 ## Step 2: HA Configuration
 
@@ -217,8 +223,6 @@ SUPPORT_MODE = {
 # Fuzzing Videos
 
 We have recorded the running process of ZVDetector in the link below. You may preview and download it.
-
-https://cloud.tsinghua.edu.cn/d/48abda63af354f68b14c/
 
 https://chimn6bz7u.feishu.cn/wiki/BBnawnPIFitUhTkRK1Xcb3QUn2g
 
