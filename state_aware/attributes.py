@@ -9,6 +9,7 @@ import time
 from state_aware.LLM import *
 from state_aware.const import *
 from util.utils import *
+from util.conf import *
 
 
 class Attributes:
@@ -19,7 +20,7 @@ class Attributes:
         self.HIDDEN_ATTR_DIR = os.path.join(os.path.dirname(__file__), "result/attribute/hidden")
         self.ATTR_PERMISSION_DIR = os.path.join(os.path.dirname(__file__), "result/attribute/permission")
         self.ATTR_PERMISSION_DIR2 = os.path.join(os.path.dirname(__file__), "result/permission")
-        self.LLM = LLMGenerator(key="sk-0e0ebce461784008aa931af7b5fc0622", model="deepseek")
+        self.LLM = LLMGenerator(key=DEEPSEEK_API_KEY, model="deepseek")
 
     def common_cluster_basic(self):
         common_cluster_attributes = []
@@ -284,21 +285,32 @@ class Attributes:
                 total_writable_count += 1
                 writable_way += len(permissions["Write"])
 
-        with open(os.path.join(self.ATTR_PERMISSION_DIR2, "readable_attr_count(cluster).json"), "r") as f:
+        with open(os.path.join(self.ATTR_PERMISSION_DIR2, "readable_attr(cluster).json"), "r") as f:
             rc = json.load(f)
-        rc_count = sum(list(rc.values()))
+        rc_count = 0
+        for l in rc.values():
+            rc_count += len(l)
 
-        with open(os.path.join(self.ATTR_PERMISSION_DIR2, "writable_attr_count(cluster).json"), "r") as f:
+        with open(os.path.join(self.ATTR_PERMISSION_DIR2, "writable_attr(cluster).json"), "r") as f:
             wc = json.load(f)
-        wc_count = sum(list(wc.values()))
 
-        with open(os.path.join(self.ATTR_PERMISSION_DIR2, "reportable_attr_count(cluster).json"), "r") as f:
+        wc_count = 0
+        for l in wc.values():
+            wc_count += len(l)
+
+        with open(os.path.join(self.ATTR_PERMISSION_DIR2, "reportable_attr(cluster).json"), "r") as f:
             rec = json.load(f)
-        rec_count = sum(list(rec.values()))
 
-        with open(os.path.join(self.ATTR_PERMISSION_DIR2, "sceneable_attr_count(cluster).json"), "r") as f:
+        rec_count = 0
+        for l in rec.values():
+            rec_count += len(l)
+
+        with open(os.path.join(self.ATTR_PERMISSION_DIR2, "sceneable_attr(cluster).json"), "r") as f:
             sc = json.load(f)
-        sc_count = sum(list(sc.values()))
+
+        sc_count = 0
+        for l in sc.values():
+            sc_count += len(l)
 
         progress_bar(5)
 
