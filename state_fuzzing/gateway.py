@@ -129,7 +129,7 @@ class ZHAGateway:
         self.cluster_db = os.path.join(os.path.dirname(os.getcwd()), "library", "cluster_db")
         self.attribute_db = os.path.join(os.path.dirname(os.getcwd()), "library", "attribute_db")
         self.command_db = os.path.join(os.path.dirname(os.getcwd()), "library", "command_db")
-        self.case_db = os.path.join(os.path.dirname(os.getcwd()), "library", "interesting_case")
+        self.case_db = os.path.join(os.path.dirname(os.getcwd()), "state_fuzzing", "crash")
         self.format_generator = FormatGenerator()
         self.corr = Correlation()
         self.graph = FuzzGraph()
@@ -902,7 +902,7 @@ class ZHAGateway:
                                 endpoint_info += "]"
 
                             log.info(f"[Device Loading] {dev_name} endpoint {dev_endpoint_id}: {endpoint_info} \n")
-                            # time.sleep(5)
+                            time.sleep(5)
 
                     log.info(f"[Device Loading] Loading the Zigbee devices: {dev_name}({dev_ieee_raw}) complete!")
 
@@ -921,7 +921,7 @@ class ZHAGateway:
                     # Record the supported commands of each cluster
                     await self.support_command_collection(ieee)
 
-            log.info("[Communication Phase] Endpoint Information Collection Done!")
+            log.info("[Communication Phase] Endpoint Information Collection Done!\n")
 
             log.info("[Protocol State Awareness] Begin Following Four Steps: (1) Format Extraction (2) Correlation Analysis "
                      "(3) Dependency Analysis (4) Fuzzing Graph Construction")
@@ -940,7 +940,6 @@ class ZHAGateway:
             await self.graph.generate_fuzzing_graph(analysis_done=SUPPORT_MODE["dependency_analysis_done"],
                                                     basic_build=SUPPORT_MODE["basic_graph_done"],
                                                     discovery_done=SUPPORT_MODE["potential_state_discovery_done"])
-            progress_bar(5)
 
             log.info("[Protocol State Awareness] Done!")
 
@@ -958,12 +957,10 @@ class ZHAGateway:
 
             # Record the supported attributes from analyzing specification
             await attribute_specification()
-            progress_bar(5)
 
             # Analyzing Hidden State Attributes
             await self.attr.run(hidden_analyzed=SUPPORT_MODE["hidden_attributes_done"],
                                 permission_analyzed=SUPPORT_MODE["attribute_permission_done"])
-            progress_bar(5)
 
             log.info("[State Awareness] *** State Aware Complete! ***")
 
