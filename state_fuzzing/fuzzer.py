@@ -1,6 +1,10 @@
 import os
-import re
+import random
 import sys
+
+sys.path.append(os.path.dirname(os.getcwd()))
+
+import re
 import copy
 import json
 import time
@@ -9,8 +13,7 @@ import signal
 import typing
 import logging
 import asyncio
-
-sys.path.append(os.path.dirname(os.getcwd()))
+from datetime import datetime
 
 import zigpy.device
 from zigpy.zcl import foundation
@@ -21,12 +24,15 @@ from zigpy_znp.zigbee.application import ZNP
 from zigpy.types import EUI64, NWK
 
 from util.logger import get_logger
-from util.serial import serialize, ZIGBEE_SIGNED_INT_TYPE, ZIGBEE_UNSIGNED_INT_TYPE, ZIGBEE_ENUM_TYPE, \
-    ZIGBEE_BITMAP_TYPE, ZIGBEE_DATA_TYPE, ZIGBEE_STR_TYPE, ZIGBEE_INTEGER_TYPE
+from util.serial import serialize, ZIGBEE_STR_TYPE, ZIGBEE_INTEGER_TYPE, ZIGBEE_ARRAY_TYPE
 
-from util.utils import get_latest_file, input_with_timeout, get_all_combinations, match_dict_item, get_struct_time
+from util.utils import *
 from util.conf import ZIGBEE_DEVICE_MAC_MAP
-from gateway import ZHAGateway, parse_args
+from state_fuzzing.gateway import ZHAGateway, parse_args
+from pathlib import Path
+
+# python fuzzer.py -c 20 -d 15 -l -o network.json /dev/tty.usbserial-14110
+# python fuzzer.py -c 20 -d 15 -l -o network.json /dev/ttyUSB0
 
 logging.basicConfig(level=logging.INFO)
 log = logging.getLogger(__name__)
@@ -43,6 +49,17 @@ STATUS = {status.value: status.name for status in foundation.Status}
 
 class Mutator:
 
+    def __init__(self):
+        self.mutation_strategy = {
+            "T-1-1": "Type-aware Mutation: Border & Extreme Values",
+            "T-1-2": "Type-aware Mutation: Empty & Excessively Long Strings",
+            "T-1-3": "Type-aware Mutation: Empty Arrays",
+            "T-1-4": "Type-aware Mutation: Type Changes",
+            "F-1-1": "Format-aware Mutation: Truncated Messages",
+            "F-1-2": "Format-aware Mutation: Add/remove Fields",
+            "F-1-3": "Format-aware Mutation: Unsupported Arguments",
+        }
+
     @classmethod
     async def mutate_value(cls, types: typing.Any) -> list:
         """
@@ -51,14 +68,13 @@ class Mutator:
         :return: mutate value list
         """
         mutate_value = []
-        if types in ZIGBEE_SIGNED_INT_TYPE or types in ZIGBEE_UNSIGNED_INT_TYPE or types in ZIGBEE_ENUM_TYPE \
-                or types in ZIGBEE_BITMAP_TYPE:
+        if types in ZIGBEE_INTEGER_TYPE:
             bits = types.get_bit()
             max_value = types.max_value
             min_value = types.min_value
             mutate_value.append(int((min_value + max_value) / 2))
-            # mutate_value.append(max_value)
-            # mutate_value.append(min_value)
+            mutate_value.append(max_value)
+            mutate_value.append(min_value)
             mutate_value.append(max_value + 1)
             mutate_value.append(min_value - 1)
             mutate_value.append(-max_value + 1)
@@ -67,13 +83,16 @@ class Mutator:
             mutate_value.append(pow(2, bits * 2))
             mutate_value.append(-pow(2, bits * 2))
 
-        if types in ZIGBEE_STR_TYPE:
+        elif types in ZIGBEE_STR_TYPE:
             max_length = ZIGBEE_STR_MAX_LENGTH[types]
             mutate_value.append("Normal")
             mutate_value.append("")
             mutate_value.append("f" * max_length)
             mutate_value.append("f" * (max_length + 1))
             mutate_value.append("f" * (max_length + 2))
+
+        elif types in ZIGBEE_ARRAY_TYPE:
+            mutate_value.append(list())
 
         return mutate_value
 
@@ -131,14 +150,38 @@ class Mutator:
         return fuzzed_payload, combinations, mutated_list
 
 
+def get_message_format(msg_name: str, all_messages: dict):
+    for layer, layer_cmds in all_messages.items():
+        for command, command_format in layer_cmds.items():
+            if command == msg_name:
+                return command_format
+    return None
+
+
 class StateFuzzer:
     def __init__(self, config):
         self.gateway = ZHAGateway(config)
         self.state_guided = args.load_state
         self.max_fuzzing_packet = 1000000
         self.max_iter_packet = 30000
-        self.fuzz_info_db = os.path.join(os.getcwd(), "crash")
+        self.fuzz_info_db = os.path.join(os.getcwd(), "log")
+        self.interesting_case_path = os.path.join(os.getcwd(), "interesting_case")
+        self.crash_db_path = os.path.join(os.getcwd(), "crash/json")
+        self.fuzzing_dir = os.path.join(os.path.dirname(__file__), "state_aware/result/fuzzing")
+        self.format_dir = os.path.join(os.path.dirname(__file__), "state_aware/result/format")
+        self.library_dir = os.path.join(os.path.dirname(__file__), "library")
         self.device_crash_count = 0
+        self.crash_prompt = {
+            "Timestamp": [],
+            "Device": [],
+            "IEEE": [],
+            "Nwk_Address": [],
+            "State": [],
+            "Message_Relationship": [],
+            "Fuzzing_Messages": [],
+            "Mutation_Strategy": [],
+            "Log": []
+        }
 
     async def check_device_state(self, device_ieee, device_nwk, endpoint_id) -> int:
         # State the application controller
@@ -376,7 +419,7 @@ class StateFuzzer:
             log.error("{} not supported!".format(flag))
             raise KeyError
 
-    async def state_feed(self, ieee: t.EUI64):
+    async def state_feed(self, ieee: t.EUI64, packet):
         device = self.gateway.application_controller.devices[ieee]
 
         log.info("[State] [{}] Feeding the state to watchdog. Operation: [GET] ".format(device.nwk))
@@ -455,7 +498,7 @@ class StateFuzzer:
             with open("{}/{}_{}.json".format(self.gateway.case_db, str(ieee), endpoint.endpoint_id), "w") as f:
                 json.dump(interesting_case, f, indent=4)
 
-    async def write_attribute_fuzz(self, ieee: t.EUI64, fuzz_type: bool=True):
+    async def write_attribute_fuzz(self, ieee: t.EUI64, fuzz_type: bool = True):
         fuzz_info_path = "{}/fuzzable.json".format(self.fuzz_info_db)
 
         if os.path.exists(fuzz_info_path):
@@ -602,7 +645,7 @@ class StateFuzzer:
                     interesting_case[cluster_id][0x02]["payload"] = interesting_payload
                     interesting_case[cluster_id][0x02]["payload_bytes"] = interesting_bytes
 
-            with open(interesting_case_path, "w") as f:
+            with open(self.interesting_case_path, "w") as f:
                 json.dump(interesting_case, f, indent=4)
 
         with open("{}/fuzzable.json".format(self.fuzz_info_db), "w") as f:
@@ -640,18 +683,159 @@ class StateFuzzer:
         """
         pass
 
-    async def fuzzing(self, ieee: t.EUI64):
+    async def state_guided_fuzzing(self, ieee: t.EUI64):
         fuzz_count = 0
+        with open(os.path.join(self.format_dir, "all_formats(Zigbee).json"), "r") as f:
+            message_formats = json.load(f)
+
         while fuzz_count < self.max_fuzzing_packet:
             fuzz_count += 1
 
-            if not self.state_guided:
-                await self.brute_force()
+            file_names = ["basic", "strategy-a", "strategy-b", "strategy-c"]
+
+            for filename in file_names:
+                file_path = os.path.join(self.fuzzing_dir, f"{filename}.txt")
+                if not os.path.exists(file_path):
+                    log.error(f"Please run potential state discovery {filename} firstly!")
+                    continue
+
+                fuzzing_sequences = read_list_from_file(file_path)
+
+                if filename == "basic":
+                    for sequence in fuzzing_sequences:
+                        messages = sequence.split(",")
+                        for message in messages:
+                            msg_format = get_message_format(message, message_formats)
+                            if msg_format is None:
+                                continue
+
+                            payload_components = [msg_format["schema"]]
+                            fuzz_prompt = []
+
+                            mutation_strategy = Mutator.mutate_value
+
+                            for i in range(count_leaf_values(msg_format["schema"])):
+                                fuzz_prompt.append(mutation_strategy)
+
+                            all_fuzz_payload, all_fuzz_combination, mutate_list = await Mutator.mutate_payload(
+                                payload_components, fuzz_prompt)
+
+                            for fuzz_payload in all_fuzz_payload:
+                                try:
+                                    result = await self.gateway.request_raw(1, cluster_id, msg_format["id"],
+                                                                            foundation.FrameType.GLOBAL_COMMAND,
+                                                                            payload_bytes=fuzz_payload,
+                                                                            direction=foundation.Direction.Client_to_Server,
+                                                                            flag=True)
+                                except asyncio.TimeoutError:
+                                    crash_info = self.crash_prompt.copy()
+                                    now = datetime.now()
+                                    crash_info["TimeStamp"].append(
+                                        now.strftime("%Y%m%d_%H:%M:%S:") + f"{int(now.microsecond / 1000):03d}")
+                                    crash_info["IEEE"].append(str(ieee))
+                                    crash_info["DEVICE"].append(ZIGBEE_DEVICE_MAC_MAP[str(ieee)])
+                                    crash_info["State"].append("Any")
+                                    crash_info["Fuzzing_Messages"].append(fuzz_payload)
+                                    crash_info["Mutation_Strategy"].append(mutation_strategy)
+
+                            fuzz_prompt = []
+                            mutation_strategy = Mutator.mutate_type
+
+                            for i in range(count_leaf_values(msg_format["schema"])):
+                                fuzz_prompt.append(mutation_strategy)
+
+                            all_fuzz_payload, all_fuzz_combination, mutate_list = await Mutator.mutate_payload(
+                                payload_components, fuzz_prompt)
+
+                            for fuzz_payload in all_fuzz_payload:
+                                try:
+                                    result = await self.gateway.request_raw(1, cluster_id, msg_format["id"],
+                                                                            foundation.FrameType.GLOBAL_COMMAND,
+                                                                            payload_bytes=fuzz_payload,
+                                                                            direction=foundation.Direction.Client_to_Server,
+                                                                            flag=True)
+                                except asyncio.TimeoutError:
+                                    crash_info = self.crash_prompt.copy()
+                                    now = datetime.now()
+                                    crash_info["TimeStamp"].append(
+                                        now.strftime("%Y%m%d_%H:%M:%S:") + f"{int(now.microsecond / 1000):03d}")
+                                    crash_info["IEEE"].append(str(ieee))
+                                    crash_info["DEVICE"].append(ZIGBEE_DEVICE_MAC_MAP[str(ieee)])
+                                    crash_info["State"].append("Any")
+                                    crash_info["Fuzzing_Messages"].append(fuzz_payload)
+                                    crash_info["Mutation_Strategy"].append(mutation_strategy)
+
+                else:
+                    for sequence in fuzzing_sequences:
+                        messages = sequence.split(",")
+                        payload_components = []
+                        for message in messages:
+                            msg_format = get_message_format(message, message_formats)
+                            if msg_format is None:
+                                continue
+
+                        payload_components.append([msg_format["schema"]])
+                        fuzz_prompt = []
+
+                        mutation_strategy = Mutator.mutate_value
+
+                        for i in range(count_leaf_values(msg_format["schema"])):
+                            fuzz_prompt.append(mutation_strategy)
+
+                        all_fuzz_payload, all_fuzz_combination, mutate_list = await Mutator.mutate_payload(
+                            payload_components, fuzz_prompt)
+
+                        for fuzz_payload in all_fuzz_payload:
+                            try:
+                                result = await self.gateway.request_raw(1, cluster_id, msg_format["id"],
+                                                                        foundation.FrameType.GLOBAL_COMMAND,
+                                                                        payload_bytes=fuzz_payload,
+                                                                        direction=foundation.Direction.Client_to_Server,
+                                                                        flag=True)
+                            except asyncio.TimeoutError:
+                                crash_info = self.crash_prompt.copy()
+                                now = datetime.now()
+                                crash_info["TimeStamp"].append(
+                                    now.strftime("%Y%m%d_%H:%M:%S:") + f"{int(now.microsecond / 1000):03d}")
+                                crash_info["IEEE"].append(str(ieee))
+                                crash_info["DEVICE"].append(ZIGBEE_DEVICE_MAC_MAP[str(ieee)])
+                                crash_info["State"].append("Any")
+                                crash_info["Fuzzing_Messages"].append(fuzz_payload)
+                                crash_info["Mutation_Strategy"].append(mutation_strategy)
+
+                        fuzz_prompt = []
+                        mutation_strategy = Mutator.mutate_type
+
+                        for i in range(count_leaf_values(msg_format["schema"])):
+                            fuzz_prompt.append(mutation_strategy)
+
+                        all_fuzz_payload, all_fuzz_combination, mutate_list = await Mutator.mutate_payload(
+                            payload_components, fuzz_prompt)
+
+                        for fuzz_payload in all_fuzz_payload:
+                            try:
+                                await self.state_feed(messages)
+                                result = await self.gateway.request_raw(1, cluster_id, msg_format["id"],
+                                                                        foundation.FrameType.GLOBAL_COMMAND,
+                                                                        payload_bytes=fuzz_payload,
+                                                                        direction=foundation.Direction.Client_to_Server,
+                                                                        flag=True)
+                            except asyncio.TimeoutError:
+                                crash_info = self.crash_prompt.copy()
+                                now = datetime.now()
+                                crash_info["TimeStamp"].append(
+                                    now.strftime("%Y%m%d_%H:%M:%S:") + f"{int(now.microsecond / 1000):03d}")
+                                crash_info["IEEE"].append(str(ieee))
+                                crash_info["DEVICE"].append(ZIGBEE_DEVICE_MAC_MAP[str(ieee)])
+                                crash_info["State"].append("Any")
+                                crash_info["Fuzzing_Messages"].append(fuzz_payload)
+                                crash_info["Mutation_Strategy"].append(mutation_strategy)
+
 
             # Step 1: Using the last packet and current state to get the next fuzzing state
             await self.state_feed(ieee)
             # Step 1: Calculate the
-            log.info("[+] Sending the mutated packet {} for [{}]".format(fuzz_count, nwk))
+            log.info("[+] Sending the mutated packet {} for [{}]".format(fuzz_count, ieee))
             # self.mutation(nwk ,ieee)
             await asyncio.sleep(10)
 
@@ -668,7 +852,7 @@ class StateFuzzer:
 
     async def turn_on_off(self, ieee: t.EUI64, command: str):
         """
-        Turn on/off the device if device has the onoff Cluster
+        Turn on/off the device for checking crashes and abnormal states
         :param command: On / Off
         :param ieee:
         :return:
@@ -734,98 +918,130 @@ class StateFuzzer:
         await self.gateway.run()
 
         log.info(
-            "*********************************[V-A] Device State-Guided Fuzzing *********************************")
+            "*********************************[ZVDetector] State-Guided Fuzzer *********************************")
 
-        counter = 0
         while True:
-            if counter % 5 == 0:
-                await self.schedule_state_record()
+            debug_flag = False
+            fuzz_flag = False
+            # poc_flag = True
 
-            flag = input_with_timeout("Operation:\n", 7, "")
+            while True:
+                # if counter % 5 == 0:
+                #     await self.schedule_state_record()
 
-            ieee = None
-            if flag != "":
-                device_name = input_with_timeout("Device:\n", 10, "")
-                if device_name == "":
-                    continue
-                ieee, device = await self.gateway.find_similar_device(device_name)
-                if ieee not in self.gateway.application_controller.devices.keys() or ieee == self.gateway.coordinator_ieee:
-                    continue
+                flag = input_with_timeout("Operation:\n", 7, "")
 
-            if flag == "get":
-                device_name = input_with_timeout("Device:\n", 10, "")
-                if device_name == "":
-                    continue
-                # Find similar device using BERT
-                ieee, _ = await self.gateway.find_similar_device(device_name)
+                ieee = None
 
-                if ieee not in self.gateway.application_controller.devices.keys() or ieee == self.coordinator_ieee:
-                    continue
+                if flag == "debug":
+                    debug_flag = True
+                    break
 
-                log.info("[STATE] [{}] Reading State".format(ZIGBEE_DEVICE_MAC_MAP[str(ieee)]))
-                state = await self.get_state(ieee)
-                if "Status" not in state.keys():
-                    log.info("[OUTPUT] [{}] State: {}".format(ZIGBEE_DEVICE_MAC_MAP[str(ieee)], state))
+                if flag == "fuzz":
+                    fuzz_flag = True
 
-            if flag == "set":
-                await self.set_recent_state(ieee)
+                    log.info(
+                        "*********************************[State-Guided Fuzzer] Begin *********************************")
+                #
+                # if flag == "poc":
+                #     poc_flag = True
+                #     break
 
-            if flag == "on" or flag == "off":
-                await self.turn_on_off(ieee, flag)
+            if fuzz_flag:
+                for ieee in self.gateway.application_controller.devices.keys():
+                    await self.state_guided_fuzzing(ieee)
 
-            if flag == "read_fuzz":
-                await self.read_attribute_fuzz(ieee)
+            #  Fuzzer support debug mode for developer applied to other applications
+            if debug_flag:
+                while True:
+                    flag = input_with_timeout("Please input debug operation:\n", 7, "")
 
-            if flag == "write_fuzz":
-                await self.write_attribute_fuzz(ieee, fuzz_type=False)
-
-            if flag == "write":
-                cluster_name = input_with_timeout("Cluster:\n", 10, "")
-                if cluster_name == "":
-                    continue
-
-                attr_name = input_with_timeout("Attr Name:\n", 10, "")
-                if attr_name == "":
-                    continue
-
-                attr_value = input_with_timeout("Attr Value:\n", 10, "")
-                if attr_value == "":
-                    continue
-
-                try:
-                    attr_value = int(attr_value)
-                except ValueError:
-                    pass
-
-                attribute_save_path = os.path.join(self.gateway.attribute_db, "support_attribute.json")
-                if not os.path.exists(attribute_save_path):
-                    log.error("[ERROR] Support Attribute Json Not Found")
-
-                with open(attribute_save_path, "r") as f:
-                    all_attr = json.load(f)
-
-                for endpoint_id in all_attr[str(ieee)].keys():
-                    cluster_save_path = os.path.join(self.gateway.cluster_db,
-                                                     "{}_{}.json".format(str(ieee), endpoint_id))
-                    with open(cluster_save_path, "r") as f2:
-                        all_clusters = json.load(f2)
-
-                    all_cluster = all_attr[str(ieee)][endpoint_id].keys()
-                    if cluster_name not in all_cluster:
+                    if flag == "help":
+                        print("Supported operations:\n"
+                              "get: Get certain device state\n"
+                              "set: Set certain device state\n"
+                              "write: Write certain device attribute"
+                              "on/off: Turn on/off the device\n"
+                              "read_fuzz: Using ReadAttributes fuzzing mode(only for single protocol message)\n"
+                              "write_fuzz: Using WriteAttributes fuzzing mode(only for single protocol message")
                         continue
-                    cluster_attr = all_attr[str(ieee)][endpoint_id][cluster_name]
+                    else:
+                        device_name = input_with_timeout("Device:\n", 10, "")
+                        if device_name == "":
+                            log.error("Please input device name for further debugging!")
+                            continue
+                        ieee, device = await self.gateway.find_similar_device(device_name)
+                        if ieee not in self.gateway.application_controller.devices.keys() or ieee == self.gateway.coordinator_ieee:
+                            log.error("Device not connected to coordinator or cannot fuzz coordinator itself!")
+                            continue
 
-                    cluster_id = all_clusters["input"][cluster_name]
+                    if flag == "get":
+                        log.info("[STATE] [{}] Reading State".format(ZIGBEE_DEVICE_MAC_MAP[str(ieee)]))
+                        state = await self.get_state(ieee)
+                        if "Status" not in state.keys():
+                            log.info("[OUTPUT] [{}] State: {}".format(ZIGBEE_DEVICE_MAC_MAP[str(ieee)], state))
 
-                    for attr in cluster_attr:
-                        if attr["attr_name"] == attr_name:
-                            attr_id = attr["attr_id"]
-                            attr_type = attr["attr_type"]
-                            log.info("Writing {} at {}".format(attr_name, attr_value))
-                            await self.write_attributes_begin(int(endpoint_id), ieee, cluster_id, attr_id, attr_type,
-                                                              attr_value)
+                    if flag == "set":
+                        await self.set_recent_state(ieee)
 
-            counter += 1
+                    if flag == "on" or flag == "off":
+                        await self.turn_on_off(ieee, flag)
+
+                    if flag == "read_fuzz":
+                        await self.read_attribute_fuzz(ieee)
+
+                    if flag == "write_fuzz":
+                        await self.write_attribute_fuzz(ieee, fuzz_type=False)
+
+                    if flag == "write":
+                        cluster_name = input_with_timeout("Cluster:\n", 10, "")
+                        if cluster_name == "":
+                            continue
+
+                        attr_name = input_with_timeout("Attr Name:\n", 10, "")
+                        if attr_name == "":
+                            continue
+
+                        attr_value = input_with_timeout("Attr Value:\n", 10, "")
+                        if attr_value == "":
+                            continue
+
+                        try:
+                            attr_value = int(attr_value)
+                        except ValueError:
+                            pass
+
+                        attribute_save_path = os.path.join(self.gateway.attribute_db, "support_attribute.json")
+                        if not os.path.exists(attribute_save_path):
+                            log.error("[ERROR] Support Attribute Json Not Found")
+
+                        with open(attribute_save_path, "r") as f:
+                            all_attr = json.load(f)
+
+                        for endpoint_id in all_attr[str(ieee)].keys():
+                            cluster_save_path = os.path.join(self.gateway.cluster_db,
+                                                             "{}_{}.json".format(str(ieee), endpoint_id))
+                            with open(cluster_save_path, "r") as f2:
+                                all_clusters = json.load(f2)
+
+                            all_cluster = all_attr[str(ieee)][endpoint_id].keys()
+                            if cluster_name not in all_cluster:
+                                continue
+                            cluster_attr = all_attr[str(ieee)][endpoint_id][cluster_name]
+
+                            cluster_id = all_clusters["input"][cluster_name]
+
+                            for attr in cluster_attr:
+                                if attr["attr_name"] == attr_name:
+                                    attr_id = attr["attr_id"]
+                                    attr_type = attr["attr_type"]
+                                    log.info("Writing {} at {}".format(attr_name, attr_value))
+                                    await self.write_attributes_begin(int(endpoint_id), ieee, cluster_id, attr_id,
+                                                                      attr_type,
+                                                                      attr_value)
+
+                    if flag == "quit" or flag == "break":
+                        break
 
 
 if __name__ == "__main__":
