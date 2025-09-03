@@ -11,6 +11,7 @@ from state_aware.merge import merge_groups
 from state_aware.LLM import *
 from state_aware.const import *
 from util.utils import *
+from util.conf import *
 
 
 def remove_parentheses(text):
@@ -101,7 +102,7 @@ class Correlation:
     def __init__(self):
         self.CORR_SAVE_DIR = os.path.join(os.path.dirname(__file__), "result/correlation")
         self.FORMAT_DIR = os.path.join(os.path.dirname(__file__), "result/format")
-        self.LLM = LLMGenerator(key="sk-0e0ebce461784008aa931af7b5fc0622", model="deepseek")
+        self.LLM = LLMGenerator(key=DEEPSEEK_API_KEY, model="deepseek")
         self.layer_map = {
             "zigbee": LAYERS,
             "zwave": ZWAVE_LAYERS
@@ -556,7 +557,6 @@ class Correlation:
             # self.analyze_corr_msg_pairs(protocol="zwave")
             self.analyze_corr_msg_pairs()
 
-        progress_bar(5)
         log.info("[Protocol State Awareness] Analyzing Message Correlations Done!")
 
 
