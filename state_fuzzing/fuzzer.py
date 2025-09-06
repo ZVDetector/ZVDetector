@@ -29,9 +29,8 @@ from util.serial import serialize, ZIGBEE_STR_TYPE, ZIGBEE_INTEGER_TYPE, ZIGBEE_
 from util.utils import *
 from util.conf import ZIGBEE_DEVICE_MAC_MAP
 from state_fuzzing.gateway import ZHAGateway, parse_args
-from pathlib import Path
 
-# python fuzzer.py -c 20 -d 15 -l -o network.json /dev/tty.usbserial-14110
+# python fuzzer.py -c 20 -d 15 -l -o network.json /dev/tty.usbserial-14410
 # python fuzzer.py -c 20 -d 15 -l -o network.json /dev/ttyUSB0
 
 logging.basicConfig(level=logging.INFO)
@@ -183,6 +182,7 @@ class StateFuzzer:
             "Log": []
         }
 
+    def
     async def check_device_state(self, device_ieee, device_nwk, endpoint_id) -> int:
         # State the application controller
         app = await ControllerApplication.new(config={}, auto_form=True)
@@ -701,9 +701,13 @@ class StateFuzzer:
 
                 fuzzing_sequences = read_list_from_file(file_path)
 
+                # 如果是基本策略，则针对每条消息进行fuzzing
+
                 if filename == "basic":
                     for sequence in fuzzing_sequences:
                         messages = sequence.split(",")
+
+                        #
                         for message in messages:
                             msg_format = get_message_format(message, message_formats)
                             if msg_format is None:
@@ -920,14 +924,16 @@ class StateFuzzer:
         log.info(
             "*********************************[ZVDetector] State-Guided Fuzzer *********************************")
 
+        counter = 0
+
         while True:
             debug_flag = False
             fuzz_flag = False
-            # poc_flag = True
+            poc_flag = True
 
             while True:
-                # if counter % 5 == 0:
-                #     await self.schedule_state_record()
+                if counter % 5 == 0:
+                    await self.schedule_state_record()
 
                 flag = input_with_timeout("Operation:\n", 7, "")
 
@@ -942,10 +948,10 @@ class StateFuzzer:
 
                     log.info(
                         "*********************************[State-Guided Fuzzer] Begin *********************************")
-                #
-                # if flag == "poc":
-                #     poc_flag = True
-                #     break
+
+                if flag == "poc":
+                    poc_flag = True
+                    break
 
             if fuzz_flag:
                 for ieee in self.gateway.application_controller.devices.keys():
