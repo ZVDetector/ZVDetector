@@ -1,0 +1,47 @@
+Timestamp:
+  - "20240528_18:18:03:346"
+Device:
+  - "Tuya Smart Plug"
+IEEE:
+  - "a4:c1:38:8d:4b:e3:c8:1d"
+Nwk_Address:
+  - "0xB7E0"
+State:
+  - "Any"
+Message_Relationship:
+  - "Single"
+Fuzzing_Messages:
+  - {
+    "inching_switch": {
+      "id": 253,
+      "channel_number": "t.uint8_t",
+      "white_gradient_duration": "t.uint16_t",
+      "inching_switch": {
+        "t.Array": {
+          "channel_info": {
+            "t.LVList": {
+              "enablement": "t.bit1",
+              "channel_id": "t.bit7"
+            },
+            "inching_duration": "t.uint16_t"
+          }
+        }
+      }
+    }
+  }
+Layer:
+  - ["ZCL"]
+Mutation_Strategy:
+  - T-1-1
+  - "inching_switch"
+  - {
+      "inching_duration": 65536,
+  }
+  - {
+      "inching_duration": -255,
+  }
+  - {
+      "inching_duration": -256,
+  }
+Log:
+  - "[Device 3] Exploit: InchingSwitch | Mutation: Invalid & Negative 'inching_duration' | Result: Abnormal State | "
