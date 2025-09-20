@@ -51,15 +51,15 @@ ZIGBEE_TESTBED_DEVICES = ["Aqara Smart Plug", "Tuya Switch", "Tuya Smart Plug", 
 
 COORDINATOR_IEEE = "00:12:4b:00:32:d4:40:05"
 
-# NEO4J_URL = "neo4j://localhost:7687" # WINDOWS
+# NEO4J_URL = "bolt://localhost:7687" # WINDOWS, DOCKER
 NEO4J_URL = "http://localhost:7474"  # MACOS
-NEO4J_PASSWORD = "<Your Neo4j Database Password>"
+NEO4J_PASSWORD = "zvdetector"
 
-ZIGBEE_LINK_KEY = "<Your Zigbee Link Key>"
-ZIGBEE_NETWORK_KEY = "<Your Zigbee Network Key>"
+ZIGBEE_LINK_KEY = "5A6967426565416C6C69616E63653039"
+ZIGBEE_NETWORK_KEY = "20007a5ce740a1abbb413ba47119dfb9"
 
-DEEPSEEK_API_KEY = "<Your DeepSeek API Key>"
-OPENAI_API_KEY = "<Your OpenAI API Key>"
+DEEPSEEK_API_KEY = "<Your Deepseek API Key>"
+OPENAI_API_KEY = "<Your OPENAI API Key>"
 
 SUPPORT_MODE = {
     "format_generated": True,
@@ -70,3 +70,4 @@ SUPPORT_MODE = {
     "hidden_attributes_done": True,
     "attribute_permission_done": True
 }
+
