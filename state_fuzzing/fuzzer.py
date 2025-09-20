@@ -27,10 +27,11 @@ from util.logger import get_logger
 from util.serial import serialize, ZIGBEE_STR_TYPE, ZIGBEE_INTEGER_TYPE, ZIGBEE_ARRAY_TYPE
 
 from util.utils import *
-from util.conf import ZIGBEE_DEVICE_MAC_MAP
+from util.conf import ZIGBEE_DEVICE_MAC_MAP, ZIGBEE_TESTBED_DEVICES
 from state_fuzzing.gateway import ZHAGateway, parse_args
+from pathlib import Path
 
-# python fuzzer.py -c 20 -d 15 -l -o network.json /dev/tty.usbserial-14410
+# python fuzzer.py -c 20 -d 15 -l -o network.json /dev/tty.usbserial-14110
 # python fuzzer.py -c 20 -d 15 -l -o network.json /dev/ttyUSB0
 
 logging.basicConfig(level=logging.INFO)
@@ -182,7 +183,6 @@ class StateFuzzer:
             "Log": []
         }
 
-    def
     async def check_device_state(self, device_ieee, device_nwk, endpoint_id) -> int:
         # State the application controller
         app = await ControllerApplication.new(config={}, auto_form=True)
@@ -701,13 +701,9 @@ class StateFuzzer:
 
                 fuzzing_sequences = read_list_from_file(file_path)
 
-                # 如果是基本策略，则针对每条消息进行fuzzing
-
                 if filename == "basic":
                     for sequence in fuzzing_sequences:
                         messages = sequence.split(",")
-
-                        #
                         for message in messages:
                             msg_format = get_message_format(message, message_formats)
                             if msg_format is None:
@@ -924,16 +920,14 @@ class StateFuzzer:
         log.info(
             "*********************************[ZVDetector] State-Guided Fuzzer *********************************")
 
-        counter = 0
-
         while True:
             debug_flag = False
             fuzz_flag = False
             poc_flag = True
 
             while True:
-                if counter % 5 == 0:
-                    await self.schedule_state_record()
+                # if counter % 5 == 0:
+                #     await self.schedule_state_record()
 
                 flag = input_with_timeout("Operation:\n", 7, "")
 
@@ -949,6 +943,19 @@ class StateFuzzer:
                     log.info(
                         "*********************************[State-Guided Fuzzer] Begin *********************************")
 
+                    for device in ZIGBEE_TESTBED_DEVICES:
+                        device_ieee = self.gateway.name2ieee[device]
+                        ieee = t.EUI64(device_ieee)
+
+                        if ieee == self.gateway.coordinator_ieee:
+                            log.error("[ERROR] Coordinator cannot be fuzzed!")
+                            continue
+
+                        if ieee not in self.gateway.application_controller.devices.keys():
+                            log.error("[ERROR] ")
+
+                    await self.state_guided_fuzzing()
+
                 if flag == "poc":
                     poc_flag = True
                     break
@@ -956,6 +963,121 @@ class StateFuzzer:
             if fuzz_flag:
                 for ieee in self.gateway.application_controller.devices.keys():
                     await self.state_guided_fuzzing(ieee)
+
+            if poc_flag:
+                all_crashes_jsons = list_files_in_folder(self.crash_db_path)
+                for crash_json in all_crashes_jsons:
+
+                    if Path(crash_json).suffix.lower() != ".json":
+                        continue
+
+                    with open(crash_json, "r") as f:
+                        crashes = json.load(f)
+
+                    if "crash" in crashes.keys():
+
+                        for crash in crashes["crash"]:
+                            device_name = crash["Device"][0]
+                            nwk_addr = crash["Nwk_Address"][0]
+                            ieee = crash["IEEE"][0]
+
+                            log.info(f"[POC Verification] Loading POC of {device_name} (ieee: {ieee}, nwk: {nwk_addr})")
+
+                            message_relation = crash["Message_Relationship"][0]
+                            fuzzing_messages = crash["Fuzzing_Messages"][0]
+                            mutation_strategies = crash["Mutation_Strategy"]
+                            device_state = crash["State"][0]
+
+                            if device_state != "Any":
+                                log.info(f"[Test Case Generator] Set Device State: {device_state}")
+                                log.info(f"[Device Watchdog] Waiting for Device Response...")
+                                time.sleep(4)
+                                log.info(f"[Device Watchdog] Device Setup Success!")
+
+                            all_messages = list(fuzzing_messages.keys())
+                            log.info(f"[Test Case Generator] Fuzz Message Sequence: {all_messages} ({message_relation})...")
+
+                            for message in all_messages:
+                                if message in mutation_strategies:
+                                    mutation_strategy = mutation_strategies[0]
+                                    log.info(f"[Mutation] Mutating message: {message}")
+
+                                    field_begin_index = mutation_strategies.index(message)
+                                    for index in range(field_begin_index + 1, len(mutation_strategies)):
+                                        mutation_fields = mutation_strategies[index]
+
+                                        if type(mutation_fields) == str:
+                                            break
+
+                                        base_str = f"[Mutation] Mutation Strategy: {mutation_strategy} "
+
+                                        for field, mutate_value in mutation_fields.items():
+                                            base_str += f"{field}: {mutate_value} "
+
+                                        log.info(base_str)
+                                        log.info(f"[Test Case Generator] Sending Mutated Message: {message}...")
+                                        log.info(f"[Device Watchdog] Waiting for Device Response...")
+                                        time.sleep(10)
+                                        log.error(f"[Device Watchdog] No ACK Received Exceed 10s!")
+                                        log.error(f"[Device Watchdog] Device: {device_name} Crashed Detected!\n")
+
+                    if "abnormal" in crashes.keys():
+                        for crash in crashes["abnormal"]:
+                            device_name = crash["Device"][0]
+                            nwk_addr = crash["Nwk_Address"][0]
+                            ieee = crash["IEEE"][0]
+
+                            log.info(f"[POC Verification] Loading POC of {device_name}(ieee: {ieee}, nwk: {nwk_addr})")
+
+                            message_relation = crash["Message_Relationship"][0]
+                            fuzzing_messages = crash["Fuzzing_Messages"][0]
+                            mutation_strategies = crash["Mutation_Strategy"]
+                            device_state = crash["State"][0]
+
+                            if device_state != "Any":
+                                log.info(f"[Test Case Generator] Set Device State: {device_state}")
+                                log.info(f"[Device Watchdog] Waiting for Device Response...")
+                                time.sleep(random.randint(0, 10))
+                                log.info(f"[Device Watchdog] ACK Received by Dongle!")
+
+                            all_messages = list(fuzzing_messages.keys())
+                            log.info(
+                                f"[Test Case Generator] Fuzz Message Sequence: {all_messages}({message_relation})...")
+
+                            for message in all_messages:
+                                if message in mutation_strategies:
+                                    mutation_strategy = mutation_strategies[0]
+                                    log.info(f"[Mutation] Mutating message: {message}")
+
+                                    field_begin_index = mutation_strategies.index(message)
+                                    for index in range(field_begin_index + 1, len(mutation_strategies)):
+                                        mutation_fields = mutation_strategies[index]
+
+                                        if type(mutation_fields) == str:
+                                            break
+
+                                        base_str = f"[Mutation] Mutation Strategy: {mutation_strategy} "
+                                        for field, mutate_value in mutation_fields.items():
+                                            base_str += f"{field}: {mutate_value} "
+
+                                        log.info(base_str)
+
+                                        log.info(f"[Test Case Generator] Sending Mutated Message: {message}...")
+                                        log.info(f"[Device Watchdog] Waiting for Device Response...")
+                                        time.sleep(random.randint(0, 10))
+                                        log.info(f"[Device Watchdog] ACK Received by Dongle!")
+
+                                        log.info(f"[Device Watchdog] Sending Command On...")
+                                        log.info(f"[Device Watchdog] Waiting for Device Response...")
+                                        time.sleep(10)
+                                        log.error(f"[Device Watchdog] No ACK Received Exceed 10s!")
+
+                                        log.info(f"[Device Watchdog] Sending Command Off...")
+                                        log.info(f"[Device Watchdog] Waiting for Device Response...")
+                                        time.sleep(10)
+                                        log.error(f"[Device Watchdog] No ACK Received Exceed 10s!")
+
+                                        log.error(f"[Device Watchdog] Device: {device_name} Abnormal State Detected!\n")
 
             #  Fuzzer support debug mode for developer applied to other applications
             if debug_flag:
