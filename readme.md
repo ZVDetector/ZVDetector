@@ -166,7 +166,6 @@ docker run -it -d --name fuzzing --privileged --device:/dev/ttyUSB0:/dev/ttyUSB0
 # Remote Build
 docker pull thulh/zvdetector
 docker run -it -d --name fuzzing --privileged --device:/dev/ttyUSB0:/dev/ttyUSB0 --network host thulh/zvdetector
-
 ```
 
 # Compile Methods
