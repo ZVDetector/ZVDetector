@@ -159,10 +159,14 @@ Thus you can see the plaintext content of the messages during the pairing phase,
 Build from Dockerfile or pull images from DockerHub
 
 ```
+# Local Build
 docker build -t zvdetector .
-OR
-docker pull thulh/zvdetector
 docker run -it -d --name fuzzing --privileged --device:/dev/ttyUSB0:/dev/ttyUSB0 --network host zvdetector
+
+# Remote Build
+docker pull thulh/zvdetector
+docker run -it -d --name fuzzing --privileged --device:/dev/ttyUSB0:/dev/ttyUSB0 --network host thulh/zvdetector
+
 ```
 
 # Compile Methods
