@@ -45,9 +45,11 @@ zigpy-zigate 0.13.3 requires zigpy>=0.70.0, but you have zigpy 0.0.1 which is in
 
 Download hugging face bert model ```sentence-transformers/msmarco-bert-base-dot-v5``` into the folder ```state_fuzzing/bert/bert_pytorch```
 ```
-model.safetensors
-pytorch_model.bin
-tf_model.h5
+cd state_fuzzing/bert
+mkdir bert_pytorch
+git lfs install
+git clone https://huggingface.co/sentence-transformers/msmarco-bert-base-dot-v5
+mv msmarco-bert-base-dot-v5/* ./bert_pytorch
 ```
 
 Configure your neo4j desktop and start it locally. You can run the desktop directly or start it from the command line.
