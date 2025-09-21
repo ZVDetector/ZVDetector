@@ -155,7 +155,14 @@ Thus you can see the plaintext content of the messages during the pairing phase,
 
 
 ## Quick Deployment
-Docker will be available soon.
+
+Local: Build from Dockerfile or pull images from DockerHub
+
+```
+docker build -t zvdetector .
+# docker pull 851696682/fuzzing:latest
+docker run -it -d --name fuzzing --privileged --device:/dev/ttyUSB0:/dev/ttyUSB0 --network host zvdetector
+```
 
 # Compile Methods
 
