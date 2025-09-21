@@ -156,7 +156,7 @@ Thus you can see the plaintext content of the messages during the pairing phase,
 
 ## Quick Deployment
 
-Local: Build from Dockerfile or pull images from DockerHub
+Build from Dockerfile or pull images from DockerHub
 
 ```
 docker build -t zvdetector .
