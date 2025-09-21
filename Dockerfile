@@ -1,7 +1,7 @@
 FROM ubuntu:20.04
 WORKDIR /zvdetector
 # CN: 安装依赖 EN: Install dependencies
-RUN apt-get update && apt-get install -y vim wget sudo libgl1-mesa-glx libegl1-mesa libxrandr2 libxrandr2 libxss1 libxcursor1 libxcomposite1 libasound2 libxi6 libxtst6
+RUN apt-get update && apt-get install -y vim wget sudo libgl1-mesa-glx libegl1-mesa libxrandr2 libxrandr2 libxss1 libxcursor1 libxcomposite1 libasound2 libxi6 libxtst6 git
 
 # CN: 安装和配置Conda  EN: Install and configure Conda
 RUN sudo su && wget "https://mirrors.tuna.tsinghua.edu.cn/anaconda/miniconda/Miniconda3-latest-Linux-x86_64.sh" -O miniconda.sh  \
@@ -35,10 +35,14 @@ ENV NEO4J_HOME=/neo4j/neo4j-community
 
 RUN ${NEO4J_HOME}/bin/neo4j-admin dbms set-initial-password zvdetector && ${NEO4J_HOME}/bin/neo4j start
 
-
 # CN: 搭建conda fuzzing环境 EN: Build conda fuzzing environment
 COPY environment.yml .
 RUN conda env create -f environment.yml && rm -rf environment.yml
 SHELL ["conda", "run", "-n", "fuzzing", "/bin/bash", "-c"]
 
+# CN: 复制所有已下载的项目文件到Docker中  EN：Copy all downloaded project files into Docker
 COPY . .
+
+# CN：或者可以从Github 和 hugging face上下载   EN：OR you can download it from Github and hugging face
+# RUN cd /zvdetector && git clone https://github.com/ZVDetector/ZVDetector.git && mv ZVDetector/* ./ && rm -rf /zvdetector/ZVDetector
+# RUN cd /zvdetector/state_fuzzing/bert && mkdir bert_pytorch && git clone https://huggingface.co/sentence-transformers/msmarco-bert-base-dot-v5 && mv msmarco-bert-base-dot-v5/* ./bert_pytorch
