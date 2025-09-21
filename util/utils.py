@@ -216,7 +216,17 @@ def read_list_from_file(filepath):
     with open(filepath, 'r', encoding='utf-8') as f:
         return [line.strip() for line in f.readlines()]
 
+def count_leaf_values(data: dict):
 
+    if isinstance(data, dict):
+        return sum(count_leaf_values(v) for v in data.values())
+
+    elif isinstance(data, (list, tuple, set)):
+        return sum(count_leaf_values(v) for v in data)
+
+    else:
+        return 1
+        
 if __name__ == "__main__":
     input_list = [1, [1, 2, 3], 3, [4, 5]]
     combinations = get_all_combinations(input_list)
