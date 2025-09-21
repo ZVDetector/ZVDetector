@@ -160,7 +160,8 @@ Build from Dockerfile or pull images from DockerHub
 
 ```
 docker build -t zvdetector .
-# docker pull 851696682/fuzzing:latest
+OR
+docker pull thulh/zvdetector
 docker run -it -d --name fuzzing --privileged --device:/dev/ttyUSB0:/dev/ttyUSB0 --network host zvdetector
 ```
 
