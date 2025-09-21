@@ -1,17 +1,18 @@
 FROM ubuntu:20.04
 WORKDIR /zvdetector
 # CN: 安装依赖 EN: Install dependencies
-RUN apt-get update && apt-get install vim wget sudo libgl1-mesa-glx libegl1-mesa libxrandr2 libxrandr2 libxss1 libxcursor1 libxcomposite1 libasound2 libxi6 libxtst6
+RUN apt-get update && apt-get install -y vim wget sudo libgl1-mesa-glx libegl1-mesa libxrandr2 libxrandr2 libxss1 libxcursor1 libxcomposite1 libasound2 libxi6 libxtst6
 
 # CN: 安装和配置Conda  EN: Install and configure Conda
-RUN sudo su && wget "https://mirrors.tuna.tsinghua.edu.cn/anaconda/miniconda/Miniconda3-latest-Linux-x86_64.sh" -O ~/miniconda.sh  \
-    && bash ~/miniconda.sh -b -p $HOME/miniconda && ~/miniconda/bin/conda init $(echo $SHELL | awk -F '/' '{print $NF}')
+RUN sudo su && wget "https://mirrors.tuna.tsinghua.edu.cn/anaconda/miniconda/Miniconda3-latest-Linux-x86_64.sh" -O miniconda.sh  \
+    && bash miniconda.sh -b -p /opt/miniconda && /opt/miniconda/bin/conda init $(echo $SHELL | awk -F '/' '{print $NF}')
 
-RUN echo 'export PATH=/root/miniconda/bin/conda:$PATH' >> ~/.bashrc && source ~/.bashrc && rm -rf miniconda.sh
+ENV CONDA_HOME=/opt/miniconda
+ENV PATH="/opt/miniconda/bin:${PATH}"
+RUN conda tos accept --override-channels --channel https://repo.anaconda.com/pkgs/main \
+ && conda tos accept --override-channels --channel https://repo.anaconda.com/pkgs/r
+RUN rm -rf miniconda.sh
 
-# CN: 搭建conda fuzzing环境 EN: Build conda fuzzing environment
-COPY environment.yml .
-RUN conda env create -f environment.yml
 
 # CN: 安装Java 和 Neo4j 图数据库 EN: Build Java and Neo4j database
 RUN mkdir /java && cd /java \
@@ -20,21 +21,24 @@ RUN mkdir /java && cd /java \
     && mv jdk-21.0.8 jdk-21 \
     && rm -rf jdk-21.tar.gz
 
-RUN echo 'export JAVA_HOME=/java/jdk-21' >> ~/.bashrc \
-    && echo 'export JRE_HOME=${JAVA_HOME}/jre' >> ~/.bashrc \
-    && echo 'export CLASSPATH=.:${JAVA_HOME}/lib:${JRE_HOME}/lib' >> ~/.bashrc \
-    && echo 'export PATH=${JAVA_HOME}/bin:$PATH' >> ~/.bashrc \
-    && source ~/.bashrc
+ENV JAVA_HOME=/java/jdk-21
+ENV JRE_HOME=${JAVA_HOME}/jre
+ENV CLASSPATH=.:${JAVA_HOME}/lib:${JRE_HOME}/lib
+ENV PATH=${JAVA_HOME}/bin:$PATH
 
-RUN mkdir /neo4j && cd /neo4j \
-    && wget https://neo4j.com/artifact.php?name=neo4j-community-2025.08.0-unix.tar.gz -O neo4j-community.tar.gz \
+RUN mkdir /neo4j && cd /neo4j && wget 'https://cloud.tsinghua.edu.cn/seafhttp/files/aa66d328-b038-4bc4-a04f-45ee0bca5b3a/neo4j-community-2025.08.0-unix.tar.gz' -O neo4j-community.tar.gz \
     && tar -zxvf neo4j-community.tar.gz \
     && mv neo4j-community-2025.08.0 neo4j-community \
-    && rm -rf neo4j-community.tar.gz \
-    && /neo4j/neo4j-community/bin/neo4j-admin dbms set-initial-password zvdetector
+    && rm -rf neo4j-community.tar.gz
 
-RUN echo 'conda activate fuzzing' >> ~/.bashrc \
-    && echo '/neo4j/neo4j-community/bin/neo4j start' >> ~/.bashrc \
-    && source ~/.bashrc
+ENV NEO4J_HOME=/neo4j/neo4j-community
+
+RUN ${NEO4J_HOME}/bin/neo4j-admin dbms set-initial-password zvdetector && ${NEO4J_HOME}/bin/neo4j start
+
+
+# CN: 搭建conda fuzzing环境 EN: Build conda fuzzing environment
+COPY environment.yml .
+RUN conda env create -f environment.yml && rm -rf environment.yml
+SHELL ["conda", "run", "-n", "fuzzing", "/bin/bash", "-c"]
 
 COPY . .
